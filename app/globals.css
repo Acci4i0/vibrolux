@@ -1,0 +1,208 @@
+/* ───────────── Tokens (see ANIMATION_SPEC.md §1) ───────────── */
+:root {
+  --color-black: #0f0e12;
+  --color-grey1: #322d2a;
+  --color-grey2: #625b58;
+  --color-grey3: #bfb8b5;
+  --color-grey4: #f0efe9;
+  --color-white: #fff;
+  --color-white-off: #f0efe9;
+  --color-brand: #21406e; /* Vibrolux navy, from the brochure artwork */
+  --color-text: var(--color-grey1);
+  --color-bg: var(--color-white);
+  --color-bg-blur-dark: hsla(0, 0%, 9%, 0.5);
+  --color-bg-blur-light: hsla(0, 0%, 100%, 0.2);
+  /* Placeholder media colour (swap for real assets later) */
+  --color-placeholder: #000;
+
+  /* Fonts: Geist ≈ T1 Sans, Chivo Mono ≈ T1 Sans Mono (weights tuned by ink-density match) */
+  --font-primary: var(--font-geist), 'Helvetica', 'Arial', sans-serif;
+  --font-secondary: var(--font-chivo-mono), 'Courier New', monospace;
+  --fw-light: 290;
+  --fw-regular: 440;
+  --fw-mono: 450;
+
+  --size-caption: 1.2rem;
+  --size-body: 1.4rem;
+  --size-heading-xs: 2rem;
+  --size-heading-sm: 2.4rem;
+  --size-heading-md: 3.2rem;
+  --size-heading-lg: 5.2rem;
+  --size-heading-xl: 9.6rem;
+  --line-height: 1.3;
+
+  --margin-xs: 0.4rem;
+  --margin-sm: 0.8rem;
+  --margin-lg: 1.8rem;
+  --margin-xl: 2.4rem;
+  --margin-2xl: 3.6rem;
+  --margin-3xl: 4.8rem;
+  --margin-4xl: 6rem;
+  --margin-5xl: 9.6rem;
+  --margin-6xl: 12rem;
+  --gutter: var(--margin-sm);
+  --gutter-half: var(--margin-xs);
+  --pwx: 3.6rem;
+  --pwy: 3.6rem;
+
+  --radius-button: 1.6rem;
+  --radius-large: 8rem;
+  --container-max-width: 1440px;
+
+  --duration-default: 0.25s;
+  --duration-long: 0.35s;
+  --duration-longer: 666ms;
+  --duration: 0.5s;
+  --ease-ui: cubic-bezier(0.42, 0, 0, 1);
+  --ease-expo-linear: linear(0, 0.1641 3.52%, 0.311 7.18%, 0.4413 10.99%, 0.5553 14.96%, 0.6539 19.12%, 0.738 23.5%, 0.8086 28.15%, 0.8662 33.12%, 0.9078 37.92%, 0.9405 43.12%, 0.965 48.84%, 0.9821 55.28%, 0.992 61.97%, 0.9976 70.09%, 1);
+
+  --vh: 1vh;
+}
+
+@media (max-width: 1179.98px) {
+  :root {
+    --size-heading-sm: 2rem;
+    --size-heading-md: 2.8rem;
+    --size-heading-lg: 4rem;
+    --size-heading-xl: 6rem;
+    --radius-large: 4rem;
+    --vh: 1svh;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --pwx: 1.2rem;
+    --size-heading-xl: 5.2rem;
+  }
+}
+
+/* ───────────── Reset ───────────── */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: var(--size-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  appearance: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+img,
+video,
+svg {
+  display: block;
+}
+
+/* ───────────── Shared type ───────────── */
+.t-eyebrow,
+.t-mono {
+  font-family: var(--font-secondary);
+  font-size: var(--size-caption);
+  font-weight: var(--fw-mono);
+  letter-spacing: 0.01em;
+  line-height: var(--line-height);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.t-eyebrow {
+  align-items: baseline;
+  display: flex;
+  position: relative;
+}
+.t-eyebrow::before {
+  background-color: currentColor;
+  content: '';
+  display: block;
+  flex: none;
+  height: 0.6667em;
+  margin-right: 0.6667em;
+  margin-top: -0.05em;
+  width: 0.6667em;
+}
+.t-large {
+  font-size: var(--size-heading-md);
+  font-weight: var(--fw-light);
+  letter-spacing: normal;
+  line-height: 1.2;
+  text-wrap: pretty;
+}
+
+/* ───────────── Page transition (reference "fade-page") ───────────── */
+.page {
+  transition: opacity 0.5s ease 0.66s;
+}
+body.is-page-leaving .page {
+  opacity: 0;
+  transition-delay: 0s;
+}
+body > footer {
+  transition: opacity 0.5s ease;
+}
+body.is-page-transitioning > footer {
+  opacity: 0;
+}
+
+/* carousel images would touch the next media module: T1 always follows a carousel with text */
+main > [data-module='carousel'] + [data-module='media'] {
+  margin-top: var(--margin-3xl);
+}
+@media (min-width: 768px) {
+  main > [data-module='carousel'] + :is([data-module='carousel'], [data-module='media']) {
+    margin-top: var(--margin-6xl);
+  }
+}
+
+/* anchor targets clear the fixed header (reference: .modules-wrapper > .module) */
+main section {
+  scroll-margin-top: 10rem;
+}
+
+/* ───────────── Reveal pre-hydration state ───────────── */
+/* html.js is set by an inline script; elements stay hidden until GSAP picks them up. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal]:not([data-reveal='done']) {
+    visibility: hidden;
+  }
+}
+
+/* ───────────── Reduced motion ───────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}

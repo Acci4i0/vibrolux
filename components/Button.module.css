@@ -1,0 +1,45 @@
+.cta {
+  align-items: center;
+  border: none;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-primary);
+  font-size: var(--size-body);
+  font-weight: var(--fw-regular);
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  padding: 1.25em 1.6em;
+  transition:
+    background-color var(--duration-default),
+    color var(--duration-default);
+  user-select: none;
+}
+.cta:hover:active {
+  transform: scale(0.985);
+}
+
+/* Dark blurred pill on media (hero) */
+.blur {
+  backdrop-filter: blur(5rem);
+  -webkit-backdrop-filter: blur(5rem);
+  background-color: var(--color-bg-blur-dark);
+  color: var(--color-white);
+}
+/* Outline on light backgrounds (text / stats / news) */
+.outline {
+  background-color: transparent;
+  border: 1px solid var(--color-grey3);
+  color: currentColor;
+}
+
+@media (hover: hover) {
+  .blur:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+  }
+  .outline:hover {
+    background-color: var(--color-grey3);
+  }
+}

@@ -1,0 +1,111 @@
+.contact {
+  padding: var(--margin-6xl) var(--margin-4xl) var(--gutter);
+  position: relative;
+  width: 100%;
+}
+.inner {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  width: 100%;
+}
+.eyebrow {
+  width: 50%;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-3xl);
+  width: 50%;
+}
+.content address {
+  font-style: normal;
+}
+.line {
+  display: block;
+}
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+}
+.rows li {
+  display: flex;
+}
+.rows a {
+  transition: opacity var(--duration-default);
+}
+@media (hover: hover) {
+  .rows a:hover {
+    opacity: 0.66;
+  }
+}
+.key {
+  color: var(--color-grey2);
+  flex: none;
+  width: 6em;
+}
+.map {
+  --map-inset: 2.4rem; /* keeps Google's card and controls clear of the 8rem corners */
+  aspect-ratio: 16 / 7;
+  background: var(--color-grey4);
+  border-radius: var(--radius-large);
+  margin: var(--margin-6xl) calc(var(--margin-4xl) * -1 + var(--gutter)) 0;
+  overflow: hidden;
+  position: relative;
+}
+.map iframe {
+  border: 0;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+  position: absolute;
+}
+.mapFront {
+  height: calc(100% - var(--map-inset) * 2);
+  left: var(--map-inset);
+  top: var(--map-inset);
+  width: calc(100% - var(--map-inset) * 2);
+}
+/* 40rem bigger on every side: its own card/controls land outside the box */
+.map iframe.mapBackdrop {
+  filter: grayscale(1) blur(1.2rem) brightness(1.04);
+  height: calc(100% + 80rem);
+  left: -40rem;
+  pointer-events: none;
+  top: -40rem;
+  width: calc(100% + 80rem);
+}
+.mapFront {
+  border-radius: var(--radius-button);
+}
+
+@media (max-width: 1179.98px) {
+  .contact {
+    padding-left: var(--margin-3xl);
+    padding-right: var(--margin-3xl);
+  }
+  .map {
+    --map-inset: 1.6rem; /* radius-large is 4rem here */
+    margin-left: calc(var(--margin-3xl) * -1 + var(--gutter));
+    margin-right: calc(var(--margin-3xl) * -1 + var(--gutter));
+  }
+}
+@media (max-width: 767px) {
+  .contact {
+    padding: var(--margin-6xl) var(--pwx) var(--pwx);
+  }
+  .inner {
+    flex-direction: column;
+    gap: var(--margin-3xl);
+  }
+  .eyebrow,
+  .content {
+    width: 100%;
+  }
+  .map {
+    aspect-ratio: 1;
+    margin: var(--margin-6xl) 0 0;
+  }
+}

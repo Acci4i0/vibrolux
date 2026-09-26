@@ -1,0 +1,50 @@
+.text {
+  padding: var(--margin-4xl) var(--margin-4xl);
+  position: relative;
+  width: 100%;
+}
+.inner {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  width: 100%;
+}
+.eyebrow {
+  width: 50%;
+}
+.content {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-3xl);
+  width: 50%;
+}
+/* paragraphs inside a module-text keep their natural 1em rhythm */
+.body p + p {
+  margin-top: 1.2em;
+}
+
+@media (max-width: 1179.98px) {
+  .text {
+    padding-left: var(--margin-3xl);
+    padding-right: var(--margin-3xl);
+  }
+}
+@media (max-width: 767px) {
+  .text {
+    padding: var(--margin-6xl) var(--pwx);
+  }
+  .inner {
+    flex-direction: column;
+    gap: var(--margin-3xl);
+  }
+  .eyebrow,
+  .content {
+    width: 100%;
+  }
+  .body {
+    padding-right: 1em;
+  }
+}

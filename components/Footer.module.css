@@ -1,0 +1,217 @@
+.footer {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  /* taller bottom than the reference (3rem): the wordmark closes the footer and needs scroll room to build */
+  padding: 0 var(--margin-6xl) var(--margin-4xl);
+}
+.inner {
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  padding-top: 8.2rem;
+  width: 100%;
+}
+.nav {
+  display: flex;
+}
+.col {
+  padding-right: var(--gutter);
+  width: 25%;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+}
+.link {
+  display: flex;
+  transition: opacity var(--duration-default);
+}
+@media (hover: hover) {
+  .link:hover,
+  .legal a:hover {
+    opacity: 0.66;
+  }
+}
+.num {
+  color: var(--color-grey3);
+  flex: none;
+  text-align: left;
+  width: 4em;
+}
+/* legal row on the column grid: © | P.IVA | Privacy + Termini, each under a column */
+.legal {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-grey3);
+  display: flex;
+  margin-top: var(--margin-4xl);
+  padding-top: var(--margin-xl);
+}
+.legal > * {
+  padding-right: var(--gutter);
+  width: 25%;
+}
+.legal a {
+  color: var(--color-white);
+  transition: opacity var(--duration-default);
+}
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter) var(--margin-2xl);
+}
+
+/* ≥1024: the 3 columns spread edge to edge (first flush left, last flush right, like the wordmark below);
+   nav and legal row share the tracks through subgrid so each legal item stays under its column */
+@media (min-width: 1024px) {
+  .inner {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+  }
+  .inner > * {
+    grid-column: 1 / -1;
+  }
+  .nav,
+  .legal {
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+  .col,
+  .legal > * {
+    width: auto;
+  }
+}
+
+.logo {
+  margin-top: var(--margin-5xl);
+  width: 100%;
+}
+.logo svg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.tabs {
+  display: none;
+}
+
+@media (max-width: 1179.98px) {
+  .footer {
+    padding-left: var(--margin-3xl);
+    padding-right: var(--margin-3xl);
+  }
+  .num {
+    width: 3em;
+  }
+}
+
+/* 4 columns fit down to 1024px; below, 2 per row */
+@media (max-width: 1023.98px) {
+  .nav,
+  .legal {
+    flex-wrap: wrap;
+    row-gap: var(--margin-3xl);
+  }
+  .legal {
+    row-gap: var(--gutter);
+  }
+  .col,
+  .legal > * {
+    width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 0 var(--pwx) var(--margin-5xl);
+  }
+  .nav {
+    column-gap: 0;
+    margin-left: calc(var(--pwx) * -1);
+    min-width: calc(100% + var(--pwx) * 2);
+    width: 100%;
+  }
+  .col {
+    padding: 0 var(--pwx);
+  }
+  .legal {
+    flex-direction: column;
+  }
+  .legal > * {
+    padding-left: 0;
+    width: 100%;
+  }
+
+  /* ── grid: 2 per row, Contatti full width (current) ── */
+  .m_grid .col:nth-child(n + 3) {
+    width: 100%;
+  }
+
+  /* ── squeeze: literally 4 in a row (numbers dropped, smaller type) ── */
+  .m_squeeze .nav {
+    flex-wrap: nowrap;
+  }
+  .m_squeeze .col {
+    font-size: 1rem;
+    padding: 0 0.4rem;
+    width: calc(100% / 3);
+  }
+  .m_squeeze .col:first-child {
+    padding-left: var(--pwx);
+  }
+  .m_squeeze .num {
+    display: none;
+  }
+
+  /* ── tabs: the 4 titles in one row, the chosen column below ── */
+  .m_tabs .tabs {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--margin-xl);
+  }
+  .tab {
+    color: var(--color-grey3);
+    font: inherit;
+    letter-spacing: inherit;
+    padding: 0 0 var(--margin-md);
+    position: relative;
+    text-transform: inherit;
+    transition: color var(--duration-default);
+  }
+  .tab[aria-selected='true'] {
+    color: var(--color-white);
+  }
+  .tab[aria-selected='true']::after {
+    background: currentColor;
+    bottom: -1px;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+  .m_tabs .col {
+    width: 100%;
+  }
+  .m_tabs .col[data-active='false'] {
+    display: none;
+  }
+
+  /* ── swipe: 4 in a row like desktop, scrolled sideways ── */
+  .m_swipe .nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .m_swipe .nav::-webkit-scrollbar {
+    display: none;
+  }
+  .m_swipe .col {
+    flex: none;
+    scroll-snap-align: start;
+    width: 72%;
+  }
+}

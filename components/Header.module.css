@@ -1,0 +1,438 @@
+/* ───────── Desktop ───────── */
+.desktop {
+  left: 0;
+  padding: var(--margin-2xl) var(--margin-2xl) 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+.inner {
+  display: flex;
+  width: 100%;
+}
+.logo {
+  color: var(--color-white);
+  display: block;
+  pointer-events: auto;
+  transition:
+    opacity var(--duration-default) ease,
+    color 0.5s ease;
+}
+.logo svg {
+  height: 3.6rem;
+  margin-top: 0.4rem; /* centres the 3.6rem logo on the 4.4rem nav pill */
+  width: auto;
+}
+.logoHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+/* pages that start on white */
+.logoDark {
+  color: var(--color-black);
+}
+
+.nav {
+  font-size: var(--size-body);
+  padding: var(--margin-2xl) var(--margin-2xl) 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+.pill {
+  align-items: center;
+  border-radius: var(--radius-button);
+  color: var(--color-white);
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--margin-4xl);
+  justify-content: space-between;
+  min-width: 60rem; /* 3 items only: keeps room for submenu columns + CTA row */
+  min-height: 4.4rem;
+  padding: var(--gutter-half) var(--margin-xl);
+  pointer-events: auto;
+  position: relative;
+  background-color: var(--color-bg-blur-dark);
+}
+.pill::before {
+  backdrop-filter: blur(2.5rem);
+  -webkit-backdrop-filter: blur(2.5rem);
+  border-radius: inherit;
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+/* hover bridge between pill and panel */
+.pill::after {
+  bottom: -0.5em;
+  content: '';
+  height: 1em;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+.pillLogo {
+  display: none;
+  flex-shrink: 0;
+  height: 1.57em;
+  margin-left: calc(var(--gutter) * -1);
+  position: relative;
+  transform-origin: right center;
+}
+.pillLogo svg {
+  height: 1.57em;
+  width: auto;
+}
+.isScrolled .pillLogo {
+  display: block;
+}
+
+.item {
+  flex-shrink: 0;
+  position: relative;
+  transition: color 0.5s;
+  z-index: 1;
+}
+.pill:has(.item:hover) .item:not(:hover) {
+  color: var(--color-grey3);
+}
+.ext {
+  align-items: center;
+  display: flex;
+  gap: 0.2em;
+}
+.ext::after {
+  content: '↗';
+  font-size: 0.9em;
+  transform: translateY(-5%);
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.857em;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: calc(2.66em + var(--margin-lg));
+  transform: translate3d(0, -2em, 0);
+  visibility: hidden;
+  white-space: nowrap;
+  width: calc((100% + var(--margin-3xl)) * 0.75);
+}
+.subItem {
+  color: var(--color-grey3);
+  line-height: 1.5;
+  transition: color 0.5s;
+}
+/* hovered item's column goes white; hovering one entry greys its siblings */
+.item:hover .subItem,
+.item:has(.subItem:hover) .subItem:hover {
+  color: var(--color-white);
+}
+.item:has(.subItem:hover) .subItem {
+  color: var(--color-grey3);
+}
+
+.panel {
+  backdrop-filter: blur(2.5rem);
+  -webkit-backdrop-filter: blur(2.5rem);
+  background: var(--color-bg-blur-dark);
+  border-radius: var(--radius-button);
+  height: var(--submenu-max-height);
+  left: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: calc(100% + var(--gutter-half));
+  transform: translateZ(0);
+  transition:
+    max-height var(--duration-longer) var(--ease-ui),
+    opacity var(--duration-long) ease;
+}
+.panelVisible {
+  max-height: var(--submenu-max-height);
+  opacity: 1;
+  transition: all var(--duration-long) var(--ease-ui);
+}
+.ctas {
+  bottom: 1.5rem;
+  display: flex;
+  gap: var(--gutter-half);
+  left: 0;
+  opacity: 0;
+  padding: 0 1.5rem;
+  position: absolute;
+  right: 0;
+  transform: translate3d(0, -2em, 0);
+  visibility: hidden;
+}
+.subCta {
+  align-items: center;
+  border-radius: var(--radius-button);
+  display: flex;
+  flex: 1 1 0;
+  font-family: var(--font-secondary);
+  font-size: var(--size-caption);
+  font-weight: var(--fw-mono);
+  gap: 0.75em;
+  justify-content: space-between;
+  letter-spacing: 0.01em;
+  line-height: var(--line-height);
+  padding: 1em 1.3333em;
+  text-transform: uppercase;
+  transition:
+    background-color var(--duration-default),
+    color var(--duration-default);
+}
+.subCta:hover:active {
+  transform: scale(0.985);
+}
+.white {
+  background-color: var(--color-white-off);
+  color: var(--color-grey1);
+}
+.blackfade {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-white);
+}
+@media (hover: hover) {
+  .white:hover {
+    background-color: var(--color-white);
+  }
+  .blackfade:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ───────── Mobile / tablet ───────── */
+.mobile {
+  left: 0;
+  padding: var(--pwy) var(--pwx) 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+.mInner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.mLogo {
+  color: var(--color-white);
+  display: block;
+  pointer-events: auto;
+  position: relative;
+  transition: all var(--duration-long) ease;
+  z-index: 100;
+}
+.mLogo svg {
+  height: 2.8rem;
+  width: auto;
+}
+.mLogo.logoDark {
+  color: var(--color-black);
+}
+.mLogo.mLogoOpen {
+  color: var(--color-white); /* the open menu is dark */
+  transition-delay: 0.2s;
+}
+.toggle {
+  align-items: center;
+  backdrop-filter: blur(2.5rem);
+  -webkit-backdrop-filter: blur(2.5rem);
+  background-color: var(--color-bg-blur-dark);
+  border-radius: var(--radius-button);
+  color: var(--color-white);
+  display: flex;
+  font-size: var(--size-body);
+  gap: 0.57em;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  padding: 0.8571em;
+  pointer-events: auto;
+  position: relative;
+  z-index: 100;
+}
+.toggle:hover:active {
+  transform: scale(0.985);
+}
+.toggle svg {
+  height: auto;
+  width: 1.7143em;
+}
+
+.mNav {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  inset: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: auto;
+  position: fixed;
+  transform: translateZ(0);
+  will-change: max-height;
+  z-index: 99;
+}
+.mNavInner {
+  inset: 0;
+  overflow-y: scroll;
+  padding: 14rem var(--pwx) var(--margin-3xl);
+  position: absolute;
+  scrollbar-width: none;
+}
+.mNavInner::-webkit-scrollbar {
+  display: none;
+}
+.mNavInner::before {
+  background: linear-gradient(0deg, rgba(15, 14, 18, 0), var(--color-black) 95%);
+  content: '';
+  height: 18rem;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+.mList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+}
+.mLink {
+  align-items: center;
+  display: flex;
+  font-size: var(--size-heading-xs);
+  justify-content: space-between;
+  line-height: var(--line-height);
+  padding: 1rem 0;
+}
+.mArrow {
+  color: var(--color-grey2);
+  display: flex;
+  padding: 0.4rem;
+}
+.mArrow svg {
+  transition: transform 0.5s var(--ease-expo-linear);
+}
+.isOpen .mArrow svg {
+  transform: rotate(180deg);
+}
+.mSub {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease-expo-linear);
+}
+.isOpen .mSub {
+  grid-template-rows: 1fr;
+}
+.mSubList {
+  color: var(--color-grey3);
+  display: flex;
+  flex-direction: column;
+  font-size: var(--size-body);
+  gap: 1em;
+  letter-spacing: 0.01em;
+  line-height: var(--line-height);
+  min-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translate3d(0, -1rem, 0);
+  transition: all var(--duration-longer) var(--ease-expo-linear);
+}
+.mSubList li:first-child {
+  padding-top: var(--gutter-half);
+}
+.mSubList li:last-child {
+  padding-bottom: 1.7em;
+}
+.isOpen .mSubList {
+  opacity: 1;
+  transform: translateZ(0);
+}
+.mCtaItem {
+  margin-top: var(--margin-2xl);
+}
+.mCtaItem + .mCtaItem {
+  margin-top: 0;
+}
+.mCta {
+  align-items: center;
+  background-color: var(--color-grey3);
+  border-radius: 1.8rem;
+  color: var(--color-grey1);
+  display: flex;
+  font-family: var(--font-secondary);
+  font-size: var(--size-caption);
+  font-weight: var(--fw-mono);
+  justify-content: space-between;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  padding: 2em;
+  text-transform: uppercase;
+  transition:
+    background-color var(--duration-default),
+    color var(--duration-default);
+}
+.mCtaItem + .mCtaItem .mCta {
+  background-color: var(--color-grey1);
+  color: var(--color-white);
+}
+.mFooter {
+  column-gap: var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: var(--margin-5xl);
+  row-gap: 4.5rem;
+}
+.mFooterTitle {
+  color: var(--color-grey3);
+  margin-bottom: calc(var(--gutter) * 1.5);
+}
+.mFooter ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+}
+.mCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+  margin: var(--margin-3xl) 0 var(--margin-2xl);
+}
+.mCopyText {
+  color: var(--color-grey3);
+}
+
+/* In the footer the menu steps aside (the footer has the same links) */
+.nav,
+.toggle {
+  transition: opacity var(--duration-long) ease, visibility var(--duration-long);
+}
+.inFooter .nav,
+.inFooter .toggle {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Which header shows where */
+@media (max-width: 1179.98px) {
+  .desktop {
+    display: none;
+  }
+}
+@media (min-width: 1180px) {
+  .mobile {
+    display: none;
+  }
+}

@@ -1,0 +1,217 @@
+.module {
+  isolation: isolate;
+  padding: var(--margin-3xl) var(--gutter);
+  position: relative;
+  width: 100%;
+}
+.bg {
+  background-color: var(--color-grey4);
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  will-change: transform, border-radius;
+  z-index: -1;
+}
+.inner {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.mediaCol {
+  align-self: center;
+  aspect-ratio: 1;
+  height: fit-content;
+  position: relative;
+  width: 50%;
+}
+.media {
+  border-radius: var(--radius-large);
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: opacity var(--duration-default) 0.25s linear;
+  width: 100%;
+}
+.media.isActive {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+.media > *,
+.media [data-fill] {
+  aspect-ratio: 1;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: var(--margin-3xl);
+  width: 50%;
+}
+.accordions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 36rem;
+  width: 100%;
+}
+.heading {
+  margin-bottom: var(--margin-3xl);
+}
+
+/* part-dropdown (accordion variant) */
+.dropdown {
+  scroll-margin-top: 20rem;
+  background-color: transparent;
+  color: var(--color-text);
+  display: block;
+  position: relative;
+  width: 100%;
+}
+.header {
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+.title {
+  align-items: center;
+  color: var(--color-grey2);
+  display: flex;
+  font-size: var(--size-heading-sm);
+  font-weight: var(--fw-light);
+  gap: var(--gutter);
+  letter-spacing: normal;
+  line-height: var(--line-height);
+  text-wrap: pretty;
+  transition: color var(--duration-default);
+}
+.dropdown.isOpen .title {
+  color: var(--color-text);
+}
+.toggle {
+  align-items: center;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  color: var(--color-black);
+  display: flex;
+  flex: none;
+  height: 4.8rem;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  transition: background-color var(--duration-default) ease;
+  width: 4.8rem;
+}
+.toggle:hover:active {
+  transform: scale(0.95);
+}
+.toggle svg {
+  display: block;
+  height: 50%;
+  position: absolute;
+  transition: all var(--duration-default) var(--ease-ui);
+  width: 50%;
+}
+.minus {
+  opacity: 0;
+  transform: rotate(-45deg);
+}
+.dropdown.isOpen .plus {
+  opacity: 0;
+  transform: rotate(45deg);
+}
+.dropdown.isOpen .minus {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* 0fr → 1fr animates to the real content height (original: max-height to measured height) */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration) var(--ease-expo-linear);
+}
+.dropdown.isOpen .panel {
+  grid-template-rows: 1fr;
+}
+.panelInner {
+  min-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate3d(0, -2rem, 0);
+  transition: all var(--duration-longer) var(--ease-expo-linear);
+}
+.panelInner p {
+  max-width: 33em;
+  padding: 1.2rem 1em 0 0;
+}
+.panelInner > :last-child {
+  padding-bottom: var(--margin-2xl);
+}
+.more {
+  align-items: center;
+  color: var(--color-text);
+  display: inline-flex;
+  gap: 0.6em;
+  margin-top: var(--margin-lg);
+  transition: opacity var(--duration-default);
+}
+@media (hover: hover) {
+  .more:hover {
+    opacity: 0.66;
+  }
+}
+.dropdown.isOpen .panelInner {
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+@media (max-width: 1179.98px) {
+  .mediaCol {
+    width: 60%;
+  }
+  .content {
+    flex-shrink: 0;
+    min-width: 40%;
+    padding-left: var(--pwx);
+    padding-right: var(--gutter);
+    width: 40%;
+  }
+  .accordions {
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .module {
+    padding: var(--pwx);
+    padding-bottom: var(--margin-6xl);
+  }
+  .inner {
+    flex-direction: column;
+    gap: var(--margin-3xl);
+  }
+  .mediaCol {
+    width: 100%;
+  }
+  .content {
+    padding: 0;
+    width: 100%;
+  }
+}
