@@ -4,6 +4,7 @@ import { Loader } from '@/components/Loader';
 import { HeaderDesktop, HeaderMobile } from '@/components/Header';
 import { PageTransition } from '@/components/PageTransition';
 import { Footer } from '@/components/Footer';
+import { BASE } from '@/content/site';
 import './globals.css';
 
 // Closest open-source match to the reference typefaces (see ANIMATION_SPEC.md)
@@ -20,8 +21,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="it" className={`${geist.variable} ${chivoMono.variable}`} suppressHydrationWarning>
       <head>
-        {/* Lets CSS hide [data-reveal] elements until GSAP takes over (no-JS stays visible) */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/* Lets CSS hide [data-reveal] elements until GSAP takes over (no-JS stays visible); English pages (/en) get lang="en" */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `var d=document.documentElement;d.classList.add('js');if(location.pathname.slice(${BASE.length}).split('/')[1]==='en')d.lang='en'`,
+          }}
+        />
       </head>
       <body>
         <Loader />

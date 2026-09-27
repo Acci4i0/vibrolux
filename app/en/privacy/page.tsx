@@ -1,7 +1,7 @@
 import { PrivacyView, meta } from '@/components/views';
 
-export const metadata = meta('it', 'privacy');
+export const metadata = meta('en', 'privacy');
 
 export default function Privacy() {
-  return <PrivacyView lang="it" />;
+  return <PrivacyView lang="en" />;
 }

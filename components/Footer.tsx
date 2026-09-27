@@ -5,7 +5,8 @@ import { gsap, useGSAP, prefersReducedMotion } from '@/lib/gsap';
 import { afterMount, revealStagger } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { Logo, logoTimeline } from './Logo';
-import { footer as data, legal, type FooterLink } from '@/content/site';
+import { content, type FooterLink } from '@/content/site';
+import { useLang } from '@/lib/i18n';
 import s from './Footer.module.css';
 
 /** A link with `confirm` needs two taps: the first only swaps its label, so a stray tap doesn't throw you out to Maps. */
@@ -52,14 +53,14 @@ function FooterAnchor({ link, num }: { link: FooterLink; num: string }) {
  */
 export type FooterMobile = 'grid' | 'squeeze' | 'tabs' | 'swipe';
 
-const columns = data.columns;
-
 export function Footer({ mobile = 'grid' }: { mobile?: FooterMobile }) {
   const root = useRef<HTMLElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const logo = useRef<SVGSVGElement>(null);
   const [tab, setTab] = useState(0);
+  const t = content[useLang()];
+  const columns = t.footer.columns;
 
   useGSAP(
     (_, contextSafe) => {
@@ -107,11 +108,11 @@ export function Footer({ mobile = 'grid' }: { mobile?: FooterMobile }) {
         </nav>
         {/* legal row on the column grid: © | P.IVA | Privacy + Termini */}
         <div className={s.legal}>
-          {legal.map((l) => (
+          {t.legal.map((l) => (
             <span key={l}>{l}</span>
           ))}
           <span className={s.legalLinks}>
-            {data.legalLinks.map((l) => (
+            {t.footer.legalLinks.map((l) => (
               <a key={l.label} href={l.href}>
                 {l.label}
               </a>

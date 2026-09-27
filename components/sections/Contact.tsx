@@ -4,18 +4,20 @@ import { useRef } from 'react';
 import { useGSAP } from '@/lib/gsap';
 import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
-import { company } from '@/content/site';
+import { company, content } from '@/content/site';
+import { useLang } from '@/lib/i18n';
 import s from './Contact.module.css';
-
-const rows = [
-  ['Tel', company.tel, company.telHref],
-  ['PEC', company.pec, `mailto:${company.pec}`],
-  ['P.IVA', company.vat.replace('P.IVA / CF ', '')],
-];
 
 /** Address + mail list (one address per need) + contact rows + map, laid out like the text modules. */
 export function Contact() {
   const root = useRef<HTMLElement>(null);
+  const t = content[useLang()];
+  const c = t.contatti;
+  const rows = [
+    [c.keys.tel, company.tel, company.telHref],
+    [c.keys.pec, company.pec, `mailto:${company.pec}`],
+    [c.keys.vat, company.vatNumber],
+  ];
 
   useGSAP(
     (_, contextSafe) =>
@@ -32,18 +34,18 @@ export function Contact() {
     <section ref={root} id="dove-siamo" className={s.contact}>
       <div className={s.inner}>
         <div className={s.eyebrow} data-reveal="">
-          <h2 className="t-eyebrow">Sede amministrativa e stabilimento</h2>
+          <h2 className="t-eyebrow">{c.eyebrow}</h2>
         </div>
         <div className={s.content} data-reveal="">
           <address className="t-large">
-            {[company.name, ...company.address].map((l) => (
+            {[company.name, ...t.address].map((l) => (
               <span key={l} className={s.line}>
                 {l}
               </span>
             ))}
           </address>
           <ul className={s.mails}>
-            {company.emails.map((m) => (
+            {c.emails.map((m) => (
               <li key={m.address}>
                 <a href={`mailto:${m.address}`}>{m.address}</a>
                 <span className={`t-mono ${s.use}`}>{m.use}</span>
@@ -66,7 +68,7 @@ export function Contact() {
             (its own UI pushed far outside the box) makes a frosted rim up to the rounded edge.
             Blurred on purpose: two Google embeds of different sizes never align pixel-perfect. */}
         <iframe className={s.mapBackdrop} src={company.maps} title="" aria-hidden tabIndex={-1} loading="lazy" />
-        <iframe className={s.mapFront} src={company.maps} title="Mappa Vibrolux" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+        <iframe className={s.mapFront} src={company.maps} title={c.mapTitle} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
       </div>
     </section>
   );

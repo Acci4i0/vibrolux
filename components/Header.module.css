@@ -35,7 +35,10 @@
 }
 
 .nav {
+  align-items: flex-start;
+  display: flex;
   font-size: var(--size-body);
+  gap: var(--gutter);
   padding: var(--margin-2xl) var(--margin-2xl) 0;
   position: absolute;
   right: 0;
@@ -211,6 +214,31 @@
   }
 }
 
+/* IT · EN: a small glass pill beside the nav pill (desktop) or the Menu button (mobile) */
+.langs {
+  align-items: center;
+  backdrop-filter: blur(2.5rem);
+  -webkit-backdrop-filter: blur(2.5rem);
+  background-color: var(--color-bg-blur-dark);
+  border-radius: var(--radius-button);
+  display: flex;
+  font-size: var(--size-body);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  min-height: 4.4rem;
+  padding: 0 0.7em;
+  pointer-events: auto;
+}
+.langs a {
+  color: var(--color-grey3);
+  padding: 0.5em 0.35em;
+  transition: color 0.5s;
+}
+.langs a[aria-current],
+.langs a:hover {
+  color: var(--color-white);
+}
+
 /* ───────── Mobile / tablet ───────── */
 .mobile {
   left: 0;
@@ -245,6 +273,16 @@
 .mLogo.mLogoOpen {
   color: var(--color-white); /* the open menu is dark */
   transition-delay: 0.2s;
+}
+.mRight {
+  align-items: center;
+  display: flex;
+  gap: var(--gutter-half);
+}
+.mLangs {
+  min-height: 3.4286em; /* as tall as the Menu button */
+  position: relative;
+  z-index: 100; /* stays above the open menu, like the button */
 }
 .toggle {
   align-items: center;
@@ -416,11 +454,13 @@
 
 /* In the footer the menu steps aside (the footer has the same links) */
 .nav,
-.toggle {
+.toggle,
+.langs {
   transition: opacity var(--duration-long) ease, visibility var(--duration-long);
 }
 .inFooter .nav,
-.inFooter .toggle {
+.inFooter .toggle,
+.inFooter .langs {
   opacity: 0;
   visibility: hidden;
 }

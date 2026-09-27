@@ -9,7 +9,7 @@ import s from './MaterialsAccordion.module.css';
 
 type Item = { id?: string; title: string; text: string; media: MediaData; href?: string };
 
-export function MaterialsAccordion({ data }: { data: { eyebrow: string; items: Item[] } }) {
+export function MaterialsAccordion({ data }: { data: { eyebrow: string; more: string; items: Item[] } }) {
   const root = useRef<HTMLElement>(null);
   const bg = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<number | null>(0);
@@ -78,7 +78,7 @@ export function MaterialsAccordion({ data }: { data: { eyebrow: string; items: I
                     <p>{it.text}</p>
                     {it.href && (
                       <a href={it.href} className={s.more}>
-                        Approfondisci <span aria-hidden>→</span>
+                        {data.more} <span aria-hidden>→</span>
                       </a>
                     )}
                   </div>

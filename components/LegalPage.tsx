@@ -3,6 +3,8 @@
 import { useRef } from 'react';
 import { useGSAP } from '@/lib/gsap';
 import { afterMount, reveal } from '@/lib/reveal';
+import { content } from '@/content/site';
+import { useLang } from '@/lib/i18n';
 import s from './LegalPage.module.css';
 
 export type LegalSection = { id: string; title: string; content: React.ReactNode };
@@ -12,6 +14,7 @@ type Props = { title: string; intro: React.ReactNode; updated: string; sections:
 /** Text page (Privacy, Termini): title + intro, sticky numbered index, numbered sections. */
 export function LegalPage({ title, intro, updated, sections }: Props) {
   const root = useRef<HTMLElement>(null);
+  const { ui } = content[useLang()];
 
   useGSAP(
     (_, contextSafe) =>
@@ -28,11 +31,11 @@ export function LegalPage({ title, intro, updated, sections }: Props) {
       <header className={s.top} data-reveal="">
         <h1 className={s.title}>{title}</h1>
         <div className={`t-large ${s.intro}`}>{intro}</div>
-        <p className={`t-mono ${s.updated}`}>Ultimo aggiornamento · {updated}</p>
+        <p className={`t-mono ${s.updated}`}>{ui.lastUpdated} · {updated}</p>
       </header>
 
       <div className={s.body}>
-        <nav className={`t-mono ${s.index}`} aria-label="Indice">
+        <nav className={`t-mono ${s.index}`} aria-label={ui.contents}>
           <ol>
             {sections.map((sec, i) => (
               <li key={sec.id}>

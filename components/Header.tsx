@@ -6,7 +6,8 @@ import { usePathname } from 'next/navigation';
 import { gsap, Flip, useGSAP, prefersReducedMotion } from '@/lib/gsap';
 import { ANIM } from '@/config/animations';
 import { Logo, logoTimeline } from './Logo';
-import { nav, navCtas, legal, menuFooter } from '@/content/site';
+import { content, withBase } from '@/content/site';
+import { LANGS, langPath, pagePath, useLang, type Lang } from '@/lib/i18n';
 import s from './Header.module.css';
 
 /** Big logo builds (timeline 0→1 in 2s, linear) .33s after the loader is removed. */
@@ -57,19 +58,37 @@ function useInFooter() {
 
 /** Pages that start on white (no dark hero): the big logo turns dark there. */
 const LIGHT_PAGES = ['/privacy', '/termini-e-condizioni'];
-const useDarkLogo = () => LIGHT_PAGES.includes(usePathname());
+const useDarkLogo = () => LIGHT_PAGES.includes(pagePath(usePathname()));
 
 /** Logo on the home page scrolls to top; elsewhere it's a normal link (page transition). */
 function useLogoClick(vars: { duration: number; ease: string }) {
   const pathname = usePathname();
   return (e: React.MouseEvent) => {
-    if (pathname !== '/') return;
+    if (pagePath(pathname) !== '/') return;
     e.preventDefault();
     gsap.to(window, { scrollTo: { y: 0 }, ...vars, duration: prefersReducedMotion() ? 0 : vars.duration });
   };
 }
 
 const ext = (external?: boolean) => (external ? { target: '_blank', rel: 'noreferrer' } : {});
+
+/** Home of the current language (next/link adds the base path) */
+const homeOf = (lang: Lang) => (lang === 'en' ? '/en' : '/');
+
+/** IT · EN: the same page in the other language, through the page transition like any internal link. */
+function LangSwitch(props: React.HTMLAttributes<HTMLDivElement>) {
+  const pathname = usePathname();
+  const lang = useLang();
+  return (
+    <div role="group" aria-label={content[lang].ui.language} {...props}>
+      {LANGS.map((l) => (
+        <a key={l} href={withBase(langPath(pathname, l))} hrefLang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>
+          {l.toUpperCase()}
+        </a>
+      ))}
+    </div>
+  );
+}
 
 /* ───────────────────────── Desktop (≥1180px) ───────────────────────── */
 
@@ -84,6 +103,8 @@ export function HeaderDesktop() {
   const cfg = ANIM.headerDesktop;
   const onLogo = useLogoClick(ANIM.scrollTo.logo);
   const dark = useDarkLogo();
+  const lang = useLang();
+  const t = content[lang];
 
   const { contextSafe } = useGSAP({ scope: root });
 
@@ -137,15 +158,16 @@ export function HeaderDesktop() {
   return (
     <header ref={root} className={`${s.desktop} ${inFooter ? s.inFooter : ''}`}>
       <div className={s.inner}>
-        <Link href="/" className={`${s.logo} ${scrolled ? s.logoHidden : ''} ${dark ? s.logoDark : ''}`} onClick={onLogo} aria-label="Home">
+        <Link href={homeOf(lang)} className={`${s.logo} ${scrolled ? s.logoHidden : ''} ${dark ? s.logoDark : ''}`} onClick={onLogo} aria-label={t.ui.home}>
           <Logo ref={logo} />
         </Link>
         <nav ref={navRef} className={s.nav}>
+          <LangSwitch className={s.langs} data-flip />
           <div ref={inner} className={s.pill} data-flip onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-            <Link href="/" className={s.pillLogo} data-flip onClick={onLogo} aria-label="Home">
+            <Link href={homeOf(lang)} className={s.pillLogo} data-flip onClick={onLogo} aria-label={t.ui.home}>
               <Logo mark />
             </Link>
-            {nav.map((item) => (
+            {t.nav.map((item) => (
               <div key={item.label} className={s.item} data-flip>
                 <a href={item.href} {...ext(item.external)}>
                   <span className={item.external ? s.ext : ''}>{item.label}</span>
@@ -163,7 +185,7 @@ export function HeaderDesktop() {
             ))}
             <div className={`${s.panel} ${hover ? s.panelVisible : ''}`}>
               <div className={s.ctas} data-ctas>
-                {navCtas.map((c) => (
+                {t.navCtas.map((c) => (
                   <a key={c.label} href={c.href} className={`${s.subCta} ${s[c.tone]}`}>
                     <span>{c.label}</span>
                     <span aria-hidden>→</span>
@@ -190,6 +212,8 @@ export function HeaderMobile() {
   const [sub, setSub] = useState<number | null>(null);
   const onLogo = useLogoClick(ANIM.scrollTo.logoMobile);
   const dark = useDarkLogo();
+  const lang = useLang();
+  const t = content[lang];
   const cfg = ANIM.headerMobile;
   const { contextSafe } = useGSAP({ scope: root });
 
@@ -220,33 +244,36 @@ export function HeaderMobile() {
     <header ref={root} className={`${s.mobile} ${inFooter && !open ? s.inFooter : ''}`}>
       <div className={s.mInner}>
         <Link
-          href="/"
+          href={homeOf(lang)}
           className={`${s.mLogo} ${scrolled && !open ? s.logoHidden : ''} ${dark ? s.logoDark : ''} ${open ? s.mLogoOpen : ''}`}
           onClick={onLogo}
-          aria-label="Home"
+          aria-label={t.ui.home}
         >
           <Logo ref={logo} />
         </Link>
-        <button type="button" className={s.toggle} onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls="mobile-nav">
-          <svg viewBox="0 0 24 24" aria-hidden>
-            {/* Grid stays a grid when open: the reference calls morphSVG without registering the plugin */}
-            <path fill="currentColor" d="M3 3h4v4H3zM10 3h4v4h-4zM17 3h4v4h-4zM3 10h4v4H3zM10 10h4v4h-4zM17 10h4v4h-4zM3 17h4v4H3zM10 17h4v4h-4zM17 17h4v4h-4z" />
-          </svg>
-          <span>Menu</span>
-        </button>
+        <div className={s.mRight}>
+          <LangSwitch className={`${s.langs} ${s.mLangs}`} onClick={() => setOpen(false)} />
+          <button type="button" className={s.toggle} onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls="mobile-nav">
+            <svg viewBox="0 0 24 24" aria-hidden>
+              {/* Grid stays a grid when open: the reference calls morphSVG without registering the plugin */}
+              <path fill="currentColor" d="M3 3h4v4H3zM10 3h4v4h-4zM17 3h4v4h-4zM3 10h4v4H3zM10 10h4v4h-4zM17 10h4v4h-4zM3 17h4v4H3zM10 17h4v4h-4zM17 17h4v4h-4z" />
+            </svg>
+            <span>{t.ui.menu}</span>
+          </button>
+        </div>
       </div>
 
       <div ref={panel} id="mobile-nav" className={s.mNav} inert={!open} onClick={(e) => (e.target as Element).closest('a') && setOpen(false)}>
         <div className={s.mNavInner}>
           <ul className={s.mList}>
-            {nav.map((item, i) => (
+            {t.nav.map((item, i) => (
               <li key={item.label} className={`${s.mItem} ${sub === i ? s.isOpen : ''}`} data-nav-li>
                 <div className={s.mLink}>
                   <a href={item.href} {...ext(item.external)}>
                     <span className={item.external ? s.ext : ''}>{item.label}</span>
                   </a>
                   {item.children && (
-                    <button type="button" className={s.mArrow} onClick={() => setSub(sub === i ? null : i)} aria-expanded={sub === i} aria-label={`Apri ${item.label}`}>
+                    <button type="button" className={s.mArrow} onClick={() => setSub(sub === i ? null : i)} aria-expanded={sub === i} aria-label={t.ui.open(item.label)}>
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M2 5l5 5 5-5" stroke="currentColor" strokeWidth="1.4" />
                       </svg>
@@ -266,7 +293,7 @@ export function HeaderMobile() {
                 )}
               </li>
             ))}
-            {navCtas.map((c) => (
+            {t.navCtas.map((c) => (
               <li key={c.label} className={s.mCtaItem} data-nav-li>
                 <a href={c.href} className={s.mCta}>
                   <span>{c.label}</span>
@@ -275,7 +302,7 @@ export function HeaderMobile() {
               </li>
             ))}
             <li className={`t-mono ${s.mFooter}`} data-nav-li>
-              {menuFooter.map((col) => (
+              {t.menuFooter.map((col) => (
                 <div key={col.title}>
                   <div className={s.mFooterTitle}>{col.title}</div>
                   <ul>
@@ -289,7 +316,7 @@ export function HeaderMobile() {
               ))}
             </li>
             <li className={`t-mono ${s.mCopy}`} data-nav-li>
-              {legal.map((l) => (
+              {t.legal.map((l) => (
                 <span key={l} className={s.mCopyText}>
                   {l}
                 </span>

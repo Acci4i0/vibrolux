@@ -1,7 +1,7 @@
 import { AziendaView, meta } from '@/components/views';
 
-export const metadata = meta('it', 'azienda');
+export const metadata = meta('en', 'azienda');
 
 export default function Azienda() {
-  return <AziendaView lang="it" />;
+  return <AziendaView lang="en" />;
 }

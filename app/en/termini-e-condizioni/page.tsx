@@ -1,7 +1,7 @@
 import { TermsView, meta } from '@/components/views';
 
-export const metadata = meta('it', 'termini');
+export const metadata = meta('en', 'termini');
 
 export default function Terms() {
-  return <TermsView lang="it" />;
+  return <TermsView lang="en" />;
 }

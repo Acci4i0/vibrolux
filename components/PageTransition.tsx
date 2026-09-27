@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { gsap, ScrollTrigger, prefersReducedMotion } from '@/lib/gsap';
 import { ANIM } from '@/config/animations';
 import { BASE } from '@/content/site';
+import { langOf } from '@/lib/i18n';
 
 /** '/vibrolux/azienda/' → '/azienda': router.push adds the base itself; the trailing slash varies on Pages. */
 const route = (pathname: string) => (pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname).replace(/\/$/, '') || '/';
@@ -47,6 +48,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
   // New page is mounted but still hidden: jump to top / hash, then fade in
   useLayoutEffect(() => {
+    document.documentElement.lang = langOf(pathname);
     if (first.current) return void (first.current = false);
     const target = hashTarget(location.hash);
     window.scrollTo(0, target ? target.getBoundingClientRect().top + window.scrollY - 100 : 0);
