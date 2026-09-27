@@ -7,6 +7,8 @@ washing and oiling. Rebuilt in the visual language of
 media cards, a pill navigation, a wordmark that builds itself in the footer —
 with every timing and easing read from the reference site's runtime.
 
+**Live:** https://acci4i0.github.io/vibrolux/
+
 ## Stack
 
 - [Next.js](https://nextjs.org) 15 (App Router) + React 19, TypeScript
@@ -54,6 +56,15 @@ public/assets/                 the brochure and the preview media
   not in the components.
 - **Brand colour:** Vibrolux navy **#21406E**, defined as `--color-brand` in
   [`app/globals.css`](app/globals.css). The rest of the scale is neutral.
+
+## Deploy
+
+Every push to `main` runs [`nextjs.yml`](.github/workflows/nextjs.yml), which
+exports the site as static files and publishes them to GitHub Pages. The
+workflow passes the sub-path (`/vibrolux`) as `PAGES_BASE_PATH`;
+[`next.config.ts`](next.config.ts) turns it into `basePath` and a static export,
+and `withBase()` in `content/site.ts` prefixes the media and the internal links.
+Locally the variable is unset and the site runs from the root.
 
 ## Preview media
 

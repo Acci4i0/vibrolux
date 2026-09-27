@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { LegalPage, type LegalSection } from '@/components/LegalPage';
-import { company } from '@/content/site';
+import { company, withBase } from '@/content/site';
 
 export const metadata: Metadata = { title: 'Termini e condizioni' };
 
@@ -90,7 +90,7 @@ const sections: LegalSection[] = [
     title: 'Dati personali',
     content: (
       <p>
-        Il trattamento dei dati personali e l’uso dei cookie sono descritti nell’<a href="/privacy">informativa privacy</a>.
+        Il trattamento dei dati personali e l’uso dei cookie sono descritti nell’<a href={withBase('/privacy')}>informativa privacy</a>.
       </p>
     ),
   },

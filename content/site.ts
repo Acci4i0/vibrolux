@@ -6,8 +6,12 @@ import type { MediaData } from '@/components/Media';
  * to be replaced with Vibrolux's own shots. img() without a file renders the black placeholder.
  */
 
-const BROCHURE = '/assets/vibrolux-brochure.pdf';
-const P = '/assets/preview/';
+/** Site sub-path on GitHub Pages ('' locally): media and internal links carry it, next/link and router.push add it themselves. */
+export const BASE = process.env.BASE_PATH ?? '';
+export const withBase = (path: string) => BASE + path;
+
+const BROCHURE = withBase('/assets/vibrolux-brochure.pdf');
+const P = withBase('/assets/preview/');
 /** where the subject sits in photos whose centre isn't the subject */
 const FOCUS: Record<string, string> = { 'impianto-vibrofinitura.jpg': '80% 55%' };
 const img = (file?: string, aspect = 1): MediaData => ({ src: file && P + file, aspect, focus: file && FOCUS[file] });
@@ -149,7 +153,7 @@ export const lavorazioni: Lavorazione[] = [
 /** Tiles for the lavorazioni grid (listing page, and "altre lavorazioni" on a detail page) */
 export const lavorazioneTiles = (excludeId?: string) =>
   lavorazioni
-    .map((l, i) => ({ label: String(i + 1).padStart(2, '0'), title: l.title, text: l.short, href: `/lavorazioni/${l.id}`, media: l.media, id: l.id }))
+    .map((l, i) => ({ label: String(i + 1).padStart(2, '0'), title: l.title, text: l.short, href: withBase(`/lavorazioni/${l.id}`), media: l.media, id: l.id }))
     .filter((t) => t.id !== excludeId);
 
 export type NavItem = { label: string; href: string; external?: boolean; children?: NavItem[] };
@@ -157,23 +161,23 @@ export type NavItem = { label: string; href: string; external?: boolean; childre
 export const nav: NavItem[] = [
   {
     label: 'Azienda',
-    href: '/azienda',
+    href: withBase('/azienda'),
     children: [
-      { label: 'Chi siamo', href: '/azienda#chi-siamo' },
-      { label: 'La sede', href: '/azienda#sede' },
-      { label: 'Qualità', href: '/azienda#qualita' },
+      { label: 'Chi siamo', href: withBase('/azienda#chi-siamo') },
+      { label: 'La sede', href: withBase('/azienda#sede') },
+      { label: 'Qualità', href: withBase('/azienda#qualita') },
     ],
   },
   {
     label: 'Lavorazioni',
-    href: '/lavorazioni',
-    children: lavorazioni.map((l) => ({ label: l.title, href: `/lavorazioni/${l.id}` })),
+    href: withBase('/lavorazioni'),
+    children: lavorazioni.map((l) => ({ label: l.title, href: withBase(`/lavorazioni/${l.id}`) })),
   },
   {
     label: 'Contatti',
-    href: '/contatti',
+    href: withBase('/contatti'),
     children: [
-      { label: 'Sede', href: '/contatti#dove-siamo' },
+      { label: 'Sede', href: withBase('/contatti#dove-siamo') },
       { label: 'Scrivici', href: `mailto:${company.email}` },
       { label: 'Brochure', href: BROCHURE, external: true },
     ],
@@ -181,7 +185,7 @@ export const nav: NavItem[] = [
 ];
 
 export const navCtas = [
-  { label: 'Richiedi un preventivo', href: '/contatti', tone: 'white' as const },
+  { label: 'Richiedi un preventivo', href: withBase('/contatti'), tone: 'white' as const },
   { label: 'Scarica la brochure', href: BROCHURE, tone: 'blackfade' as const },
 ];
 
@@ -198,13 +202,13 @@ export const footer: { columns: { title: string; links: FooterLink[] }[]; legalL
     {
       title: 'Azienda',
       links: [
-        { label: 'Home', href: '/' },
-        { label: 'Azienda', href: '/azienda' },
-        { label: 'Lavorazioni', href: '/lavorazioni' },
-        { label: 'Contatti', href: '/contatti' },
+        { label: 'Home', href: withBase('/') },
+        { label: 'Azienda', href: withBase('/azienda') },
+        { label: 'Lavorazioni', href: withBase('/lavorazioni') },
+        { label: 'Contatti', href: withBase('/contatti') },
       ],
     },
-    { title: 'Lavorazioni', links: lavorazioni.map((l) => ({ label: l.title, href: `/lavorazioni/${l.id}` })) },
+    { title: 'Lavorazioni', links: lavorazioni.map((l) => ({ label: l.title, href: withBase(`/lavorazioni/${l.id}`) })) },
     {
       title: 'Contatti',
       links: [
@@ -221,15 +225,15 @@ export const footer: { columns: { title: string; links: FooterLink[] }[]; legalL
     },
   ],
   legalLinks: [
-    { label: 'Privacy', href: '/privacy' },
-    { label: 'Termini e condizioni', href: '/termini-e-condizioni' },
+    { label: 'Privacy', href: withBase('/privacy') },
+    { label: 'Termini e condizioni', href: withBase('/termini-e-condizioni') },
   ],
 };
 
 /** Link columns at the bottom of the mobile menu */
 export const menuFooter = [
   { title: 'Contatti', links: [{ label: company.tel, href: company.telHref }, { label: company.email, href: `mailto:${company.email}` }] },
-  { title: 'Sede', links: company.address.map((label) => ({ label, href: '/contatti#dove-siamo' })) },
+  { title: 'Sede', links: company.address.map((label) => ({ label, href: withBase('/contatti#dove-siamo') })) },
 ];
 
 /* ───────── Home ───────── */
@@ -238,7 +242,7 @@ export const home = {
   hero: {
     media: video('hero-home.mp4'),
     headline: 'Trattamenti superficiali dei metalli',
-    cta: { label: 'Le lavorazioni', href: '/lavorazioni' },
+    cta: { label: 'Le lavorazioni', href: withBase('/lavorazioni') },
     corner: {
       heading: 'Brochure',
       text: 'Lavorazioni e impianti in un unico documento.',
@@ -252,11 +256,11 @@ export const home = {
       'Vibrolux ha acquisito negli anni un’esperienza sempre più qualificata nella finitura dei metalli, affermandosi come azienda leader del settore.',
       'Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata, in grado di ottenere risultati al massimo livello.',
     ],
-    cta: { label: 'L’azienda', href: '/azienda' },
+    cta: { label: 'L’azienda', href: withBase('/azienda') },
   },
   cards: [
-    { label: 'Lavorazioni', href: '/lavorazioni', media: img('sabbiatura-cabina-manuale.jpg') },
-    { label: 'Contatti', href: '/contatti', media: img('reparto-produzione.jpg') },
+    { label: 'Lavorazioni', href: withBase('/lavorazioni'), media: img('sabbiatura-cabina-manuale.jpg') },
+    { label: 'Contatti', href: withBase('/contatti'), media: img('reparto-produzione.jpg') },
   ],
   beforeAfter: {
     eyebrow: 'Tribofinitura isotropica',
@@ -270,16 +274,16 @@ export const home = {
     paragraphs: [
       'Un reparto operativo altamente tecnologico, con vibratori, brillantatrici, sabbiatrici, mezzi di sollevamento e autocarri, per ogni fase della finitura dei metalli.',
     ],
-    cta: { label: 'Tutte le lavorazioni', href: '/lavorazioni' },
+    cta: { label: 'Tutte le lavorazioni', href: withBase('/lavorazioni') },
   },
   values: {
     eyebrow: 'Perché Vibrolux',
     text: 'Quattro principi che guidano ogni lavorazione.',
     items: [
-      { label: '01', title: 'Servizi qualificati', href: '/lavorazioni', media: img('impianto-vibrofinitura.jpg') },
-      { label: '02', title: 'Standard di qualità', href: '/azienda#qualita', media: img('pezzo-lucidato.jpg') },
-      { label: '03', title: 'Team specializzato', href: '/azienda', media: img('reparto-produzione.jpg') },
-      { label: '04', title: 'Risultati al massimo livello', href: '/lavorazioni', media: img('cabina-sabbiatura.jpg') },
+      { label: '01', title: 'Servizi qualificati', href: withBase('/lavorazioni'), media: img('impianto-vibrofinitura.jpg') },
+      { label: '02', title: 'Standard di qualità', href: withBase('/azienda#qualita'), media: img('pezzo-lucidato.jpg') },
+      { label: '03', title: 'Team specializzato', href: withBase('/azienda'), media: img('reparto-produzione.jpg') },
+      { label: '04', title: 'Risultati al massimo livello', href: withBase('/lavorazioni'), media: img('cabina-sabbiatura.jpg') },
     ],
   },
 };
@@ -290,7 +294,7 @@ export const azienda = {
   hero: {
     media: video('hero-azienda.mp4'),
     headline: 'Esperienza qualificata nel trattamento dei metalli',
-    cta: { label: 'Contattaci', href: '/contatti' },
+    cta: { label: 'Contattaci', href: withBase('/contatti') },
   },
   intro: {
     id: 'chi-siamo',
@@ -312,7 +316,7 @@ export const azienda = {
   stats: {
     eyebrow: 'In numeri',
     text: 'La sede operativa si sviluppa su una superficie complessiva di 3500 mq.',
-    cta: { label: 'Dove siamo', href: '/contatti#dove-siamo' },
+    cta: { label: 'Dove siamo', href: withBase('/contatti#dove-siamo') },
     items: [
       { value: '2000 mq', caption: 'Fabbricati: lavorazioni, stoccaggio e uffici direzionali' },
       { value: '1500 mq', caption: 'Aree scoperte per movimentazione e logistica' },
@@ -324,9 +328,9 @@ export const azienda = {
     eyebrow: 'Metodo',
     text: 'Tre principi alla base del nostro lavoro.',
     items: [
-      { label: '01', title: 'Esperienza e qualificazione', href: '/lavorazioni', media: img('sabbiatura-cabina-manuale.jpg') },
-      { label: '02', title: 'Analisi dei processi', href: '/lavorazioni', media: img('vibratore-vasca.jpg') },
-      { label: '03', title: 'Soddisfazione del cliente', href: '/contatti', media: img('impianto-vibrofinitura.jpg') },
+      { label: '01', title: 'Esperienza e qualificazione', href: withBase('/lavorazioni'), media: img('sabbiatura-cabina-manuale.jpg') },
+      { label: '02', title: 'Analisi dei processi', href: withBase('/lavorazioni'), media: img('vibratore-vasca.jpg') },
+      { label: '03', title: 'Soddisfazione del cliente', href: withBase('/contatti'), media: img('impianto-vibrofinitura.jpg') },
     ],
   },
   quality: {
@@ -335,7 +339,7 @@ export const azienda = {
     paragraphs: [
       'L’azienda è certificata ISO 9001:2015 ed è dotata degli strumenti di misura e verifica necessari per raggiungere gli standard qualitativi richiesti da ciascun cliente.',
     ],
-    cta: { label: 'Richiedi un preventivo', href: '/contatti' },
+    cta: { label: 'Richiedi un preventivo', href: withBase('/contatti') },
   },
 };
 
@@ -346,7 +350,7 @@ export const lavorazioniPage = {
     media: video('hero-lavorazioni.mp4'),
     headline: 'Le nostre lavorazioni',
     cta: { label: 'Scarica la brochure', href: BROCHURE },
-    corner: { heading: 'Certificazione', text: 'Sistema qualità certificato ISO 9001:2015.', media: img('chip-ceramici.jpg'), href: '/azienda#qualita' },
+    corner: { heading: 'Certificazione', text: 'Sistema qualità certificato ISO 9001:2015.', media: img('chip-ceramici.jpg'), href: withBase('/azienda#qualita') },
   },
   /** intro of the tiles grid (replaces the two stacked text blocks) */
   index: {
@@ -362,7 +366,7 @@ export const lavorazioniPage = {
   },
   cards: [
     { label: 'Scarica la brochure', href: BROCHURE, media: img('ceramica-piramide.jpg') },
-    { label: 'Richiedi un preventivo', href: '/contatti', media: img('sabbiatura-operatore.jpg') },
+    { label: 'Richiedi un preventivo', href: withBase('/contatti'), media: img('sabbiatura-operatore.jpg') },
   ],
 };
 

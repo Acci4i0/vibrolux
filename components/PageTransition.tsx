@@ -4,6 +4,10 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { gsap, ScrollTrigger, prefersReducedMotion } from '@/lib/gsap';
 import { ANIM } from '@/config/animations';
+import { BASE } from '@/content/site';
+
+/** '/vibrolux/azienda/' → '/azienda': router.push adds the base itself; the trailing slash varies on Pages. */
+const route = (pathname: string) => (pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname).replace(/\/$/, '') || '/';
 
 /** Anchor's section (accordion items move while panels animate; their section doesn't). */
 const hashTarget = (hash: string) => (hash ? document.querySelector(hash)?.closest('section') ?? document.querySelector(hash) : null);
@@ -27,7 +31,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
       const url = new URL(a.href);
       if (url.origin !== location.origin || /\.\w+$/.test(url.pathname)) return; // external or file (pdf)
       e.preventDefault();
-      if (url.pathname === location.pathname) {
+      if (route(url.pathname) === route(location.pathname)) {
         if (!url.hash) return;
         history.pushState(null, '', url.hash);
         window.dispatchEvent(new HashChangeEvent('hashchange'));
@@ -35,7 +39,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         return;
       }
       document.body.classList.add('is-page-transitioning', 'is-page-leaving');
-      setTimeout(() => router.push(url.pathname + url.hash, { scroll: false }), prefersReducedMotion() ? 0 : leave);
+      setTimeout(() => router.push(route(url.pathname) + url.hash, { scroll: false }), prefersReducedMotion() ? 0 : leave);
     };
     document.addEventListener('click', onClick, true); // capture: runs before anything else can navigate
     return () => document.removeEventListener('click', onClick, true);
