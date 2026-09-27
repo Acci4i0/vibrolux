@@ -9,13 +9,11 @@ import s from './Contact.module.css';
 
 const rows = [
   ['Tel', company.tel, company.telHref],
-  ['Fax', company.fax],
-  ['Email', company.email, `mailto:${company.email}`],
   ['PEC', company.pec, `mailto:${company.pec}`],
   ['P.IVA', company.vat.replace('P.IVA / CF ', '')],
 ];
 
-/** Address + contact rows + map, laid out like the text modules. */
+/** Address + mail list (one address per need) + contact rows + map, laid out like the text modules. */
 export function Contact() {
   const root = useRef<HTMLElement>(null);
 
@@ -44,6 +42,14 @@ export function Contact() {
               </span>
             ))}
           </address>
+          <ul className={s.mails}>
+            {company.emails.map((m) => (
+              <li key={m.address}>
+                <a href={`mailto:${m.address}`}>{m.address}</a>
+                <span className={`t-mono ${s.use}`}>{m.use}</span>
+              </li>
+            ))}
+          </ul>
           <ul className={`t-mono ${s.rows}`}>
             {rows.map(([k, v, href]) => (
               <li key={k}>

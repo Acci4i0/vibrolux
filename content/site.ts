@@ -24,8 +24,13 @@ export const company = {
   address: ['Via Don Emilio Berto, 6', '10057 Sant’Ambrogio (TO)', 'Italia'],
   tel: '+39\u00a0011\u00a093\u00a048\u00a0197', // non-breaking: never split across lines
   telHref: 'tel:+390119348197',
-  fax: '011\u00a093\u00a067\u00a0884 / 011\u00a093\u00a019\u00a0691',
   email: 'info@vibrolux.it',
+  /** mail list on the contact page. DA VERIFICARE con Vibrolux: service@ e commerciale@ non sono confermati */
+  emails: [
+    { address: 'info@vibrolux.it', use: 'Informazioni generali e preventivi' },
+    { address: 'service@vibrolux.it', use: 'Assistenza su lavorazioni e consegne' },
+    { address: 'commerciale@vibrolux.it', use: 'Offerte e rapporti commerciali' },
+  ],
   pec: 'vibroluxsrl@pec.it',
   vat: 'P.IVA / CF 08270030011',
   iso: 'ISO 9001:2015',

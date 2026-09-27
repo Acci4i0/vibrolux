@@ -26,6 +26,23 @@
 .line {
   display: block;
 }
+/* mail list: the address, what it is for underneath */
+.mails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-xl);
+}
+.mails a {
+  font-size: var(--size-heading-xs);
+  font-weight: var(--fw-light);
+  line-height: 1.2;
+  transition: opacity var(--duration-default);
+}
+.use {
+  color: var(--color-grey2);
+  display: block;
+  margin-top: var(--gutter);
+}
 .rows {
   display: flex;
   flex-direction: column;
@@ -38,7 +55,8 @@
   transition: opacity var(--duration-default);
 }
 @media (hover: hover) {
-  .rows a:hover {
+  .rows a:hover,
+  .mails a:hover {
     opacity: 0.66;
   }
 }
