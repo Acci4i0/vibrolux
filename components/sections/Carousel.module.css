@@ -80,9 +80,19 @@
 .item:first-child .itemMedia [data-fill] {
   height: auto;
 }
-@media screen and (min-width: 1180px) and (max-height: 700px) {
-  .itemMedia [data-fill] {
+/* ≥768: square box, never taller than the window. The reference's 4:5 box runs past a laptop screen
+   (it hides it behind a pale product shot; full-bleed photos can't) */
+@media (min-width: 768px) {
+  .media {
     aspect-ratio: 1;
+    max-height: calc(100svh - var(--gutter) * 2);
+  }
+  .item:first-child {
+    height: 100%;
+    position: absolute;
+  }
+  .item:first-child .itemMedia {
+    height: 100%;
   }
 }
 
