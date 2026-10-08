@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Chivo_Mono } from 'next/font/google';
+import { Schibsted_Grotesk, Chivo_Mono } from 'next/font/google';
 import { Loader } from '@/components/Loader';
 import { HeaderDesktop, HeaderMobile } from '@/components/Header';
 import { PageTransition } from '@/components/PageTransition';
@@ -7,8 +7,9 @@ import { Footer } from '@/components/Footer';
 import { BASE } from '@/content/site';
 import './globals.css';
 
-// Closest open-source match to the reference typefaces (see ANIMATION_SPEC.md)
-const geist = Geist({ subsets: ['latin'], variable: '--font-geist' });
+// Schibsted Grotesk Bold stands in for Scto Grotesk A until its licensed files arrive (see globals.css);
+// Chivo Mono ≈ T1 Sans Mono (see ANIMATION_SPEC.md). Both self-hosted by next/font.
+const standin = Schibsted_Grotesk({ subsets: ['latin'], weight: '700', variable: '--font-standin' });
 const chivoMono = Chivo_Mono({ subsets: ['latin'], variable: '--font-chivo-mono' });
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="it" className={`${geist.variable} ${chivoMono.variable}`} suppressHydrationWarning>
+    <html lang="it" className={`${standin.variable} ${chivoMono.variable}`} suppressHydrationWarning>
       <head>
         {/* Lets CSS hide [data-reveal] elements until GSAP takes over (no-JS stays visible); English pages (/en) get lang="en" */}
         <script

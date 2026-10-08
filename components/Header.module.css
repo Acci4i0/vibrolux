@@ -223,7 +223,7 @@
   border-radius: var(--radius-button);
   display: flex;
   font-size: var(--size-body);
-  letter-spacing: 0.01em;
+  letter-spacing: var(--track-text);
   line-height: 1;
   min-height: 4.4rem;
   padding: 0 0.7em;
@@ -294,7 +294,7 @@
   display: flex;
   font-size: var(--size-body);
   gap: 0.57em;
-  letter-spacing: 0.01em;
+  letter-spacing: var(--track-text);
   line-height: 1;
   padding: 0.8571em;
   pointer-events: auto;
@@ -310,7 +310,7 @@
 }
 
 .mNav {
-  background-color: var(--color-black);
+  background-color: var(--color-brand-deep);
   color: var(--color-white);
   inset: 0;
   max-height: 0;
@@ -332,7 +332,7 @@
   display: none;
 }
 .mNavInner::before {
-  background: linear-gradient(0deg, rgba(15, 14, 18, 0), var(--color-black) 95%);
+  background: linear-gradient(0deg, transparent, var(--color-brand-deep) 95%);
   content: '';
   height: 18rem;
   left: 0;
@@ -380,7 +380,7 @@
   flex-direction: column;
   font-size: var(--size-body);
   gap: 1em;
-  letter-spacing: 0.01em;
+  letter-spacing: var(--track-text);
   line-height: var(--line-height);
   min-height: 0;
   opacity: 0;
@@ -406,9 +406,9 @@
 }
 .mCta {
   align-items: center;
-  background-color: var(--color-grey3);
+  background-color: var(--color-white);
   border-radius: 1.8rem;
-  color: var(--color-grey1);
+  color: var(--color-brand-deep);
   display: flex;
   font-family: var(--font-secondary);
   font-size: var(--size-caption);
@@ -423,7 +423,7 @@
     color var(--duration-default);
 }
 .mCtaItem + .mCtaItem .mCta {
-  background-color: var(--color-grey1);
+  background-color: var(--color-brand);
   color: var(--color-white);
 }
 .mFooter {
@@ -434,7 +434,7 @@
   row-gap: 4.5rem;
 }
 .mFooterTitle {
-  color: var(--color-grey3);
+  color: var(--color-brand-soft);
   margin-bottom: calc(var(--gutter) * 1.5);
 }
 .mFooter ul {
@@ -449,7 +449,7 @@
   margin: var(--margin-3xl) 0 var(--margin-2xl);
 }
 .mCopyText {
-  color: var(--color-grey3);
+  color: var(--color-brand-soft);
 }
 
 /* In the footer the menu steps aside (the footer has the same links) */

@@ -12,8 +12,8 @@
 }
 .title {
   font-size: var(--size-heading-xl);
-  font-weight: var(--fw-light);
-  letter-spacing: normal;
+  font-weight: var(--fw-display);
+  letter-spacing: var(--track-display);
   line-height: 1;
 }
 .intro {
@@ -72,9 +72,9 @@
   align-items: baseline;
   display: flex;
   font-size: var(--size-heading-sm);
-  font-weight: var(--fw-light);
+  font-weight: var(--fw-display);
   gap: var(--margin-lg);
-  letter-spacing: normal;
+  letter-spacing: var(--track-heading);
   line-height: 1.2;
 }
 .h2num {
@@ -94,7 +94,7 @@
 }
 .text h3 {
   font-size: 1.6rem;
-  font-weight: var(--fw-regular);
+  font-weight: var(--fw-text);
   margin-top: 1.8em;
 }
 .text h3 + p {
@@ -126,7 +126,7 @@
   transition: text-decoration-color var(--duration-default);
 }
 .text strong {
-  font-weight: var(--fw-regular);
+  font-weight: var(--fw-text);
 }
 
 @media (hover: hover) {

@@ -14,7 +14,7 @@ and English.
 
 - [Next.js](https://nextjs.org) 15 (App Router) + React 19, TypeScript
 - [GSAP](https://gsap.com) with ScrollTrigger, ScrollToPlugin and Flip
-- CSS Modules; [Geist](https://vercel.com/font) and
+- CSS Modules; Scto Grotesk A (see [Typeface](#typeface)) and
   [Chivo Mono](https://fonts.google.com/specimen/Chivo+Mono) through `next/font`
 
 ## Running it
@@ -60,8 +60,24 @@ public/assets/                 the brochure, Vibrolux's photos, the last stand-i
   [`content/shared.ts`](content/shared.ts). Pages and components only lay it out.
 - **Motion:** [`config/animations.ts`](config/animations.ts) — tune it there,
   not in the components.
-- **Brand colour:** Vibrolux navy **#21406E**, defined as `--color-brand` in
-  [`app/globals.css`](app/globals.css). The rest of the scale is neutral.
+- **Brand colour:** Vibrolux navy **#21406E** (`--color-brand` in
+  [`app/globals.css`](app/globals.css)) with its family: `--color-brand-deep`
+  for the footer and the mobile menu, `--color-brand-tint` for light panels,
+  `--color-brand-soft` for muted text on navy. The rest of the scale is neutral.
+
+## Typeface
+
+The site is set in **Scto Grotesk A** by Schick Toikka, one cut — Bold — with
+tight tracking (`--track-*` in `globals.css`), as on alright.studio. It's a
+commercial face: until a web licence is bought, the browser falls through to
+**Schibsted Grotesk Bold** (free, OFL), the closest open match. With the
+licensed file:
+
+1. put it in `app/fonts/scto-grotesk-a-bold.woff2`;
+2. in [`app/layout.tsx`](app/layout.tsx) load it with `next/font/local`
+   (`weight: '700'`, `variable: '--font-scto'`) next to the stand-in and add
+   its `.variable` to `<html>`;
+3. in `globals.css` start `--font-primary` with `var(--font-scto)`.
 
 ## Languages
 

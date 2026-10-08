@@ -1,5 +1,5 @@
 .footer {
-  background-color: var(--color-black);
+  background-color: var(--color-brand-deep);
   color: var(--color-white);
   /* taller bottom than the reference (3rem): the wordmark closes the footer and needs scroll room to build */
   padding: 0 var(--margin-6xl) var(--margin-4xl);
@@ -45,7 +45,7 @@
   }
 }
 .num {
-  color: var(--color-grey3);
+  color: var(--color-brand-soft);
   flex: none;
   text-align: left;
   width: 4em;
@@ -53,8 +53,8 @@
 
 /* legal row: © | P.IVA | Privacy + Termini, each under a column */
 .legal {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--color-grey3);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--color-brand-soft);
   margin-top: var(--margin-4xl);
   padding-top: var(--margin-xl);
 }

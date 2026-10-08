@@ -1,7 +1,26 @@
+/* the brand moment: a navy band, rounded like the media cards */
 .stats {
-  padding: var(--margin-6xl);
+  --color-mark: var(--color-brand-soft);
+  background-color: var(--color-brand);
+  border-radius: var(--radius-large);
+  color: var(--color-white);
+  margin: var(--margin-6xl) var(--gutter) 0;
+  overflow: hidden;
+  padding: var(--margin-6xl) calc(var(--margin-6xl) - var(--gutter));
   position: relative;
-  width: 100%;
+}
+.caption {
+  color: var(--color-brand-soft);
+}
+.stats .cta {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+@media (hover: hover) {
+  .stats .cta:hover {
+    background-color: var(--color-white);
+    border-color: var(--color-white);
+    color: var(--color-brand);
+  }
 }
 .inner {
   align-items: flex-start;
@@ -43,8 +62,8 @@
   align-items: center;
   display: flex;
   font-size: var(--size-heading-xl);
-  font-weight: var(--fw-light);
-  letter-spacing: normal;
+  font-weight: var(--fw-display);
+  letter-spacing: var(--track-display);
   line-height: 1;
   text-wrap: balance;
 }
@@ -67,13 +86,15 @@
 
 @media (max-width: 1179.98px) {
   .stats {
-    padding-left: var(--margin-3xl);
-    padding-right: var(--margin-3xl);
+    padding-left: calc(var(--margin-3xl) - var(--gutter));
+    padding-right: calc(var(--margin-3xl) - var(--gutter));
   }
 }
 @media (max-width: 767px) {
   .stats {
-    padding: var(--margin-6xl) var(--pwx);
+    margin-left: var(--pwx);
+    margin-right: var(--pwx);
+    padding: var(--margin-5xl) var(--margin-xl);
   }
   .inner {
     flex-direction: column;

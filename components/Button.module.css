@@ -6,7 +6,7 @@
   display: inline-flex;
   font-family: var(--font-primary);
   font-size: var(--size-body);
-  font-weight: var(--fw-regular);
+  font-weight: var(--fw-text);
   justify-content: center;
   line-height: 1;
   outline: none;
@@ -40,6 +40,8 @@
     color: var(--color-black);
   }
   .outline:hover {
-    background-color: var(--color-grey3);
+    background-color: var(--color-brand);
+    border-color: var(--color-brand);
+    color: var(--color-white);
   }
 }

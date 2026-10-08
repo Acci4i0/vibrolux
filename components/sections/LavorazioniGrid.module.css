@@ -12,8 +12,8 @@
 }
 .headline {
   font-size: var(--size-heading-lg);
-  font-weight: var(--fw-light);
-  letter-spacing: normal;
+  font-weight: var(--fw-display);
+  letter-spacing: var(--track-display);
   line-height: 1.05;
   margin-top: var(--margin-3xl);
   max-width: 13em;
@@ -42,8 +42,9 @@
   color: var(--color-grey2);
 }
 .fact dd {
+  color: var(--color-brand);
   font-size: var(--size-heading-sm);
-  font-weight: var(--fw-light);
+  font-weight: var(--fw-display);
   line-height: 1.2;
   margin-top: var(--gutter);
   padding-right: 1em;
@@ -62,7 +63,7 @@
 }
 .tile {
   aspect-ratio: 7 / 9;
-  background: var(--color-grey4);
+  background: var(--color-brand-tint);
   border-radius: calc(var(--tile) * 0.21);
   display: block;
   isolation: isolate;
@@ -83,7 +84,7 @@
   color: var(--color-black);
   font-size: var(--size-caption);
   left: 50%;
-  letter-spacing: 0.01em;
+  letter-spacing: var(--track-text);
   line-height: 1.2;
   max-width: calc(100% - var(--margin-lg) * 2);
   opacity: 0;

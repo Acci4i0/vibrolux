@@ -8,6 +8,13 @@
   --color-white: #fff;
   --color-white-off: #f0efe9;
   --color-brand: #21406e; /* Vibrolux navy, from the brochure artwork */
+  /* the navy family: deep for large dark grounds (footer, mobile menu), tint for light panels,
+     soft for muted text and marks on navy */
+  --color-brand-deep: #0f2240;
+  --color-brand-tint: #e8eef6;
+  --color-brand-soft: #9db4d6;
+  /* the square before every eyebrow: navy on light grounds; dark sections override it */
+  --color-mark: var(--color-brand);
   --color-text: var(--color-grey1);
   --color-bg: var(--color-white);
   --color-bg-blur-dark: hsla(0, 0%, 9%, 0.5);
@@ -15,12 +22,19 @@
   /* Placeholder media colour (swap for real assets later) */
   --color-placeholder: #000;
 
-  /* Fonts: Geist ≈ T1 Sans, Chivo Mono ≈ T1 Sans Mono (weights tuned by ink-density match) */
-  --font-primary: var(--font-geist), 'Helvetica', 'Arial', sans-serif;
+  /* Type: Scto Grotesk A (Schick Toikka, as on alright.studio), one cut — Bold — set tight.
+     It's a commercial face: until its licensed web files are in public/fonts with an @font-face
+     (see README), the browser falls through to Schibsted Grotesk Bold, the closest free match.
+     Chivo Mono ≈ T1 Sans Mono stays for the small uppercase labels. */
+  --font-primary: 'Scto Grotesk A', var(--font-standin), 'Helvetica', 'Arial', sans-serif;
   --font-secondary: var(--font-chivo-mono), 'Courier New', monospace;
-  --fw-light: 290;
-  --fw-regular: 440;
+  --fw-display: 700;
+  --fw-text: 700;
   --fw-mono: 450;
+  /* tracking, tighter as the type grows (reference: -0.02em at 16px, -0.07em at 82px) */
+  --track-text: -0.02em;
+  --track-heading: -0.04em;
+  --track-display: -0.06em;
 
   --size-caption: 1.2rem;
   --size-body: 1.4rem;
@@ -95,7 +109,8 @@ body {
   color: var(--color-text);
   font-family: var(--font-primary);
   font-size: var(--size-body);
-  font-weight: var(--fw-regular);
+  font-weight: var(--fw-text);
+  letter-spacing: var(--track-text);
   line-height: var(--line-height);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -122,6 +137,11 @@ svg {
   display: block;
 }
 
+::selection {
+  background-color: var(--color-brand);
+  color: var(--color-white);
+}
+
 /* ───────────── Shared type ───────────── */
 .t-eyebrow,
 .t-mono {
@@ -139,7 +159,7 @@ svg {
   position: relative;
 }
 .t-eyebrow::before {
-  background-color: currentColor;
+  background-color: var(--color-mark);
   content: '';
   display: block;
   flex: none;
@@ -150,8 +170,8 @@ svg {
 }
 .t-large {
   font-size: var(--size-heading-md);
-  font-weight: var(--fw-light);
-  letter-spacing: normal;
+  font-weight: var(--fw-display);
+  letter-spacing: var(--track-heading);
   line-height: 1.2;
   text-wrap: pretty;
 }
