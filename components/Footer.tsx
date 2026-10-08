@@ -46,19 +46,12 @@ function FooterAnchor({ link, num }: { link: FooterLink; num: string }) {
   );
 }
 
-/**
- * MOCKUP: `mobile` switches the ≤767px layout of the columns (see /mockup/footer).
- * grid = 2 per row · squeeze = all in a row · tabs = titles in a row, one column shown · swipe = all in a row, scrollable
- * ponytail: keep only the chosen one.
- */
-export type FooterMobile = 'grid' | 'squeeze' | 'tabs' | 'swipe';
-
-export function Footer({ mobile = 'grid' }: { mobile?: FooterMobile }) {
+/** Three link columns (also on phones), legal row on the same tracks, and the wordmark that builds with the scroll. */
+export function Footer() {
   const root = useRef<HTMLElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const logo = useRef<SVGSVGElement>(null);
-  const [tab, setTab] = useState(0);
   const t = content[useLang()];
   const columns = t.footer.columns;
 
@@ -82,20 +75,11 @@ export function Footer({ mobile = 'grid' }: { mobile?: FooterMobile }) {
   );
 
   return (
-    <footer ref={root} className={`${s.footer} ${s[`m_${mobile}`]}`}>
+    <footer ref={root} className={s.footer}>
       <div ref={innerRef} className={`t-mono ${s.inner}`}>
-        {mobile === 'tabs' && (
-          <div className={s.tabs} role="tablist">
-            {columns.map((col, i) => (
-              <button key={col.title} type="button" role="tab" aria-selected={i === tab} className={s.tab} onClick={() => setTab(i)}>
-                {col.title}
-              </button>
-            ))}
-          </div>
-        )}
         <nav ref={navRef} className={s.nav}>
           {columns.map((col, c) => (
-            <div key={col.title} className={s.col} data-active={c === tab} data-reveal="">
+            <div key={col.title} className={s.col} data-reveal="">
               <ul className={s.list}>
                 {col.links.map((l, i) => (
                   <li key={l.label}>

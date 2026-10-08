@@ -37,7 +37,6 @@ app/contatti/                  address, mail list, contact details and map
 app/privacy/, app/termini-e-condizioni/
                                privacy notice and terms of use
 app/en/                        the same pages in English, same slugs
-app/mockup/footer/             temporary: the mobile footer layouts side by side
 app/globals.css                design tokens in :root (colours, type scale, spacing)
 components/Header.tsx          desktop pill nav and mobile menu
 components/Footer.tsx          three link columns, legal row, scroll-built wordmark

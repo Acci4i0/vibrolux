@@ -4,19 +4,31 @@
   /* taller bottom than the reference (3rem): the wordmark closes the footer and needs scroll room to build */
   padding: 0 var(--margin-6xl) var(--margin-4xl);
 }
+
+/* The 3 columns spread edge to edge (first flush left, last flush right, like the wordmark below) at every width;
+   nav and legal row share the tracks through subgrid so each legal item stays under its column */
 .inner {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
   margin: 0 auto;
   max-width: var(--container-max-width);
   padding-top: 8.2rem;
   width: 100%;
 }
-.nav {
-  display: flex;
+.inner > * {
+  grid-column: 1 / -1;
 }
-.col {
+.nav,
+.legal {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+.col,
+.legal > * {
   padding-right: var(--gutter);
-  width: 25%;
 }
+
 .list {
   display: flex;
   flex-direction: column;
@@ -38,17 +50,13 @@
   text-align: left;
   width: 4em;
 }
-/* legal row on the column grid: © | P.IVA | Privacy + Termini, each under a column */
+
+/* legal row: © | P.IVA | Privacy + Termini, each under a column */
 .legal {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--color-grey3);
-  display: flex;
   margin-top: var(--margin-4xl);
   padding-top: var(--margin-xl);
-}
-.legal > * {
-  padding-right: var(--gutter);
-  width: 25%;
 }
 .legal a {
   color: var(--color-white);
@@ -58,28 +66,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--gutter) var(--margin-2xl);
-}
-
-/* ≥1024: the 3 columns spread edge to edge (first flush left, last flush right, like the wordmark below);
-   nav and legal row share the tracks through subgrid so each legal item stays under its column */
-@media (min-width: 1024px) {
-  .inner {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    justify-content: space-between;
-  }
-  .inner > * {
-    grid-column: 1 / -1;
-  }
-  .nav,
-  .legal {
-    display: grid;
-    grid-template-columns: subgrid;
-  }
-  .col,
-  .legal > * {
-    width: auto;
-  }
 }
 
 .logo {
@@ -92,10 +78,6 @@
   width: 100%;
 }
 
-.tabs {
-  display: none;
-}
-
 @media (max-width: 1179.98px) {
   .footer {
     padding-left: var(--margin-3xl);
@@ -106,112 +88,32 @@
   }
 }
 
-/* 4 columns fit down to 1024px; below, 2 per row */
-@media (max-width: 1023.98px) {
-  .nav,
-  .legal {
-    flex-wrap: wrap;
-    row-gap: var(--margin-3xl);
-  }
-  .legal {
-    row-gap: var(--gutter);
-  }
-  .col,
-  .legal > * {
-    width: 50%;
-  }
-}
-
+/* phone: still three columns side by side, as on desktop, with smaller type; the contacts column
+   gets a little more room for the phone number, which never wraps */
 @media (max-width: 767px) {
   .footer {
     padding: 0 var(--pwx) var(--margin-5xl);
   }
-  .nav {
-    column-gap: 0;
-    margin-left: calc(var(--pwx) * -1);
-    min-width: calc(100% + var(--pwx) * 2);
-    width: 100%;
+  .inner {
+    column-gap: 1.2rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr);
+    padding-top: var(--margin-5xl);
   }
-  .col {
-    padding: 0 var(--pwx);
+  .nav,
+  .legal {
+    font-size: 1rem;
+  }
+  .col,
+  .legal > * {
+    padding-right: 0;
+  }
+  .num {
+    width: 2.3em;
   }
   .legal {
+    margin-top: var(--margin-3xl);
+  }
+  .legalLinks {
     flex-direction: column;
-  }
-  .legal > * {
-    padding-left: 0;
-    width: 100%;
-  }
-
-  /* ── grid: 2 per row, Contatti full width (current) ── */
-  .m_grid .col:nth-child(n + 3) {
-    width: 100%;
-  }
-
-  /* ── squeeze: literally 4 in a row (numbers dropped, smaller type) ── */
-  .m_squeeze .nav {
-    flex-wrap: nowrap;
-  }
-  .m_squeeze .col {
-    font-size: 1rem;
-    padding: 0 0.4rem;
-    width: calc(100% / 3);
-  }
-  .m_squeeze .col:first-child {
-    padding-left: var(--pwx);
-  }
-  .m_squeeze .num {
-    display: none;
-  }
-
-  /* ── tabs: the 4 titles in one row, the chosen column below ── */
-  .m_tabs .tabs {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--margin-xl);
-  }
-  .tab {
-    color: var(--color-grey3);
-    font: inherit;
-    letter-spacing: inherit;
-    padding: 0 0 var(--margin-md);
-    position: relative;
-    text-transform: inherit;
-    transition: color var(--duration-default);
-  }
-  .tab[aria-selected='true'] {
-    color: var(--color-white);
-  }
-  .tab[aria-selected='true']::after {
-    background: currentColor;
-    bottom: -1px;
-    content: '';
-    height: 1px;
-    left: 0;
-    position: absolute;
-    right: 0;
-  }
-  .m_tabs .col {
-    width: 100%;
-  }
-  .m_tabs .col[data-active='false'] {
-    display: none;
-  }
-
-  /* ── swipe: 4 in a row like desktop, scrolled sideways ── */
-  .m_swipe .nav {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-  .m_swipe .nav::-webkit-scrollbar {
-    display: none;
-  }
-  .m_swipe .col {
-    flex: none;
-    scroll-snap-align: start;
-    width: 72%;
   }
 }
