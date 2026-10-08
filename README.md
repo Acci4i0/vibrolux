@@ -49,7 +49,7 @@ content/it.ts, content/en.ts   all the copy and links, one dictionary per langua
 content/shared.ts              what doesn't change: media, contact details, paths
 content/legal.tsx              privacy notice and terms, in both languages
 lib/                           GSAP, the scroll-reveal helpers, language detection
-public/assets/                 the brochure and the preview media
+public/assets/                 the brochure, Vibrolux's photos, the last stand-ins
 ```
 
 ## Editing
@@ -79,13 +79,13 @@ workflow passes the sub-path (`/vibrolux`) as `PAGES_BASE_PATH`;
 and `withBase()` in `content/shared.ts` prefixes the media and the internal links.
 Locally the variable is unset and the site runs from the root.
 
-## Preview media
+## Photos
 
-The photos and videos in `public/assets/preview/` are stand-ins from Mixkit and
-Wikimedia Commons, so the site can be seen without placeholders. Each one is
-credited with its licence in
-[`CREDITS.md`](public/assets/preview/CREDITS.md); all of them are to be
-replaced with Vibrolux's own photographs and footage before going live.
+The photos in `public/assets/vibrolux/` are Vibrolux's own, taken from
+vibrolux.it (resized and lightly cropped): they hold the layout until the
+retouched shots arrive. `public/assets/preview/` keeps the last two stand-ins
+with no original yet — the home video and the warehouse photo — credited in
+[`CREDITS.md`](public/assets/preview/CREDITS.md).
 
 ## Animation spec
 

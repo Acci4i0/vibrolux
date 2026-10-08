@@ -3,8 +3,9 @@ import type { Lang } from '@/lib/i18n';
 
 /**
  * What doesn't change with the language: paths, media, contact details.
- * PREVIEW MEDIA: photos/videos in /public/assets/preview are stock/Commons stand-ins (see CREDITS.md there),
- * to be replaced with Vibrolux's own shots. img() without a file renders the black placeholder.
+ * MEDIA: foto() = Vibrolux's own photos (public/assets/vibrolux, from vibrolux.it, to be retouched);
+ * img()/video() = stock/Commons stand-ins still waiting for an original (public/assets/preview, see CREDITS.md).
+ * img() without a file renders the black placeholder.
  */
 
 /** Site sub-path on GitHub Pages ('' locally): media and internal links carry it, next/link and router.push add it themselves. */
@@ -16,10 +17,14 @@ export const linker = (lang: Lang) => (path: string) => withBase(lang === 'it' ?
 
 export const BROCHURE = withBase('/assets/vibrolux-brochure.pdf');
 const P = withBase('/assets/preview/');
+const V = withBase('/assets/vibrolux/');
 /** where the subject sits in photos whose centre isn't the subject */
-const FOCUS: Record<string, string> = { 'impianto-vibrofinitura.jpg': '80% 55%' };
+const FOCUS: Record<string, string> = { 'facciata.jpg': '64% 50%' };
+/** stand-in from /assets/preview (stock / Commons, see CREDITS.md) */
 export const img = (file?: string, aspect = 1): MediaData => ({ src: file && P + file, aspect, focus: file && FOCUS[file] });
 export const video = (file: string): MediaData => ({ type: 'video', src: P + file, aspect: 16 / 9 });
+/** Vibrolux's own photo from /assets/vibrolux (taken from vibrolux.it; to be retouched) */
+export const foto = (file: string, aspect = 1): MediaData => ({ src: V + file, aspect, focus: FOCUS[file] });
 
 export const company = {
   name: 'Vibrolux Srl',

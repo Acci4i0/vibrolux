@@ -1,4 +1,4 @@
-import { BROCHURE, company, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 
 /** Italian texts (from vibrolux.it and vibrolux_brochure.pdf). en.ts mirrors this shape. */
 
@@ -11,8 +11,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Lavaggi e oliature',
     text: 'Linea automatica per trattamenti di disoleatura, lavaggio, asciugatura e vari tipi di oliatura (dewatering).',
     short: 'Disoleatura, lavaggio, asciugatura e oliatura dewatering in linea automatica.',
-    media: img('barilatura-catena.jpg'),
-    hero: img('barilatura-catena.jpg', 16 / 9),
+    media: foto('mg_7742b.jpg'),
+    hero: foto('mg_7742b.jpg', 16 / 9),
     intro: [
       'Una linea automatica dedicata ai trattamenti di disoleatura, lavaggio, asciugatura e oliatura dei particolari metallici.',
       'I pezzi vengono liberati da oli e residui delle lavorazioni precedenti e, dove richiesto, protetti con diversi tipi di oliatura, compresa l’oliatura dewatering, che allontana l’umidità residua dalle superfici.',
@@ -23,8 +23,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Sabbiatura',
     text: 'Procedimento intermedio del ciclo di lavorazione: asporta ossido, vernice o calcificazioni su leghe metalliche. Linea di sabbiatrici, sabbiatrici a tappeto e a grappolo, cabina per particolari di grandi dimensioni.',
     short: 'Asportazione di ossidi, vernici e calcificazioni su leghe metalliche.',
-    media: img('sabbiatura-operatore.jpg'),
-    hero: img('sabbiatura-cabina-manuale.jpg', 16 / 9),
+    media: foto('mg_8531.jpg'),
+    hero: foto('mg_7661-1.jpg', 16 / 9),
     intro: [
       'La sabbiatura è un procedimento intermedio del ciclo di lavorazione del prodotto: lo strato asportato può essere ossido, vernice o calcificazione, su leghe metalliche in genere.',
       'Il reparto dispone di una linea di sabbiatrici, di sabbiatrici a tappeto, di una sabbiatrice a grappolo per ingombri fino a 1300 × 1800 mm, anche per materiale delicato, e di una cabina per la sabbiatura manuale di particolari di grandi dimensioni.',
@@ -32,10 +32,10 @@ const lavorazioni: Lavorazione[] = [
     impianti: {
       eyebrow: 'Gli impianti',
       items: [
-        { label: 'Linea', text: 'Area attrezzata per le lavorazioni di sabbiatura.', media: img('sala-sabbiatura.jpg', 4 / 5) },
-        { label: 'Tappeto', text: 'Sabbiatrici a tappeto per leghe metalliche in genere.', media: img('cabina-sabbiatura.jpg', 4 / 5) },
-        { label: 'Grappolo', text: 'Sabbiatrice a grappolo per ingombri fino a 1300 × 1800 mm, anche per materiale delicato.', media: img('granigliatrice.png', 4 / 5) },
-        { label: 'Cabina', text: 'Impianto di sabbiatura manuale per particolari di grandi dimensioni.', media: img('sabbiatura-cabina-manuale.jpg', 4 / 5) },
+        { label: 'Linea', text: 'Area attrezzata per le lavorazioni di sabbiatura.', media: foto('mg_7658.jpg', 4 / 5) },
+        { label: 'Tappeto', text: 'Sabbiatrici a tappeto per leghe metalliche in genere.', media: foto('2mg_8531.jpg', 4 / 5) },
+        { label: 'Grappolo', text: 'Sabbiatrice a grappolo per ingombri fino a 1300 × 1800 mm, anche per materiale delicato.', media: foto('mg_8507.jpg', 4 / 5) },
+        { label: 'Cabina', text: 'Impianto di sabbiatura manuale per particolari di grandi dimensioni.', media: foto('mg_8275.jpg', 4 / 5) },
       ],
     },
   },
@@ -44,8 +44,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Vibrofinitura',
     text: 'Impianti di barilatura per asportare bave di stampaggio e di fusione: finitura superficiale di particolari in acciaio, ferro, alluminio, ottone. Asciugatura con granulato vegetale o aria calda.',
     short: 'Sbavatura e finitura di particolari in acciaio, ferro, alluminio e ottone.',
-    media: img('vibratore-vasca.jpg'),
-    hero: img('vibratore-vasca.jpg', 16 / 9),
+    media: foto('mg_8709.jpg'),
+    hero: foto('mg_7760.jpg', 16 / 9),
     intro: [
       'Un processo di trattamento fisico per la finitura superficiale di particolari di diverso materiale: acciaio, ferro, alluminio, ottone.',
       'Gli impianti di barilatura asportano le bave di stampaggio e di fusione; i vibratori lavorano con inserti ceramici o in auto burattatura, e i pezzi vengono asciugati con granulato vegetale o in centrifuga ad aria calda.',
@@ -53,10 +53,10 @@ const lavorazioni: Lavorazione[] = [
     impianti: {
       eyebrow: 'Gli impianti',
       items: [
-        { label: 'Barilatura', text: 'Linea per asportare bave di stampaggio e di fusione.', media: img('impianto-vibrofinitura.jpg', 4 / 5) },
-        { label: 'Vibratore', text: 'Barilatura con inserti ceramici e auto burattatura.', media: img('vibratore-vasca.jpg', 4 / 5) },
-        { label: 'Asciugatore', text: 'Asciugatura dei pezzi tramite granulato vegetale.', media: img('barilatura-catena.jpg', 4 / 5) },
-        { label: 'Centrifuga', text: 'Asciugatura dei pezzi tramite aria calda.', media: img('graniglia.jpg', 4 / 5) },
+        { label: 'Barilatura', text: 'Linea per asportare bave di stampaggio e di fusione.', media: foto('mg_7804-1.jpg', 4 / 5) },
+        { label: 'Vibratore', text: 'Barilatura con inserti ceramici e auto burattatura.', media: foto('mg_7874.jpg', 4 / 5) },
+        { label: 'Asciugatore', text: 'Asciugatura dei pezzi tramite granulato vegetale.', media: foto('macchina-ritoccata.jpg', 4 / 5) },
+        { label: 'Centrifuga', text: 'Asciugatura dei pezzi tramite aria calda.', media: foto('mg_8071.jpg', 4 / 5) },
       ],
     },
   },
@@ -65,8 +65,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Tribofinitura isotropica',
     text: 'Processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse (Ra 0,01 o anche inferiori) e superfici molto lucide.',
     short: 'Superfici molto lucide, con rugosità fino a Ra 0,01.',
-    media: img('chip-ceramici.jpg'),
-    hero: img('chip-ceramici.jpg', 16 / 9),
+    media: foto('mg_7891.jpg'),
+    hero: foto('mg_8253.jpg', 16 / 9),
     intro: [
       'Un processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse, fino a Ra 0,01 o anche inferiori, e superfici molto lucide.',
       'Il controllo qualità verifica il risultato sul singolo pezzo, confrontandolo prima e dopo il trattamento.',
@@ -74,9 +74,9 @@ const lavorazioni: Lavorazione[] = [
     impianti: {
       eyebrow: 'Dal pezzo al risultato',
       items: [
-        { label: 'Impianto', text: 'Impianto per tribofinitura isotropica.', media: img('impianto-vibrofinitura.jpg', 4 / 5) },
-        { label: 'Controllo', text: 'Il controllo qualità sul singolo pezzo, prima e dopo il trattamento.', media: img('pezzo-lucidato.jpg', 4 / 5) },
-        { label: 'Risultato', text: 'Superfici molto lucide, con rugosità fino a Ra 0,01 o inferiori.', media: img('graniglia.jpg', 4 / 5) },
+        { label: 'Impianto', text: 'Impianto per tribofinitura isotropica.', media: foto('mg_8253.jpg', 4 / 5) },
+        { label: 'Controllo', text: 'Il controllo qualità sul singolo pezzo, prima e dopo il trattamento.', media: foto('mg_8343.jpg', 4 / 5) },
+        { label: 'Risultato', text: 'Superfici molto lucide, con rugosità fino a Ra 0,01 o inferiori.', media: foto('prima-dopo2222.jpg', 4 / 5) },
       ],
     },
   },
@@ -85,8 +85,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Lavaggio statico',
     text: 'Impianto di lavaggio dedicato ai particolari delicati.',
     short: 'Un impianto di lavaggio dedicato ai particolari delicati.',
-    media: img('pezzi-torniti.jpg'),
-    hero: img('pezzi-torniti.jpg', 16 / 9),
+    media: foto('mg_7677-1.jpg'),
+    hero: foto('mg_7684.jpg', 16 / 9),
     intro: [
       'Un impianto di lavaggio dedicato ai particolari delicati, che vengono trattati senza essere movimentati.',
       'Si affianca alla linea automatica di lavaggi e oliature per i pezzi che richiedono più attenzione.',
@@ -97,8 +97,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Brillantatura',
     text: 'Impianto automatico per la lucidatura tramite microsfere e appositi additivi.',
     short: 'Lucidatura automatica con microsfere e additivi.',
-    media: img('graniglia.jpg'),
-    hero: img('graniglia.jpg', 16 / 9),
+    media: foto('mg_8469.jpg'),
+    hero: foto('mg_8051.jpg', 16 / 9),
     intro: [
       'Un impianto automatico per la lucidatura dei particolari tramite microsfere e appositi additivi.',
       'Il trattamento restituisce superfici brillanti e uniformi, a completamento delle altre lavorazioni di finitura.',
@@ -211,7 +211,7 @@ export const it = {
       corner: {
         heading: 'Brochure',
         text: 'Lavorazioni e impianti in un unico documento.',
-        media: img('ceramica-piramide.jpg'),
+        media: foto('mg_8489.jpg'),
         href: BROCHURE,
       },
     },
@@ -224,14 +224,14 @@ export const it = {
       cta: { label: 'L’azienda', href: to('/azienda') },
     },
     cards: [
-      { label: 'Lavorazioni', href: to('/lavorazioni'), media: img('sabbiatura-cabina-manuale.jpg') },
-      { label: 'Contatti', href: to('/contatti'), media: img('reparto-produzione.jpg') },
+      { label: 'Lavorazioni', href: to('/lavorazioni'), media: foto('2_mg_8520.jpg') },
+      { label: 'Contatti', href: to('/contatti'), media: foto('vibrolux_azienda.jpg') },
     ],
     beforeAfter: {
       eyebrow: 'Tribofinitura isotropica',
       items: [
-        { label: 'Prima', text: 'Il particolare prima del trattamento: bave, ossidi e rugosità della lavorazione.', media: img('pezzi-torniti.jpg', 4 / 5) },
-        { label: 'Dopo', text: 'Rugosità fino a Ra 0,01 o inferiori e superfici molto lucide, con un processo non aggressivo.', media: img('pezzo-lucidato.jpg', 4 / 5) },
+        { label: 'Prima', text: 'Il particolare prima del trattamento: bave, ossidi e rugosità della lavorazione.', media: foto('ingranaggio-prima.jpg', 4 / 5) },
+        { label: 'Dopo', text: 'Rugosità fino a Ra 0,01 o inferiori e superfici molto lucide, con un processo non aggressivo.', media: foto('ingranaggio-dopo.jpg', 4 / 5) },
       ],
     },
     lavorazioniIntro: {
@@ -245,10 +245,10 @@ export const it = {
       eyebrow: 'Perché Vibrolux',
       text: 'Quattro principi che guidano ogni lavorazione.',
       items: [
-        { label: '01', title: 'Servizi qualificati', href: to('/lavorazioni'), media: img('impianto-vibrofinitura.jpg') },
-        { label: '02', title: 'Standard di qualità', href: to('/azienda#qualita'), media: img('pezzo-lucidato.jpg') },
-        { label: '03', title: 'Team specializzato', href: to('/azienda'), media: img('reparto-produzione.jpg') },
-        { label: '04', title: 'Risultati al massimo livello', href: to('/lavorazioni'), media: img('cabina-sabbiatura.jpg') },
+        { label: '01', title: 'Servizi qualificati', href: to('/lavorazioni'), media: foto('mg_7804-1.jpg') },
+        { label: '02', title: 'Standard di qualità', href: to('/azienda#qualita'), media: foto('mg_8343.jpg') },
+        { label: '03', title: 'Team specializzato', href: to('/azienda'), media: foto('mg_8275.jpg') },
+        { label: '04', title: 'Risultati al massimo livello', href: to('/lavorazioni'), media: foto('ricevuta-1.jpg') },
       ],
     },
   },
@@ -256,7 +256,7 @@ export const it = {
   /* ───────── Azienda ───────── */
   azienda: {
     hero: {
-      media: video('hero-azienda.mp4'),
+      media: foto('cover_1.jpg', 16 / 9),
       headline: 'Esperienza qualificata nel trattamento dei metalli',
       cta: { label: 'Contattaci', href: to('/contatti') },
     },
@@ -272,9 +272,9 @@ export const it = {
       id: 'sede',
       eyebrow: 'La sede',
       items: [
-        { label: 'Officina', text: 'L’officina è strutturata in diversi reparti di produzione, con aree per il materiale finito e per il carico e scarico dei mezzi.', media: img('reparto-produzione.jpg', 4 / 5) },
+        { label: 'Officina', text: 'L’officina è strutturata in diversi reparti di produzione, con aree per il materiale finito e per il carico e scarico dei mezzi.', media: foto('vibrolux_azienda2-1.jpg', 4 / 5) },
         { label: 'Magazzino', text: 'Un magazzino di 400 mq completa la sede per lo stoccaggio.', media: img('pezzi-torniti.jpg', 4 / 5) },
-        { label: 'Qualità', text: 'Un’area dedicata al controllo qualità, con strumenti di misura e verifica.', media: img('pezzo-lucidato.jpg', 4 / 5) },
+        { label: 'Qualità', text: 'Un’area dedicata al controllo qualità, con strumenti di misura e verifica.', media: foto('mg_8343.jpg', 4 / 5) },
       ],
     },
     stats: {
@@ -286,15 +286,15 @@ export const it = {
         { value: '1500 mq', caption: 'Aree scoperte per movimentazione e logistica' },
         { value: '400 mq', caption: 'Magazzino per lo stoccaggio' },
       ],
-      media: img('sala-sabbiatura.jpg'),
+      media: foto('vibrolux_azienda.jpg'),
     },
     pillars: {
       eyebrow: 'Metodo',
       text: 'Tre principi alla base del nostro lavoro.',
       items: [
-        { label: '01', title: 'Esperienza e qualificazione', href: to('/lavorazioni'), media: img('sabbiatura-cabina-manuale.jpg') },
-        { label: '02', title: 'Analisi dei processi', href: to('/lavorazioni'), media: img('vibratore-vasca.jpg') },
-        { label: '03', title: 'Soddisfazione del cliente', href: to('/contatti'), media: img('impianto-vibrofinitura.jpg') },
+        { label: '01', title: 'Esperienza e qualificazione', href: to('/lavorazioni'), media: foto('mg_7658.jpg') },
+        { label: '02', title: 'Analisi dei processi', href: to('/lavorazioni'), media: foto('mg_8253.jpg') },
+        { label: '03', title: 'Soddisfazione del cliente', href: to('/contatti'), media: foto('mg_8489.jpg') },
       ],
     },
     quality: {
@@ -310,10 +310,10 @@ export const it = {
   /* ───────── Lavorazioni ───────── */
   lavorazioniPage: {
     hero: {
-      media: video('hero-lavorazioni.mp4'),
+      media: foto('mg_7804-1.jpg', 16 / 9),
       headline: 'Le nostre lavorazioni',
       cta: { label: 'Scarica la brochure', href: BROCHURE },
-      corner: { heading: 'Certificazione', text: 'Sistema qualità certificato ISO 9001:2015.', media: img('chip-ceramici.jpg'), href: to('/azienda#qualita') },
+      corner: { heading: 'Certificazione', text: 'Sistema qualità certificato ISO 9001:2015.', media: foto('mg_8343.jpg'), href: to('/azienda#qualita') },
     },
     /** intro of the tiles grid (replaces the two stacked text blocks) */
     index: {
@@ -328,15 +328,15 @@ export const it = {
       ],
     },
     cards: [
-      { label: 'Scarica la brochure', href: BROCHURE, media: img('ceramica-piramide.jpg') },
-      { label: 'Richiedi un preventivo', href: to('/contatti'), media: img('sabbiatura-operatore.jpg') },
+      { label: 'Scarica la brochure', href: BROCHURE, media: foto('mg_8489.jpg') },
+      { label: 'Richiedi un preventivo', href: to('/contatti'), media: foto('mg_8275.jpg') },
     ],
   },
 
   /* ───────── Contatti ───────── */
   contatti: {
     hero: {
-      media: video('hero-contatti.mp4'),
+      media: foto('facciata.jpg', 16 / 9),
       headline: 'Contatti',
       cta: { label: 'Scrivici', href: `mailto:${company.email}` },
     },

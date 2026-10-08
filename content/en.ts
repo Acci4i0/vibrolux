@@ -1,4 +1,4 @@
-import { BROCHURE, company, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 import type { Site } from './it';
 
 /** English texts: same shape as it.ts, same slugs under /en. British spelling, decimal point. */
@@ -12,8 +12,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Washing and oiling',
     text: 'Automatic line for degreasing, washing, drying and various types of oiling, dewatering included.',
     short: 'Degreasing, washing, drying and dewatering oil on an automatic line.',
-    media: img('barilatura-catena.jpg'),
-    hero: img('barilatura-catena.jpg', 16 / 9),
+    media: foto('mg_7742b.jpg'),
+    hero: foto('mg_7742b.jpg', 16 / 9),
     intro: [
       'An automatic line for degreasing, washing, drying and oiling metal parts.',
       'Parts are cleared of the oils and residues left by earlier machining and, where required, protected with different types of oil, including dewatering oil, which drives residual moisture off the surface.',
@@ -24,8 +24,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Sandblasting',
     text: 'An intermediate step in the production cycle: it removes oxide, paint or scale from metal alloys. A line of blasting machines, tumble-belt and hanger blasters, and a booth for large parts.',
     short: 'Removal of oxides, paint and scale from metal alloys.',
-    media: img('sabbiatura-operatore.jpg'),
-    hero: img('sabbiatura-cabina-manuale.jpg', 16 / 9),
+    media: foto('mg_8531.jpg'),
+    hero: foto('mg_7661-1.jpg', 16 / 9),
     intro: [
       'Sandblasting is an intermediate step in a product’s manufacturing cycle: the layer removed can be oxide, paint or scale, on metal alloys in general.',
       'The department runs a line of blasting machines, tumble-belt blasters, a hanger blaster for parts up to 1300 × 1800 mm, delicate material included, and a booth for the manual blasting of large parts.',
@@ -33,10 +33,10 @@ const lavorazioni: Lavorazione[] = [
     impianti: {
       eyebrow: 'The equipment',
       items: [
-        { label: 'Line', text: 'An area equipped for blasting work.', media: img('sala-sabbiatura.jpg', 4 / 5) },
-        { label: 'Belt', text: 'Tumble-belt blasters for metal alloys in general.', media: img('cabina-sabbiatura.jpg', 4 / 5) },
-        { label: 'Hanger', text: 'Hanger blaster for parts up to 1300 × 1800 mm, delicate material included.', media: img('granigliatrice.png', 4 / 5) },
-        { label: 'Booth', text: 'Manual blasting plant for large parts.', media: img('sabbiatura-cabina-manuale.jpg', 4 / 5) },
+        { label: 'Line', text: 'An area equipped for blasting work.', media: foto('mg_7658.jpg', 4 / 5) },
+        { label: 'Belt', text: 'Tumble-belt blasters for metal alloys in general.', media: foto('2mg_8531.jpg', 4 / 5) },
+        { label: 'Hanger', text: 'Hanger blaster for parts up to 1300 × 1800 mm, delicate material included.', media: foto('mg_8507.jpg', 4 / 5) },
+        { label: 'Booth', text: 'Manual blasting plant for large parts.', media: foto('mg_8275.jpg', 4 / 5) },
       ],
     },
   },
@@ -45,8 +45,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Vibratory finishing',
     text: 'Barrel finishing plants that remove moulding and casting burrs: surface finishing of steel, iron, aluminium and brass parts. Drying in vegetable granulate or hot air.',
     short: 'Deburring and finishing of steel, iron, aluminium and brass parts.',
-    media: img('vibratore-vasca.jpg'),
-    hero: img('vibratore-vasca.jpg', 16 / 9),
+    media: foto('mg_8709.jpg'),
+    hero: foto('mg_7760.jpg', 16 / 9),
     intro: [
       'A physical treatment for the surface finishing of parts in different materials: steel, iron, aluminium, brass.',
       'Barrel finishing plants remove moulding and casting burrs; the vibrators run with ceramic media or part-on-part, and the parts are dried in vegetable granulate or in a hot-air centrifuge.',
@@ -54,10 +54,10 @@ const lavorazioni: Lavorazione[] = [
     impianti: {
       eyebrow: 'The equipment',
       items: [
-        { label: 'Barrel', text: 'A line that removes moulding and casting burrs.', media: img('impianto-vibrofinitura.jpg', 4 / 5) },
-        { label: 'Vibrator', text: 'Barrel finishing with ceramic media and part-on-part.', media: img('vibratore-vasca.jpg', 4 / 5) },
-        { label: 'Dryer', text: 'Parts dried in vegetable granulate.', media: img('barilatura-catena.jpg', 4 / 5) },
-        { label: 'Centrifuge', text: 'Parts dried with hot air.', media: img('graniglia.jpg', 4 / 5) },
+        { label: 'Barrel', text: 'A line that removes moulding and casting burrs.', media: foto('mg_7804-1.jpg', 4 / 5) },
+        { label: 'Vibrator', text: 'Barrel finishing with ceramic media and part-on-part.', media: foto('mg_7874.jpg', 4 / 5) },
+        { label: 'Dryer', text: 'Parts dried in vegetable granulate.', media: foto('macchina-ritoccata.jpg', 4 / 5) },
+        { label: 'Centrifuge', text: 'Parts dried with hot air.', media: foto('mg_8071.jpg', 4 / 5) },
       ],
     },
   },
@@ -66,8 +66,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Isotropic superfinishing',
     text: 'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness (Ra 0.01 or lower) and highly polished surfaces.',
     short: 'Highly polished surfaces, with roughness down to Ra 0.01.',
-    media: img('chip-ceramici.jpg'),
-    hero: img('chip-ceramici.jpg', 16 / 9),
+    media: foto('mg_7891.jpg'),
+    hero: foto('mg_8253.jpg', 16 / 9),
     intro: [
       'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness, down to Ra 0.01 or lower, and highly polished surfaces.',
       'Quality control checks the result on each part, comparing it before and after treatment.',
@@ -75,9 +75,9 @@ const lavorazioni: Lavorazione[] = [
     impianti: {
       eyebrow: 'From part to result',
       items: [
-        { label: 'Plant', text: 'Isotropic superfinishing plant.', media: img('impianto-vibrofinitura.jpg', 4 / 5) },
-        { label: 'Inspection', text: 'Quality control on each part, before and after treatment.', media: img('pezzo-lucidato.jpg', 4 / 5) },
-        { label: 'Result', text: 'Highly polished surfaces, with roughness down to Ra 0.01 or lower.', media: img('graniglia.jpg', 4 / 5) },
+        { label: 'Plant', text: 'Isotropic superfinishing plant.', media: foto('mg_8253.jpg', 4 / 5) },
+        { label: 'Inspection', text: 'Quality control on each part, before and after treatment.', media: foto('mg_8343.jpg', 4 / 5) },
+        { label: 'Result', text: 'Highly polished surfaces, with roughness down to Ra 0.01 or lower.', media: foto('prima-dopo2222.jpg', 4 / 5) },
       ],
     },
   },
@@ -86,8 +86,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Static washing',
     text: 'A washing plant dedicated to delicate parts.',
     short: 'A washing plant dedicated to delicate parts.',
-    media: img('pezzi-torniti.jpg'),
-    hero: img('pezzi-torniti.jpg', 16 / 9),
+    media: foto('mg_7677-1.jpg'),
+    hero: foto('mg_7684.jpg', 16 / 9),
     intro: [
       'A washing plant dedicated to delicate parts, which are treated without being moved.',
       'It works alongside the automatic washing and oiling line, for the parts that need more care.',
@@ -98,8 +98,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Burnishing',
     text: 'An automatic plant for polishing with micro-beads and dedicated additives.',
     short: 'Automatic polishing with micro-beads and additives.',
-    media: img('graniglia.jpg'),
-    hero: img('graniglia.jpg', 16 / 9),
+    media: foto('mg_8469.jpg'),
+    hero: foto('mg_8051.jpg', 16 / 9),
     intro: [
       'An automatic plant for polishing parts with micro-beads and dedicated additives.',
       'The treatment leaves bright, even surfaces, completing the other finishing processes.',
@@ -209,7 +209,7 @@ export const en: Site = {
       corner: {
         heading: 'Brochure',
         text: 'Processes and plants in a single document.',
-        media: img('ceramica-piramide.jpg'),
+        media: foto('mg_8489.jpg'),
         href: BROCHURE,
       },
     },
@@ -222,14 +222,14 @@ export const en: Site = {
       cta: { label: 'The company', href: to('/azienda') },
     },
     cards: [
-      { label: 'Processes', href: to('/lavorazioni'), media: img('sabbiatura-cabina-manuale.jpg') },
-      { label: 'Contact', href: to('/contatti'), media: img('reparto-produzione.jpg') },
+      { label: 'Processes', href: to('/lavorazioni'), media: foto('2_mg_8520.jpg') },
+      { label: 'Contact', href: to('/contatti'), media: foto('vibrolux_azienda.jpg') },
     ],
     beforeAfter: {
       eyebrow: 'Isotropic superfinishing',
       items: [
-        { label: 'Before', text: 'The part before treatment: burrs, oxides and machining roughness.', media: img('pezzi-torniti.jpg', 4 / 5) },
-        { label: 'After', text: 'Roughness down to Ra 0.01 or lower and highly polished surfaces, with a non-aggressive process.', media: img('pezzo-lucidato.jpg', 4 / 5) },
+        { label: 'Before', text: 'The part before treatment: burrs, oxides and machining roughness.', media: foto('ingranaggio-prima.jpg', 4 / 5) },
+        { label: 'After', text: 'Roughness down to Ra 0.01 or lower and highly polished surfaces, with a non-aggressive process.', media: foto('ingranaggio-dopo.jpg', 4 / 5) },
       ],
     },
     lavorazioniIntro: {
@@ -243,10 +243,10 @@ export const en: Site = {
       eyebrow: 'Why Vibrolux',
       text: 'Four principles behind every process.',
       items: [
-        { label: '01', title: 'Qualified services', href: to('/lavorazioni'), media: img('impianto-vibrofinitura.jpg') },
-        { label: '02', title: 'Quality standards', href: to('/azienda#qualita'), media: img('pezzo-lucidato.jpg') },
-        { label: '03', title: 'Specialised team', href: to('/azienda'), media: img('reparto-produzione.jpg') },
-        { label: '04', title: 'Results at the highest level', href: to('/lavorazioni'), media: img('cabina-sabbiatura.jpg') },
+        { label: '01', title: 'Qualified services', href: to('/lavorazioni'), media: foto('mg_7804-1.jpg') },
+        { label: '02', title: 'Quality standards', href: to('/azienda#qualita'), media: foto('mg_8343.jpg') },
+        { label: '03', title: 'Specialised team', href: to('/azienda'), media: foto('mg_8275.jpg') },
+        { label: '04', title: 'Results at the highest level', href: to('/lavorazioni'), media: foto('ricevuta-1.jpg') },
       ],
     },
   },
@@ -254,7 +254,7 @@ export const en: Site = {
   /* ───────── Company ───────── */
   azienda: {
     hero: {
-      media: video('hero-azienda.mp4'),
+      media: foto('cover_1.jpg', 16 / 9),
       headline: 'Qualified expertise in metal treatment',
       cta: { label: 'Contact us', href: to('/contatti') },
     },
@@ -270,9 +270,9 @@ export const en: Site = {
       id: 'sede',
       eyebrow: 'Our site',
       items: [
-        { label: 'Workshop', text: 'The workshop is organised into several production departments, with areas for finished material and for loading and unloading vehicles.', media: img('reparto-produzione.jpg', 4 / 5) },
+        { label: 'Workshop', text: 'The workshop is organised into several production departments, with areas for finished material and for loading and unloading vehicles.', media: foto('vibrolux_azienda2-1.jpg', 4 / 5) },
         { label: 'Warehouse', text: 'A 400 m² warehouse completes the site for storage.', media: img('pezzi-torniti.jpg', 4 / 5) },
-        { label: 'Quality', text: 'An area dedicated to quality control, with measuring and inspection instruments.', media: img('pezzo-lucidato.jpg', 4 / 5) },
+        { label: 'Quality', text: 'An area dedicated to quality control, with measuring and inspection instruments.', media: foto('mg_8343.jpg', 4 / 5) },
       ],
     },
     stats: {
@@ -284,15 +284,15 @@ export const en: Site = {
         { value: '1500 m²', caption: 'Open areas for handling and logistics' },
         { value: '400 m²', caption: 'Warehouse for storage' },
       ],
-      media: img('sala-sabbiatura.jpg'),
+      media: foto('vibrolux_azienda.jpg'),
     },
     pillars: {
       eyebrow: 'Method',
       text: 'Three principles at the heart of our work.',
       items: [
-        { label: '01', title: 'Experience and qualification', href: to('/lavorazioni'), media: img('sabbiatura-cabina-manuale.jpg') },
-        { label: '02', title: 'Process analysis', href: to('/lavorazioni'), media: img('vibratore-vasca.jpg') },
-        { label: '03', title: 'Customer satisfaction', href: to('/contatti'), media: img('impianto-vibrofinitura.jpg') },
+        { label: '01', title: 'Experience and qualification', href: to('/lavorazioni'), media: foto('mg_7658.jpg') },
+        { label: '02', title: 'Process analysis', href: to('/lavorazioni'), media: foto('mg_8253.jpg') },
+        { label: '03', title: 'Customer satisfaction', href: to('/contatti'), media: foto('mg_8489.jpg') },
       ],
     },
     quality: {
@@ -308,10 +308,10 @@ export const en: Site = {
   /* ───────── Processes ───────── */
   lavorazioniPage: {
     hero: {
-      media: video('hero-lavorazioni.mp4'),
+      media: foto('mg_7804-1.jpg', 16 / 9),
       headline: 'Our processes',
       cta: { label: 'Download the brochure', href: BROCHURE },
-      corner: { heading: 'Certification', text: 'ISO 9001:2015 certified quality system.', media: img('chip-ceramici.jpg'), href: to('/azienda#qualita') },
+      corner: { heading: 'Certification', text: 'ISO 9001:2015 certified quality system.', media: foto('mg_8343.jpg'), href: to('/azienda#qualita') },
     },
     index: {
       eyebrow: 'The processes',
@@ -325,15 +325,15 @@ export const en: Site = {
       ],
     },
     cards: [
-      { label: 'Download the brochure', href: BROCHURE, media: img('ceramica-piramide.jpg') },
-      { label: 'Request a quote', href: to('/contatti'), media: img('sabbiatura-operatore.jpg') },
+      { label: 'Download the brochure', href: BROCHURE, media: foto('mg_8489.jpg') },
+      { label: 'Request a quote', href: to('/contatti'), media: foto('mg_8275.jpg') },
     ],
   },
 
   /* ───────── Contact ───────── */
   contatti: {
     hero: {
-      media: video('hero-contatti.mp4'),
+      media: foto('facciata.jpg', 16 / 9),
       headline: 'Contact',
       cta: { label: 'Email us', href: `mailto:${company.email}` },
     },
