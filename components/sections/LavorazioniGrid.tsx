@@ -7,13 +7,12 @@ import { ANIM } from '@/config/animations';
 import { Media, type MediaData } from '../Media';
 import s from './LavorazioniGrid.module.css';
 
-type Tile = { label: string; title: string; text: string; href: string; media: MediaData };
+type Tile = { title: string; href: string; media: MediaData };
 type Intro = { eyebrow: string; headline: string; text: string; facts: { label: string; value: string }[] };
 
 /**
- * Lavorazioni index: optional intro (headline + facts row) and a grid of full-bleed image tiles
- * in the T1 media-card language — blurred number pill, arrow button, title on a gradient,
- * one-line description and image zoom on hover.
+ * Lavorazioni index: optional intro (headline + facts row) and a grid of image tiles in the manner of
+ * yuriroga.com — tall, very round corners, just the photo; the name shows in a glass pill on hover (always on touch).
  */
 export function LavorazioniGrid({ intro, eyebrow, tiles }: { intro?: Intro; eyebrow?: string; tiles: Tile[] }) {
   const root = useRef<HTMLElement>(null);
@@ -60,16 +59,7 @@ export function LavorazioniGrid({ intro, eyebrow, tiles }: { intro?: Intro; eyeb
         {tiles.map((t) => (
           <a key={t.href} href={t.href} className={s.tile} data-reveal="" data-tile="">
             <Media {...t.media} className={s.media} style={{ position: 'absolute', inset: 0, height: '100%' }} />
-            <span className={`t-mono ${s.num}`}>{t.label}</span>
-            <span className={s.arrow} aria-hidden>
-              <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.3" />
-              </svg>
-            </span>
-            <span className={s.body}>
-              <span className={s.title}>{t.title}</span>
-              <span className={s.desc}>{t.text}</span>
-            </span>
+            <span className={s.label}>{t.title}</span>
           </a>
         ))}
       </div>
