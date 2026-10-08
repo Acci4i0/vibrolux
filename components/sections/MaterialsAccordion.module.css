@@ -5,7 +5,7 @@
   width: 100%;
 }
 .bg {
-  background-color: var(--color-brand-tint);
+  background-color: var(--color-grey4);
   height: 100%;
   left: 0;
   pointer-events: none;
@@ -91,24 +91,24 @@
 }
 .title {
   align-items: center;
-  color: color-mix(in srgb, var(--color-brand) 55%, var(--color-white)); /* closed: light navy on the blue tint */
+  color: var(--color-grey2);
   display: flex;
   font-size: var(--size-heading-sm);
-  font-weight: var(--fw-display);
+  font-weight: var(--fw-light);
   gap: var(--gutter);
-  letter-spacing: var(--track-heading);
+  letter-spacing: normal;
   line-height: var(--line-height);
   text-wrap: pretty;
   transition: color var(--duration-default);
 }
 .dropdown.isOpen .title {
-  color: var(--color-brand);
+  color: var(--color-text);
 }
 .toggle {
   align-items: center;
   background-color: var(--color-white);
   border-radius: 50%;
-  color: var(--color-brand);
+  color: var(--color-black);
   display: flex;
   flex: none;
   height: 4.8rem;

@@ -64,8 +64,8 @@
 }
 .headline {
   font-size: var(--size-heading-lg);
-  font-weight: var(--fw-display);
-  letter-spacing: var(--track-display);
+  font-weight: var(--fw-light);
+  letter-spacing: normal;
   line-height: 1;
   max-width: 10em;
   text-wrap: balance;
@@ -77,7 +77,6 @@
 }
 
 .corner {
-  --color-mark: currentColor; /* white square on the dark glass */
   align-items: center;
   backdrop-filter: blur(2.5rem);
   -webkit-backdrop-filter: blur(2.5rem);
@@ -98,7 +97,7 @@
 }
 .cornerText {
   font-size: var(--size-body);
-  letter-spacing: var(--track-text);
+  letter-spacing: 0.01em;
   line-height: var(--line-height);
   max-width: 14em;
 }

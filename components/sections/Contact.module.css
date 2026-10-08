@@ -33,9 +33,8 @@
   gap: var(--margin-xl);
 }
 .mails a {
-  color: var(--color-brand);
   font-size: var(--size-heading-xs);
-  font-weight: var(--fw-display);
+  font-weight: var(--fw-light);
   line-height: 1.2;
   transition: opacity var(--duration-default);
 }
@@ -69,7 +68,7 @@
 .map {
   --map-inset: 2.4rem; /* keeps Google's card and controls clear of the 8rem corners */
   aspect-ratio: 16 / 7;
-  background: var(--color-brand-tint);
+  background: var(--color-grey4);
   border-radius: var(--radius-large);
   margin: var(--margin-6xl) calc(var(--margin-4xl) * -1 + var(--gutter)) 0;
   overflow: hidden;

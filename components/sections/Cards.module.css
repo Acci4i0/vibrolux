@@ -66,8 +66,8 @@
 }
 .cardTitle {
   font-size: var(--size-heading-sm);
-  font-weight: var(--fw-display);
-  letter-spacing: var(--track-heading);
+  font-weight: var(--fw-light);
+  letter-spacing: normal;
   line-height: var(--line-height);
   padding-right: 2em;
   text-wrap: pretty;
@@ -82,7 +82,7 @@
     transform: scale(1.05);
   }
   .card:hover .cardTitle {
-    color: var(--color-brand);
+    color: var(--color-grey3);
   }
 }
 
