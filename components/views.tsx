@@ -64,7 +64,6 @@ export function LavorazioniView({ lang }: P) {
     <main>
       <Hero data={page.hero} />
       <LavorazioniGrid intro={page.index} tiles={lavorazioneTiles(t)} />
-      <MediaCardGroup cards={page.cards} />
     </main>
   );
 }
