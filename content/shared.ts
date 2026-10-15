@@ -37,7 +37,6 @@ export const company = {
   pec: 'vibroluxsrl@pec.it',
   vatNumber: '08270030011',
   iso: 'ISO 9001:2015',
-  maps: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2816.7607632673407!2d7.377691215931506!3d45.09064427909836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4788462dac3fab3d%3A0xfaf018a173a6521a!2sVibrolux+Srl!5e0!3m2!1sit!2sit!4v1548257158260',
   brochure: BROCHURE,
 };
 
@@ -45,6 +44,15 @@ const MAPS_QUERY = encodeURIComponent('Vibrolux Srl, Via Don Emilio Berto 6, 100
 export const maps = {
   google: `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
   apple: `https://maps.apple.com/?q=${MAPS_QUERY}`,
+};
+
+/** Contatti: Sant'Ambrogio instead of a map — the Sacra di San Michele and the abbey castle (Wikimedia Commons, CC BY-SA 4.0: the credit stays on the page) */
+const S = withBase('/assets/sant-ambrogio/');
+export const place = {
+  src: S + 'sacra-castello.jpg',
+  /** phones: the square crop by the same author */
+  srcSquare: S + 'sacra-castello-quadrata.jpg',
+  credit: { author: 'Elio Pallard', license: 'CC BY-SA 4.0', href: 'https://commons.wikimedia.org/wiki/File:La_Sacra_la_montagna_e_il_castello01.jpg' },
 };
 
 type Slide = { label: string; text: string; media: MediaData };

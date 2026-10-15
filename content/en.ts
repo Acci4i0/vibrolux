@@ -350,6 +350,10 @@ export const en: Site = {
       { address: company.emails.commerciale, use: 'Offers and commercial relations' },
     ],
     keys: { tel: 'Tel', pec: 'PEC', vat: 'VAT' },
-    mapTitle: 'Vibrolux map',
+    place: {
+      alt: 'The Sacra di San Michele on Mount Pirchiriano and the abbey castle of Sant’Ambrogio',
+      maps: 'Open in Maps',
+      photo: 'Photo',
+    },
   },
 };

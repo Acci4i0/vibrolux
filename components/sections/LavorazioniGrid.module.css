@@ -49,69 +49,20 @@
   padding-right: 1em;
 }
 
-/* ───────── tiles: image cards in the manner of yuriroga.com — tall, very round, the name on hover;
-   three per row (two on phones) ───────── */
+/* ───────── cards (reference: module-group of module-mediaCard): three per row, two on tablets, one on phones ───────── */
 .grid {
-  --cols: 3; /* six processes: two full rows */
-  /* one tile's width: keeps the corner radius circular at ~21% of it, as on the reference */
-  --tile: calc((100vw - var(--gutter) * (var(--cols) + 1)) / var(--cols));
   display: grid;
   gap: var(--gutter);
-  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   padding: 0 var(--gutter);
 }
-.tile {
-  aspect-ratio: 7 / 9;
-  background: var(--color-grey4);
-  border-radius: calc(var(--tile) * 0.21);
-  display: block;
-  isolation: isolate;
-  overflow: hidden;
-  position: relative;
+
+/* on a black page (Lavorazioni) */
+:global([data-tone='dark']) .facts {
+  border-top-color: rgba(255, 255, 255, 0.12);
 }
-.media [data-fill] {
-  height: 100%;
-  transition: transform var(--duration-longer) var(--ease-expo-linear);
-  width: 100%;
-}
-/* the name: a small glass pill in the middle */
-.label {
-  backdrop-filter: blur(5rem);
-  -webkit-backdrop-filter: blur(5rem);
-  background-color: rgba(240, 239, 233, 0.5);
-  border-radius: 10rem;
-  color: var(--color-black);
-  font-size: var(--size-caption);
-  left: 50%;
-  letter-spacing: 0.01em;
-  line-height: 1.2;
-  max-width: calc(100% - var(--margin-lg) * 2);
-  opacity: 0;
-  padding: 0.95em 1.65em;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity var(--duration-default);
-  width: max-content;
-  z-index: 2;
-}
-.tile:focus-visible .label {
-  opacity: 1;
-}
-@media (hover: hover) {
-  .tile:hover [data-fill] {
-    transform: scale(1.05);
-  }
-  .tile:hover .label {
-    opacity: 1;
-  }
-}
-/* touch: no hover, so the name is always there */
-@media (hover: none) {
-  .label {
-    opacity: 1;
-  }
+:global([data-tone='dark']) .fact dt {
+  color: var(--color-grey3);
 }
 
 @media (max-width: 1179.98px) {
@@ -124,6 +75,9 @@
   }
   .text {
     width: 60%;
+  }
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -142,6 +96,7 @@
     width: 100%;
   }
   .grid {
-    --cols: 2;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 var(--pwx);
   }
 }

@@ -65,38 +65,73 @@
   flex: none;
   width: 6em;
 }
-.map {
-  --map-inset: 2.4rem; /* keeps Google's card and controls clear of the 8rem corners */
-  aspect-ratio: 16 / 7;
-  background: var(--color-grey4);
-  border-radius: var(--radius-large);
+.place {
   margin: var(--margin-6xl) calc(var(--margin-4xl) * -1 + var(--gutter)) 0;
+}
+/* Sant'Ambrogio in place of a map, framed like the reference's factory photos (large radius); 2:1 so that on a
+   laptop it fits below the menu bar, which would otherwise sit on the Maps button */
+.photo {
+  aspect-ratio: 2 / 1;
+  background: var(--color-black);
+  border-radius: var(--radius-large);
   overflow: hidden;
   position: relative;
 }
-.map iframe {
-  border: 0;
+.photo img {
   display: block;
-  filter: grayscale(1) contrast(1.05);
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 90%; /* the Sacra's top and the castle both in frame */
+  width: 100%;
+}
+/* the way to Maps: round blurred button in the top-right corner, ↗ as on the reference's outbound links */
+.go {
+  align-items: center;
+  backdrop-filter: blur(5rem);
+  -webkit-backdrop-filter: blur(5rem);
+  background-color: var(--color-bg-blur-dark);
+  border-radius: 50%;
+  color: var(--color-white);
+  display: flex;
+  height: 5.6rem;
+  justify-content: center;
   position: absolute;
+  right: var(--margin-xl);
+  top: var(--margin-xl);
+  transition:
+    background-color var(--duration-default),
+    color var(--duration-default);
+  width: 5.6rem;
 }
-.mapFront {
-  height: calc(100% - var(--map-inset) * 2);
-  left: var(--map-inset);
-  top: var(--map-inset);
-  width: calc(100% - var(--map-inset) * 2);
+.go svg {
+  fill: none;
+  height: 2.4rem;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  width: 2.4rem;
 }
-/* 40rem bigger on every side: its own card/controls land outside the box */
-.map iframe.mapBackdrop {
-  filter: grayscale(1) blur(1.2rem) brightness(1.04);
-  height: calc(100% + 80rem);
-  left: -40rem;
-  pointer-events: none;
-  top: -40rem;
-  width: calc(100% + 80rem);
+@media (hover: hover) {
+  .go:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+  }
 }
-.mapFront {
-  border-radius: var(--radius-button);
+.go:hover:active {
+  transform: scale(0.97);
+}
+/* CC BY-SA: author and licence stay with the photo */
+.credit {
+  color: var(--color-grey2);
+  margin-top: var(--gutter);
+  text-align: right;
+}
+.credit a {
+  transition: opacity var(--duration-default);
+}
+@media (hover: hover) {
+  .credit a:hover {
+    opacity: 0.66;
+  }
 }
 
 @media (max-width: 1179.98px) {
@@ -104,10 +139,13 @@
     padding-left: var(--margin-3xl);
     padding-right: var(--margin-3xl);
   }
-  .map {
-    --map-inset: 1.6rem; /* radius-large is 4rem here */
+  .place {
     margin-left: calc(var(--margin-3xl) * -1 + var(--gutter));
     margin-right: calc(var(--margin-3xl) * -1 + var(--gutter));
+  }
+  .go {
+    right: var(--margin-lg);
+    top: var(--margin-lg);
   }
 }
 @media (max-width: 767px) {
@@ -122,8 +160,14 @@
   .content {
     width: 100%;
   }
-  .map {
-    aspect-ratio: 1;
+  .place {
     margin: var(--margin-6xl) 0 0;
+  }
+  .photo {
+    aspect-ratio: 1;
+  }
+  .go {
+    height: 4.8rem;
+    width: 4.8rem;
   }
 }

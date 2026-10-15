@@ -33,7 +33,7 @@ app/page.tsx                   home
 app/azienda/                   company: profile, the premises, quality
 app/lavorazioni/               the six processes, one tile each
 app/lavorazioni/[slug]/        one page per process, with a plant carousel where there is one
-app/contatti/                  address, mail list, contact details and map
+app/contatti/                  address, mail list, contact details, Sant'Ambrogio in a photo
 app/privacy/, app/termini-e-condizioni/
                                privacy notice and terms of use
 app/en/                        the same pages in English, same slugs
@@ -86,6 +86,12 @@ vibrolux.it (resized and lightly cropped): they hold the layout until the
 retouched shots arrive. `public/assets/preview/` keeps the last two stand-ins
 with no original yet — the home video and the warehouse photo — credited in
 [`CREDITS.md`](public/assets/preview/CREDITS.md).
+
+The Contatti page shows Sant'Ambrogio instead of a map: the Sacra di San
+Michele and the abbey castle, by Elio Pallard on Wikimedia Commons
+(CC BY-SA 4.0, resized; the credit stays under the photo), in
+`public/assets/sant-ambrogio/` with its
+[`CREDITS.md`](public/assets/sant-ambrogio/CREDITS.md).
 
 ## Animation spec
 

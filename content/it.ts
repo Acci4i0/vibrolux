@@ -354,7 +354,11 @@ export const it = {
       { address: company.emails.commerciale, use: 'Offerte e rapporti commerciali' },
     ],
     keys: { tel: 'Tel', pec: 'PEC', vat: 'P.IVA' },
-    mapTitle: 'Mappa Vibrolux',
+    place: {
+      alt: 'La Sacra di San Michele sul monte Pirchiriano e il castello abbaziale di Sant’Ambrogio',
+      maps: 'Apri in Maps',
+      photo: 'Foto',
+    },
   },
 };
 

@@ -181,6 +181,12 @@ main > [data-module='carousel'] + [data-module='media'] {
   }
 }
 
+/* a page on black (Lavorazioni): around the hero and behind the cards, down to the footer */
+main[data-tone='dark'] {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
 /* anchor targets clear the fixed header (reference: .modules-wrapper > .module) */
 main section {
   scroll-margin-top: 10rem;

@@ -61,7 +61,7 @@ export function LavorazioniView({ lang }: P) {
   const t = content[lang];
   const page = t.lavorazioniPage;
   return (
-    <main>
+    <main data-tone="dark">
       <Hero data={page.hero} />
       <LavorazioniGrid intro={page.index} tiles={lavorazioneTiles(t)} />
     </main>

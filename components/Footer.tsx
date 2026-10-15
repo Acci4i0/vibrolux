@@ -7,18 +7,14 @@ import { ANIM } from '@/config/animations';
 import { Logo, logoTimeline } from './Logo';
 import { content, type FooterLink } from '@/content/site';
 import { useLang } from '@/lib/i18n';
+import { useMapsHref } from '@/lib/maps';
 import s from './Footer.module.css';
 
 /** A link with `confirm` needs two taps: the first only swaps its label, so a stray tap doesn't throw you out to Maps. */
 function FooterAnchor({ link, num }: { link: FooterLink; num: string }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const [armed, setArmed] = useState(false);
-  const [href, setHref] = useState(link.href);
-
-  // Apple Maps on iPhone / iPad / Mac, Google Maps elsewhere
-  useEffect(() => {
-    if (link.hrefApple && /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent)) setHref(link.hrefApple);
-  }, [link.hrefApple]);
+  const href = useMapsHref(link.href, link.hrefApple);
 
   // disarm on a tap elsewhere or after 4s
   useEffect(() => {

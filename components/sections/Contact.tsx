@@ -4,11 +4,12 @@ import { useRef } from 'react';
 import { useGSAP } from '@/lib/gsap';
 import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
-import { company, content } from '@/content/site';
+import { company, content, maps, place } from '@/content/site';
 import { useLang } from '@/lib/i18n';
+import { useMapsHref } from '@/lib/maps';
 import s from './Contact.module.css';
 
-/** Address + mail list (one address per need) + contact rows + map, laid out like the text modules. */
+/** Address + mail list (one address per need) + contact rows, laid out like the text modules; then Sant'Ambrogio in a photo, with the way to Maps in its corner. */
 export function Contact() {
   const root = useRef<HTMLElement>(null);
   const t = content[useLang()];
@@ -18,14 +19,15 @@ export function Contact() {
     [c.keys.pec, company.pec, `mailto:${company.pec}`],
     [c.keys.vat, company.vatNumber],
   ];
+  const mapsHref = useMapsHref(maps.google, maps.apple);
 
   useGSAP(
     (_, contextSafe) =>
       afterMount(() => {
-        const [eyebrow, content, map] = root.current!.querySelectorAll('[data-reveal]');
+        const [eyebrow, content, photo] = root.current!.querySelectorAll('[data-reveal]');
         reveal(eyebrow, { delay: ANIM.text.eyebrowDelay });
         reveal(content, { delay: ANIM.text.contentDelay });
-        reveal(map);
+        reveal(photo);
       }, contextSafe!),
     { scope: root },
   );
@@ -62,14 +64,24 @@ export function Contact() {
           </ul>
         </div>
       </div>
-      <div className={s.map} data-reveal="">
-        {/* Google's card/controls sit on the iframe edges and got cut by the rounded corners:
-            the real map is inset so they stay whole; an oversized, inert, blurred copy of the view
-            (its own UI pushed far outside the box) makes a frosted rim up to the rounded edge.
-            Blurred on purpose: two Google embeds of different sizes never align pixel-perfect. */}
-        <iframe className={s.mapBackdrop} src={company.maps} title="" aria-hidden tabIndex={-1} loading="lazy" />
-        <iframe className={s.mapFront} src={company.maps} title={c.mapTitle} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
-      </div>
+      <figure className={s.place} data-reveal="">
+        <div className={s.photo}>
+          <picture>
+            <source media="(max-width: 767px)" srcSet={place.srcSquare} />
+            <img src={place.src} alt={c.place.alt} loading="lazy" decoding="async" />
+          </picture>
+          <a className={s.go} href={mapsHref} target="_blank" rel="noreferrer" aria-label={c.place.maps}>
+            <svg viewBox="0 0 24 24" aria-hidden>
+              <path d="M7 17 17 7M8 7h9v9" />
+            </svg>
+          </a>
+        </div>
+        <figcaption className={`t-mono ${s.credit}`}>
+          <a href={place.credit.href} target="_blank" rel="noreferrer">
+            {c.place.photo}: {place.credit.author} · {place.credit.license}
+          </a>
+        </figcaption>
+      </figure>
     </section>
   );
 }
