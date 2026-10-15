@@ -39,7 +39,7 @@ app/privacy/, app/termini-e-condizioni/
 app/en/                        the same pages in English, same slugs
 app/globals.css                design tokens in :root (colours, type scale, spacing)
 components/Header.tsx          desktop pill nav and mobile menu
-components/Footer.tsx          three link columns, legal row, scroll-built wordmark
+components/Footer.tsx          four numbered blocks, the © line, scroll-built wordmark
 components/Loader.tsx          white cover on load, then the logo builds
 components/PageTransition.tsx  fade out / fade in between pages
 components/views.tsx           every page, built from a language

@@ -5,28 +5,22 @@
   padding: 0 var(--margin-6xl) var(--margin-4xl);
 }
 
-/* The 3 columns spread edge to edge (first flush left, last flush right, like the wordmark below) at every width;
-   nav and legal row share the tracks through subgrid so each legal item stays under its column */
 .inner {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  justify-content: space-between;
   margin: 0 auto;
   max-width: var(--container-max-width);
   padding-top: 8.2rem;
   width: 100%;
 }
-.inner > * {
-  grid-column: 1 / -1;
-}
-.nav,
-.legal {
+
+/* The 4 blocks in a row, spread edge to edge (first flush left, last flush right, like the wordmark below);
+   below 1180px they wrap 2 × 2, so 1 | 2 sit on top and 3 | 4 under them, each row's blocks starting at the same height */
+.nav {
+  align-items: start;
+  column-gap: var(--margin-xl);
   display: grid;
-  grid-template-columns: subgrid;
-}
-.col,
-.legal > * {
-  padding-right: var(--gutter);
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+  row-gap: var(--margin-3xl);
 }
 
 .list {
@@ -34,38 +28,28 @@
   flex-direction: column;
   gap: var(--gutter);
 }
-.link {
+/* number in a fixed-width column: labels line up, and a label that wraps stays aligned to itself */
+.link,
+.copyright {
   display: flex;
+}
+.link {
   transition: opacity var(--duration-default);
 }
 @media (hover: hover) {
-  .link:hover,
-  .legal a:hover {
+  a.link:hover {
     opacity: 0.66;
   }
 }
 .num {
   color: var(--color-grey3);
   flex: none;
-  text-align: left;
   width: 4em;
 }
 
-/* legal row: © | P.IVA | Privacy + Termini, each under a column */
-.legal {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--color-grey3);
-  margin-top: var(--margin-4xl);
-  padding-top: var(--margin-xl);
-}
-.legal a {
-  color: var(--color-white);
-  transition: opacity var(--duration-default);
-}
-.legalLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gutter) var(--margin-2xl);
+/* © on its own line, the same space above (blocks) and below (wordmark), as on the reference */
+.copyright {
+  margin-top: var(--margin-5xl);
 }
 
 .logo {
@@ -83,37 +67,35 @@
     padding-left: var(--margin-3xl);
     padding-right: var(--margin-3xl);
   }
+  /* two halves, as on the reference (.footer-nav-list 50%) */
+  .nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .num {
     width: 3em;
   }
 }
 
-/* phone: still three columns side by side, as on desktop, with smaller type; the contacts column
-   gets a little more room for the phone number, which never wraps */
 @media (max-width: 767px) {
   .footer {
     padding: 0 var(--pwx) var(--margin-5xl);
   }
   .inner {
-    column-gap: 1.2rem;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr);
     padding-top: var(--margin-5xl);
   }
+  /* a touch smaller and without tracking, so the longest labels ("Tribofinitura isotropica", the VAT number)
+     stay on one line from 375px and the two columns keep the same rhythm */
   .nav,
-  .legal {
-    font-size: 1rem;
+  .copyright {
+    font-size: 1.1rem;
+    letter-spacing: 0;
   }
-  .col,
-  .legal > * {
-    padding-right: 0;
+  /* columns sized to their labels and spread edge to edge: the right one, with the longer labels, gets the room it needs */
+  .nav {
+    column-gap: 1.2rem;
+    grid-template-columns: repeat(2, auto);
   }
   .num {
     width: 2.3em;
-  }
-  .legal {
-    margin-top: var(--margin-3xl);
-  }
-  .legalLinks {
-    flex-direction: column;
   }
 }

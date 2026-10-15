@@ -132,10 +132,11 @@ const nav: NavItem[] = [
   },
 ];
 
-const footer: { columns: { title: string; links: FooterLink[] }[]; legalLinks: FooterLink[] } = {
+/** Four numbered blocks (1.x … 4.x), then the © line */
+const footer: { columns: { title: string; links: FooterLink[] }[]; copyright: string } = {
   columns: [
     {
-      title: 'Azienda',
+      title: 'Navigazione',
       links: [
         { label: 'Home', href: to('/') },
         { label: 'Azienda', href: to('/azienda') },
@@ -153,11 +154,16 @@ const footer: { columns: { title: string; links: FooterLink[] }[]; legalLinks: F
         { label: 'Brochure', href: BROCHURE },
       ],
     },
+    {
+      title: 'Legale',
+      links: [
+        { label: vat },
+        { label: 'Privacy', href: to('/privacy') },
+        { label: 'Termini e condizioni', href: to('/termini-e-condizioni') },
+      ],
+    },
   ],
-  legalLinks: [
-    { label: 'Privacy', href: to('/privacy') },
-    { label: 'Termini e condizioni', href: to('/termini-e-condizioni') },
-  ],
+  copyright: `All rights reserved, 2026 ${company.name}`,
 };
 
 const address = [...company.street, 'Italia'];

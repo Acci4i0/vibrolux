@@ -65,5 +65,5 @@ export type Lavorazione = {
 
 export type NavItem = { label: string; href: string; external?: boolean; children?: NavItem[] };
 
-/** `confirm`: the first tap only swaps the label to this, the second follows the link. `hrefApple`: used instead on Apple devices. */
-export type FooterLink = { label: string; href: string; confirm?: string; hrefApple?: string };
+/** No `href`: plain text (the VAT number). `confirm`: the first tap only swaps the label to this, the second follows the link. `hrefApple`: used instead on Apple devices. */
+export type FooterLink = { label: string; href?: string; confirm?: string; hrefApple?: string };

@@ -38,15 +38,23 @@ function FooterAnchor({ link, num }: { link: FooterLink; num: string }) {
     setArmed(!armed);
   };
 
+  const label = <span aria-live={link.confirm ? 'polite' : undefined}>{armed ? `${link.confirm} ↗` : link.label}</span>;
+  if (!href)
+    return (
+      <span className={s.link}>
+        <span className={s.num}>{num}</span>
+        {label}
+      </span>
+    );
   return (
     <a ref={ref} href={href} className={s.link} onClick={onClick} {...(link.confirm ? { target: '_blank', rel: 'noreferrer' } : {})}>
       <span className={s.num}>{num}</span>
-      <span aria-live={link.confirm ? 'polite' : undefined}>{armed ? `${link.confirm} ↗` : link.label}</span>
+      {label}
     </a>
   );
 }
 
-/** Three link columns (also on phones), legal row on the same tracks, and the wordmark that builds with the scroll. */
+/** Four numbered blocks (2 × 2 on phones and tablets, in a row on desktop), the © line, and the wordmark that builds with the scroll. */
 export function Footer() {
   const root = useRef<HTMLElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
@@ -79,30 +87,19 @@ export function Footer() {
       <div ref={innerRef} className={`t-mono ${s.inner}`}>
         <nav ref={navRef} className={s.nav}>
           {columns.map((col, c) => (
-            <div key={col.title} className={s.col} data-reveal="">
-              <ul className={s.list}>
-                {col.links.map((l, i) => (
-                  <li key={l.label}>
-                    <FooterAnchor link={l} num={`${c + 1}.${i + 1}`} />
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul key={col.title} className={s.list} data-reveal="">
+              {col.links.map((l, i) => (
+                <li key={l.label}>
+                  <FooterAnchor link={l} num={`${c + 1}.${i + 1}`} />
+                </li>
+              ))}
+            </ul>
           ))}
         </nav>
-        {/* legal row on the column grid: © | P.IVA | Privacy + Termini */}
-        <div className={s.legal}>
-          {t.legal.map((l) => (
-            <span key={l}>{l}</span>
-          ))}
-          <span className={s.legalLinks}>
-            {t.footer.legalLinks.map((l) => (
-              <a key={l.label} href={l.href}>
-                {l.label}
-              </a>
-            ))}
-          </span>
-        </div>
+        <p className={s.copyright}>
+          <span className={s.num}>©</span>
+          <span>{t.footer.copyright}</span>
+        </p>
         {/* the wordmark closes the footer */}
         <div className={s.logo}>
           <Logo ref={logo} />
