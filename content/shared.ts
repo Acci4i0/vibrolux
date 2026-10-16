@@ -4,8 +4,8 @@ import type { Lang } from '@/lib/i18n';
 /**
  * What doesn't change with the language: paths, media, contact details.
  * MEDIA: foto() = Vibrolux's own photos (public/assets/vibrolux, from vibrolux.it, to be retouched);
- * img()/video() = stock/Commons stand-ins still waiting for an original (public/assets/preview, see CREDITS.md).
- * img() without a file renders the black placeholder.
+ * tavola()/loop() = the visual identity (public/assets/identity, made in brand/): CGI and drawings without labels, the loop video.
+ * Photos document the plant; the identity opens pages and covers (brand/index.html, "Nel sito").
  */
 
 /** Site sub-path on GitHub Pages ('' locally): media and internal links carry it, next/link and router.push add it themselves. */
@@ -16,15 +16,16 @@ export const withBase = (path: string) => BASE + path;
 export const linker = (lang: Lang) => (path: string) => withBase(lang === 'it' ? path : path === '/' ? '/en' : `/en${path}`);
 
 export const BROCHURE = withBase('/assets/vibrolux-brochure.pdf');
-const P = withBase('/assets/preview/');
 const V = withBase('/assets/vibrolux/');
+const I = withBase('/assets/identity/');
 /** where the subject sits in photos whose centre isn't the subject */
 const FOCUS: Record<string, string> = { 'facciata.jpg': '64% 50%' };
-/** stand-in from /assets/preview (stock / Commons, see CREDITS.md) */
-export const img = (file?: string, aspect = 1): MediaData => ({ src: file && P + file, aspect, focus: file && FOCUS[file] });
-export const video = (file: string): MediaData => ({ type: 'video', src: P + file, aspect: 16 / 9 });
 /** Vibrolux's own photo from /assets/vibrolux (taken from vibrolux.it; to be retouched) */
 export const foto = (file: string, aspect = 1): MediaData => ({ src: V + file, aspect, focus: FOCUS[file] });
+/** an identity plate from /assets/identity/plates: a render or a drawing, no labels (the page writes its own) */
+export const tavola = (file: string, aspect = 1): MediaData => ({ src: I + 'plates/' + file, aspect });
+/** an identity video from /assets/identity/video, 16:9, seamless loop */
+export const loop = (file: string): MediaData => ({ type: 'video', src: I + 'video/' + file, aspect: 16 / 9 });
 
 export const company = {
   name: 'Vibrolux Srl',

@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vibrolux — Identità visiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Chivo+Mono:wght@100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nero: #0F0E12; --carta: #F0EFE9; --grafite: #322D2A; --grigio: #625B58; --acciaio: #BFB8B5;
+    --blu: #21406E; --arancio: #F55A0A; --bianco: #fff;
+    --sans: Geist, Helvetica, Arial, sans-serif; --mono: 'Chivo Mono', 'Courier New', monospace;
+    --pad: clamp(16px, 3.2vw, 48px);
+    --ease: cubic-bezier(0.42, 0, 0, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--carta); color: var(--grafite); font: 440 15px/1.4 var(--sans); -webkit-font-smoothing: antialiased; }
+  img, video, svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .mono { font-family: var(--mono); font-weight: 450; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; }
+  .sq { display: inline-block; width: 7px; height: 7px; background: currentColor; margin-right: 10px; vertical-align: 1px; }
+
+  /* top bar */
+  .bar { position: sticky; top: 0; z-index: 5; display: flex; justify-content: space-between; align-items: center;
+         padding: 14px var(--pad); background: color-mix(in srgb, var(--carta) 88%, transparent); backdrop-filter: blur(12px); }
+  .bar .id { display: flex; align-items: center; gap: 10px; font-weight: 400; }
+  .bar nav { display: flex; gap: 18px; }
+  .bar nav a { text-decoration: none; opacity: 0.6; transition: opacity .25s var(--ease); }
+  .bar nav a:hover { opacity: 1; }
+  @media (max-width: 760px) { .bar nav { display: none; } }
+
+  /* hero */
+  .hero { position: relative; height: min(92vh, 900px); min-height: 520px; background: var(--nero); color: var(--carta); overflow: hidden; }
+  .hero video, .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .92; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,14,18,.0) 40%, rgba(15,14,18,.75)); }
+  .hero .in { position: absolute; left: var(--pad); right: var(--pad); bottom: var(--pad); z-index: 1;
+              display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
+  .hero h1 { font-weight: 290; font-size: clamp(44px, 8.4vw, 132px); line-height: .95; letter-spacing: -0.035em; }
+  .hero p { max-width: 360px; }
+  @media (max-width: 760px) { .hero .in { grid-template-columns: 1fr; } }
+
+  /* sections */
+  section { padding: clamp(64px, 9vw, 140px) var(--pad); }
+  section.nero { background: var(--nero); color: var(--carta); }
+  .head { display: grid; grid-template-columns: minmax(120px, 1fr) 3fr; gap: 24px; margin-bottom: clamp(36px, 5vw, 72px); }
+  .head h2 { font-weight: 290; font-size: clamp(32px, 4.6vw, 64px); line-height: 1.02; letter-spacing: -0.03em; max-width: 16ch; }
+  .head .lead { margin-top: 20px; max-width: 58ch; font-size: 17px; color: var(--grigio); }
+  .nero .head .lead { color: var(--acciaio); }
+  @media (max-width: 760px) { .head { grid-template-columns: 1fr; } }
+
+  /* concept triptych */
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .three article { background: var(--bianco); border-radius: 16px; padding: 24px; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; }
+  .three h3 { font-weight: 290; font-size: 36px; letter-spacing: -0.02em; }
+  .three p { color: var(--grigio); max-width: 34ch; }
+  @media (max-width: 900px) { .three { grid-template-columns: 1fr; } .three article { min-height: 0; gap: 40px; } }
+
+  /* system */
+  .sys { display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px; }
+  .card { background: var(--bianco); border-radius: 16px; padding: 24px; overflow: hidden; }
+  .card.dark { background: var(--nero); color: var(--carta); }
+  .card h4 { font-weight: 400; font-size: 15px; margin-bottom: 18px; }
+  .c-6 { grid-column: span 6; } .c-4 { grid-column: span 4; } .c-8 { grid-column: span 8; } .c-12 { grid-column: span 12; }
+  @media (max-width: 900px) { .c-6, .c-4, .c-8 { grid-column: span 12; } }
+
+  .anatomy { position: relative; aspect-ratio: 4 / 5; max-height: 520px; margin: 0 auto; border-radius: 6px; overflow: hidden; background: var(--carta); }
+  .anatomy img { width: 100%; height: 100%; object-fit: cover; }
+  .pin { position: absolute; display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--arancio); }
+  .pin::before { content: ''; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--arancio); }
+
+  .swatches { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  .sw { border-radius: 12px; overflow: hidden; background: var(--bianco); border: 1px solid rgba(50,45,42,.08); }
+  .sw i { display: block; aspect-ratio: 1 / 1.1; }
+  .sw div { padding: 10px 12px 12px; }
+  .sw b { display: block; font-weight: 440; }
+  .sw span { display: block; color: var(--grigio); font-size: 12.5px; margin-top: 2px; }
+  @media (max-width: 1100px) { .swatches { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 560px) { .swatches { grid-template-columns: repeat(2, 1fr); } }
+
+  .type-a { font-weight: 290; font-size: clamp(56px, 7vw, 104px); line-height: .95; letter-spacing: -0.035em; }
+  .type-b { font-weight: 440; font-size: 20px; margin-top: 10px; }
+  .type-c { font-family: var(--mono); font-weight: 450; text-transform: uppercase; letter-spacing: .06em; font-size: 15px; margin-top: 18px; }
+  .spec { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; margin-top: 26px; color: var(--grigio); font-size: 13px; }
+
+  .line-demo { padding: 36px 0 12px; }
+  .line-demo img { width: 100%; height: auto; }
+
+  /* poster grids */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .grid.two { grid-template-columns: repeat(2, 1fr); }
+  .grid a { display: block; border-radius: 10px; overflow: hidden; background: #000; }
+  .grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform .6s var(--ease); }
+  .grid a:hover img { transform: scale(1.025); }
+  figure figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 12px 2px 20px; }
+  figure figcaption span:last-child { color: var(--grigio); text-align: right; }
+  .nero figure figcaption span:last-child { color: var(--acciaio); }
+  @media (max-width: 900px) { .grid, .grid.two { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .grid, .grid.two { grid-template-columns: 1fr; } }
+
+  .wide { display: grid; gap: 8px; }
+  .wide a, .wide video { border-radius: 10px; overflow: hidden; width: 100%; }
+  .wide img, .wide video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+
+  /* map */
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 14px 12px 14px 0; border-top: 1px solid rgba(50,45,42,.16); vertical-align: top; }
+  th { font-family: var(--mono); font-weight: 450; text-transform: uppercase; letter-spacing: .06em; font-size: 11px; color: var(--grigio); }
+  td code { font: 450 12.5px var(--mono); color: var(--grafite); word-break: break-all; }
+  td.thumb { width: 72px; }
+  td.thumb img { width: 56px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; }
+  @media (max-width: 760px) { .map thead { display: none; } .map tr { display: grid; grid-template-columns: 64px 1fr; } .map td { border: 0; padding: 4px 0; } .map td.thumb { grid-row: span 3; padding-top: 14px; } .map tr { border-top: 1px solid rgba(50,45,42,.16); padding: 10px 0; } }
+
+  .rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 48px; counter-reset: r; }
+  .rules li { list-style: none; padding: 18px 0; border-top: 1px solid rgba(240,239,233,.18); display: grid; grid-template-columns: 48px 1fr; }
+  .rules li::before { counter-increment: r; content: counter(r, decimal-leading-zero); font: 450 11.5px var(--mono); color: var(--acciaio); padding-top: 3px; }
+  @media (max-width: 760px) { .rules { grid-template-columns: 1fr; } }
+
+  footer { padding: 40px var(--pad) 56px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; color: var(--grigio); }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="id">
+    <svg viewBox="0 0 66 50" height="20" aria-hidden="true"><path fill="#21406E" d="M58.44 24.76C58.44 38.43 47.36 49.52 33.68 49.52C20.01 49.52 8.92 38.43 8.92 24.76C8.92 11.09 20.01 0.00 33.68 0.00C47.36 0.00 58.44 11.09 58.44 24.76"/><path fill="#fff" stroke="#0F0E12" stroke-width="1.6" paint-order="stroke" d="M48.59 7.50L46.02 11.61L34.97 29.79C34.60 30.39 34.18 30.93 33.75 31.44L33.51 31.72C33.49 31.75 32.66 32.78 31.08 33.82C29.52 34.85 27.19 35.89 24.23 35.89C23.88 35.89 23.54 35.87 23.18 35.84C22.54 35.80 21.91 35.70 21.27 35.56L24.54 40.76C26.35 43.64 29.52 45.40 32.92 45.40L33.40 45.40C36.82 45.40 40.00 43.63 41.81 40.73L65.95 1.96L58.55 1.96C54.49 1.96 50.73 4.05 48.59 7.50"/><path fill="#fff" stroke="#0F0E12" stroke-width="1.6" paint-order="stroke" d="M24.07 34.85C27.19 34.85 30.23 33.60 32.46 31.32L17.59 7.45C15.45 4.03 11.68 1.96 7.65 1.96L0.20 1.96L20.48 34.28C21.46 34.58 22.39 34.75 23.27 34.82C23.53 34.84 23.80 34.85 24.07 34.85"/></svg>
+    <span>Vibrolux — Identità visiva</span>
+  </div>
+  <nav class="mono">
+    <a href="#concetto">1.0 Concetto</a><a href="#sistema">2.0 Sistema</a><a href="#materia">3.0 Materia</a><a href="#specs">4.0 Specs</a><a href="#lavorazioni">5.0 Lavorazioni</a><a href="#sito">6.0 Nel sito</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <video src="../public/assets/identity/video/vibratore-loop.mp4" poster="../public/assets/identity/plates/vibratore-16x9.jpg" autoplay muted loop playsinline></video>
+  <div class="in">
+    <h1>Dalla materia<br>alla luce.</h1>
+    <p><span class="mono"><span class="sq"></span>Vibro + Lux</span><br><br>Vibrolux toglie al metallo ciò che lo rende opaco — bave, ossidi, rugosità — finché la superficie restituisce la luce. L’identità racconta questo passaggio, e nient’altro.</p>
+  </div>
+</div>
+
+<section id="concetto">
+  <div class="head">
+    <div class="mono">1.0 Concetto</div>
+    <div>
+      <h2>Il metodo di T1, la materia di Vibrolux.</h2>
+      <p class="lead">Per T1 Energy Yuri Roga ha costruito l’identità su tre registri: il materiale isolato come un reperto, la tavola tecnica, il prodotto in luce da studio. Su Vibrolux lo stesso metodo trova tre cose vere: i media con cui si lavora, i numeri con cui si misura, la superficie che ne esce.</p>
+    </div>
+  </div>
+  <div class="three">
+    <article><span class="mono"><span class="sq"></span>01</span><div><h3>Materia</h3><p>Corindone, chips ceramici, microsfere, sfere d’acciaio, granulato vegetale: i media della finitura, ciascuno da solo, in CGI, su Carta o su Nero.</p></div></article>
+    <article><span class="mono"><span class="sq"></span>02</span><div><h3>Specs</h3><p>Le misure della brochure diventano tavole: il vibratore in esploso, 1300 × 1800 mm, 3500 m², Ra 0,01, ISO 9001:2015. Linee sottili su Carta, niente decorazione.</p></div></article>
+    <article><span class="mono"><span class="sq"></span>03</span><div><h3>Luce</h3><p>Il risultato: lo stesso pezzo metà grezzo e metà a specchio, il tornito in piedi con le luci che gli scorrono addosso. Vibro + Lux, letteralmente.</p></div></article>
+  </div>
+</section>
+
+<section id="sistema" style="padding-top:0">
+  <div class="head">
+    <div class="mono">2.0 Sistema</div>
+    <div>
+      <h2>Poche regole, sempre uguali.</h2>
+      <p class="lead">Ogni tavola ha due scritte e una sola immagine. In alto il marchio con il soggetto, in basso un quadrato e un’etichetta in mono. Il resto è materia e spazio.</p>
+    </div>
+  </div>
+  <div class="sys">
+    <div class="card c-4">
+      <h4>Anatomia della tavola · 4:5</h4>
+      <div class="anatomy">
+        <img src="../public/assets/identity/posters/materia-corindone.jpg" alt="">
+        <span class="pin" style="top:7.5%;left:62%">Marchio + soggetto</span>
+        <span class="pin" style="top:46%;left:8%">Una sola materia</span>
+        <span class="pin" style="bottom:7.2%;left:60%">■ + etichetta mono</span>
+      </div>
+    </div>
+    <div class="card c-8">
+      <h4>Colore</h4>
+      <div class="swatches">
+        <div class="sw"><i style="background:#0F0E12"></i><div><b>Nero</b><span>#0F0E12 · fondo CGI</span></div></div>
+        <div class="sw"><i style="background:#F0EFE9"></i><div><b>Carta</b><span>#F0EFE9 · fondo tavole</span></div></div>
+        <div class="sw"><i style="background:#322D2A"></i><div><b>Grafite</b><span>#322D2A · testo, linee</span></div></div>
+        <div class="sw"><i style="background:#625B58"></i><div><b>Grigio</b><span>#625B58 · secondario</span></div></div>
+        <div class="sw"><i style="background:#BFB8B5"></i><div><b>Acciaio</b><span>#BFB8B5 · su Nero</span></div></div>
+        <div class="sw"><i style="background:#21406E"></i><div><b>Blu Vibrolux</b><span>#21406E · marchio, macchine</span></div></div>
+        <div class="sw"><i style="background:#F55A0A"></i><div><b>Arancio PU</b><span>#F55A0A · un solo segno</span></div></div>
+      </div>
+      <p style="margin-top:18px;color:var(--grigio);max-width:70ch">Il Blu è quello del marchio e dei basamenti dei vibratori. L’Arancio viene dal rivestimento in poliuretano delle vasche, campionato dalle foto della brochure: è l’equivalente del verde di T1 e si usa una volta per tavola — la linea “dopo”, l’ago del comparatore, il bordo della vasca.</p>
+    </div>
+    <div class="card c-6">
+      <h4>Caratteri</h4>
+      <div class="type-a">Ra 0,01</div>
+      <div class="type-b">Geist — titoli in Light, testo in Regular</div>
+      <div class="type-c"><span class="sq"></span>Chivo Mono — etichette, maiuscolo</div>
+      <div class="spec mono" style="text-transform:none">
+        <span>Titoli</span><span>Geist 290 · −3,5% · interlinea 0,95</span>
+        <span>Testo</span><span>Geist 440 · 1,4</span>
+        <span>Etichette</span><span>Chivo Mono 450 · maiuscolo · +6%</span>
+      </div>
+    </div>
+    <div class="card c-6 dark">
+      <h4>Il profilo</h4>
+      <p style="color:var(--acciaio);max-width:46ch">Il segno della marca è una misura: un profilo di rugosità che da sinistra a destra si spiana fino a diventare una riga arancio. È il processo Vibrolux in una linea — divisore, loader, firma.</p>
+      <div class="line-demo"><img src="../public/assets/identity/svg/profilo-nero.svg" alt="Il profilo: una linea ruvida che si spiana"></div>
+      <div class="line-demo" style="background:var(--carta);border-radius:8px;padding:28px 18px"><img src="../public/assets/identity/svg/profilo-animato.svg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section id="materia" class="nero">
+  <div class="head">
+    <div class="mono">3.0 Materia</div>
+    <div>
+      <h2>I media della finitura, uno alla volta.</h2>
+      <p class="lead">L’equivalente di “T1 Material”: ciò che lavora il pezzo, isolato e ingrandito come un reperto. Su Carta i media opachi, su Nero quelli che riflettono. Ogni lavorazione ha la sua: sono le copertine del sito.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <figure><a href="../public/assets/identity/posters/materia-corindone.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/materia-corindone.jpg" alt="Materia: corindone"></a><figcaption class="mono"><span>Corindone</span><span>Sabbiatura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/materia-chips.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/materia-chips.jpg" alt="Materia: chips ceramici"></a><figcaption class="mono"><span>Chips ceramici</span><span>Vibrofinitura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/materia-sfere.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/materia-sfere.jpg" alt="Materia: sfere d’acciaio"></a><figcaption class="mono"><span>Sfere d’acciaio</span><span>Brillantatura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/materia-microsfere.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/materia-microsfere.jpg" alt="Materia: microsfere di vetro"></a><figcaption class="mono"><span>Microsfere di vetro</span><span>Brillantatura · sabbiatura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/materia-granulato.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/materia-granulato.jpg" alt="Materia: granulato vegetale"></a><figcaption class="mono"><span>Granulato vegetale</span><span>Asciugatura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/materia-acciaio.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/materia-acciaio.jpg" alt="Materia: acciaio, Ra 0,01"></a><figcaption class="mono"><span>Acciaio · Ra 0,01</span><span>Tribofinitura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/materia-acqua.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/materia-acqua.jpg" alt="Materia: acqua sull’acciaio oliato"></a><figcaption class="mono"><span>Acqua · dewatering</span><span>Lavaggi e oliature</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/lavaggio-cesto.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/lavaggio-cesto.jpg" alt="Lavaggio statico: il cesto"></a><figcaption class="mono"><span>Cesto forato</span><span>Lavaggio statico</span></figcaption></figure>
+  </div>
+</section>
+
+<section id="specs">
+  <div class="head">
+    <div class="mono">4.0 Specs</div>
+    <div>
+      <h2>I numeri della brochure, disegnati.</h2>
+      <p class="lead">L’equivalente di “T1 Solar Panel — Specs”: tavole al tratto, un solo peso di linea, nessun numero che non sia nella brochure. Ogni tavola esiste anche in SVG per il sito.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <figure><a href="../public/assets/identity/posters/specs-vibratore.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/specs-vibratore.jpg" alt="Specs: il vibratore in esploso"></a><figcaption class="mono"><span>Vibratore in esploso</span><span>Vibrofinitura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/specs-rugosita.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/specs-rugosita.jpg" alt="Specs: rugosità prima e dopo"></a><figcaption class="mono"><span>Rugosità · Ra 0,01</span><span>Tribofinitura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/specs-grappolo.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/specs-grappolo.jpg" alt="Specs: sabbiatrice a grappolo"></a><figcaption class="mono"><span>1300 × 1800 mm</span><span>Sabbiatura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/specs-sede.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/specs-sede.jpg" alt="Specs: la sede"></a><figcaption class="mono"><span>3500 m²</span><span>Azienda · la sede</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/specs-qualita.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/specs-qualita.jpg" alt="Specs: qualità ISO 9001:2015"></a><figcaption class="mono"><span>ISO 9001:2015</span><span>Azienda · qualità</span></figcaption></figure>
+  </div>
+</section>
+
+<section id="lavorazioni" class="nero">
+  <div class="head">
+    <div class="mono">5.0 Lavorazioni</div>
+    <div>
+      <h2>La macchina e il risultato.</h2>
+      <p class="lead">Il vibratore del reparto, blu e arancio come in officina, e lo stesso ingranaggio prima e dopo la tribofinitura. In 4:5 per le card, in 16:9 e in video per gli hero a tutto schermo.</p>
+    </div>
+  </div>
+  <div class="grid two">
+    <figure><a href="../public/assets/identity/posters/vibrofinitura-vibratore.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/vibrofinitura-vibratore.jpg" alt="Vibrofinitura: il vibratore"></a><figcaption class="mono"><span>Vibratore</span><span>Vibrofinitura</span></figcaption></figure>
+    <figure><a href="../public/assets/identity/posters/tribofinitura-prima-dopo.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/posters/tribofinitura-prima-dopo.jpg" alt="Tribofinitura: prima e dopo"></a><figcaption class="mono"><span>Prima | Dopo</span><span>Tribofinitura</span></figcaption></figure>
+  </div>
+  <div class="wide" style="margin-top:8px">
+    <video src="../public/assets/identity/video/vibratore-loop.mp4" poster="../public/assets/identity/video/vibratore-loop.jpg" autoplay muted loop playsinline></video>
+    <figcaption class="mono" style="display:flex;justify-content:space-between;padding:12px 2px 20px"><span>Loop · 8 s · 1600 × 900</span><span style="color:var(--acciaio)">Hero della home</span></figcaption>
+    <a href="../public/assets/identity/plates/vibratore-16x9.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/plates/vibratore-16x9.jpg" alt="Il vibratore, 16:9"></a>
+    <figcaption class="mono" style="display:flex;justify-content:space-between;padding:12px 2px 20px"><span>Vibratore · 16:9</span><span style="color:var(--acciaio)">Hero di Vibrofinitura</span></figcaption>
+    <a href="../public/assets/identity/plates/prima-dopo-16x9.jpg" target="_blank"><img loading="lazy" src="../public/assets/identity/plates/prima-dopo-16x9.jpg" alt="Prima e dopo, 16:9"></a>
+    <figcaption class="mono" style="display:flex;justify-content:space-between;padding:12px 2px 20px"><span>Prima | Dopo · 16:9</span><span style="color:var(--acciaio)">Hero di Tribofinitura</span></figcaption>
+  </div>
+</section>
+
+<section id="sito">
+  <div class="head">
+    <div class="mono">6.0 Nel sito</div>
+    <div>
+      <h2>Dove va ogni pezzo.</h2>
+      <p class="lead">La CGI apre, la foto documenta: copertine, hero e video vengono dall’identità; gli impianti e l’officina restano fotografie. Nel sito vanno le immagini senza scritte — le “plates” — perché card e hero hanno già il loro testo, in italiano e in inglese. Le tavole con le etichette sono per brochure, social e presentazioni.</p>
+    </div>
+  </div>
+  <table class="map">
+    <thead><tr><th></th><th>Contenuto</th><th>Dove</th><th>File</th></tr></thead>
+    <tbody>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/video/vibratore-loop.jpg" alt=""></td><td>Loop del vibratore</td><td>Home · hero (prima: video stock)</td><td><code>identity/video/vibratore-loop.mp4</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/materia-acqua.jpg" alt=""></td><td>Materia · Acqua</td><td>Lavaggi e oliature · copertina (accordion della home, tessera)</td><td><code>identity/plates/materia-acqua.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/materia-corindone.jpg" alt=""></td><td>Materia · Corindone</td><td>Sabbiatura · copertina</td><td><code>identity/plates/materia-corindone.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/materia-chips.jpg" alt=""></td><td>Materia · Chips ceramici</td><td>Vibrofinitura · copertina</td><td><code>identity/plates/materia-chips.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/tribofinitura-prima-dopo.jpg" alt=""></td><td>Prima | Dopo</td><td>Tribofinitura · copertina</td><td><code>identity/plates/tribofinitura-prima-dopo.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/lavaggio-cesto.jpg" alt=""></td><td>Cesto forato</td><td>Lavaggio statico · copertina</td><td><code>identity/plates/lavaggio-cesto.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/materia-microsfere.jpg" alt=""></td><td>Materia · Microsfere</td><td>Brillantatura · copertina</td><td><code>identity/plates/materia-microsfere.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/vibratore-16x9.jpg" alt=""></td><td>Vibratore · 16:9</td><td>Vibrofinitura · hero</td><td><code>identity/plates/vibratore-16x9.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/prima-dopo-16x9.jpg" alt=""></td><td>Prima | Dopo · 16:9</td><td>Tribofinitura · hero</td><td><code>identity/plates/prima-dopo-16x9.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/specs-vibratore.jpg" alt=""></td><td>Specs · Vibratore</td><td>Vibrofinitura · impianti, ultima slide “Esploso”</td><td><code>identity/plates/specs-vibratore.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/specs-grappolo.jpg" alt=""></td><td>Specs · Grappolo</td><td>Sabbiatura · impianti, ultima slide “Ingombro”</td><td><code>identity/plates/specs-grappolo.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/specs-sede.jpg" alt=""></td><td>Specs · Sede</td><td>Azienda · “In numeri”</td><td><code>identity/plates/specs-sede.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/materia-acciaio.jpg" alt=""></td><td>Materia · Acciaio</td><td>Azienda · La sede · Magazzino (prima: foto stock)</td><td><code>identity/plates/materia-acciaio.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/specs-rugosita.jpg" alt=""></td><td>Specs · Rugosità</td><td>Azienda · Metodo 02 “Analisi dei processi”</td><td><code>identity/plates/specs-rugosita.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/specs-qualita.jpg" alt=""></td><td>Specs · Qualità</td><td>Lavorazioni · hero, riquadro “Certificazione”</td><td><code>identity/plates/specs-qualita.jpg</code></td></tr>
+      <tr><td class="thumb"><img loading="lazy" src="../public/assets/identity/plates/materia-sfere.jpg" alt=""></td><td>Materia · Sfere, Granulato</td><td>Fuori dal sito: brochure, social</td><td><code>identity/posters/materia-sfere.jpg · materia-granulato.jpg</code></td></tr>
+      <tr><td class="thumb" style="vertical-align:middle"><img src="../public/assets/identity/svg/profilo.svg" alt="" style="aspect-ratio:auto;object-fit:contain"></td><td>Il profilo</td><td>Pronto per divisori, loader e firma: non ancora nel sito</td><td><code>identity/svg/profilo.svg</code> · <code>-nero</code> · <code>-animato</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="nero">
+  <div class="head">
+    <div class="mono">7.0 Regole</div>
+    <div><h2>Per tenerla intera.</h2></div>
+  </div>
+  <ol class="rules">
+    <li>Una materia per immagine. Se servono due cose, servono due tavole.</li>
+    <li>Fondi solo Nero o Carta. Niente sfumature, niente cieli, niente texture.</li>
+    <li>L’Arancio compare una volta e indica il risultato: la linea “dopo”, l’ago sullo zero.</li>
+    <li>Due scritte per tavola, sempre nello stesso posto: marchio e soggetto in alto, ■ e mono in basso.</li>
+    <li>Solo numeri veri: quelli della brochure e dei certificati. Una specifica nuova si disegna quando Vibrolux la conferma.</li>
+    <li>La CGI apre, la foto documenta: copertine e hero in CGI, impianti e officina in fotografia.</li>
+  </ol>
+</section>
+
+<footer class="mono">
+  <span>Vibrolux Srl · Sant’Ambrogio (TO)</span>
+  <span>Sorgenti in brand/ · rigenera con sh brand/render-all.sh</span>
+</footer>
+
+</body>
+</html>

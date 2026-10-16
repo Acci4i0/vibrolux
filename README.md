@@ -49,7 +49,9 @@ content/it.ts, content/en.ts   all the copy and links, one dictionary per langua
 content/shared.ts              what doesn't change: media, contact details, paths
 content/legal.tsx              privacy notice and terms, in both languages
 lib/                           GSAP, the scroll-reveal helpers, language detection
-public/assets/                 the brochure, Vibrolux's photos, the last stand-ins
+public/assets/                 the brochure, Vibrolux's photos, Sant'Ambrogio
+public/assets/identity/        the identity's posters, plates, drawings and loop video
+brand/                         how those are made: Blender scenes, poster composer, brand book
 ```
 
 ## Editing
@@ -83,15 +85,23 @@ Locally the variable is unset and the site runs from the root.
 
 The photos in `public/assets/vibrolux/` are Vibrolux's own, taken from
 vibrolux.it (resized and lightly cropped): they hold the layout until the
-retouched shots arrive. `public/assets/preview/` keeps the last two stand-ins
-with no original yet — the home video and the warehouse photo — credited in
-[`CREDITS.md`](public/assets/preview/CREDITS.md).
+retouched shots arrive. They document the plant — the impianti carousels, the
+company pages. Covers, heroes and the home video come from the identity in
+`public/assets/identity/` (see below), which replaced the last stock stand-ins.
 
 The Contatti page shows Sant'Ambrogio instead of a map: the Sacra di San
 Michele and the abbey castle, by Elio Pallard on Wikimedia Commons
 (CC BY-SA 4.0, resized; the credit stays under the photo), in
 `public/assets/sant-ambrogio/` with its
 [`CREDITS.md`](public/assets/sant-ambrogio/CREDITS.md).
+
+## Visual identity
+
+The identity — CGI studies of the finishing media, technical sheets drawn from
+the brochure's numbers, the gear before and after — follows Yuri Roga's work for
+T1 Energy. [`brand/index.html`](brand/index.html) shows the system and where
+each piece goes on the site; [`brand/README.md`](brand/README.md) explains how
+to regenerate it.
 
 ## Animation spec
 
@@ -103,5 +113,5 @@ it (captures and Playwright scripts) stays out of the repository.
 ## Rights
 
 The site and its contents belong to Vibrolux Srl. This repository holds the
-source; it carries no open-source licence. The preview media keep the licences
-listed in their credits file.
+source; it carries no open-source licence. The Sant'Ambrogio photo keeps the
+licence listed in its credits file.
