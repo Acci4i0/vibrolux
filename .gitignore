@@ -40,7 +40,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 _research/
-
-# identity: raw renders and loop frames (brand/render-all.sh rebuilds them)
-/brand/renders/
-__pycache__/
