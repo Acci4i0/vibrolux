@@ -35,7 +35,7 @@ export function Cards({ data }: { data: Data }) {
         <div ref={eyebrow} className={s.eyebrow} data-reveal="">
           <h2 className="t-eyebrow">{data.eyebrow}</h2>
         </div>
-        <div ref={content} className={s.content} data-reveal="" data-lines="p">
+        <div ref={content} className={s.content} data-reveal="">
           <p className="t-large">{data.text}</p>
         </div>
       </div>
@@ -43,7 +43,7 @@ export function Cards({ data }: { data: Data }) {
         {data.items.map((it, i) => (
           <a key={i} href={it.href} className={s.card} data-reveal="">
             <div className={s.cardMedia}>
-              <Media {...it.media} motion="reveal" />
+              <Media {...it.media} />
             </div>
             <div className={s.cardContent}>
               <div className="t-mono">{it.label}</div>

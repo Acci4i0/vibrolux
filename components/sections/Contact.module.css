@@ -79,10 +79,6 @@
   overflow: hidden;
   position: relative;
 }
-.photo picture {
-  display: block;
-  height: 100%;
-}
 .photo img {
   display: block;
   height: 100%;

@@ -12,15 +12,13 @@ type Data = { id?: string; eyebrow: string; paragraphs: string[]; cta?: { label:
 export function TextModule({ data }: { data: Data }) {
   const root = useRef<HTMLElement>(null);
   const eyebrow = useRef<HTMLDivElement>(null);
-  const body = useRef<HTMLDivElement>(null);
-  const cta = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
+  const content = useRef<HTMLDivElement>(null);
 
   useGSAP(
     (_, contextSafe) =>
       afterMount(() => {
         reveal(eyebrow.current, { delay: ANIM.text.eyebrowDelay });
-        reveal(body.current, { delay: ANIM.text.contentDelay });
-        reveal(cta.current, { delay: ANIM.text.contentDelay + ANIM.text.ctaAfterLines });
+        reveal(content.current, { delay: ANIM.text.contentDelay });
       }, contextSafe!),
     { scope: root },
   );
@@ -31,13 +29,13 @@ export function TextModule({ data }: { data: Data }) {
         <div ref={eyebrow} className={s.eyebrow} data-reveal="">
           <h2 className="t-eyebrow">{data.eyebrow}</h2>
         </div>
-        <div className={s.content}>
-          <div ref={body} className={`t-large ${s.body}`} data-reveal="" data-lines="p">
+        <div ref={content} className={s.content} data-reveal="">
+          <div className={`t-large ${s.body}`}>
             {data.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
-          {data.cta && <Button ref={cta} href={data.cta.href} label={data.cta.label} variant="outline" data-reveal="" />}
+          {data.cta && <Button href={data.cta.href} label={data.cta.label} variant="outline" />}
         </div>
       </div>
     </section>

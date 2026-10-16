@@ -100,16 +100,6 @@ transition, the logo build — is measured and written down in
 **[ANIMATION_SPEC.md](ANIMATION_SPEC.md)**, in Italian. The raw research behind
 it (captures and Playwright scripts) stays out of the repository.
 
-On top of it, a layer of our own in the same language — the T1 system's sharp
-edges that resolve into round ones through motion (Mouthwash Studio's case
-study): photos open from a sharp inset into their rounded frame while they
-settle from a zoom, the large ones drift inside it with the scroll; the hero
-picture settles as the page appears; large text rises line by line (GSAP
-SplitText); stat numbers count up. Its values are in the second half of
-[`config/animations.ts`](config/animations.ts), the primitives in
-[`lib/reveal.ts`](lib/reveal.ts); `Media` takes `motion="reveal" | "drift"`,
-any revealed text takes `data-lines`. Reduced motion turns all of it off.
-
 ## Rights
 
 The site and its contents belong to Vibrolux Srl. This repository holds the

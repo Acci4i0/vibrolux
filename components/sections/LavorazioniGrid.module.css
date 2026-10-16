@@ -51,6 +51,10 @@
 
 /* ───────── cards (reference: module-group of module-mediaCard): three per row, two on tablets, one on phones ───────── */
 .grid {
+  container-type: inline-size;
+  /* the reference's cards are 350px wide with an 8rem radius at 1440: three per row they are wider, so the radius
+     follows the card (80/350 of its width) and each one keeps the reference's shape */
+  --card-radius: calc((100cqi - var(--gutter) * 2) / 3 * 80 / 350);
   display: grid;
   gap: var(--gutter);
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -77,6 +81,7 @@
     width: 60%;
   }
   .grid {
+    --card-radius: var(--radius-large); /* two per row, as on the reference below 1180px: its own radius */
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

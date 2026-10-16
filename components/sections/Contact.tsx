@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { useGSAP } from '@/lib/gsap';
-import { afterMount, reveal, revealMedia } from '@/lib/reveal';
+import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { company, content, maps, place } from '@/content/site';
 import { useLang } from '@/lib/i18n';
@@ -28,7 +28,6 @@ export function Contact() {
         reveal(eyebrow, { delay: ANIM.text.eyebrowDelay });
         reveal(content, { delay: ANIM.text.contentDelay });
         reveal(photo);
-        revealMedia(photo.querySelector('picture'), { drift: true });
       }, contextSafe!),
     { scope: root },
   );
@@ -67,7 +66,7 @@ export function Contact() {
       </div>
       <figure className={s.place} data-reveal="">
         <div className={s.photo}>
-          <picture data-media-reveal="">
+          <picture>
             <source media="(max-width: 767px)" srcSet={place.srcSquare} />
             <img src={place.src} alt={c.place.alt} loading="lazy" decoding="async" />
           </picture>

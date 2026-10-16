@@ -43,7 +43,6 @@
   align-items: center;
   display: flex;
   font-size: var(--size-heading-xl);
-  font-variant-numeric: tabular-nums; /* the count-up doesn't make the line jump */
   font-weight: var(--fw-light);
   letter-spacing: normal;
   line-height: 1;
@@ -54,15 +53,14 @@
   max-width: 36.6em;
 }
 .media {
-  border-radius: var(--radius-large);
   bottom: 0;
   left: 0;
-  overflow: hidden; /* the frame: the photo opens and drifts inside it */
   position: absolute;
   width: 30%;
 }
 .media [data-fill] {
   aspect-ratio: 1;
+  border-radius: var(--radius-large);
   height: auto;
   width: 100%;
 }

@@ -198,11 +198,6 @@ main section {
   html.js [data-reveal]:not([data-reveal='done']) {
     visibility: hidden;
   }
-  /* photos wait as a sharp inset, zoomed in, until revealMedia opens them (lib/reveal.ts) */
-  html.js [data-media-reveal]:not([data-media-reveal='done']) {
-    clip-path: inset(15.83%); /* ANIM.media: 82% of the frame visible at zoom 1.2 */
-    transform: scale(1.2);
-  }
 }
 
 /* ───────────── Reduced motion ───────────── */

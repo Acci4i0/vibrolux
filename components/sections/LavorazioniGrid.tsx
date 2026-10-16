@@ -37,7 +37,7 @@ export function LavorazioniGrid({ intro, eyebrow, tiles }: { intro?: Intro; eyeb
           </h2>
           {intro && (
             <>
-              <p className={s.headline} data-reveal="" data-lines="">
+              <p className={s.headline} data-reveal="">
                 {intro.headline}
               </p>
               <div className={s.sub} data-reveal="">
