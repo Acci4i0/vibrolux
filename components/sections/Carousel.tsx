@@ -103,7 +103,7 @@ export function Carousel({ data }: { data: { id?: string; eyebrow: string; items
             <div className={s.media} onClick={next}>
               {items.map((it, i) => (
                 <div key={i} className={`${s.item} ${i === active ? s.isActive : ''}`}>
-                  <Media {...it.media} className={s.itemMedia} />
+                  <Media {...it.media} className={s.itemMedia} motion="drift" />
                 </div>
               ))}
             </div>

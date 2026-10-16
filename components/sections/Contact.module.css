@@ -71,11 +71,17 @@
 /* Sant'Ambrogio in place of a map, framed like the reference's factory photos (large radius); 2:1 so that on a
    laptop it fits below the menu bar, which would otherwise sit on the Maps button */
 .photo {
+  --go-size: 5.6rem;
+  --go-inset: var(--margin-xl);
   aspect-ratio: 2 / 1;
   background: var(--color-black);
   border-radius: var(--radius-large);
   overflow: hidden;
   position: relative;
+}
+.photo picture {
+  display: block;
+  height: 100%;
 }
 .photo img {
   display: block;
@@ -83,6 +89,21 @@
   object-fit: cover;
   object-position: 50% 90%; /* the Sacra's top and the castle both in frame */
   width: 100%;
+}
+/* where it is, as on the reference's map cards (■ + mono coordinates), in a blurred pill as tall as the Maps button */
+.coords {
+  align-items: center;
+  backdrop-filter: blur(5rem);
+  -webkit-backdrop-filter: blur(5rem);
+  background-color: var(--color-bg-blur-dark);
+  border-radius: 10rem;
+  color: var(--color-white);
+  display: flex;
+  height: var(--go-size);
+  left: var(--go-inset);
+  padding: 0 1.8em;
+  position: absolute;
+  top: var(--go-inset);
 }
 /* the way to Maps: round blurred button in the top-right corner, ↗ as on the reference's outbound links */
 .go {
@@ -93,15 +114,15 @@
   border-radius: 50%;
   color: var(--color-white);
   display: flex;
-  height: 5.6rem;
+  height: var(--go-size);
   justify-content: center;
   position: absolute;
-  right: var(--margin-xl);
-  top: var(--margin-xl);
+  right: var(--go-inset);
+  top: var(--go-inset);
   transition:
     background-color var(--duration-default),
     color var(--duration-default);
-  width: 5.6rem;
+  width: var(--go-size);
 }
 .go svg {
   fill: none;
@@ -143,9 +164,8 @@
     margin-left: calc(var(--margin-3xl) * -1 + var(--gutter));
     margin-right: calc(var(--margin-3xl) * -1 + var(--gutter));
   }
-  .go {
-    right: var(--margin-lg);
-    top: var(--margin-lg);
+  .photo {
+    --go-inset: var(--margin-lg);
   }
 }
 @media (max-width: 767px) {
@@ -166,8 +186,7 @@
   .photo {
     aspect-ratio: 1;
   }
-  .go {
-    height: 4.8rem;
-    width: 4.8rem;
+  .photo {
+    --go-size: 4.8rem;
   }
 }

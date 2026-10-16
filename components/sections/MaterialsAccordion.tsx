@@ -51,7 +51,7 @@ export function MaterialsAccordion({ data }: { data: { eyebrow: string; more: st
         <div className={s.mediaCol}>
           {data.items.map((it, i) => (
             <div key={i} className={`${s.media} ${active === i ? s.isActive : ''}`}>
-              <Media {...it.media} />
+              <Media {...it.media} motion="reveal" />
             </div>
           ))}
         </div>

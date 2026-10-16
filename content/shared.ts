@@ -52,6 +52,8 @@ export const place = {
   src: S + 'sacra-castello.jpg',
   /** phones: the square crop by the same author */
   srcSquare: S + 'sacra-castello-quadrata.jpg',
+  /** Vibrolux on the map, written on the photo as on the reference's map cards */
+  coords: '45.09064° N, 7.37769° E',
   credit: { author: 'Elio Pallard', license: 'CC BY-SA 4.0', href: 'https://commons.wikimedia.org/wiki/File:La_Sacra_la_montagna_e_il_castello01.jpg' },
 };
 

@@ -19,6 +19,7 @@
   justify-content: center;
   overflow: hidden;
   position: relative;
+  transition: border-radius var(--duration-longer) var(--ease-ui);
   width: 100%;
 }
 .mediaInner {
@@ -73,6 +74,10 @@
 }
 
 @media (hover: hover) {
+  /* round → sharper on hover: the reference's round/sharp tension, the other way round from the news cards */
+  .card:hover .media {
+    border-radius: calc(var(--radius-large) / 2);
+  }
   .card:hover .icon {
     background-color: var(--color-white);
     color: var(--color-black);

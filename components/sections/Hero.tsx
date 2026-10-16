@@ -26,6 +26,12 @@ export function Hero({ data }: { data: Data }) {
     (_, contextSafe) => {
       // Bg → rounded card, scrubbed (desktop only)
       const { scrub } = ANIM.hero;
+      // the picture settles from a zoom as the page appears (ours, ANIM.heroZoom; hidden by the loader / page fade until then)
+      const { delay, ...zoom } = ANIM.heroZoom;
+      gsap.matchMedia().add(MOTION_OK, () => {
+        gsap.fromTo(bg.current!.firstElementChild, { scale: zoom.scale }, { scale: 1, duration: zoom.duration, ease: zoom.ease, delay });
+      });
+
       gsap.matchMedia().add(`${scrub.media} and ${MOTION_OK}`, () => {
         gsap.to(bg.current, {
           scale: () => (100 - scrub.shrinkK / window.innerWidth) / 100,
@@ -53,7 +59,7 @@ export function Hero({ data }: { data: Data }) {
       <div className={s.inner}>
         <div className={`${s.content} ${data.corner ? '' : s.noCorner}`}>
           <div className={s.left}>
-            <h1 ref={headline} className={s.headline} data-reveal="">
+            <h1 ref={headline} className={s.headline} data-reveal="" data-lines="">
               {data.headline}
             </h1>
             <Button ref={cta} href={data.cta.href} label={data.cta.label} variant="blur" data-reveal="" />

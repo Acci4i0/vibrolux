@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { useGSAP } from '@/lib/gsap';
-import { afterMount, reveal, revealStagger } from '@/lib/reveal';
+import { afterMount, countUp, reveal, revealStagger } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { Button } from '../Button';
 import { Media, type MediaData } from '../Media';
@@ -19,18 +19,25 @@ type Data = {
 export function Stats({ data }: { data: Data }) {
   const root = useRef<HTMLElement>(null);
   const eyebrow = useRef<HTMLDivElement>(null);
-  const content = useRef<HTMLDivElement>(null);
+  const content = useRef<HTMLParagraphElement>(null);
+  const cta = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
   const list = useRef<HTMLDivElement>(null);
 
   useGSAP(
     (_, contextSafe) =>
       afterMount(() => {
         reveal(eyebrow.current);
-        revealStagger(list.current, list.current!.children, {
+        const items = list.current!.children;
+        revealStagger(list.current, items, {
           delay: ANIM.stats.statsDelay,
           stagger: ANIM.stats.statsStagger,
         });
+        // each number counts up as its stat rises (ours, ANIM.countUp)
+        Array.from(items).forEach((it, i) =>
+          countUp(it.firstElementChild as HTMLElement, { delay: ANIM.stats.statsDelay + i * ANIM.stats.statsStagger, trigger: list.current }),
+        );
         reveal(content.current, { delay: ANIM.stats.contentDelay });
+        reveal(cta.current, { delay: ANIM.stats.contentDelay + ANIM.text.ctaAfterLines });
       }, contextSafe!),
     { scope: root },
   );
@@ -41,10 +48,12 @@ export function Stats({ data }: { data: Data }) {
         <div ref={eyebrow} className={s.eyebrow} data-reveal="">
           <h2 className="t-eyebrow">{data.eyebrow}</h2>
         </div>
-        <div ref={content} className={s.contentCol} data-reveal="">
+        <div className={s.contentCol}>
           <div className={s.content}>
-            <p className="t-large">{data.text}</p>
-            <Button href={data.cta.href} label={data.cta.label} variant="outline" className={s.cta} />
+            <p ref={content} className="t-large" data-reveal="" data-lines="">
+              {data.text}
+            </p>
+            <Button ref={cta} href={data.cta.href} label={data.cta.label} variant="outline" className={s.cta} data-reveal="" />
           </div>
           <div ref={list} className={s.list}>
             {data.items.map((it, i) => (
@@ -56,7 +65,7 @@ export function Stats({ data }: { data: Data }) {
           </div>
         </div>
         <div className={s.media}>
-          <Media {...data.media} />
+          <Media {...data.media} motion="drift" />
         </div>
       </div>
     </section>

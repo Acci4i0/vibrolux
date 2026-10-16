@@ -8,7 +8,7 @@ export function MediaCard({ label, href, media, ...rest }: Card & Record<`data-$
   return (
     <a href={href} className={s.card} {...rest}>
       <div className={s.media}>
-        <Media {...media} className={s.mediaInner} />
+        <Media {...media} className={s.mediaInner} motion="reveal" />
         <div className={s.ctaWrap}>
           <span className={s.cta}>
             <span>{label}</span>

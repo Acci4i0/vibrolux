@@ -52,7 +52,8 @@ export const ANIM = {
     },
   },
 
-  text: { eyebrowDelay: 0.1, contentDelay: 0.2 },
+  /** ctaAfterLines (ours): the CTA follows once the paragraph lines have started rising */
+  text: { eyebrowDelay: 0.1, contentDelay: 0.2, ctaAfterLines: 0.3 },
 
   carousel: {
     marker: { duration: 0.4, ease: 'elastic.out(0.75, 1)' },
@@ -68,6 +69,27 @@ export const ANIM = {
       borderRadius: 80,
     },
   },
+
+  /* ── beyond the reference (its motion is measured above; these are ours, in the same language:
+        sharp edges that resolve into round ones, photos that settle, text that rises line by line) ── */
+
+  /** a photo enters as a sharp-cornered inset that opens into its rounded frame, while the picture settles from a zoom */
+  media: {
+    start: 'top 85%',
+    /** share of the frame the sharp inset covers at the start (the clip is computed against the zoom) */
+    open: 0.82,
+    scale: 1.2,
+    duration: 1.6,
+    ease: 'power3.out',
+    /** drift: the picture slides inside its frame while the frame crosses the viewport (large photos only) */
+    drift: { scale: 1.1, yPercent: 4 },
+  },
+  /** the hero picture settles from a zoom as the page appears */
+  heroZoom: { scale: 1.12, duration: 2.6, delay: 0.4, ease: 'expo.out' },
+  /** large text rises line by line from a mask */
+  lines: { yPercent: 105, duration: 1.1, stagger: 0.08, ease: 'power4.out' },
+  /** stat numbers count up from zero as they appear */
+  countUp: { duration: 1.6, ease: 'power3.out' },
 
   stats: { contentDelay: 0.3, statsDelay: 0.1, statsStagger: 0.25 },
   news: { contentDelay: 0.2, listDelay: 0.1, listStagger: 0.1 },
