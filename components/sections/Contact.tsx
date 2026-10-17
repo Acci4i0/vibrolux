@@ -9,7 +9,11 @@ import { useLang } from '@/lib/i18n';
 import { useMapsHref } from '@/lib/maps';
 import s from './Contact.module.css';
 
-/** Address + mail list (one address per need) + contact rows, laid out like the text modules; then Sant'Ambrogio in a photo, with the way to Maps in its corner. */
+/**
+ * Address + mail list (one address per need) + contact rows, laid out like the text modules; then the plant as the
+ * reference's factory card (aerial photo, its name, a map card that opens Google Maps, a stats card); then Sant'Ambrogio
+ * in a photo, with the way to Maps in its corner.
+ */
 export function Contact() {
   const root = useRef<HTMLElement>(null);
   const t = content[useLang()];
@@ -24,9 +28,10 @@ export function Contact() {
   useGSAP(
     (_, contextSafe) =>
       afterMount(() => {
-        const [eyebrow, content, photo] = root.current!.querySelectorAll('[data-reveal]');
+        const [eyebrow, content, factory, photo] = root.current!.querySelectorAll('[data-reveal]');
         reveal(eyebrow, { delay: ANIM.text.eyebrowDelay });
         reveal(content, { delay: ANIM.text.contentDelay });
+        reveal(factory);
         reveal(photo);
       }, contextSafe!),
     { scope: root },
@@ -64,6 +69,37 @@ export function Contact() {
           </ul>
         </div>
       </div>
+      <div className={s.factory} data-reveal="">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className={s.factoryImg} src={c.factory.media.src} alt={c.factory.alt} loading="lazy" decoding="async" />
+        <div className={s.factoryContent}>
+          <h2 className={s.headline}>{c.factory.headline}</h2>
+        </div>
+        <div className={s.modules}>
+          <a className={`${s.module} ${s.map}`} href={maps.google} target="_blank" rel="noreferrer" aria-label={c.factory.maps}>
+            {/* the embed is larger than the card, so Google's place card and controls stay outside it; the card is the link */}
+            <iframe src={maps.embed} title="" aria-hidden tabIndex={-1} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            <p className={`t-eyebrow ${s.pill} ${s.mapCoords}`}>{place.coords}</p>
+            <p className={`t-mono ${s.pill} ${s.mapLink}`}>
+              {c.factory.mapsLabel}
+              <svg viewBox="0 0 24 24" aria-hidden>
+                <path d="M7 17 17 7M8 7h9v9" />
+              </svg>
+            </p>
+          </a>
+          <div className={`${s.module} ${s.stats}`}>
+            <p className="t-eyebrow">{c.factory.statsLabel}</p>
+            <ul className={s.statsList}>
+              {c.factory.stats.map((x) => (
+                <li key={x.value}>
+                  <span className={s.statsValue}>{x.value}</span>
+                  <span className={`t-mono ${s.statsCaption}`}>{x.caption}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
       <figure className={s.place} data-reveal="">
         <div className={s.photo}>
           <picture>
@@ -77,11 +113,6 @@ export function Contact() {
             </svg>
           </a>
         </div>
-        <figcaption className={`t-mono ${s.credit}`}>
-          <a href={place.credit.href} target="_blank" rel="noreferrer">
-            {c.place.photo}: {place.credit.author} · {place.credit.license}
-          </a>
-        </figcaption>
       </figure>
     </section>
   );

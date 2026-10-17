@@ -354,10 +354,22 @@ export const it = {
       { address: company.emails.commerciale, use: 'Offerte e rapporti commerciali' },
     ],
     keys: { tel: 'Tel', pec: 'PEC', vat: 'P.IVA' },
+    /** the plant, as the reference's factory card (t1energy.com/technology): photo, name, a map card and a stats card */
+    factory: {
+      media: foto('cover_1.jpg', 1.83),
+      alt: 'Lo stabilimento Vibrolux a Sant’Ambrogio, dall’alto',
+      headline: 'Sant’Ambrogio',
+      maps: 'Apri la sede in Google Maps',
+      mapsLabel: 'Google Maps',
+      statsLabel: 'La sede in numeri',
+      stats: [
+        { value: '3500 mq', caption: 'Superficie complessiva' },
+        { value: '2000 mq', caption: 'Fabbricati: lavorazioni e uffici' },
+      ],
+    },
     place: {
-      alt: 'La Sacra di San Michele sul monte Pirchiriano e il castello abbaziale di Sant’Ambrogio',
+      alt: 'La Sacra di San Michele sul monte Pirchiriano, sopra Sant’Ambrogio e la valle',
       maps: 'Apri in Maps',
-      photo: 'Foto',
     },
   },
 };

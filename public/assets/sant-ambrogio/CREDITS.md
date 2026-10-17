@@ -1,8 +1,8 @@
 # Crediti — Sant'Ambrogio di Torino
 
-Foto della pagina Contatti, al posto della mappa. Ridimensionate; l'autore e la licenza restano scritti sotto la foto.
+Foto della pagina Contatti, sotto la card dello stabilimento.
 
-## Foto — Wikimedia Commons
+- sacra.jpg — la Sacra di San Michele dall'alto, sopra la valle (1200 × 674)
+- sacra-quadrata.jpg (telefono) — ritaglio quadrato della stessa foto
 
-- sacra-castello.jpg — La Sacra la montagna e il castello01.jpg — autore: Elio Pallard — licenza: CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:La_Sacra_la_montagna_e_il_castello01.jpg
-- sacra-castello-quadrata.jpg (telefono) — La Sacra la montagna e il castello.jpg — autore: Elio Pallard — licenza: CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:La_Sacra_la_montagna_e_il_castello.jpg
+Fornita per il sito; fonte e licenza da indicare qui (e sotto la foto, se la licenza lo chiede).

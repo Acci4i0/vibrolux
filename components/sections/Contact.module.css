@@ -65,8 +65,142 @@
   flex: none;
   width: 6em;
 }
-.place {
+/* ── The plant, as the reference's factory card (t1energy.com/technology, measured at 1440 × 900):
+   aerial photo 1.83:1 with the 8rem radius, the name at the bottom left (padding 11.2rem), and on the right a
+   column of two 37.7rem squares — map and stats — in blurred glass, 7.2rem radius, a gutter apart. ── */
+.factory {
+  --module: min(37.7rem, calc((100cqw / 1.83 - var(--gutter) * 3) / 2));
+  aspect-ratio: 1.83 / 1;
+  background: var(--color-black);
+  border-radius: var(--radius-large);
+  color: var(--color-white);
+  container-type: inline-size;
   margin: var(--margin-6xl) calc(var(--margin-4xl) * -1 + var(--gutter)) 0;
+  overflow: hidden;
+  position: relative;
+}
+.factoryImg {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+.factoryContent {
+  align-items: flex-end;
+  display: flex;
+  inset: 0;
+  padding: 11.2rem;
+  pointer-events: none;
+  position: absolute;
+}
+.headline {
+  font-size: var(--size-heading-xl);
+  font-weight: var(--fw-light);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.modules {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+  padding: var(--gutter);
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.module {
+  aspect-ratio: 1;
+  backdrop-filter: blur(2.5rem);
+  -webkit-backdrop-filter: blur(2.5rem);
+  background-color: var(--color-bg-blur-dark);
+  border-radius: 7.2rem;
+  overflow: hidden;
+  position: relative;
+  width: var(--module);
+}
+/* the map: Google's embed, bigger than the card so its place card, controls and footer fall outside; the card is the link.
+   Always square and centred on the card: Google keeps the pin in the middle only when the embed is square. */
+.map {
+  background-color: #e5e3df;
+  container-type: size;
+  display: block;
+}
+.map iframe {
+  --side: calc(max(100cqw, 100cqh) + 60rem);
+  border: 0;
+  height: var(--side);
+  left: calc(50% - var(--side) / 2);
+  pointer-events: none;
+  position: absolute;
+  top: calc(50% - var(--side) / 2);
+  width: var(--side);
+}
+/* labels on the map, in the same blurred pill as the coordinates on the Sant'Ambrogio photo */
+.pill {
+  align-items: center;
+  backdrop-filter: blur(5rem);
+  -webkit-backdrop-filter: blur(5rem);
+  background-color: var(--color-bg-blur-dark);
+  border-radius: 10rem;
+  color: var(--color-white);
+  display: flex;
+  gap: 0.6em;
+  height: 3.6rem;
+  padding: 0 1.4em;
+  position: absolute;
+  white-space: nowrap;
+}
+.mapCoords {
+  left: 3.2rem;
+  top: 3.2rem;
+}
+.mapLink {
+  bottom: 3.2rem;
+  right: 3.2rem;
+  transition:
+    background-color var(--duration-default),
+    color var(--duration-default);
+}
+.mapLink svg {
+  fill: none;
+  height: 1.4rem;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  width: 1.4rem;
+}
+@media (hover: hover) {
+  .map:hover .mapLink {
+    background-color: var(--color-white);
+    color: var(--color-black);
+  }
+}
+.stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem 4rem 5.4rem;
+}
+.statsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.statsValue {
+  display: block;
+  font-size: 4.32rem;
+  font-weight: var(--fw-light);
+  line-height: 1.2;
+}
+.statsCaption {
+  display: block;
+  margin-top: 0.48rem;
+}
+
+/* Sant'Ambrogio, right under the plant card: a gutter apart, as the reference stacks its cards */
+.place {
+  margin: var(--gutter) calc(var(--margin-4xl) * -1 + var(--gutter)) 0;
 }
 /* Sant'Ambrogio in place of a map, framed like the reference's factory photos (large radius); 2:1 so that on a
    laptop it fits below the menu bar, which would otherwise sit on the Maps button */
@@ -83,7 +217,7 @@
   display: block;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 90%; /* the Sacra's top and the castle both in frame */
+  object-position: 50% 50%;
   width: 100%;
 }
 /* where it is, as on the reference's map cards (■ + mono coordinates), in a blurred pill as tall as the Maps button */
@@ -136,29 +270,56 @@
 .go:hover:active {
   transform: scale(0.97);
 }
-/* CC BY-SA: author and licence stay with the photo */
-.credit {
-  color: var(--color-grey2);
-  margin-top: var(--gutter);
-  text-align: right;
-}
-.credit a {
-  transition: opacity var(--duration-default);
-}
-@media (hover: hover) {
-  .credit a:hover {
-    opacity: 0.66;
-  }
-}
 
 @media (max-width: 1179.98px) {
   .contact {
     padding-left: var(--margin-3xl);
     padding-right: var(--margin-3xl);
   }
+  .factory,
   .place {
     margin-left: calc(var(--margin-3xl) * -1 + var(--gutter));
     margin-right: calc(var(--margin-3xl) * -1 + var(--gutter));
+  }
+  /* tablet: a taller photo, the name at the top, the two cards side by side along the bottom */
+  .factory {
+    aspect-ratio: 1.2 / 1;
+  }
+  .factoryContent {
+    align-items: flex-start;
+    padding: 4rem;
+  }
+  .modules {
+    flex-direction: row;
+    left: 0;
+    top: auto;
+  }
+  .module {
+    aspect-ratio: 1.87 / 1;
+    border-radius: 4rem;
+    flex: 1 1 0;
+    width: auto;
+  }
+  .stats {
+    padding: 2.4rem 2.8rem 2.8rem;
+  }
+  .statsList {
+    flex-direction: row;
+    gap: 2.4rem;
+  }
+  .statsList li {
+    flex: 1 1 0;
+  }
+  .statsValue {
+    font-size: var(--size-heading-md);
+  }
+  .mapCoords {
+    left: 2.4rem;
+    top: 2.4rem;
+  }
+  .mapLink {
+    bottom: 2.4rem;
+    right: 2.4rem;
   }
   .photo {
     --go-inset: var(--margin-lg);
@@ -176,8 +337,30 @@
   .content {
     width: 100%;
   }
-  .place {
+  /* phone: as the reference — a tall photo, the name at the top, the two cards stacked at the bottom */
+  .factory {
+    aspect-ratio: 0.475 / 1;
     margin: var(--margin-6xl) 0 0;
+  }
+  .headline {
+    font-size: var(--size-heading-lg);
+  }
+  .modules {
+    flex-direction: column;
+  }
+  .module {
+    border-radius: 3.2rem;
+    flex: none;
+    width: 100%;
+  }
+  .stats {
+    padding: 2.4rem;
+  }
+  .statsValue {
+    font-size: 2.8rem;
+  }
+  .place {
+    margin: var(--gutter) 0 0;
   }
   .photo {
     aspect-ratio: 1;

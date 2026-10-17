@@ -350,10 +350,22 @@ export const en: Site = {
       { address: company.emails.commerciale, use: 'Offers and commercial relations' },
     ],
     keys: { tel: 'Tel', pec: 'PEC', vat: 'VAT' },
+    /** the plant, as the reference's factory card (t1energy.com/technology): photo, name, a map card and a stats card */
+    factory: {
+      media: foto('cover_1.jpg', 1.83),
+      alt: 'The Vibrolux plant in Sant’Ambrogio, from above',
+      headline: 'Sant’Ambrogio',
+      maps: 'Open the site in Google Maps',
+      mapsLabel: 'Google Maps',
+      statsLabel: 'The site in figures',
+      stats: [
+        { value: '3500 m²', caption: 'Total area' },
+        { value: '2000 m²', caption: 'Buildings: processing and offices' },
+      ],
+    },
     place: {
-      alt: 'The Sacra di San Michele on Mount Pirchiriano and the abbey castle of Sant’Ambrogio',
+      alt: 'The Sacra di San Michele on Mount Pirchiriano, above Sant’Ambrogio and the valley',
       maps: 'Open in Maps',
-      photo: 'Photo',
     },
   },
 };

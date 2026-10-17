@@ -44,17 +44,19 @@ const MAPS_QUERY = encodeURIComponent('Vibrolux Srl, Via Don Emilio Berto 6, 100
 export const maps = {
   google: `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
   apple: `https://maps.apple.com/?q=${MAPS_QUERY}`,
+  /** Google's embed of the Vibrolux Srl place: the map card on Contatti (see the privacy notice) */
+  embed:
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2816.7607632673407!2d7.377691215931506!3d45.09064427909836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4788462dac3fab3d%3A0xfaf018a173a6521a!2sVibrolux+Srl!5e0!3m2!1sit!2sit!4v1548257158260',
 };
 
-/** Contatti: Sant'Ambrogio instead of a map — the Sacra di San Michele and the abbey castle (Wikimedia Commons, CC BY-SA 4.0: the credit stays on the page) */
+/** Contatti: Sant'Ambrogio from the air — the Sacra di San Michele above the valley */
 const S = withBase('/assets/sant-ambrogio/');
 export const place = {
-  src: S + 'sacra-castello.jpg',
-  /** phones: the square crop by the same author */
-  srcSquare: S + 'sacra-castello-quadrata.jpg',
+  src: S + 'sacra.jpg',
+  /** phones: a square crop on the Sacra */
+  srcSquare: S + 'sacra-quadrata.jpg',
   /** Vibrolux on the map, written on the photo as on the reference's map cards */
   coords: '45.09064° N, 7.37769° E',
-  credit: { author: 'Elio Pallard', license: 'CC BY-SA 4.0', href: 'https://commons.wikimedia.org/wiki/File:La_Sacra_la_montagna_e_il_castello01.jpg' },
 };
 
 type Slide = { label: string; text: string; media: MediaData };
