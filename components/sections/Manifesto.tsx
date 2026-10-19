@@ -6,7 +6,7 @@ import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import s from './Manifesto.module.css';
 
-type Data = { eyebrow: string; text: string; caption: string; coords: string };
+type Data = { eyebrow: string; text: string };
 
 /**
  * A statement on a full-width card in the brand colour (reference: on.energy's manifesto): the words light up
@@ -43,10 +43,6 @@ export function Manifesto({ data }: { data: Data }) {
             <span key={i}>{w} </span>
           ))}
         </p>
-        <div className={`t-mono ${s.foot}`}>
-          <span>{data.caption}</span>
-          <span>{data.coords}</span>
-        </div>
       </div>
     </section>
   );

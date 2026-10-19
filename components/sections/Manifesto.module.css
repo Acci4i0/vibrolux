@@ -7,47 +7,32 @@
   background-color: var(--color-brand);
   border-radius: 2.4rem;
   color: var(--color-white);
-  display: flex;
-  flex-direction: column;
-  min-height: calc(var(--vh) * 92);
-  padding: var(--margin-2xl) var(--margin-4xl) var(--margin-2xl);
+  padding: var(--margin-2xl) var(--margin-4xl) var(--margin-4xl);
 }
 .text {
   font-size: var(--size-heading-lg);
   font-weight: var(--fw-light);
   letter-spacing: -0.005em;
   line-height: 1.12;
-  margin: auto 0;
+  margin-top: var(--margin-6xl);
   max-width: 19em;
-  padding: var(--margin-5xl) 0;
   text-wrap: pretty;
-}
-.foot {
-  display: flex;
-  justify-content: space-between;
-  opacity: 0.7;
 }
 
 @media (max-width: 1179.98px) {
   .card {
-    min-height: calc(var(--vh) * 80);
-    padding: var(--margin-xl) var(--margin-3xl);
+    padding: var(--margin-xl) var(--margin-3xl) var(--margin-3xl);
   }
 }
 
 @media (max-width: 767px) {
   .card {
     border-radius: var(--radius-button);
-    min-height: calc(var(--vh) * 85);
     padding: var(--margin-lg) var(--margin-lg) var(--margin-xl);
   }
   .text {
     font-size: var(--size-heading-md);
     line-height: 1.15;
-    padding: var(--margin-4xl) 0;
-  }
-  .foot {
-    flex-direction: column;
-    gap: var(--margin-xs);
+    margin-top: var(--margin-5xl);
   }
 }

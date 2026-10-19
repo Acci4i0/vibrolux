@@ -31,7 +31,7 @@ npm run start    # serve that build
 ```
 app/page.tsx                   home
 app/azienda/                   company: profile, the premises, quality
-app/lavorazioni/               the vibrator hero, the manifesto card, the six processes as tiles
+app/lavorazioni/               the manifesto card and the six processes as tiles
 app/lavorazioni/[slug]/        one page per process, with a plant carousel where there is one
 app/contatti/                  address, mail list, contact details, the plant card, Sant'Ambrogio in a photo
 app/privacy/, app/termini-e-condizioni/
@@ -49,8 +49,7 @@ content/it.ts, content/en.ts   all the copy and links, one dictionary per langua
 content/shared.ts              what doesn't change: media, contact details, paths
 content/legal.tsx              privacy notice and terms, in both languages
 lib/                           GSAP, the scroll-reveal helpers, language detection
-public/assets/                 the brochure, Vibrolux's photos, our renders, the last stand-ins
-render/vbc.py                  the Blender scene behind the Lavorazioni hero
+public/assets/                 the brochure, Vibrolux's photos, the last stand-ins
 ```
 
 ## Editing
@@ -81,13 +80,6 @@ and `withBase()` in `content/shared.ts` prefixes the media and the internal link
 Locally the variable is unset and the site runs from the root.
 
 ## Photos
-
-The Lavorazioni hero is a render of ours, not a photo: a circular vibrator after
-LM's VBC 400 — the machine series Vibrolux works with — cut open by a quarter,
-its channel full of ceramic preforms with a polished gear on top, in Blender
-Cycles. The scene is [`render/vbc.py`](render/vbc.py) (how to run it is at the
-top of the file); the picture is in `public/assets/lavorazioni/` at 1440 and
-2880 px wide.
 
 The photos in `public/assets/vibrolux/` are Vibrolux's own, taken from
 vibrolux.it (resized and lightly cropped): they hold the layout until the

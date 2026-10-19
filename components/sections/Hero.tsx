@@ -13,8 +13,6 @@ type Data = {
   headline: string;
   cta: { label: string; href: string };
   corner?: { heading: string; text: string; media: MediaData; href: string };
-  /** the picture comes in from black and then drifts, very slowly, like a camera breathing (Lavorazioni) */
-  drift?: boolean;
 };
 
 export function Hero({ data }: { data: Data }) {
@@ -50,7 +48,7 @@ export function Hero({ data }: { data: Data }) {
   return (
     <section ref={root} className={s.hero}>
       <div ref={bg} className={s.bg}>
-        <Media {...data.media} className={`${s.media} ${data.drift ? s.drift : ''}`} />
+        <Media {...data.media} className={s.media} />
       </div>
       <div className={s.inner}>
         <div className={`${s.content} ${data.corner ? '' : s.noCorner}`}>

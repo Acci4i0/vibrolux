@@ -9,11 +9,6 @@ export type MediaData = {
   aspect?: number;
   /** Focal point kept in frame when the box crops the asset (CSS object-position), e.g. '80% 50%'. */
   focus?: string;
-  /** Images: other widths of the same picture (img srcset), and how wide it is shown (sizes). */
-  srcSet?: string;
-  sizes?: string;
-  /** above the fold: load at once, first */
-  priority?: boolean;
 };
 
 type Props = MediaData & { className?: string; style?: CSSProperties };
@@ -22,7 +17,7 @@ type Props = MediaData & { className?: string; style?: CSSProperties };
  * Asset or black placeholder. Replace `src` values in content/site.ts with files
  * from /public/assets — the layout already reserves the right box.
  */
-export function Media({ src, type = 'image', alt = '', aspect = 1, focus, srcSet, sizes, priority, className, style }: Props) {
+export function Media({ src, type = 'image', alt = '', aspect = 1, focus, className, style }: Props) {
   const box: CSSProperties = { position: 'relative', width: '100%', display: 'block', ...style };
   const fill: CSSProperties = { width: '100%', height: '100%', objectFit: 'cover', objectPosition: focus, display: 'block' };
 
@@ -39,17 +34,7 @@ export function Media({ src, type = 'image', alt = '', aspect = 1, focus, srcSet
         <video data-fill src={src} autoPlay muted loop playsInline style={{ ...fill, aspectRatio: aspect }} />
       ) : (
         // eslint-disable-next-line @next/next/no-img-element
-        <img
-          data-fill
-          src={src}
-          srcSet={srcSet}
-          sizes={sizes}
-          alt={alt}
-          loading={priority ? 'eager' : 'lazy'}
-          fetchPriority={priority ? 'high' : undefined}
-          decoding="async"
-          style={{ ...fill, aspectRatio: aspect }}
-        />
+        <img data-fill src={src} alt={alt} loading="lazy" decoding="async" style={{ ...fill, aspectRatio: aspect }} />
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, place, render, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 import type { Site } from './it';
 
 /** English texts: same shape as it.ts, same slugs under /en. British spelling, decimal point. */
@@ -314,17 +314,13 @@ export const en: Site = {
   /* ───────── Processes ───────── */
   lavorazioniPage: {
     hero: {
-      /** our render of a circular vibrator after LM's VBC 400, cut open (render/vbc.py) */
-      media: { ...render('vibratore-sezione', 16 / 10, '58% 48%'), alt: 'A circular vibrator cut open: the ceramic preforms and a polished gear' },
+      media: foto('mg_7804-1.jpg', 16 / 9),
       headline: 'Our processes',
       cta: { label: 'Download the brochure', href: BROCHURE },
-      drift: true,
     },
     manifesto: {
       eyebrow: 'The processes',
       text: 'Vibrolux takes metal parts from raw to finished. Sandblasting, vibratory finishing, isotropic superfinishing down to Ra 0.01, burnishing, washing and oiling: six processes in a single plant.',
-      caption: 'Sant’Ambrogio, near Turin',
-      coords: place.coords,
     },
     cards: [
       { label: 'Download the brochure', href: BROCHURE, media: foto('mg_8489.jpg') },

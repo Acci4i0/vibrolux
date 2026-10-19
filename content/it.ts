@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, place, render, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 
 /** Italian texts (from vibrolux.it and vibrolux_brochure.pdf). en.ts mirrors this shape. */
 
@@ -316,18 +316,14 @@ export const it = {
   /* ───────── Lavorazioni ───────── */
   lavorazioniPage: {
     hero: {
-      /** our render of a circular vibrator after LM's VBC 400, cut open (render/vbc.py) */
-      media: { ...render('vibratore-sezione', 16 / 10, '58% 48%'), alt: 'Un vibratore circolare aperto in sezione: i preformati ceramici e un ingranaggio lucidato' },
+      media: foto('mg_7804-1.jpg', 16 / 9),
       headline: 'Le nostre lavorazioni',
       cta: { label: 'Scarica la brochure', href: BROCHURE },
-      drift: true,
     },
     /** the statement under the hero, on the brand-colour card (reference: on.energy) */
     manifesto: {
       eyebrow: 'Le lavorazioni',
       text: 'Vibrolux porta i particolari metallici dal grezzo alla finitura. Sabbiatura, vibrofinitura, tribofinitura isotropica fino a Ra 0,01, brillantatura, lavaggi e oliature: sei lavorazioni in un solo stabilimento.',
-      caption: 'Sant’Ambrogio di Torino',
-      coords: place.coords,
     },
     cards: [
       { label: 'Scarica la brochure', href: BROCHURE, media: foto('mg_8489.jpg') },
