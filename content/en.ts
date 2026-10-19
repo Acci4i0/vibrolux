@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, place, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 import type { Site } from './it';
 
 /** English texts: same shape as it.ts, same slugs under /en. British spelling, decimal point. */
@@ -317,18 +317,14 @@ export const en: Site = {
       media: foto('mg_7804-1.jpg', 16 / 9),
       headline: 'Our processes',
       cta: { label: 'Download the brochure', href: BROCHURE },
-      corner: { heading: 'Certification', text: 'ISO 9001:2015 certified quality system.', media: foto('mg_8343.jpg'), href: to('/azienda#qualita') },
+      /** the circular vibrator cut open, drawn live (components/VibratorHero, lib/vibratorScene); the photo is its fallback */
+      scene: 'vibrator' as const,
     },
-    index: {
+    manifesto: {
       eyebrow: 'The processes',
-      headline: 'Six processes for the surface finishing of metals.',
-      text: 'A highly technological operations department, with vibrators, burnishing machines and blasting machines. Choose a process to see its plants and details.',
-      facts: [
-        { label: 'Materials', value: 'Steel, iron, aluminium, brass' },
-        { label: 'Hanger blasting', value: 'Up to 1300 × 1800 mm' },
-        { label: 'Superfinishing', value: 'Roughness down to Ra 0.01' },
-        { label: 'Quality', value: 'ISO 9001:2015 certified' },
-      ],
+      text: 'Vibrolux takes metal parts from raw to finished. Sandblasting, vibratory finishing, isotropic superfinishing down to Ra 0.01, burnishing, washing and oiling: six processes in a single plant.',
+      caption: 'Sant’Ambrogio, near Turin',
+      coords: place.coords,
     },
     cards: [
       { label: 'Download the brochure', href: BROCHURE, media: foto('mg_8489.jpg') },

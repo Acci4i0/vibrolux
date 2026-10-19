@@ -11,6 +11,7 @@ import { MaterialsAccordion } from './sections/MaterialsAccordion';
 import { Cards } from './sections/Cards';
 import { Stats } from './sections/Stats';
 import { LavorazioniGrid } from './sections/LavorazioniGrid';
+import { Manifesto } from './sections/Manifesto';
 import { Contact } from './sections/Contact';
 import { LegalPage } from './LegalPage';
 
@@ -63,7 +64,8 @@ export function LavorazioniView({ lang }: P) {
   return (
     <main data-tone="dark">
       <Hero data={page.hero} />
-      <LavorazioniGrid intro={page.index} tiles={lavorazioneTiles(t)} />
+      <Manifesto data={page.manifesto} />
+      <LavorazioniGrid tiles={lavorazioneTiles(t)} />
     </main>
   );
 }

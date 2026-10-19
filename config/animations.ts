@@ -70,6 +70,8 @@ export const ANIM = {
   },
 
   stats: { contentDelay: 0.3, statsDelay: 0.1, statsStagger: 0.25 },
+  /** Lavorazioni manifesto (reference: on.energy): word opacity from → 1, scrubbed while the text crosses the screen */
+  manifesto: { from: 0.18, start: 'top 85%', end: 'bottom 45%' },
   news: { contentDelay: 0.2, listDelay: 0.1, listStagger: 0.1 },
   footer: { navDelay: 0.2, navStagger: 0.1 },
 

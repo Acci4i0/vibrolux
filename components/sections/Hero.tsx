@@ -5,6 +5,7 @@ import { gsap, useGSAP } from '@/lib/gsap';
 import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM, MOTION_OK } from '@/config/animations';
 import { Media, type MediaData } from '../Media';
+import { VibratorHero } from '../VibratorHero';
 import { Button } from '../Button';
 import s from './Hero.module.css';
 
@@ -13,6 +14,8 @@ type Data = {
   headline: string;
   cta: { label: string; href: string };
   corner?: { heading: string; text: string; media: MediaData; href: string };
+  /** a live scene in place of the media (which stays as its fallback) */
+  scene?: 'vibrator';
 };
 
 export function Hero({ data }: { data: Data }) {
@@ -48,7 +51,7 @@ export function Hero({ data }: { data: Data }) {
   return (
     <section ref={root} className={s.hero}>
       <div ref={bg} className={s.bg}>
-        <Media {...data.media} className={s.media} />
+        {data.scene === 'vibrator' ? <VibratorHero fallback={data.media} className={s.media} /> : <Media {...data.media} className={s.media} />}
       </div>
       <div className={s.inner}>
         <div className={`${s.content} ${data.corner ? '' : s.noCorner}`}>

@@ -9,13 +9,12 @@ import { MediaCard } from './MediaCardGroup';
 import s from './LavorazioniGrid.module.css';
 
 type Tile = { title: string; href: string; media: MediaData };
-type Intro = { eyebrow: string; headline: string; text: string; facts: { label: string; value: string }[] };
 
 /**
- * Lavorazioni index: optional intro (headline + facts row) and a grid of the reference's media cards
+ * Lavorazioni tiles: an optional eyebrow and a grid of the reference's media cards
  * (t1energy.com/technology): square photo, large radius, the name in a blurred pill with an arrow.
  */
-export function LavorazioniGrid({ intro, eyebrow, tiles }: { intro?: Intro; eyebrow?: string; tiles: Tile[] }) {
+export function LavorazioniGrid({ eyebrow, tiles }: { eyebrow?: string; tiles: Tile[] }) {
   const root = useRef<HTMLElement>(null);
   const grid = useRef<HTMLDivElement>(null);
 
@@ -29,30 +28,12 @@ export function LavorazioniGrid({ intro, eyebrow, tiles }: { intro?: Intro; eyeb
   );
 
   return (
-    <section ref={root} className={s.section}>
-      {(intro || eyebrow) && (
+    <section ref={root} className={`${s.section} ${eyebrow ? '' : s.bare}`}>
+      {eyebrow && (
         <div className={s.head}>
           <h2 className="t-eyebrow" data-reveal="">
-            {intro?.eyebrow ?? eyebrow}
+            {eyebrow}
           </h2>
-          {intro && (
-            <>
-              <p className={s.headline} data-reveal="">
-                {intro.headline}
-              </p>
-              <div className={s.sub} data-reveal="">
-                <p className={s.text}>{intro.text}</p>
-              </div>
-              <dl className={s.facts} data-reveal="">
-                {intro.facts.map((f) => (
-                  <div key={f.label} className={s.fact}>
-                    <dt className="t-mono">{f.label}</dt>
-                    <dd>{f.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </>
-          )}
         </div>
       )}
 

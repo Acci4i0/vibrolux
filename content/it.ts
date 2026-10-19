@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, place, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 
 /** Italian texts (from vibrolux.it and vibrolux_brochure.pdf). en.ts mirrors this shape. */
 
@@ -319,19 +319,15 @@ export const it = {
       media: foto('mg_7804-1.jpg', 16 / 9),
       headline: 'Le nostre lavorazioni',
       cta: { label: 'Scarica la brochure', href: BROCHURE },
-      corner: { heading: 'Certificazione', text: 'Sistema qualità certificato ISO 9001:2015.', media: foto('mg_8343.jpg'), href: to('/azienda#qualita') },
+      /** the circular vibrator cut open, drawn live (components/VibratorHero, lib/vibratorScene); the photo is its fallback */
+      scene: 'vibrator' as const,
     },
-    /** intro of the tiles grid (replaces the two stacked text blocks) */
-    index: {
+    /** the statement under the hero, on the brand-colour card (reference: on.energy) */
+    manifesto: {
       eyebrow: 'Le lavorazioni',
-      headline: 'Sei lavorazioni per la finitura superficiale dei metalli.',
-      text: 'Un reparto operativo altamente tecnologico, con vibratori, brillantatrici e sabbiatrici. Scegli una lavorazione per vedere impianti e dettagli.',
-      facts: [
-        { label: 'Materiali', value: 'Acciaio, ferro, alluminio, ottone' },
-        { label: 'Sabbiatura a grappolo', value: 'Fino a 1300 × 1800 mm' },
-        { label: 'Tribofinitura', value: 'Rugosità fino a Ra 0,01' },
-        { label: 'Qualità', value: 'Certificata ISO 9001:2015' },
-      ],
+      text: 'Vibrolux porta i particolari metallici dal grezzo alla finitura. Sabbiatura, vibrofinitura, tribofinitura isotropica fino a Ra 0,01, brillantatura, lavaggi e oliature: sei lavorazioni in un solo stabilimento.',
+      caption: 'Sant’Ambrogio di Torino',
+      coords: place.coords,
     },
     cards: [
       { label: 'Scarica la brochure', href: BROCHURE, media: foto('mg_8489.jpg') },

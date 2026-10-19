@@ -14,6 +14,7 @@ and English.
 
 - [Next.js](https://nextjs.org) 15 (App Router) + React 19, TypeScript
 - [GSAP](https://gsap.com) with ScrollTrigger, ScrollToPlugin and Flip
+- [three.js](https://threejs.org) for the Lavorazioni hero, loaded on that page only
 - CSS Modules; [Geist](https://vercel.com/font) and
   [Chivo Mono](https://fonts.google.com/specimen/Chivo+Mono) through `next/font`
 
@@ -31,7 +32,7 @@ npm run start    # serve that build
 ```
 app/page.tsx                   home
 app/azienda/                   company: profile, the premises, quality
-app/lavorazioni/               the six processes, one tile each
+app/lavorazioni/               the vibrator hero, the manifesto card, the six processes as tiles
 app/lavorazioni/[slug]/        one page per process, with a plant carousel where there is one
 app/contatti/                  address, mail list, contact details, the plant card, Sant'Ambrogio in a photo
 app/privacy/, app/termini-e-condizioni/
@@ -43,7 +44,9 @@ components/Footer.tsx          four numbered blocks, the © line, scroll-built w
 components/Loader.tsx          white cover on load, then the logo builds
 components/PageTransition.tsx  fade out / fade in between pages
 components/views.tsx           every page, built from a language
-components/sections/           the page building blocks (hero, cards, carousel…)
+components/sections/           the page building blocks (hero, manifesto, cards, carousel…)
+components/VibratorHero.tsx    the Lavorazioni hero: runs lib/vibratorScene.ts on a canvas, the photo without WebGL
+lib/vibratorScene.ts           a circular vibrator (after LM's VBC 400) cut open, with its media rolling, in three.js
 config/animations.ts           every duration, delay, easing and trigger point
 content/it.ts, content/en.ts   all the copy and links, one dictionary per language
 content/shared.ts              what doesn't change: media, contact details, paths
