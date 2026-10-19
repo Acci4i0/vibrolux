@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, place, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, place, render, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 import type { Site } from './it';
 
 /** English texts: same shape as it.ts, same slugs under /en. British spelling, decimal point. */
@@ -314,11 +314,11 @@ export const en: Site = {
   /* ───────── Processes ───────── */
   lavorazioniPage: {
     hero: {
-      media: foto('mg_7804-1.jpg', 16 / 9),
+      /** our render of a circular vibrator after LM's VBC 400, cut open (render/vbc.py) */
+      media: { ...render('vibratore-sezione', 16 / 10, '58% 48%'), alt: 'A circular vibrator cut open: the ceramic preforms and a polished gear' },
       headline: 'Our processes',
       cta: { label: 'Download the brochure', href: BROCHURE },
-      /** the circular vibrator cut open, drawn live (components/VibratorHero, lib/vibratorScene); the photo is its fallback */
-      scene: 'vibrator' as const,
+      drift: true,
     },
     manifesto: {
       eyebrow: 'The processes',

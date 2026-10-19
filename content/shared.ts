@@ -23,6 +23,16 @@ const FOCUS: Record<string, string> = { 'facciata.jpg': '64% 50%' };
 /** stand-in from /assets/preview (stock / Commons, see CREDITS.md) */
 export const img = (file?: string, aspect = 1): MediaData => ({ src: file && P + file, aspect, focus: file && FOCUS[file] });
 export const video = (file: string): MediaData => ({ type: 'video', src: P + file, aspect: 16 / 9 });
+/** a render of ours from /assets/lavorazioni, in two widths (file-1440.webp, file-2880.webp); it opens a page, so it loads first */
+const RND = withBase('/assets/lavorazioni/');
+export const render = (file: string, aspect: number, focus?: string): MediaData => ({
+  src: `${RND}${file}-1440.webp`,
+  srcSet: `${RND}${file}-1440.webp 1440w, ${RND}${file}-2880.webp 2880w`,
+  sizes: '100vw',
+  aspect,
+  focus,
+  priority: true,
+});
 /** Vibrolux's own photo from /assets/vibrolux (taken from vibrolux.it; to be retouched) */
 export const foto = (file: string, aspect = 1): MediaData => ({ src: V + file, aspect, focus: FOCUS[file] });
 

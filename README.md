@@ -14,7 +14,6 @@ and English.
 
 - [Next.js](https://nextjs.org) 15 (App Router) + React 19, TypeScript
 - [GSAP](https://gsap.com) with ScrollTrigger, ScrollToPlugin and Flip
-- [three.js](https://threejs.org) for the Lavorazioni hero, loaded on that page only
 - CSS Modules; [Geist](https://vercel.com/font) and
   [Chivo Mono](https://fonts.google.com/specimen/Chivo+Mono) through `next/font`
 
@@ -45,14 +44,13 @@ components/Loader.tsx          white cover on load, then the logo builds
 components/PageTransition.tsx  fade out / fade in between pages
 components/views.tsx           every page, built from a language
 components/sections/           the page building blocks (hero, manifesto, cards, carousel…)
-components/VibratorHero.tsx    the Lavorazioni hero: runs lib/vibratorScene.ts on a canvas, the photo without WebGL
-lib/vibratorScene.ts           a circular vibrator (after LM's VBC 400) cut open, with its media rolling, in three.js
 config/animations.ts           every duration, delay, easing and trigger point
 content/it.ts, content/en.ts   all the copy and links, one dictionary per language
 content/shared.ts              what doesn't change: media, contact details, paths
 content/legal.tsx              privacy notice and terms, in both languages
 lib/                           GSAP, the scroll-reveal helpers, language detection
-public/assets/                 the brochure, Vibrolux's photos, the last stand-ins
+public/assets/                 the brochure, Vibrolux's photos, our renders, the last stand-ins
+render/vbc.py                  the Blender scene behind the Lavorazioni hero
 ```
 
 ## Editing
@@ -83,6 +81,13 @@ and `withBase()` in `content/shared.ts` prefixes the media and the internal link
 Locally the variable is unset and the site runs from the root.
 
 ## Photos
+
+The Lavorazioni hero is a render of ours, not a photo: a circular vibrator after
+LM's VBC 400 — the machine series Vibrolux works with — cut open by a quarter,
+its channel full of ceramic preforms with a polished gear on top, in Blender
+Cycles. The scene is [`render/vbc.py`](render/vbc.py) (how to run it is at the
+top of the file); the picture is in `public/assets/lavorazioni/` at 1440 and
+2880 px wide.
 
 The photos in `public/assets/vibrolux/` are Vibrolux's own, taken from
 vibrolux.it (resized and lightly cropped): they hold the layout until the

@@ -89,4 +89,23 @@
   .inner {
     flex-direction: column;
   }
+  /* the Lavorazioni tiles, two per row on phones: a small label at the foot of the card, no arrow */
+  [data-tile] .ctaWrap {
+    bottom: 1.2rem;
+    display: flex;
+    justify-content: center;
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+  }
+  [data-tile] .cta {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    padding: 0.75em 1.1em;
+    text-align: center;
+    text-wrap: balance;
+  }
+  [data-tile] .icon {
+    display: none;
+  }
 }

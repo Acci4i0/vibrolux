@@ -43,8 +43,14 @@
   .head {
     padding: 0 var(--pwx);
   }
+  /* phones: two portrait cards per row, as on yuriroga.com (measured at 390px: 8.86px gutters, 182 × 236 cards, 37px radius) */
   .grid {
-    grid-template-columns: minmax(0, 1fr);
-    padding: 0 var(--pwx);
+    --card-radius: 9.524vw;
+    gap: 2.273vw;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0 2.273vw;
+  }
+  .grid [data-fill] {
+    aspect-ratio: 182 / 236 !important; /* the photos' own square, set inline by Media, gives way */
   }
 }

@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, place, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, place, render, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 
 /** Italian texts (from vibrolux.it and vibrolux_brochure.pdf). en.ts mirrors this shape. */
 
@@ -316,11 +316,11 @@ export const it = {
   /* ───────── Lavorazioni ───────── */
   lavorazioniPage: {
     hero: {
-      media: foto('mg_7804-1.jpg', 16 / 9),
+      /** our render of a circular vibrator after LM's VBC 400, cut open (render/vbc.py) */
+      media: { ...render('vibratore-sezione', 16 / 10, '58% 48%'), alt: 'Un vibratore circolare aperto in sezione: i preformati ceramici e un ingranaggio lucidato' },
       headline: 'Le nostre lavorazioni',
       cta: { label: 'Scarica la brochure', href: BROCHURE },
-      /** the circular vibrator cut open, drawn live (components/VibratorHero, lib/vibratorScene); the photo is its fallback */
-      scene: 'vibrator' as const,
+      drift: true,
     },
     /** the statement under the hero, on the brand-colour card (reference: on.energy) */
     manifesto: {
