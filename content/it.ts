@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 
 /** Italian texts (from vibrolux.it and vibrolux_brochure.pdf). en.ts mirrors this shape. */
 
@@ -11,7 +11,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Lavaggi e oliature',
     text: 'Linea automatica per trattamenti di disoleatura, lavaggio, asciugatura e vari tipi di oliatura (dewatering).',
     short: 'Disoleatura, lavaggio, asciugatura e oliatura dewatering in linea automatica.',
-    media: foto('mg_7742b.jpg'),
+    media: foto('gocce-metallo.jpg'),
     hero: foto('mg_7742b.jpg', 16 / 9),
     intro: [
       'Una linea automatica dedicata ai trattamenti di disoleatura, lavaggio, asciugatura e oliatura dei particolari metallici.',
@@ -44,7 +44,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Vibrofinitura',
     text: 'Impianti di barilatura per asportare bave di stampaggio e di fusione: finitura superficiale di particolari in acciaio, ferro, alluminio, ottone. Asciugatura con granulato vegetale o aria calda.',
     short: 'Sbavatura e finitura di particolari in acciaio, ferro, alluminio e ottone.',
-    media: foto('mg_8709.jpg'),
+    media: foto('mg_7891.jpg'),
     hero: foto('mg_7760.jpg', 16 / 9),
     intro: [
       'Un processo di trattamento fisico per la finitura superficiale di particolari di diverso materiale: acciaio, ferro, alluminio, ottone.',
@@ -65,7 +65,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Tribofinitura isotropica',
     text: 'Processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse (Ra 0,01 o anche inferiori) e superfici molto lucide.',
     short: 'Superfici molto lucide, con rugosità fino a Ra 0,01.',
-    media: foto('mg_7891.jpg'),
+    media: foto('cuscinetto.jpg'),
     hero: foto('mg_8253.jpg', 16 / 9),
     intro: [
       'Un processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse, fino a Ra 0,01 o anche inferiori, e superfici molto lucide.',
@@ -97,7 +97,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Brillantatura',
     text: 'Impianto automatico per la lucidatura tramite microsfere e appositi additivi.',
     short: 'Lucidatura automatica con microsfere e additivi.',
-    media: foto('mg_8469.jpg'),
+    media: foto('sfere-acciaio.jpg'),
     hero: foto('mg_8051.jpg', 16 / 9),
     intro: [
       'Un impianto automatico per la lucidatura dei particolari tramite microsfere e appositi additivi.',
@@ -217,7 +217,7 @@ export const it = {
       corner: {
         heading: 'Brochure',
         text: 'Lavorazioni e impianti in un unico documento.',
-        media: foto('mg_8489.jpg'),
+        media: foto('zigrinato.jpg'),
         href: BROCHURE,
       },
     },
@@ -230,7 +230,7 @@ export const it = {
       cta: { label: 'L’azienda', href: to('/azienda') },
     },
     cards: [
-      { label: 'Lavorazioni', href: to('/lavorazioni'), media: foto('2_mg_8520.jpg') },
+      { label: 'Lavorazioni', href: to('/lavorazioni'), media: foto('anelli-pila.jpg') },
       { label: 'Contatti', href: to('/contatti'), media: foto('vibrolux_azienda.jpg') },
     ],
     beforeAfter: {
@@ -251,10 +251,10 @@ export const it = {
       eyebrow: 'Perché Vibrolux',
       text: 'Quattro principi che guidano ogni lavorazione.',
       items: [
-        { label: '01', title: 'Servizi qualificati', href: to('/lavorazioni'), media: foto('mg_7804-1.jpg') },
+        { label: '01', title: 'Servizi qualificati', href: to('/lavorazioni'), media: foto('fresa.jpg') },
         { label: '02', title: 'Standard di qualità', href: to('/azienda#qualita'), media: foto('mg_8343.jpg') },
         { label: '03', title: 'Team specializzato', href: to('/azienda'), media: foto('mg_8275.jpg') },
-        { label: '04', title: 'Risultati al massimo livello', href: to('/lavorazioni'), media: foto('ricevuta-1.jpg') },
+        { label: '04', title: 'Risultati al massimo livello', href: to('/lavorazioni'), media: foto('tubo-spazzolato.jpg') },
       ],
     },
   },
@@ -279,7 +279,7 @@ export const it = {
       eyebrow: 'La sede',
       items: [
         { label: 'Officina', text: 'L’officina è strutturata in diversi reparti di produzione, con aree per il materiale finito e per il carico e scarico dei mezzi.', media: foto('vibrolux_azienda2-1.jpg', 4 / 5) },
-        { label: 'Magazzino', text: 'Un magazzino di 400 mq completa la sede per lo stoccaggio.', media: img('pezzi-torniti.jpg', 4 / 5) },
+        { label: 'Magazzino', text: 'Un magazzino di 400 mq completa la sede per lo stoccaggio.', media: foto('dadi.jpg', 4 / 5) },
         { label: 'Qualità', text: 'Un’area dedicata al controllo qualità, con strumenti di misura e verifica.', media: foto('mg_8343.jpg', 4 / 5) },
       ],
     },
@@ -298,9 +298,9 @@ export const it = {
       eyebrow: 'Metodo',
       text: 'Tre principi alla base del nostro lavoro.',
       items: [
-        { label: '01', title: 'Esperienza e qualificazione', href: to('/lavorazioni'), media: foto('mg_7658.jpg') },
-        { label: '02', title: 'Analisi dei processi', href: to('/lavorazioni'), media: foto('mg_8253.jpg') },
-        { label: '03', title: 'Soddisfazione del cliente', href: to('/contatti'), media: foto('mg_8489.jpg') },
+        { label: '01', title: 'Esperienza e qualificazione', href: to('/lavorazioni'), media: foto('bullone.jpg') },
+        { label: '02', title: 'Analisi dei processi', href: to('/lavorazioni'), media: foto('gocce-scure.jpg') },
+        { label: '03', title: 'Soddisfazione del cliente', href: to('/contatti'), media: foto('riflessi.jpg') },
       ],
     },
     quality: {
@@ -345,7 +345,7 @@ export const it = {
       { address: company.emails.service, use: 'Assistenza su lavorazioni e consegne' },
       { address: company.emails.commerciale, use: 'Offerte e rapporti commerciali' },
     ],
-    keys: { tel: 'Tel', pec: 'PEC', vat: 'P.IVA' },
+    keys: { tel: 'Tel', vat: 'P.IVA' },
     /** the plant, as the reference's factory card (t1energy.com/technology): photo, name, a map card and a stats card */
     factory: {
       media: foto('cover_1.jpg', 1.83),

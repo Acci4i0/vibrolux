@@ -1,69 +1,93 @@
 .contact {
-  padding: var(--margin-6xl) var(--margin-4xl) var(--gutter);
+  padding: 0 var(--gutter) var(--gutter);
   position: relative;
   width: 100%;
 }
-.inner {
-  align-items: flex-start;
+/* ── The office, on the brand colour (as the Lavorazioni manifesto, after on.energy) ── */
+.card {
+  background-color: var(--color-brand);
+  border-radius: 2.4rem;
+  color: var(--color-white);
+  padding: var(--margin-2xl) var(--margin-4xl) var(--margin-4xl);
+}
+.cardTop {
+  align-items: baseline;
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
-  max-width: var(--container-max-width);
-  width: 100%;
 }
-.eyebrow {
-  width: 50%;
+.company,
+.use,
+.key {
+  opacity: 0.66;
 }
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--margin-3xl);
-  width: 50%;
-}
-.content address {
+.address {
+  font-size: var(--size-heading-lg);
   font-style: normal;
+  font-weight: var(--fw-light);
+  letter-spacing: -0.005em;
+  line-height: 1.12;
+  margin-top: var(--margin-6xl);
 }
 .line {
   display: block;
 }
-/* mail list: the address, what it is for underneath */
+/* the mail addresses side by side, each under a hairline, what it is for underneath */
 .mails {
-  display: flex;
-  flex-direction: column;
-  gap: var(--margin-xl);
+  column-gap: var(--margin-xl);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: var(--margin-5xl);
+  row-gap: var(--margin-xl);
+}
+.mails li {
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  padding-top: var(--margin-lg);
 }
 .mails a {
-  font-size: var(--size-heading-xs);
+  align-items: center;
+  display: flex;
+  font-size: var(--size-heading-sm);
   font-weight: var(--fw-light);
+  gap: var(--margin-sm);
+  justify-content: space-between;
   line-height: 1.2;
-  transition: opacity var(--duration-default);
+}
+.mails svg {
+  fill: none;
+  flex: none;
+  height: 1.8rem;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  transition: transform var(--duration-default) var(--ease-ui);
+  width: 1.8rem;
 }
 .use {
-  color: var(--color-grey2);
   display: block;
   margin-top: var(--gutter);
 }
+/* phone and VAT number at the foot, on the same columns */
 .rows {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gutter);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  column-gap: var(--margin-xl);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: var(--margin-3xl);
+  padding-top: var(--margin-lg);
 }
 .rows li {
   display: flex;
+  gap: 1.2em;
 }
 .rows a {
   transition: opacity var(--duration-default);
 }
 @media (hover: hover) {
-  .rows a:hover,
-  .mails a:hover {
+  .mails a:hover svg {
+    transform: translate(0.2rem, -0.2rem);
+  }
+  .rows a:hover {
     opacity: 0.66;
   }
-}
-.key {
-  color: var(--color-grey2);
-  flex: none;
-  width: 6em;
 }
 /* ── The plant, as the reference's factory card (t1energy.com/technology, measured at 1440 × 900):
    aerial photo 1.83:1 with the 8rem radius, the name at the bottom left (padding 11.2rem), and on the right a
@@ -75,7 +99,7 @@
   border-radius: var(--radius-large);
   color: var(--color-white);
   container-type: inline-size;
-  margin: var(--margin-6xl) calc(var(--margin-4xl) * -1 + var(--gutter)) 0;
+  margin: var(--gutter) 0 0;
   overflow: hidden;
   position: relative;
 }
@@ -123,13 +147,14 @@
 /* the map: Google's embed, bigger than the card so its place card, controls and footer fall outside; the card is the link.
    Always square and centred on the card: Google keeps the pin in the middle only when the embed is square. */
 .map {
-  background-color: #e5e3df;
+  background-color: #e4e4e4;
   container-type: size;
   display: block;
 }
 .map iframe {
   --side: calc(max(100cqw, 100cqh) + 60rem);
   border: 0;
+  filter: grayscale(1); /* in the site's one treatment, like the photos */
   height: var(--side);
   left: calc(50% - var(--side) / 2);
   pointer-events: none;
@@ -200,7 +225,7 @@
 
 /* Sant'Ambrogio, right under the plant card: a gutter apart, as the reference stacks its cards */
 .place {
-  margin: var(--gutter) calc(var(--margin-4xl) * -1 + var(--gutter)) 0;
+  margin: var(--gutter) 0 0;
 }
 /* Sant'Ambrogio in place of a map, framed like the reference's factory photos (large radius); 2:1 so that on a
    laptop it fits below the menu bar, which would otherwise sit on the Maps button */
@@ -272,14 +297,11 @@
 }
 
 @media (max-width: 1179.98px) {
-  .contact {
-    padding-left: var(--margin-3xl);
-    padding-right: var(--margin-3xl);
+  .card {
+    padding: var(--margin-xl) var(--margin-3xl) var(--margin-3xl);
   }
-  .factory,
-  .place {
-    margin-left: calc(var(--margin-3xl) * -1 + var(--gutter));
-    margin-right: calc(var(--margin-3xl) * -1 + var(--gutter));
+  .mails a {
+    font-size: var(--size-heading-xs);
   }
   /* tablet: a taller photo, the name at the top, the two cards side by side along the bottom */
   .factory {
@@ -326,21 +348,32 @@
   }
 }
 @media (max-width: 767px) {
-  .contact {
-    padding: var(--margin-6xl) var(--pwx) var(--pwx);
+  .card {
+    border-radius: var(--radius-button);
+    padding: var(--margin-lg) var(--margin-lg) var(--margin-xl);
   }
-  .inner {
+  .cardTop {
     flex-direction: column;
-    gap: var(--margin-3xl);
+    gap: var(--gutter);
   }
-  .eyebrow,
-  .content {
-    width: 100%;
+  .address {
+    font-size: var(--size-heading-md);
+    line-height: 1.15;
+    margin-top: var(--margin-5xl);
+  }
+  .mails,
+  .rows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mails {
+    margin-top: var(--margin-4xl);
+  }
+  .rows {
+    row-gap: var(--gutter);
   }
   /* phone: as the reference — a tall photo, the name at the top, the two cards stacked at the bottom */
   .factory {
     aspect-ratio: 0.475 / 1;
-    margin: var(--margin-6xl) 0 0;
   }
   .headline {
     font-size: var(--size-heading-lg);
@@ -358,9 +391,6 @@
   }
   .statsValue {
     font-size: 2.8rem;
-  }
-  .place {
-    margin: var(--gutter) 0 0;
   }
   .photo {
     aspect-ratio: 1;

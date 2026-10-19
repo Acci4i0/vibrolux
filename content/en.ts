@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 import type { Site } from './it';
 
 /** English texts: same shape as it.ts, same slugs under /en. British spelling, decimal point. */
@@ -12,7 +12,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Washing and oiling',
     text: 'Automatic line for degreasing, washing, drying and various types of oiling, dewatering included.',
     short: 'Degreasing, washing, drying and dewatering oil on an automatic line.',
-    media: foto('mg_7742b.jpg'),
+    media: foto('gocce-metallo.jpg'),
     hero: foto('mg_7742b.jpg', 16 / 9),
     intro: [
       'An automatic line for degreasing, washing, drying and oiling metal parts.',
@@ -45,7 +45,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Vibratory finishing',
     text: 'Barrel finishing plants that remove moulding and casting burrs: surface finishing of steel, iron, aluminium and brass parts. Drying in vegetable granulate or hot air.',
     short: 'Deburring and finishing of steel, iron, aluminium and brass parts.',
-    media: foto('mg_8709.jpg'),
+    media: foto('mg_7891.jpg'),
     hero: foto('mg_7760.jpg', 16 / 9),
     intro: [
       'A physical treatment for the surface finishing of parts in different materials: steel, iron, aluminium, brass.',
@@ -66,7 +66,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Isotropic superfinishing',
     text: 'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness (Ra 0.01 or lower) and highly polished surfaces.',
     short: 'Highly polished surfaces, with roughness down to Ra 0.01.',
-    media: foto('mg_7891.jpg'),
+    media: foto('cuscinetto.jpg'),
     hero: foto('mg_8253.jpg', 16 / 9),
     intro: [
       'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness, down to Ra 0.01 or lower, and highly polished surfaces.',
@@ -98,7 +98,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Burnishing',
     text: 'An automatic plant for polishing with micro-beads and dedicated additives.',
     short: 'Automatic polishing with micro-beads and additives.',
-    media: foto('mg_8469.jpg'),
+    media: foto('sfere-acciaio.jpg'),
     hero: foto('mg_8051.jpg', 16 / 9),
     intro: [
       'An automatic plant for polishing parts with micro-beads and dedicated additives.',
@@ -215,7 +215,7 @@ export const en: Site = {
       corner: {
         heading: 'Brochure',
         text: 'Processes and plants in a single document.',
-        media: foto('mg_8489.jpg'),
+        media: foto('zigrinato.jpg'),
         href: BROCHURE,
       },
     },
@@ -228,7 +228,7 @@ export const en: Site = {
       cta: { label: 'The company', href: to('/azienda') },
     },
     cards: [
-      { label: 'Processes', href: to('/lavorazioni'), media: foto('2_mg_8520.jpg') },
+      { label: 'Processes', href: to('/lavorazioni'), media: foto('anelli-pila.jpg') },
       { label: 'Contact', href: to('/contatti'), media: foto('vibrolux_azienda.jpg') },
     ],
     beforeAfter: {
@@ -249,10 +249,10 @@ export const en: Site = {
       eyebrow: 'Why Vibrolux',
       text: 'Four principles behind every process.',
       items: [
-        { label: '01', title: 'Qualified services', href: to('/lavorazioni'), media: foto('mg_7804-1.jpg') },
+        { label: '01', title: 'Qualified services', href: to('/lavorazioni'), media: foto('fresa.jpg') },
         { label: '02', title: 'Quality standards', href: to('/azienda#qualita'), media: foto('mg_8343.jpg') },
         { label: '03', title: 'Specialised team', href: to('/azienda'), media: foto('mg_8275.jpg') },
-        { label: '04', title: 'Results at the highest level', href: to('/lavorazioni'), media: foto('ricevuta-1.jpg') },
+        { label: '04', title: 'Results at the highest level', href: to('/lavorazioni'), media: foto('tubo-spazzolato.jpg') },
       ],
     },
   },
@@ -277,7 +277,7 @@ export const en: Site = {
       eyebrow: 'Our site',
       items: [
         { label: 'Workshop', text: 'The workshop is organised into several production departments, with areas for finished material and for loading and unloading vehicles.', media: foto('vibrolux_azienda2-1.jpg', 4 / 5) },
-        { label: 'Warehouse', text: 'A 400 m² warehouse completes the site for storage.', media: img('pezzi-torniti.jpg', 4 / 5) },
+        { label: 'Warehouse', text: 'A 400 m² warehouse completes the site for storage.', media: foto('dadi.jpg', 4 / 5) },
         { label: 'Quality', text: 'An area dedicated to quality control, with measuring and inspection instruments.', media: foto('mg_8343.jpg', 4 / 5) },
       ],
     },
@@ -296,9 +296,9 @@ export const en: Site = {
       eyebrow: 'Method',
       text: 'Three principles at the heart of our work.',
       items: [
-        { label: '01', title: 'Experience and qualification', href: to('/lavorazioni'), media: foto('mg_7658.jpg') },
-        { label: '02', title: 'Process analysis', href: to('/lavorazioni'), media: foto('mg_8253.jpg') },
-        { label: '03', title: 'Customer satisfaction', href: to('/contatti'), media: foto('mg_8489.jpg') },
+        { label: '01', title: 'Experience and qualification', href: to('/lavorazioni'), media: foto('bullone.jpg') },
+        { label: '02', title: 'Process analysis', href: to('/lavorazioni'), media: foto('gocce-scure.jpg') },
+        { label: '03', title: 'Customer satisfaction', href: to('/contatti'), media: foto('riflessi.jpg') },
       ],
     },
     quality: {
@@ -341,7 +341,7 @@ export const en: Site = {
       { address: company.emails.service, use: 'Support on processes and deliveries' },
       { address: company.emails.commerciale, use: 'Offers and commercial relations' },
     ],
-    keys: { tel: 'Tel', pec: 'PEC', vat: 'VAT' },
+    keys: { tel: 'Tel', vat: 'VAT' },
     /** the plant, as the reference's factory card (t1energy.com/technology): photo, name, a map card and a stats card */
     factory: {
       media: foto('cover_1.jpg', 1.83),

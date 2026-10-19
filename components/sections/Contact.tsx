@@ -10,9 +10,10 @@ import { useMapsHref } from '@/lib/maps';
 import s from './Contact.module.css';
 
 /**
- * Address + mail list (one address per need) + contact rows, laid out like the text modules; then the plant as the
- * reference's factory card (aerial photo, its name, a map card that opens Google Maps, a stats card); then Sant'Ambrogio
- * in a photo, with the way to Maps in its corner.
+ * The office on a brand-colour card (as the Lavorazioni manifesto, after on.energy): the address large, the three
+ * mail addresses in columns with what each is for, phone and VAT number at the foot; then the plant as the
+ * reference's factory card (aerial photo, its name, a map card that opens Google Maps, a stats card); then
+ * Sant'Ambrogio in a photo, with the way to Maps in its corner.
  */
 export function Contact() {
   const root = useRef<HTMLElement>(null);
@@ -20,7 +21,6 @@ export function Contact() {
   const c = t.contatti;
   const rows = [
     [c.keys.tel, company.tel, company.telHref],
-    [c.keys.pec, company.pec, `mailto:${company.pec}`],
     [c.keys.vat, company.vatNumber],
   ];
   const mapsHref = useMapsHref(maps.google, maps.apple);
@@ -28,9 +28,8 @@ export function Contact() {
   useGSAP(
     (_, contextSafe) =>
       afterMount(() => {
-        const [eyebrow, content, factory, photo] = root.current!.querySelectorAll('[data-reveal]');
-        reveal(eyebrow, { delay: ANIM.text.eyebrowDelay });
-        reveal(content, { delay: ANIM.text.contentDelay });
+        const [card, factory, photo] = root.current!.querySelectorAll('[data-reveal]');
+        reveal(card, { delay: ANIM.text.eyebrowDelay });
         reveal(factory);
         reveal(photo);
       }, contextSafe!),
@@ -39,35 +38,39 @@ export function Contact() {
 
   return (
     <section ref={root} id="dove-siamo" className={s.contact}>
-      <div className={s.inner}>
-        <div className={s.eyebrow} data-reveal="">
+      <div className={s.card} data-reveal="">
+        <div className={s.cardTop}>
           <h2 className="t-eyebrow">{c.eyebrow}</h2>
+          <span className={`t-mono ${s.company}`}>{company.name}</span>
         </div>
-        <div className={s.content} data-reveal="">
-          <address className="t-large">
-            {[company.name, ...t.address].map((l) => (
-              <span key={l} className={s.line}>
-                {l}
-              </span>
-            ))}
-          </address>
-          <ul className={s.mails}>
-            {c.emails.map((m) => (
-              <li key={m.address}>
-                <a href={`mailto:${m.address}`}>{m.address}</a>
-                <span className={`t-mono ${s.use}`}>{m.use}</span>
-              </li>
-            ))}
-          </ul>
-          <ul className={`t-mono ${s.rows}`}>
-            {rows.map(([k, v, href]) => (
-              <li key={k}>
-                <span className={s.key}>{k}</span>
-                {href ? <a href={href}>{v}</a> : <span>{v}</span>}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <address className={s.address}>
+          {t.address.map((l) => (
+            <span key={l} className={s.line}>
+              {l}
+            </span>
+          ))}
+        </address>
+        <ul className={s.mails}>
+          {c.emails.map((m) => (
+            <li key={m.address}>
+              <a href={`mailto:${m.address}`}>
+                <span>{m.address}</span>
+                <svg viewBox="0 0 24 24" aria-hidden>
+                  <path d="M7 17 17 7M8 7h9v9" />
+                </svg>
+              </a>
+              <span className={`t-mono ${s.use}`}>{m.use}</span>
+            </li>
+          ))}
+        </ul>
+        <ul className={`t-mono ${s.rows}`}>
+          {rows.map(([k, v, href]) => (
+            <li key={k}>
+              <span className={s.key}>{k}</span>
+              {href ? <a href={href}>{v}</a> : <span>{v}</span>}
+            </li>
+          ))}
+        </ul>
       </div>
       <div className={s.factory} data-reveal="">
         {/* eslint-disable-next-line @next/next/no-img-element */}
