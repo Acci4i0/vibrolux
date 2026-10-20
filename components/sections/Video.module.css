@@ -1,0 +1,23 @@
+/* reference: edge to edge, 16:9 (1440 × 810); on phones taller (390 × 506) */
+.video {
+  margin-bottom: var(--gutter);
+  position: relative;
+  width: 100%;
+}
+.bg {
+  overflow: hidden;
+  position: relative;
+  transform-origin: bottom;
+  width: 100%;
+  will-change: transform, border-radius;
+}
+.media [data-fill] {
+  height: auto;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .media [data-fill] {
+    aspect-ratio: 390 / 506 !important;
+  }
+}

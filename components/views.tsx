@@ -4,6 +4,9 @@ import type { Lang } from '@/lib/i18n';
 import { content, lavorazioneTiles, type Site } from '@/content/site';
 import { privacy, terms } from '@/content/legal';
 import { Hero } from './sections/Hero';
+import { Headline } from './sections/Headline';
+import { MediaPair } from './sections/MediaPair';
+import { Video } from './sections/Video';
 import { TextModule } from './sections/TextModule';
 import { MediaCardGroup } from './sections/MediaCardGroup';
 import { Carousel } from './sections/Carousel';
@@ -47,11 +50,13 @@ export function AziendaView({ lang }: P) {
   const { azienda } = content[lang];
   return (
     <main>
-      <Hero data={azienda.hero} />
-      <TextModule data={azienda.intro} />
+      <Headline data={azienda.headline} />
+      <MediaPair media={azienda.pair} />
+      <TextModule data={azienda.team} />
+      <Video media={azienda.video} />
+      <TextModule data={azienda.videoText} />
       <Carousel data={azienda.sede} />
       <Stats data={azienda.stats} />
-      <Cards data={azienda.pillars} />
       <TextModule data={azienda.quality} />
     </main>
   );

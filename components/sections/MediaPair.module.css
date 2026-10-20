@@ -1,0 +1,33 @@
+/* reference at 1440: a gutter around and between, the large square two thirds wide (945px), the small one a third (471px) */
+.pair {
+  align-items: flex-start;
+  display: flex;
+  gap: var(--gutter);
+  padding: var(--gutter);
+  width: 100%;
+}
+.card {
+  border-radius: var(--radius-large);
+  flex: 2 1 0;
+  overflow: hidden;
+}
+.card + .card {
+  flex: 1 1 0;
+}
+.media [data-fill] {
+  height: auto;
+  width: 100%;
+}
+
+/* phone: the two squares one under the other, full width */
+@media (max-width: 767px) {
+  .pair {
+    flex-direction: column;
+    padding: var(--gutter) var(--pwx);
+  }
+  .card,
+  .card + .card {
+    flex: none;
+    width: 100%;
+  }
+}

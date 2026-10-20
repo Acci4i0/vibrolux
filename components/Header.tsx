@@ -57,7 +57,7 @@ function useInFooter() {
 }
 
 /** Pages that start on white (no dark hero): the big logo turns dark there. */
-const LIGHT_PAGES = ['/privacy', '/termini-e-condizioni'];
+const LIGHT_PAGES = ['/azienda', '/privacy', '/termini-e-condizioni'];
 const useDarkLogo = () => LIGHT_PAGES.includes(pagePath(usePathname()));
 
 /** Logo on the home page scrolls to top; elsewhere it's a normal link (page transition). */

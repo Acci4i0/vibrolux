@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 import type { Site } from './it';
 
 /** English texts: same shape as it.ts, same slugs under /en. British spelling, decimal point. */
@@ -12,7 +12,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Washing and oiling',
     text: 'Automatic line for degreasing, washing, drying and various types of oiling, dewatering included.',
     short: 'Degreasing, washing, drying and dewatering oil on an automatic line.',
-    media: foto('gocce-metallo.jpg'),
+    media: img('gocce-metallo.jpg'),
     hero: foto('mg_7742b.jpg', 16 / 9),
     intro: [
       'An automatic line for degreasing, washing, drying and oiling metal parts.',
@@ -66,7 +66,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Isotropic superfinishing',
     text: 'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness (Ra 0.01 or lower) and highly polished surfaces.',
     short: 'Highly polished surfaces, with roughness down to Ra 0.01.',
-    media: foto('cuscinetto.jpg'),
+    media: img('cuscinetto.jpg'),
     hero: foto('mg_8253.jpg', 16 / 9),
     intro: [
       'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness, down to Ra 0.01 or lower, and highly polished surfaces.',
@@ -98,7 +98,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Burnishing',
     text: 'An automatic plant for polishing with micro-beads and dedicated additives.',
     short: 'Automatic polishing with micro-beads and additives.',
-    media: foto('sfere-acciaio.jpg'),
+    media: img('sfere-acciaio.jpg'),
     hero: foto('mg_8051.jpg', 16 / 9),
     intro: [
       'An automatic plant for polishing parts with micro-beads and dedicated additives.',
@@ -215,7 +215,7 @@ export const en: Site = {
       corner: {
         heading: 'Brochure',
         text: 'Processes and plants in a single document.',
-        media: foto('zigrinato.jpg'),
+        media: foto('mg_8489.jpg'),
         href: BROCHURE,
       },
     },
@@ -228,7 +228,7 @@ export const en: Site = {
       cta: { label: 'The company', href: to('/azienda') },
     },
     cards: [
-      { label: 'Processes', href: to('/lavorazioni'), media: foto('anelli-pila.jpg') },
+      { label: 'Processes', href: to('/lavorazioni'), media: img('anelli-pila.jpg') },
       { label: 'Contact', href: to('/contatti'), media: foto('vibrolux_azienda.jpg') },
     ],
     beforeAfter: {
@@ -249,35 +249,39 @@ export const en: Site = {
       eyebrow: 'Why Vibrolux',
       text: 'Four principles behind every process.',
       items: [
-        { label: '01', title: 'Qualified services', href: to('/lavorazioni'), media: foto('fresa.jpg') },
+        { label: '01', title: 'Qualified services', href: to('/lavorazioni'), media: img('fresa.jpg') },
         { label: '02', title: 'Quality standards', href: to('/azienda#qualita'), media: foto('mg_8343.jpg') },
         { label: '03', title: 'Specialised team', href: to('/azienda'), media: foto('mg_8275.jpg') },
-        { label: '04', title: 'Results at the highest level', href: to('/lavorazioni'), media: foto('tubo-spazzolato.jpg') },
+        { label: '04', title: 'Results at the highest level', href: to('/lavorazioni'), media: foto('ricevuta-1.jpg') },
       ],
     },
   },
 
   /* ───────── Company ───────── */
   azienda: {
-    hero: {
-      media: foto('cover_1.jpg', 16 / 9),
-      headline: 'Qualified expertise in metal treatment',
-      cta: { label: 'Contact us', href: to('/contatti') },
-    },
-    intro: {
+    /** the page opens on white, as t1energy.com/company: the title, two photos, the team, a film */
+    headline: {
       id: 'chi-siamo',
-      eyebrow: 'About us',
-      paragraphs: [
-        'Over the years Vibrolux has built ever more qualified expertise in metal finishing: barrel finishing, burnishing, sandblasting, isotropic superfinishing, washing and dewatering oiling.',
-        'Well-run production and organisational processes have strengthened our relationships with large groups over time and broadened our client portfolio, reinforcing our competitiveness and our position in the market.',
-      ],
+      title: 'Qualified expertise in metal treatment',
+      sub: 'from Sant’Ambrogio, Turin',
+    },
+    /** the large square, then the small one */
+    pair: [foto('cover_1.jpg'), foto('facciata.jpg')],
+    team: {
+      eyebrow: 'Team',
+      paragraphs: ['Highly qualified people let us reach a primary goal: to be a highly specialised local business.'],
+    },
+    /** the plant's film: the black placeholder until it arrives, then { type: 'video', src: …, aspect: 16 / 9 } */
+    video: { aspect: 16 / 9 },
+    videoText: {
+      paragraphs: ['Inside the Sant’Ambrogio plant: six processes under one roof, from the raw part to the final inspection.'],
     },
     sede: {
       id: 'sede',
       eyebrow: 'Our site',
       items: [
         { label: 'Workshop', text: 'The workshop is organised into several production departments, with areas for finished material and for loading and unloading vehicles.', media: foto('vibrolux_azienda2-1.jpg', 4 / 5) },
-        { label: 'Warehouse', text: 'A 400 m² warehouse completes the site for storage.', media: foto('dadi.jpg', 4 / 5) },
+        { label: 'Warehouse', text: 'A 400 m² warehouse completes the site for storage.', media: img('dadi.jpg', 4 / 5) },
         { label: 'Quality', text: 'An area dedicated to quality control, with measuring and inspection instruments.', media: foto('mg_8343.jpg', 4 / 5) },
       ],
     },
@@ -291,15 +295,6 @@ export const en: Site = {
         { value: '400 m²', caption: 'Warehouse for storage' },
       ],
       media: foto('vibrolux_azienda.jpg'),
-    },
-    pillars: {
-      eyebrow: 'Method',
-      text: 'Three principles at the heart of our work.',
-      items: [
-        { label: '01', title: 'Experience and qualification', href: to('/lavorazioni'), media: foto('bullone.jpg') },
-        { label: '02', title: 'Process analysis', href: to('/lavorazioni'), media: foto('gocce-scure.jpg') },
-        { label: '03', title: 'Customer satisfaction', href: to('/contatti'), media: foto('riflessi.jpg') },
-      ],
     },
     quality: {
       id: 'qualita',

@@ -7,7 +7,7 @@ import { ANIM } from '@/config/animations';
 import { Button } from '../Button';
 import s from './TextModule.module.css';
 
-type Data = { id?: string; eyebrow: string; paragraphs: string[]; cta?: { label: string; href: string } };
+type Data = { id?: string; eyebrow?: string; paragraphs: string[]; cta?: { label: string; href: string } };
 
 export function TextModule({ data }: { data: Data }) {
   const root = useRef<HTMLElement>(null);
@@ -27,7 +27,7 @@ export function TextModule({ data }: { data: Data }) {
     <section ref={root} id={data.id} className={s.text}>
       <div className={s.inner}>
         <div ref={eyebrow} className={s.eyebrow} data-reveal="">
-          <h2 className="t-eyebrow">{data.eyebrow}</h2>
+          {data.eyebrow && <h2 className="t-eyebrow">{data.eyebrow}</h2>}
         </div>
         <div ref={content} className={s.content} data-reveal="">
           <div className={`t-large ${s.body}`}>

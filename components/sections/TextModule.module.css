@@ -44,6 +44,10 @@
   .content {
     width: 100%;
   }
+  /* no eyebrow: the text starts at the top */
+  .eyebrow:empty {
+    display: none;
+  }
   .body {
     padding-right: 1em;
   }

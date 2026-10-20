@@ -1,0 +1,35 @@
+/* reference at 1440: 240px above, 120px at the sides and below; 52px light, the second line in grey */
+.headline {
+  padding: 24rem var(--margin-6xl) var(--margin-6xl);
+  position: relative;
+  width: 100%;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: var(--size-heading-lg);
+  font-variation-settings: var(--fv-display);
+  font-weight: var(--fw-display);
+  letter-spacing: normal;
+  line-height: 1;
+  max-width: 15em;
+  text-wrap: balance;
+}
+.sub {
+  color: var(--color-grey3);
+  display: block;
+}
+
+@media (max-width: 1179.98px) {
+  .headline {
+    padding-left: var(--margin-3xl);
+    padding-right: var(--margin-3xl);
+  }
+}
+@media (max-width: 767px) {
+  .headline {
+    padding: 13rem var(--pwx) var(--margin-6xl);
+  }
+  .title {
+    font-size: var(--size-heading-md);
+  }
+}

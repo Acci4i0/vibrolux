@@ -50,7 +50,7 @@ content/it.ts, content/en.ts   all the copy and links, one dictionary per langua
 content/shared.ts              what doesn't change: media, contact details, paths
 content/legal.tsx              privacy notice and terms, in both languages
 lib/                           GSAP, the scroll-reveal helpers, language detection
-public/assets/                 the brochure, mondo/ (every picture, graded), the originals, the home video
+public/assets/                 the brochure, Vibrolux's photos, the stand-ins until the new shoot
 ```
 
 ## Editing
@@ -82,16 +82,13 @@ Locally the variable is unset and the site runs from the root.
 
 ## Photos
 
-Every picture on the site lives in `public/assets/mondo/` and goes through one
-treatment, [`tools/grade.py`](tools/grade.py): almost monochrome, graphite
-shadows, a soft S curve — one visual world for macros, buildings and landscape.
-Vibrolux's own photos keep their names there (originals, from vibrolux.it, in
-`public/assets/vibrolux/`); the macros on the process tiles, the home and the
-Azienda pillars are Pexels reference shots that show the photographer the
-direction, listed in [`CREDITS.md`](public/assets/mondo/CREDITS.md). Until the
-new shoot the site is a private mockup: `robots` noindex in `app/layout.tsx`.
-`public/assets/preview/` keeps the home video, credited in its
-[`CREDITS.md`](public/assets/preview/CREDITS.md).
+The photos in `public/assets/vibrolux/` are Vibrolux's own, taken from
+vibrolux.it (resized and lightly cropped). `public/assets/preview/` keeps the
+stand-ins until the new shoot — the home video and the Pexels macros on the
+process tiles, the home and the warehouse slide, references for the
+photographer — credited in [`CREDITS.md`](public/assets/preview/CREDITS.md).
+Until then the site is a private mockup: `robots` noindex in `app/layout.tsx`.
+The Azienda video is a black placeholder (`azienda.video` in the content).
 
 The Contatti page has a card for the plant, built like the factory card on
 t1energy.com/technology: the aerial photo (`cover_1.jpg`), the town's name,

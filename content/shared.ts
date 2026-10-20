@@ -3,10 +3,9 @@ import type { Lang } from '@/lib/i18n';
 
 /**
  * What doesn't change with the language: paths, media, contact details.
- * MEDIA: foto() = the site's pictures in public/assets/mondo, all through one treatment (tools/grade.py): Vibrolux's own
- * photos (originals in public/assets/vibrolux) and, until the new shoot, reference pictures (see mondo/CREDITS.md);
- * video() = the home video, graded the same way (the original stand-in is in public/assets/preview);
- * img() = stock/Commons stand-ins still waiting for an original (public/assets/preview, see CREDITS.md).
+ * MEDIA: foto() = Vibrolux's own photos (public/assets/vibrolux, from vibrolux.it, to be retouched);
+ * img()/video() = stock stand-ins until the new shoot: reference pictures for the photographer and the home video
+ * (public/assets/preview, see CREDITS.md).
  * img() without a file renders the black placeholder.
  */
 
@@ -19,13 +18,13 @@ export const linker = (lang: Lang) => (path: string) => withBase(lang === 'it' ?
 
 export const BROCHURE = withBase('/assets/vibrolux-brochure.pdf');
 const P = withBase('/assets/preview/');
-const V = withBase('/assets/mondo/');
+const V = withBase('/assets/vibrolux/');
 /** where the subject sits in photos whose centre isn't the subject */
 const FOCUS: Record<string, string> = { 'facciata.jpg': '64% 50%' };
 /** stand-in from /assets/preview (stock / Commons, see CREDITS.md) */
 export const img = (file?: string, aspect = 1): MediaData => ({ src: file && P + file, aspect, focus: file && FOCUS[file] });
-export const video = (file: string): MediaData => ({ type: 'video', src: V + file, aspect: 16 / 9 });
-/** a picture from /assets/mondo, in the site's one treatment */
+export const video = (file: string): MediaData => ({ type: 'video', src: P + file, aspect: 16 / 9 });
+/** Vibrolux's own photo from /assets/vibrolux (taken from vibrolux.it; to be retouched) */
 export const foto = (file: string, aspect = 1): MediaData => ({ src: V + file, aspect, focus: FOCUS[file] });
 
 export const company = {
@@ -52,7 +51,7 @@ export const maps = {
 };
 
 /** Contatti: Sant'Ambrogio from the air — the Sacra di San Michele above the valley */
-const S = withBase('/assets/mondo/');
+const S = withBase('/assets/sant-ambrogio/');
 export const place = {
   src: S + 'sacra.jpg',
   /** phones: a square crop on the Sacra */

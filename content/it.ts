@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 
 /** Italian texts (from vibrolux.it and vibrolux_brochure.pdf). en.ts mirrors this shape. */
 
@@ -11,7 +11,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Lavaggi e oliature',
     text: 'Linea automatica per trattamenti di disoleatura, lavaggio, asciugatura e vari tipi di oliatura (dewatering).',
     short: 'Disoleatura, lavaggio, asciugatura e oliatura dewatering in linea automatica.',
-    media: foto('gocce-metallo.jpg'),
+    media: img('gocce-metallo.jpg'),
     hero: foto('mg_7742b.jpg', 16 / 9),
     intro: [
       'Una linea automatica dedicata ai trattamenti di disoleatura, lavaggio, asciugatura e oliatura dei particolari metallici.',
@@ -65,7 +65,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Tribofinitura isotropica',
     text: 'Processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse (Ra 0,01 o anche inferiori) e superfici molto lucide.',
     short: 'Superfici molto lucide, con rugosità fino a Ra 0,01.',
-    media: foto('cuscinetto.jpg'),
+    media: img('cuscinetto.jpg'),
     hero: foto('mg_8253.jpg', 16 / 9),
     intro: [
       'Un processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse, fino a Ra 0,01 o anche inferiori, e superfici molto lucide.',
@@ -97,7 +97,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Brillantatura',
     text: 'Impianto automatico per la lucidatura tramite microsfere e appositi additivi.',
     short: 'Lucidatura automatica con microsfere e additivi.',
-    media: foto('sfere-acciaio.jpg'),
+    media: img('sfere-acciaio.jpg'),
     hero: foto('mg_8051.jpg', 16 / 9),
     intro: [
       'Un impianto automatico per la lucidatura dei particolari tramite microsfere e appositi additivi.',
@@ -217,7 +217,7 @@ export const it = {
       corner: {
         heading: 'Brochure',
         text: 'Lavorazioni e impianti in un unico documento.',
-        media: foto('zigrinato.jpg'),
+        media: foto('mg_8489.jpg'),
         href: BROCHURE,
       },
     },
@@ -230,7 +230,7 @@ export const it = {
       cta: { label: 'L’azienda', href: to('/azienda') },
     },
     cards: [
-      { label: 'Lavorazioni', href: to('/lavorazioni'), media: foto('anelli-pila.jpg') },
+      { label: 'Lavorazioni', href: to('/lavorazioni'), media: img('anelli-pila.jpg') },
       { label: 'Contatti', href: to('/contatti'), media: foto('vibrolux_azienda.jpg') },
     ],
     beforeAfter: {
@@ -251,35 +251,39 @@ export const it = {
       eyebrow: 'Perché Vibrolux',
       text: 'Quattro principi che guidano ogni lavorazione.',
       items: [
-        { label: '01', title: 'Servizi qualificati', href: to('/lavorazioni'), media: foto('fresa.jpg') },
+        { label: '01', title: 'Servizi qualificati', href: to('/lavorazioni'), media: img('fresa.jpg') },
         { label: '02', title: 'Standard di qualità', href: to('/azienda#qualita'), media: foto('mg_8343.jpg') },
         { label: '03', title: 'Team specializzato', href: to('/azienda'), media: foto('mg_8275.jpg') },
-        { label: '04', title: 'Risultati al massimo livello', href: to('/lavorazioni'), media: foto('tubo-spazzolato.jpg') },
+        { label: '04', title: 'Risultati al massimo livello', href: to('/lavorazioni'), media: foto('ricevuta-1.jpg') },
       ],
     },
   },
 
   /* ───────── Azienda ───────── */
   azienda: {
-    hero: {
-      media: foto('cover_1.jpg', 16 / 9),
-      headline: 'Esperienza qualificata nel trattamento dei metalli',
-      cta: { label: 'Contattaci', href: to('/contatti') },
-    },
-    intro: {
+    /** the page opens on white, as t1energy.com/company: the title, two photos, the team, a film */
+    headline: {
       id: 'chi-siamo',
-      eyebrow: 'Chi siamo',
-      paragraphs: [
-        'Vibrolux ha acquisito negli anni un’esperienza sempre più qualificata in materia di finiture dei metalli: barilatura, brillantatura, sabbiatura, tribofinitura isotropica, lavaggi e oliature dewatering.',
-        'Il buon funzionamento dei processi produttivi e organizzativi ha consolidato nel tempo i rapporti con grandi gruppi e ampliato il portfolio clienti, rafforzando competitività e posizionamento sul mercato.',
-      ],
+      title: 'Esperienza qualificata nel trattamento dei metalli',
+      sub: 'da Sant’Ambrogio di Torino',
+    },
+    /** the large square, then the small one */
+    pair: [foto('cover_1.jpg'), foto('facciata.jpg')],
+    team: {
+      eyebrow: 'Team',
+      paragraphs: ['Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata.'],
+    },
+    /** the plant's film: the black placeholder until it arrives, then { type: 'video', src: …, aspect: 16 / 9 } */
+    video: { aspect: 16 / 9 },
+    videoText: {
+      paragraphs: ['Dentro lo stabilimento di Sant’Ambrogio: sei lavorazioni sotto lo stesso tetto, dal pezzo grezzo al controllo finale.'],
     },
     sede: {
       id: 'sede',
       eyebrow: 'La sede',
       items: [
         { label: 'Officina', text: 'L’officina è strutturata in diversi reparti di produzione, con aree per il materiale finito e per il carico e scarico dei mezzi.', media: foto('vibrolux_azienda2-1.jpg', 4 / 5) },
-        { label: 'Magazzino', text: 'Un magazzino di 400 mq completa la sede per lo stoccaggio.', media: foto('dadi.jpg', 4 / 5) },
+        { label: 'Magazzino', text: 'Un magazzino di 400 mq completa la sede per lo stoccaggio.', media: img('dadi.jpg', 4 / 5) },
         { label: 'Qualità', text: 'Un’area dedicata al controllo qualità, con strumenti di misura e verifica.', media: foto('mg_8343.jpg', 4 / 5) },
       ],
     },
@@ -293,15 +297,6 @@ export const it = {
         { value: '400 mq', caption: 'Magazzino per lo stoccaggio' },
       ],
       media: foto('vibrolux_azienda.jpg'),
-    },
-    pillars: {
-      eyebrow: 'Metodo',
-      text: 'Tre principi alla base del nostro lavoro.',
-      items: [
-        { label: '01', title: 'Esperienza e qualificazione', href: to('/lavorazioni'), media: foto('bullone.jpg') },
-        { label: '02', title: 'Analisi dei processi', href: to('/lavorazioni'), media: foto('gocce-scure.jpg') },
-        { label: '03', title: 'Soddisfazione del cliente', href: to('/contatti'), media: foto('riflessi.jpg') },
-      ],
     },
     quality: {
       id: 'qualita',

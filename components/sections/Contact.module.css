@@ -125,14 +125,13 @@
 /* the map: Google's embed, bigger than the card so its place card, controls and footer fall outside; the card is the link.
    Always square and centred on the card: Google keeps the pin in the middle only when the embed is square. */
 .map {
-  background-color: #e4e4e4;
+  background-color: #e5e3df;
   container-type: size;
   display: block;
 }
 .map iframe {
   --side: calc(max(100cqw, 100cqh) + 60rem);
   border: 0;
-  filter: grayscale(1); /* in the site's one treatment, like the photos */
   height: var(--side);
   left: calc(50% - var(--side) / 2);
   pointer-events: none;
