@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Chivo_Mono } from 'next/font/google';
+import { Hubot_Sans, Martian_Mono, Mona_Sans } from 'next/font/google';
 import { Loader } from '@/components/Loader';
 import { HeaderDesktop, HeaderMobile } from '@/components/Header';
 import { PageTransition } from '@/components/PageTransition';
@@ -7,9 +7,10 @@ import { Footer } from '@/components/Footer';
 import { BASE } from '@/content/site';
 import './globals.css';
 
-// Closest open-source match to the reference typefaces (see ANIMATION_SPEC.md)
-const geist = Geist({ subsets: ['latin'], variable: '--font-geist' });
-const chivoMono = Chivo_Mono({ subsets: ['latin'], variable: '--font-chivo-mono' });
+// Hubot Sans for headlines and figures, its twin Mona Sans for text (GitHub), Martian Mono for labels — all OFL, with the width axis
+const hubot = Hubot_Sans({ subsets: ['latin', 'latin-ext'], axes: ['wdth'], variable: '--font-hubot' });
+const mona = Mona_Sans({ subsets: ['latin', 'latin-ext'], axes: ['wdth'], variable: '--font-mona' });
+const martian = Martian_Mono({ subsets: ['latin', 'latin-ext'], axes: ['wdth'], variable: '--font-martian' });
 
 export const metadata: Metadata = {
   title: { default: 'Vibrolux • Trattamenti superficiali dei metalli', template: '%s • Vibrolux' },
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="it" className={`${geist.variable} ${chivoMono.variable}`} suppressHydrationWarning>
+    <html lang="it" className={`${hubot.variable} ${mona.variable} ${martian.variable}`} suppressHydrationWarning>
       <head>
         {/* Lets CSS hide [data-reveal] elements until GSAP takes over (no-JS stays visible); English pages (/en) get lang="en" */}
         <script

@@ -14,8 +14,9 @@ and English.
 
 - [Next.js](https://nextjs.org) 15 (App Router) + React 19, TypeScript
 - [GSAP](https://gsap.com) with ScrollTrigger, ScrollToPlugin and Flip
-- CSS Modules; [Geist](https://vercel.com/font) and
-  [Chivo Mono](https://fonts.google.com/specimen/Chivo+Mono) through `next/font`
+- CSS Modules; [Hubot Sans](https://fonts.google.com/specimen/Hubot+Sans) for headlines and figures,
+  [Mona Sans](https://fonts.google.com/specimen/Mona+Sans) for text and
+  [Martian Mono](https://fonts.google.com/specimen/Martian+Mono) for labels, through `next/font`
 
 ## Running it
 

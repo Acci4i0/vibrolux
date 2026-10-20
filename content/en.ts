@@ -318,9 +318,11 @@ export const en: Site = {
       headline: 'Our processes',
       cta: { label: 'Download the brochure', href: BROCHURE },
     },
-    manifesto: {
+    intro: {
       eyebrow: 'The processes',
-      text: 'Vibrolux takes metal parts from raw to finished. Sandblasting, vibratory finishing, isotropic superfinishing down to Ra 0.01, burnishing, washing and oiling: six processes in a single plant.',
+      paragraphs: [
+        'Vibrolux takes metal parts from raw to finished. Sandblasting, vibratory finishing, isotropic superfinishing down to Ra 0.01, burnishing, washing and oiling: six processes in a single plant.',
+      ],
     },
     cards: [
       { label: 'Download the brochure', href: BROCHURE, media: foto('mg_8489.jpg') },

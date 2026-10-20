@@ -15,12 +15,17 @@
   /* Placeholder media colour (swap for real assets later) */
   --color-placeholder: #000;
 
-  /* Fonts: Geist ≈ T1 Sans, Chivo Mono ≈ T1 Sans Mono (weights tuned by ink-density match) */
-  --font-primary: var(--font-geist), 'Helvetica', 'Arial', sans-serif;
-  --font-secondary: var(--font-chivo-mono), 'Courier New', monospace;
+  /* Fonts: Hubot Sans, a little wide, for headlines and figures (the cut zero is its signature); Mona Sans for text;
+     Martian Mono, a little narrow, for labels */
+  --font-display: var(--font-hubot), 'Helvetica', 'Arial', sans-serif;
+  --font-primary: var(--font-mona), 'Helvetica', 'Arial', sans-serif;
+  --font-secondary: var(--font-martian), 'Courier New', monospace;
+  --fv-display: 'wdth' 112.5;
+  --fv-mono: 'wdth' 87.5;
+  --fw-display: 260;
   --fw-light: 290;
   --fw-regular: 440;
-  --fw-mono: 450;
+  --fw-mono: 400;
 
   --size-caption: 1.2rem;
   --size-body: 1.4rem;
@@ -126,6 +131,7 @@ svg {
 .t-eyebrow,
 .t-mono {
   font-family: var(--font-secondary);
+  font-variation-settings: var(--fv-mono);
   font-size: var(--size-caption);
   font-weight: var(--fw-mono);
   letter-spacing: 0.01em;

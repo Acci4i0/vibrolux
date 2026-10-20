@@ -63,8 +63,10 @@
   width: 50%;
 }
 .headline {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fv-display);
   font-size: var(--size-heading-lg);
-  font-weight: var(--fw-light);
+  font-weight: var(--fw-display);
   letter-spacing: normal;
   line-height: 1;
   max-width: 10em;

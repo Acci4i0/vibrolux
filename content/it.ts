@@ -320,10 +320,12 @@ export const it = {
       headline: 'Le nostre lavorazioni',
       cta: { label: 'Scarica la brochure', href: BROCHURE },
     },
-    /** the statement under the hero, on the brand-colour card (reference: on.energy) */
-    manifesto: {
+    /** the text under the hero, laid out like the home's text modules */
+    intro: {
       eyebrow: 'Le lavorazioni',
-      text: 'Vibrolux porta i particolari metallici dal grezzo alla finitura. Sabbiatura, vibrofinitura, tribofinitura isotropica fino a Ra 0,01, brillantatura, lavaggi e oliature: sei lavorazioni in un solo stabilimento.',
+      paragraphs: [
+        'Vibrolux porta i particolari metallici dal grezzo alla finitura. Sabbiatura, vibrofinitura, tribofinitura isotropica fino a Ra 0,01, brillantatura, lavaggi e oliature: sei lavorazioni in un solo stabilimento.',
+      ],
     },
     cards: [
       { label: 'Scarica la brochure', href: BROCHURE, media: foto('mg_8489.jpg') },

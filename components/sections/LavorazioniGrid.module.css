@@ -21,7 +21,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   padding: 0 var(--gutter);
 }
-/* no eyebrow (Lavorazioni, under the manifesto card): the tiles follow straight on, a gutter apart */
+/* no eyebrow (Lavorazioni, under the text module): the tiles follow straight on */
 .section.bare {
   padding-top: 0;
 }

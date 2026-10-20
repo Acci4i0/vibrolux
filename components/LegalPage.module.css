@@ -11,8 +11,10 @@
   padding-bottom: var(--margin-5xl);
 }
 .title {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fv-display);
   font-size: var(--size-heading-xl);
-  font-weight: var(--fw-light);
+  font-weight: var(--fw-display);
   letter-spacing: normal;
   line-height: 1;
 }
