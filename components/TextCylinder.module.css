@@ -18,8 +18,10 @@
 }
 .tumble {
   animation: tumble 12s ease-in-out infinite;
-  color: var(--color-black);
+  -webkit-text-stroke: 0.05em var(--color-black); /* half shows: a black line round white letters */
+  color: var(--color-white);
   font-family: var(--font-display);
+  paint-order: stroke fill;
   font-size: 25cqw;
   font-weight: var(--fw-display);
   line-height: 1;

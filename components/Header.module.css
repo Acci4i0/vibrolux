@@ -29,9 +29,16 @@
   opacity: 0;
   pointer-events: none;
 }
-/* pages that start on white */
+/* pages that start on white: the V and the letters stay white, drawn round with a black line so they read on white */
 .logoDark {
-  color: var(--color-black);
+  color: var(--color-white);
+}
+.logoDark path:not([data-circle]) {
+  paint-order: stroke;
+  stroke: var(--color-black);
+  stroke-linejoin: round;
+  stroke-width: 2px; /* half of it shows, outside the letter */
+  vector-effect: non-scaling-stroke;
 }
 
 .nav {
@@ -269,7 +276,10 @@
   width: auto;
 }
 .mLogo.logoDark {
-  color: var(--color-black);
+  color: var(--color-white);
+}
+.mLogo.mLogoOpen path:not([data-circle]) {
+  stroke: none; /* the open menu is dark: no outline needed */
 }
 .mLogo.mLogoOpen {
   color: var(--color-white); /* the open menu is dark */
