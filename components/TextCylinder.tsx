@@ -1,120 +1,188 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { CIRCLE, V, MARK_VIEWBOX } from './logoData';
+import { useEffect, useRef } from 'react';
+import { CIRCLE, V } from './logoData';
 import s from './TextCylinder.module.css';
 
-/** one vertical strip of a letter: its angle on the ring, its width and where the letter starts inside it (em) */
-type Letter = { ch: string; angle: number; row: number; w: number; shift: number };
-/** what goes round the ring: a letter, or the mark (ch = MARK), each with its width in em */
-type Item = { ch: string; w: number };
-
 /**
- * A word wrapped once around a cylinder in a single ring; the cylinder spins on its axis while the
- * axis tumbles (CSS 3D, the letters are real text in the display face, cut in strips so they follow the curve). Sizes are in em of a font-size set in container
- * units, so the cylinder scales with its box without measuring again. Reduced motion stops on the front view.
+ * A word (and the logo mark after it) wrapped once round a ring that spins on its axis while the axis tumbles —
+ * the motion of the reference loop. Drawn on a canvas with its own 3D projection, so it looks the same in every
+ * browser (CSS 3D gets flattened by WebKit, i.e. every browser on iPad and iPhone).
+ *
+ * The lettering is painted once on a long strip (the ring unrolled); every frame the strip is cut into narrow slices,
+ * each slice is placed on the ring, turned with the ring, projected with perspective and drawn far to near. Slices
+ * seen from behind come out mirrored, as on a transparent ring. Reduced motion: one still frame, the ring facing us.
  */
+
+const LOOP = 5.4; // s
+const FONT = 0.28; // letter size, fraction of the box (the old 28cqw)
+const PERSPECTIVE = 1.1; // camera distance, fraction of the box (the old 110cqw)
+const LINE = 1.2; // em: height of the band the lettering sits on
+const BASELINE = 0.955; // em from the top of the band (capitals 0.7 em tall above it)
+const MARK_H = 0.8; // em: a touch taller than the capitals, as a round shape needs
+const MARK_W = (MARK_H * 66) / 50; // the mark's viewBox is 66 × 50
+const MARK_SPACE = 0.3; // em on each side of the mark
+const SLICE = 0.055; // em: width of a slice
+const LEAN = 18; // degrees: facing us, the ring is seen from a little above, so near and far sides make two rows
+
+const rad = (d: number) => (d * Math.PI) / 180;
+
+/** the reference's motion at u ∈ [0, 1): axis angle on screen, tilt, turn of the ring on its axis (degrees) */
+function pose(u: number) {
+  const g = u + (0.847 * Math.sin(2 * Math.PI * u)) / (2 * Math.PI); // fast while facing us, slow while tipping
+  const h = u - Math.sin(2 * Math.PI * u) / (2 * Math.PI); // flat at the ends, through the view from above at ½
+  return { z: -180 * g, x: 180 * h - LEAN * Math.cos(Math.PI * u), y: -540 * u };
+}
+
+/** CSS rotateZ(z) rotateX(x) rotateY(y) as a 3 × 3 matrix (y axis down, z towards the viewer) */
+function matrix(zd: number, xd: number, yd: number) {
+  const [cz, sz, cx, sx, cy, sy] = [Math.cos(rad(zd)), Math.sin(rad(zd)), Math.cos(rad(xd)), Math.sin(rad(xd)), Math.cos(rad(yd)), Math.sin(rad(yd))];
+  const Z = [cz, -sz, 0, sz, cz, 0, 0, 0, 1];
+  const X = [1, 0, 0, 0, cx, -sx, 0, sx, cx];
+  const Y = [cy, 0, sy, 0, 1, 0, -sy, 0, cy];
+  const mul = (a: number[], b: number[]) =>
+    [0, 1, 2].flatMap((r) => [0, 1, 2].map((c) => a[r * 3] * b[c] + a[r * 3 + 1] * b[3 + c] + a[r * 3 + 2] * b[6 + c]));
+  return mul(mul(Z, X), Y);
+}
+
 export function TextCylinder({ word, className }: { word: string; className?: string }) {
   const root = useRef<HTMLDivElement>(null);
-  const [layout, setLayout] = useState<{ letters: Letter[]; radius: number } | null>(null);
+  const canvas = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const face = root.current?.querySelector(`.${s.tumble}`);
-    if (!face) return;
+    const box = root.current, cv = canvas.current;
+    if (!box || !cv) return;
+    const ctx = cv.getContext('2d');
+    if (!ctx) return;
+    const css = getComputedStyle(box);
+    const family = css.getPropertyValue('--font-display').trim() || 'sans-serif';
+    const ink = '#fff';
+    const brand = css.getPropertyValue('--color-brand').trim() || '#21406e';
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let size = 0, dpr = 1, em = 0, circ = 0, band: HTMLCanvasElement | null = null, res = 1;
+    let raf = 0, visible = false, start = performance.now(), pausedAt = performance.now();
     let cancelled = false;
-    const font = `700 100px ${getComputedStyle(face).fontFamily}`;
-    // measure once the display face is in (or with the fallback if it never arrives)
-    const measure = () => {
-      if (cancelled) return;
-      const ctx = document.createElement('canvas').getContext('2d');
-      if (!ctx) return;
-      ctx.font = font;
-      // the word, then the mark in the gap before it starts again
-      const items: Item[] = [
-        ...[...word].map((ch) => ({ ch, w: ctx.measureText(ch).width / 100 })),
-        { ch: ' ', w: MARK_SPACE },
-        { ch: MARK, w: MARK_W },
-        { ch: ' ', w: MARK_SPACE },
-      ];
-      const span = items.reduce((a, it) => a + it.w, 0);
-      const circ = COPIES * span;
-      const letters: Letter[] = [];
-      ROWS.forEach(({ row, offset }) => {
-        let x = offset * span;
-        for (let k = 0; k < COPIES; k++) {
-          items.forEach(({ ch, w }) => {
-            // each letter is cut in strips, every strip at its own angle, so the large letters bend with the ring
-            for (let j = 0; ch !== ' ' && j < STRIPS; j++) {
-              const c = (j + 0.5) / STRIPS;
-              letters.push({
-                ch,
-                row,
-                angle: ((x + w * c) / circ) * 360,
-                w: w / STRIPS + OVERLAP * 2,
-                shift: -(w * j) / STRIPS + OVERLAP,
-              });
-            }
-            x += w;
-          });
-        }
+
+    /** the ring unrolled: the word, a space, the mark, a space — painted once */
+    const paint = () => {
+      size = box.clientWidth;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = Math.round(size * dpr);
+      cv.height = Math.round(size * dpr);
+      em = size * FONT; // css px
+      res = em * dpr * 1.25; // band pixels per em: room for the near side, which comes closer
+      const m = document.createElement('canvas').getContext('2d')!;
+      m.font = `700 ${res}px ${family}`;
+      const chars = [...word];
+      const adv = chars.map((ch) => m.measureText(ch).width / res);
+      circ = adv.reduce((a, b) => a + b, 0) + MARK_SPACE * 2 + MARK_W;
+      band = document.createElement('canvas');
+      band.width = Math.ceil(circ * res);
+      band.height = Math.ceil(LINE * res);
+      const b = band.getContext('2d')!;
+      b.font = `700 ${res}px ${family}`;
+      b.fillStyle = ink;
+      b.textBaseline = 'alphabetic';
+      let x = 0;
+      chars.forEach((ch, i) => {
+        b.fillText(ch, x * res, BASELINE * res);
+        x += adv[i];
       });
-      setLayout({ letters, radius: circ / (2 * Math.PI) });
+      // the mark, centred on the capitals
+      const k = (MARK_H * res) / 50;
+      const top = (BASELINE - 0.35 - MARK_H / 2) * res;
+      b.save();
+      b.setTransform(k, 0, 0, k, (x + MARK_SPACE) * res, top);
+      b.fillStyle = brand;
+      b.fill(new Path2D(CIRCLE));
+      b.fillStyle = ink;
+      V.forEach((d) => b.fill(new Path2D(d)));
+      b.restore();
     };
-    document.fonts.load(font).then(measure, measure);
+
+    const draw = (u: number) => {
+      if (!band) return;
+      const p = pose(u);
+      const M = matrix(p.z, p.x, p.y);
+      const R = circ / (2 * Math.PI); // em
+      const P = (size * PERSPECTIVE) / em; // camera distance in em
+      const c = size / 2; // css px
+      const half = LINE / 2;
+      const n = Math.ceil(circ / SLICE);
+      const w = circ / n;
+      // a point on the ring: band x (em), band y (em from the band's centre) → screen px and depth
+      const at = (bx: number, by: number) => {
+        const a = (bx / circ) * Math.PI * 2;
+        const lx = R * Math.sin(a), ly = by, lz = R * Math.cos(a);
+        const X = M[0] * lx + M[1] * ly + M[2] * lz;
+        const Y = M[3] * lx + M[4] * ly + M[5] * lz;
+        const Z = M[6] * lx + M[7] * ly + M[8] * lz;
+        const k = P / (P - Z);
+        return [c + X * k * em, c + Y * k * em, Z];
+      };
+      const slices: [number, number][] = [];
+      for (let i = 0; i < n; i++) slices.push([i, at((i + 0.5) * w, 0)[2]]);
+      slices.sort((a, b) => a[1] - b[1]); // far first
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      const pad = SLICE * 0.45; // em: each slice reaches into its neighbours, so no seam shows even edge-on
+      for (const [i] of slices) {
+        const x0 = i * w - pad, x1 = (i + 1) * w + pad;
+        const [ax, ay] = at(x0, -half), [bx, by] = at(x1, -half), [cx_, cy_] = at(x0, half);
+        // texture slice (x0..x1, whole height) → parallelogram a, b, c
+        const sw = (x1 - x0) * res, sh = LINE * res;
+        ctx.setTransform(((bx - ax) / sw) * dpr, ((by - ay) / sw) * dpr, ((cx_ - ax) / sh) * dpr, ((cy_ - ay) / sh) * dpr, ax * dpr, ay * dpr);
+        const sx = Math.max(0, x0 * res);
+        ctx.drawImage(band, sx, 0, Math.min(sw, band.width - sx), band.height, sx - x0 * res, 0, Math.min(sw, band.width - sx), band.height);
+      }
+    };
+
+    const frame = (now: number) => {
+      draw(((((now - start) / 1000) % LOOP) + LOOP) % LOOP / LOOP);
+      raf = requestAnimationFrame(frame);
+    };
+    const play = () => {
+      if (raf || still || !visible || !band) return;
+      start += performance.now() - pausedAt;
+      raf = requestAnimationFrame(frame);
+    };
+    const pause = () => {
+      if (!raf) return;
+      cancelAnimationFrame(raf);
+      raf = 0;
+      pausedAt = performance.now();
+    };
+
+    // paint once the display face is in (or with the fallback if it never arrives)
+    document.fonts.load(`700 40px ${family}`).then(
+      () => !cancelled && (paint(), draw(0), play()),
+      () => !cancelled && (paint(), draw(0), play()),
+    );
+    const ro = new ResizeObserver(() => {
+      if (!band || Math.abs(box.clientWidth - size) < 1) return;
+      paint();
+      draw(0);
+    });
+    ro.observe(box);
+    const io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      if (visible) play();
+      else pause();
+    });
+    io.observe(box);
     return () => {
       cancelled = true;
+      pause();
+      ro.disconnect();
+      io.disconnect();
     };
   }, [word]);
 
-  // spinning only while on screen
-  useEffect(() => {
-    const el = root.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([e]) => (el.dataset.paused = e.isIntersecting ? 'false' : 'true'));
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
   return (
     <div ref={root} className={`${s.box} ${className ?? ''}`} role="img" aria-label={word}>
-      <div className={s.stage}>
-        <div className={s.tumble}>
-          <div className={s.spin} aria-hidden="true">
-            {layout?.letters.map((l, i) => (
-              <span
-                key={i}
-                className={s.strip}
-                style={{
-                  width: `${l.w}em`,
-                  transform: `translate(-50%, -50%) rotateY(${l.angle}deg) translateZ(${layout.radius}em) translateY(${l.row * ROW_HEIGHT}em)`,
-                }}
-              >
-                {l.ch === MARK ? (
-                  <span className={s.mark} style={{ left: `${l.shift}em`, backgroundImage: MARK_IMAGE }} />
-                ) : (
-                  <span className={s.ch} style={{ left: `${l.shift}em` }}>
-                    {l.ch}
-                  </span>
-                )}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
+      <canvas ref={canvas} className={s.canvas} aria-hidden="true" />
     </div>
   );
 }
-
-const COPIES = 1; // the word goes round once, so the letters can be large
-const MARK = '§mark'; // stands for the logo mark among the letters
-/** the mark as an image, not inline SVG: Safari draws images reliably inside the 3D strips */
-const MARK_IMAGE = `url("data:image/svg+xml,${encodeURIComponent(
-  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='${MARK_VIEWBOX}'><path d='${CIRCLE}' fill='#21406e'/>${V.map((d) => `<path d='${d}' fill='#fff'/>`).join('')}</svg>`,
-)}")`;
-const MARK_H = 0.8; // em: a touch taller than the capitals (0.7), as a round shape needs
-const MARK_W = (MARK_H * 66) / 50; // the mark's viewBox is 66 × 50
-const MARK_SPACE = 0.3; // em on each side of the mark
-const ROW_HEIGHT = 0.82; // em between rows
-const ROWS = [{ row: 0, offset: 0 }]; // a single ring
-const STRIPS = 5; // strips per letter
-const OVERLAP = 0.006; // em each strip reaches into its neighbours, so no seam shows
