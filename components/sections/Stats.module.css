@@ -30,10 +30,12 @@
   margin-top: var(--margin-3xl);
 }
 .list {
+  container-type: inline-size; /* the figures size themselves on the column, so "2000 mq" never breaks */
   display: flex;
   flex-direction: column;
   gap: var(--margin-5xl);
   margin-top: var(--margin-6xl);
+  width: 100%;
 }
 .stat {
   display: flex;
@@ -44,11 +46,11 @@
   display: flex;
   font-family: var(--font-display);
   font-variation-settings: var(--fv-display);
-  font-size: var(--size-heading-xl);
+  font-size: min(var(--size-heading-xl), 18.5cqw); /* "2000 mq" is about 5 em wide */
   font-weight: var(--fw-display);
   letter-spacing: normal;
   line-height: 1;
-  text-wrap: balance;
+  white-space: nowrap;
 }
 .caption {
   margin-top: 0.4em;
@@ -73,32 +75,46 @@
     padding-right: var(--margin-3xl);
   }
 }
+/* phone: as on desktop, the square at the bottom left beside the figures; the text above runs full width */
 @media (max-width: 767px) {
   .stats {
     padding: var(--margin-6xl) var(--pwx);
   }
   .inner {
-    flex-direction: column;
-    gap: var(--margin-3xl);
+    align-items: end;
+    column-gap: var(--margin-xl);
+    display: grid;
+    grid-template-columns: 34% minmax(0, 1fr);
+    row-gap: var(--margin-3xl);
   }
-  .eyebrow,
-  .contentCol {
+  .eyebrow {
+    grid-column: 1 / -1;
     width: 100%;
+  }
+  .contentCol {
+    display: contents;
+  }
+  .content {
+    grid-column: 1 / -1;
   }
   .content p {
     max-width: 100%;
     padding-right: 1em;
   }
   .list {
-    gap: var(--margin-3xl);
+    gap: var(--margin-xl);
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: var(--margin-xl);
   }
   .caption {
     max-width: 25em;
   }
   .media {
     bottom: auto;
+    grid-column: 1;
+    grid-row: 3;
     left: auto;
-    margin-top: var(--margin-3xl);
     position: relative;
     width: 100%;
   }

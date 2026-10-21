@@ -1,9 +1,8 @@
-/* white square, black lettering; everything inside is sized from the box width (container units) */
+/* black square, white lettering; everything inside is sized from the box width (container units) */
 .box {
   aspect-ratio: 1;
-  background: var(--color-white);
-  border: 1px solid var(--color-grey4);
-  border-radius: var(--radius-large);
+  background: var(--color-black);
+  border-radius: 20%; /* = the site's large radius at 400px, and it scales down with the square */
   container-type: inline-size;
   overflow: hidden;
   position: relative;
@@ -12,23 +11,20 @@
 .stage {
   display: grid;
   inset: 0;
-  perspective: 125cqw;
+  perspective: 110cqw;
   place-items: center;
   position: absolute;
 }
 .tumble {
-  animation: tumble 12s ease-in-out infinite;
-  -webkit-text-stroke: 0.05em var(--color-black); /* half shows: a black line round white letters */
+  animation: tumble 5.4s linear infinite;
   color: var(--color-white);
   font-family: var(--font-display);
-  paint-order: stroke fill;
-  font-size: 25cqw;
+  font-size: 30cqw;
   font-weight: var(--fw-display);
   line-height: 1;
   transform-style: preserve-3d;
 }
 .spin {
-  animation: spin 8s linear infinite;
   transform-style: preserve-3d;
 }
 .strip {
@@ -44,30 +40,288 @@
   top: 0;
   white-space: pre;
 }
-.box[data-paused='true'] .tumble,
-.box[data-paused='true'] .spin {
+.box[data-paused='true'] .tumble {
   animation-play-state: paused;
 }
 
-@keyframes spin {
-  to {
-    transform: rotateY(-360deg);
-  }
-}
-/* always seen from above, never edge-on, so the near and far sides of the ring never cover each other:
-   front view, over the top, front view leaning the other way, halfway up; reduced motion rests on 100% */
+/* The reference's motion, one cycle (5.4 s), sampled every 1/90 so the curves survive the linear steps:
+   the axis sweeps half a turn in the screen plane, fast while the ring faces us (rest of the cycle slower);
+   meanwhile it tips over once, through the view from above at half time; the ring turns 1½ times on its axis.
+   Facing us it is seen 18° from above, so the near and far sides of the ring read as two rows instead of one blur.
+   At 100% the ring is turned half round, which looks exactly like 0%: the loop has no seam.
+   Reduced motion rests on the last frame. */
 @keyframes tumble {
-  0%,
-  100% {
-    transform: rotateZ(-22deg) rotateX(-26deg);
+  0.00% {
+    transform: rotateZ(-0.00deg) rotateX(-18.00deg) rotateY(-0.00deg);
   }
-  25% {
-    transform: rotateZ(-6deg) rotateX(-80deg);
+  1.11% {
+    transform: rotateZ(-3.69deg) rotateX(-17.99deg) rotateY(-6.00deg);
   }
-  50% {
-    transform: rotateZ(20deg) rotateX(-26deg);
+  2.22% {
+    transform: rotateZ(-7.38deg) rotateX(-17.94deg) rotateY(-12.00deg);
   }
-  75% {
-    transform: rotateZ(2deg) rotateX(-52deg);
+  3.33% {
+    transform: rotateZ(-11.04deg) rotateX(-17.86deg) rotateY(-18.00deg);
+  }
+  4.44% {
+    transform: rotateZ(-14.69deg) rotateX(-17.72deg) rotateY(-24.00deg);
+  }
+  5.56% {
+    transform: rotateZ(-18.30deg) rotateX(-17.52deg) rotateY(-30.00deg);
+  }
+  6.67% {
+    transform: rotateZ(-21.87deg) rotateX(-17.26deg) rotateY(-36.00deg);
+  }
+  7.78% {
+    transform: rotateZ(-25.39deg) rotateX(-16.91deg) rotateY(-42.00deg);
+  }
+  8.89% {
+    transform: rotateZ(-28.86deg) rotateX(-16.48deg) rotateY(-48.00deg);
+  }
+  10.00% {
+    transform: rotateZ(-32.26deg) rotateX(-15.96deg) rotateY(-54.00deg);
+  }
+  11.11% {
+    transform: rotateZ(-35.60deg) rotateX(-15.33deg) rotateY(-60.00deg);
+  }
+  12.22% {
+    transform: rotateZ(-38.86deg) rotateX(-14.59deg) rotateY(-66.00deg);
+  }
+  13.33% {
+    transform: rotateZ(-42.03deg) rotateX(-13.73deg) rotateY(-72.00deg);
+  }
+  14.44% {
+    transform: rotateZ(-45.12deg) rotateX(-12.75deg) rotateY(-78.00deg);
+  }
+  15.56% {
+    transform: rotateZ(-48.12deg) rotateX(-11.64deg) rotateY(-84.00deg);
+  }
+  16.67% {
+    transform: rotateZ(-51.01deg) rotateX(-10.40deg) rotateY(-90.00deg);
+  }
+  17.78% {
+    transform: rotateZ(-53.81deg) rotateX(-9.01deg) rotateY(-96.00deg);
+  }
+  18.89% {
+    transform: rotateZ(-56.50deg) rotateX(-7.48deg) rotateY(-102.00deg);
+  }
+  20.00% {
+    transform: rotateZ(-59.08deg) rotateX(-5.81deg) rotateY(-108.00deg);
+  }
+  21.11% {
+    transform: rotateZ(-61.54deg) rotateX(-3.98deg) rotateY(-114.00deg);
+  }
+  22.22% {
+    transform: rotateZ(-63.90deg) rotateX(-2.00deg) rotateY(-120.00deg);
+  }
+  23.33% {
+    transform: rotateZ(-66.13deg) rotateX(0.13deg) rotateY(-126.00deg);
+  }
+  24.44% {
+    transform: rotateZ(-68.25deg) rotateX(2.42deg) rotateY(-132.00deg);
+  }
+  25.56% {
+    transform: rotateZ(-70.25deg) rotateX(4.87deg) rotateY(-138.00deg);
+  }
+  26.67% {
+    transform: rotateZ(-72.13deg) rotateX(7.46deg) rotateY(-144.00deg);
+  }
+  27.78% {
+    transform: rotateZ(-73.90deg) rotateX(10.22deg) rotateY(-150.00deg);
+  }
+  28.89% {
+    transform: rotateZ(-75.54deg) rotateX(13.12deg) rotateY(-156.00deg);
+  }
+  30.00% {
+    transform: rotateZ(-77.08deg) rotateX(16.17deg) rotateY(-162.00deg);
+  }
+  31.11% {
+    transform: rotateZ(-78.50deg) rotateX(19.37deg) rotateY(-168.00deg);
+  }
+  32.22% {
+    transform: rotateZ(-79.81deg) rotateX(22.71deg) rotateY(-174.00deg);
+  }
+  33.33% {
+    transform: rotateZ(-81.01deg) rotateX(26.19deg) rotateY(-180.00deg);
+  }
+  34.44% {
+    transform: rotateZ(-82.12deg) rotateX(29.80deg) rotateY(-186.00deg);
+  }
+  35.56% {
+    transform: rotateZ(-83.12deg) rotateX(33.53deg) rotateY(-192.00deg);
+  }
+  36.67% {
+    transform: rotateZ(-84.03deg) rotateX(37.39deg) rotateY(-198.00deg);
+  }
+  37.78% {
+    transform: rotateZ(-84.86deg) rotateX(41.36deg) rotateY(-204.00deg);
+  }
+  38.89% {
+    transform: rotateZ(-85.60deg) rotateX(45.43deg) rotateY(-210.00deg);
+  }
+  40.00% {
+    transform: rotateZ(-86.26deg) rotateX(49.60deg) rotateY(-216.00deg);
+  }
+  41.11% {
+    transform: rotateZ(-86.86deg) rotateX(53.86deg) rotateY(-222.00deg);
+  }
+  42.22% {
+    transform: rotateZ(-87.39deg) rotateX(58.20deg) rotateY(-228.00deg);
+  }
+  43.33% {
+    transform: rotateZ(-87.87deg) rotateX(62.61deg) rotateY(-234.00deg);
+  }
+  44.44% {
+    transform: rotateZ(-88.30deg) rotateX(67.08deg) rotateY(-240.00deg);
+  }
+  45.56% {
+    transform: rotateZ(-88.69deg) rotateX(71.60deg) rotateY(-246.00deg);
+  }
+  46.67% {
+    transform: rotateZ(-89.04deg) rotateX(76.16deg) rotateY(-252.00deg);
+  }
+  47.78% {
+    transform: rotateZ(-89.38deg) rotateX(80.76deg) rotateY(-258.00deg);
+  }
+  48.89% {
+    transform: rotateZ(-89.69deg) rotateX(85.37deg) rotateY(-264.00deg);
+  }
+  50.00% {
+    transform: rotateZ(-90.00deg) rotateX(90.00deg) rotateY(-270.00deg);
+  }
+  51.11% {
+    transform: rotateZ(-90.31deg) rotateX(94.63deg) rotateY(-276.00deg);
+  }
+  52.22% {
+    transform: rotateZ(-90.62deg) rotateX(99.24deg) rotateY(-282.00deg);
+  }
+  53.33% {
+    transform: rotateZ(-90.96deg) rotateX(103.84deg) rotateY(-288.00deg);
+  }
+  54.44% {
+    transform: rotateZ(-91.31deg) rotateX(108.40deg) rotateY(-294.00deg);
+  }
+  55.56% {
+    transform: rotateZ(-91.70deg) rotateX(112.92deg) rotateY(-300.00deg);
+  }
+  56.67% {
+    transform: rotateZ(-92.13deg) rotateX(117.39deg) rotateY(-306.00deg);
+  }
+  57.78% {
+    transform: rotateZ(-92.61deg) rotateX(121.80deg) rotateY(-312.00deg);
+  }
+  58.89% {
+    transform: rotateZ(-93.14deg) rotateX(126.14deg) rotateY(-318.00deg);
+  }
+  60.00% {
+    transform: rotateZ(-93.74deg) rotateX(130.40deg) rotateY(-324.00deg);
+  }
+  61.11% {
+    transform: rotateZ(-94.40deg) rotateX(134.57deg) rotateY(-330.00deg);
+  }
+  62.22% {
+    transform: rotateZ(-95.14deg) rotateX(138.64deg) rotateY(-336.00deg);
+  }
+  63.33% {
+    transform: rotateZ(-95.97deg) rotateX(142.61deg) rotateY(-342.00deg);
+  }
+  64.44% {
+    transform: rotateZ(-96.88deg) rotateX(146.47deg) rotateY(-348.00deg);
+  }
+  65.56% {
+    transform: rotateZ(-97.88deg) rotateX(150.20deg) rotateY(-354.00deg);
+  }
+  66.67% {
+    transform: rotateZ(-98.99deg) rotateX(153.81deg) rotateY(-360.00deg);
+  }
+  67.78% {
+    transform: rotateZ(-100.19deg) rotateX(157.29deg) rotateY(-366.00deg);
+  }
+  68.89% {
+    transform: rotateZ(-101.50deg) rotateX(160.63deg) rotateY(-372.00deg);
+  }
+  70.00% {
+    transform: rotateZ(-102.92deg) rotateX(163.83deg) rotateY(-378.00deg);
+  }
+  71.11% {
+    transform: rotateZ(-104.46deg) rotateX(166.88deg) rotateY(-384.00deg);
+  }
+  72.22% {
+    transform: rotateZ(-106.10deg) rotateX(169.78deg) rotateY(-390.00deg);
+  }
+  73.33% {
+    transform: rotateZ(-107.87deg) rotateX(172.54deg) rotateY(-396.00deg);
+  }
+  74.44% {
+    transform: rotateZ(-109.75deg) rotateX(175.13deg) rotateY(-402.00deg);
+  }
+  75.56% {
+    transform: rotateZ(-111.75deg) rotateX(177.58deg) rotateY(-408.00deg);
+  }
+  76.67% {
+    transform: rotateZ(-113.87deg) rotateX(179.87deg) rotateY(-414.00deg);
+  }
+  77.78% {
+    transform: rotateZ(-116.10deg) rotateX(182.00deg) rotateY(-420.00deg);
+  }
+  78.89% {
+    transform: rotateZ(-118.46deg) rotateX(183.98deg) rotateY(-426.00deg);
+  }
+  80.00% {
+    transform: rotateZ(-120.92deg) rotateX(185.81deg) rotateY(-432.00deg);
+  }
+  81.11% {
+    transform: rotateZ(-123.50deg) rotateX(187.48deg) rotateY(-438.00deg);
+  }
+  82.22% {
+    transform: rotateZ(-126.19deg) rotateX(189.01deg) rotateY(-444.00deg);
+  }
+  83.33% {
+    transform: rotateZ(-128.99deg) rotateX(190.40deg) rotateY(-450.00deg);
+  }
+  84.44% {
+    transform: rotateZ(-131.88deg) rotateX(191.64deg) rotateY(-456.00deg);
+  }
+  85.56% {
+    transform: rotateZ(-134.88deg) rotateX(192.75deg) rotateY(-462.00deg);
+  }
+  86.67% {
+    transform: rotateZ(-137.97deg) rotateX(193.73deg) rotateY(-468.00deg);
+  }
+  87.78% {
+    transform: rotateZ(-141.14deg) rotateX(194.59deg) rotateY(-474.00deg);
+  }
+  88.89% {
+    transform: rotateZ(-144.40deg) rotateX(195.33deg) rotateY(-480.00deg);
+  }
+  90.00% {
+    transform: rotateZ(-147.74deg) rotateX(195.96deg) rotateY(-486.00deg);
+  }
+  91.11% {
+    transform: rotateZ(-151.14deg) rotateX(196.48deg) rotateY(-492.00deg);
+  }
+  92.22% {
+    transform: rotateZ(-154.61deg) rotateX(196.91deg) rotateY(-498.00deg);
+  }
+  93.33% {
+    transform: rotateZ(-158.13deg) rotateX(197.26deg) rotateY(-504.00deg);
+  }
+  94.44% {
+    transform: rotateZ(-161.70deg) rotateX(197.52deg) rotateY(-510.00deg);
+  }
+  95.56% {
+    transform: rotateZ(-165.31deg) rotateX(197.72deg) rotateY(-516.00deg);
+  }
+  96.67% {
+    transform: rotateZ(-168.96deg) rotateX(197.86deg) rotateY(-522.00deg);
+  }
+  97.78% {
+    transform: rotateZ(-172.62deg) rotateX(197.94deg) rotateY(-528.00deg);
+  }
+  98.89% {
+    transform: rotateZ(-176.31deg) rotateX(197.99deg) rotateY(-534.00deg);
+  }
+  100.00% {
+    transform: rotateZ(-180.00deg) rotateX(198.00deg) rotateY(-540.00deg);
   }
 }
