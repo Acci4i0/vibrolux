@@ -45,19 +45,20 @@
     transform: rotateY(-360deg);
   }
 }
-/* front view, over the top, front view leaning the other way, a glimpse from below; reduced motion rests on 100% */
+/* always seen from above, never edge-on, so the near and far sides of the ring never cover each other:
+   front view, over the top, front view leaning the other way, halfway up; reduced motion rests on 100% */
 @keyframes tumble {
   0%,
   100% {
-    transform: rotateZ(-24deg) rotateX(-16deg);
+    transform: rotateZ(-22deg) rotateX(-26deg);
   }
   25% {
-    transform: rotateZ(-6deg) rotateX(-78deg);
+    transform: rotateZ(-6deg) rotateX(-80deg);
   }
   50% {
-    transform: rotateZ(22deg) rotateX(-14deg);
+    transform: rotateZ(20deg) rotateX(-26deg);
   }
   75% {
-    transform: rotateZ(4deg) rotateX(24deg);
+    transform: rotateZ(2deg) rotateX(-52deg);
   }
 }

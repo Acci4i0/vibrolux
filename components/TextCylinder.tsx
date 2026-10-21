@@ -6,7 +6,7 @@ import s from './TextCylinder.module.css';
 type Letter = { ch: string; angle: number; row: number };
 
 /**
- * A word wrapped twice around a cylinder, in two rows offset by half a word; the cylinder spins on its axis while the
+ * A word wrapped twice around a cylinder in a single ring; the cylinder spins on its axis while the
  * axis tumbles (CSS 3D, the letters are real text in the display face). Sizes are in em of a font-size set in container
  * units, so the cylinder scales with its box without measuring again. Reduced motion stops on the front view.
  */
@@ -81,10 +81,7 @@ export function TextCylinder({ word, className }: { word: string; className?: st
   );
 }
 
-const COPIES = 2; // the word goes round twice in each row
+const COPIES = 2; // the word goes round twice
 const GAP = 0.9; // em between the copies
-const ROW_HEIGHT = 0.82; // em between the two rows
-const ROWS = [
-  { row: -0.5, offset: 0 },
-  { row: 0.5, offset: 0.5 },
-];
+const ROW_HEIGHT = 0.82; // em between rows
+const ROWS = [{ row: 0, offset: 0 }]; // a single ring

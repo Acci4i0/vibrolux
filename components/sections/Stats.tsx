@@ -7,6 +7,7 @@ import { ANIM } from '@/config/animations';
 import { Button } from '../Button';
 import { Media, type MediaData } from '../Media';
 import { TextCylinder } from '../TextCylinder';
+import { LogoShatter } from '../LogoShatter';
 import s from './Stats.module.css';
 
 type Data = {
@@ -14,9 +15,10 @@ type Data = {
   text: string;
   cta: { label: string; href: string };
   items: { value: string; caption: string }[];
-  /** a photo in the square, or a word turning on a cylinder */
+  /** a photo in the square, a word turning on a cylinder, or the mark breaking apart and coming back */
   media?: MediaData;
   spin?: string;
+  shatter?: boolean;
 };
 
 export function Stats({ data }: { data: Data }) {
@@ -59,7 +61,13 @@ export function Stats({ data }: { data: Data }) {
           </div>
         </div>
         <div className={s.media}>
-          {data.spin ? <TextCylinder word={data.spin} /> : data.media && <Media {...data.media} />}
+          {data.shatter ? (
+            <LogoShatter />
+          ) : data.spin ? (
+            <TextCylinder word={data.spin} />
+          ) : (
+            data.media && <Media {...data.media} />
+          )}
         </div>
       </div>
     </section>

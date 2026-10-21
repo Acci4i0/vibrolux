@@ -1,0 +1,29 @@
+/* same white square as the TextCylinder */
+.box {
+  aspect-ratio: 1;
+  background: var(--color-white);
+  border: 1px solid var(--color-grey4);
+  border-radius: var(--radius-large);
+  color: var(--color-black);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.mark {
+  aspect-ratio: 66 / 50;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 46%;
+}
+.layer {
+  backface-visibility: visible;
+  fill: currentColor;
+  height: 100%;
+  inset: 0;
+  overflow: visible;
+  position: absolute;
+  width: 100%;
+  will-change: transform;
+}
