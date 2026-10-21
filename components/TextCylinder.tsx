@@ -1,10 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { CIRCLE, V, MARK_VIEWBOX } from './logoData';
 import s from './TextCylinder.module.css';
 
 /** one vertical strip of a letter: its angle on the ring, its width and where the letter starts inside it (em) */
 type Letter = { ch: string; angle: number; row: number; w: number; shift: number };
+/** what goes round the ring: a letter, or the mark (ch = MARK), each with its width in em */
+type Item = { ch: string; w: number };
 
 /**
  * A word wrapped once around a cylinder in a single ring; the cylinder spins on its axis while the
@@ -26,30 +29,33 @@ export function TextCylinder({ word, className }: { word: string; className?: st
       const ctx = document.createElement('canvas').getContext('2d');
       if (!ctx) return;
       ctx.font = font;
-      const chars = [...word];
-      const adv = chars.map((ch) => ctx.measureText(ch).width / 100); // em
-      const wordW = adv.reduce((a, b) => a + b, 0);
-      const span = wordW + GAP;
+      // the word, then the mark in the gap before it starts again
+      const items: Item[] = [
+        ...[...word].map((ch) => ({ ch, w: ctx.measureText(ch).width / 100 })),
+        { ch: ' ', w: MARK_SPACE },
+        { ch: MARK, w: MARK_W },
+        { ch: ' ', w: MARK_SPACE },
+      ];
+      const span = items.reduce((a, it) => a + it.w, 0);
       const circ = COPIES * span;
       const letters: Letter[] = [];
       ROWS.forEach(({ row, offset }) => {
         let x = offset * span;
         for (let k = 0; k < COPIES; k++) {
-          chars.forEach((ch, i) => {
+          items.forEach(({ ch, w }) => {
             // each letter is cut in strips, every strip at its own angle, so the large letters bend with the ring
-            for (let j = 0; j < STRIPS; j++) {
+            for (let j = 0; ch !== ' ' && j < STRIPS; j++) {
               const c = (j + 0.5) / STRIPS;
               letters.push({
                 ch,
                 row,
-                angle: ((x + adv[i] * c) / circ) * 360,
-                w: adv[i] / STRIPS + OVERLAP * 2,
-                shift: -(adv[i] * j) / STRIPS + OVERLAP,
+                angle: ((x + w * c) / circ) * 360,
+                w: w / STRIPS + OVERLAP * 2,
+                shift: -(w * j) / STRIPS + OVERLAP,
               });
             }
-            x += adv[i];
+            x += w;
           });
-          x += GAP;
         }
       });
       setLayout({ letters, radius: circ / (2 * Math.PI) });
@@ -83,9 +89,18 @@ export function TextCylinder({ word, className }: { word: string; className?: st
                   transform: `translate(-50%, -50%) rotateY(${l.angle}deg) translateZ(${layout.radius}em) translateY(${l.row * ROW_HEIGHT}em)`,
                 }}
               >
-                <span className={s.ch} style={{ left: `${l.shift}em` }}>
-                  {l.ch}
-                </span>
+                {l.ch === MARK ? (
+                  <svg className={s.mark} viewBox={MARK_VIEWBOX} style={{ left: `${l.shift}em` }}>
+                    <path d={CIRCLE} fill="var(--color-brand)" />
+                    {V.map((d, k) => (
+                      <path key={k} d={d} fill="var(--color-white)" />
+                    ))}
+                  </svg>
+                ) : (
+                  <span className={s.ch} style={{ left: `${l.shift}em` }}>
+                    {l.ch}
+                  </span>
+                )}
               </span>
             ))}
           </div>
@@ -96,7 +111,10 @@ export function TextCylinder({ word, className }: { word: string; className?: st
 }
 
 const COPIES = 1; // the word goes round once, so the letters can be large
-const GAP = 1.1; // em closing the ring after the word
+const MARK = '§mark'; // stands for the logo mark among the letters
+const MARK_H = 0.8; // em: a touch taller than the capitals (0.7), as a round shape needs
+const MARK_W = (MARK_H * 66) / 50; // the mark's viewBox is 66 × 50
+const MARK_SPACE = 0.3; // em on each side of the mark
 const ROW_HEIGHT = 0.82; // em between rows
 const ROWS = [{ row: 0, offset: 0 }]; // a single ring
 const STRIPS = 5; // strips per letter

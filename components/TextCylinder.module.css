@@ -19,7 +19,7 @@
   animation: tumble 5.4s linear infinite;
   color: var(--color-white);
   font-family: var(--font-display);
-  font-size: 30cqw;
+  font-size: 28cqw;
   font-weight: var(--fw-display);
   line-height: 1;
   transform-style: preserve-3d;
@@ -33,6 +33,13 @@
   overflow: hidden;
   position: absolute;
   top: 0;
+}
+/* the mark, centred on the capitals: they run from 0.255em to 0.955em down the 1.2em strip */
+.mark {
+  height: 0.8em;
+  position: absolute;
+  top: 0.205em;
+  width: 1.056em;
 }
 .ch {
   line-height: 1.2;
