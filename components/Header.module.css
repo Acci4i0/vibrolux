@@ -29,15 +29,19 @@
   opacity: 0;
   pointer-events: none;
 }
-/* pages that start on white: the V and the letters stay white, drawn round with a black line so they read on white */
+/* pages that start on white: the V and the letters stay white with a black line round them. The line is the black twin
+   under each shape, grown by a stroke: it shows only outside the white shape and in the hairline cuts between its parts */
 .logoDark {
   color: var(--color-white);
 }
-.logoDark path:not([data-circle]) {
-  paint-order: stroke;
+.logoDark [data-ink] {
+  fill: var(--color-black);
   stroke: var(--color-black);
   stroke-linejoin: round;
-  stroke-width: 2px; /* half of it shows, outside the letter */
+  stroke-width: 2px;
+  visibility: visible;
+}
+.logoDark [data-ink] path {
   vector-effect: non-scaling-stroke;
 }
 
@@ -278,8 +282,8 @@
 .mLogo.logoDark {
   color: var(--color-white);
 }
-.mLogo.mLogoOpen path:not([data-circle]) {
-  stroke: none; /* the open menu is dark: no outline needed */
+.mLogo.mLogoOpen [data-ink] {
+  visibility: hidden; /* the open menu is dark: no line needed */
 }
 .mLogo.mLogoOpen {
   color: var(--color-white); /* the open menu is dark */
