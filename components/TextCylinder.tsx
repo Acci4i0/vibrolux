@@ -90,12 +90,7 @@ export function TextCylinder({ word, className }: { word: string; className?: st
                 }}
               >
                 {l.ch === MARK ? (
-                  <svg className={s.mark} viewBox={MARK_VIEWBOX} style={{ left: `${l.shift}em` }}>
-                    <path d={CIRCLE} fill="var(--color-brand)" />
-                    {V.map((d, k) => (
-                      <path key={k} d={d} fill="var(--color-white)" />
-                    ))}
-                  </svg>
+                  <span className={s.mark} style={{ left: `${l.shift}em`, backgroundImage: MARK_IMAGE }} />
                 ) : (
                   <span className={s.ch} style={{ left: `${l.shift}em` }}>
                     {l.ch}
@@ -112,6 +107,10 @@ export function TextCylinder({ word, className }: { word: string; className?: st
 
 const COPIES = 1; // the word goes round once, so the letters can be large
 const MARK = '§mark'; // stands for the logo mark among the letters
+/** the mark as an image, not inline SVG: Safari draws images reliably inside the 3D strips */
+const MARK_IMAGE = `url("data:image/svg+xml,${encodeURIComponent(
+  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='${MARK_VIEWBOX}'><path d='${CIRCLE}' fill='#21406e'/>${V.map((d) => `<path d='${d}' fill='#fff'/>`).join('')}</svg>`,
+)}")`;
 const MARK_H = 0.8; // em: a touch taller than the capitals (0.7), as a round shape needs
 const MARK_W = (MARK_H * 66) / 50; // the mark's viewBox is 66 × 50
 const MARK_SPACE = 0.3; // em on each side of the mark

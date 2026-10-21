@@ -2,7 +2,7 @@
 .box {
   aspect-ratio: 1;
   background: var(--color-black);
-  border-radius: 20%; /* = the site's large radius at 400px, and it scales down with the square */
+  border-radius: min(var(--radius-large), 20%); /* the site's large radius, scaled down on a small square */
   container-type: inline-size;
   overflow: hidden;
   position: relative;
@@ -36,6 +36,7 @@
 }
 /* the mark, centred on the capitals: they run from 0.255em to 0.955em down the 1.2em strip */
 .mark {
+  background: no-repeat center / 100% 100%;
   height: 0.8em;
   position: absolute;
   top: 0.205em;

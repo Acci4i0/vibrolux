@@ -19,15 +19,12 @@
   width: 100%;
 }
 
-/* phone: the two squares one under the other, full width */
+/* phone: as on desktop, the large square and the small one side by side, tops aligned */
 @media (max-width: 767px) {
   .pair {
-    flex-direction: column;
     padding: var(--gutter) var(--pwx);
   }
-  .card,
-  .card + .card {
-    flex: none;
-    width: 100%;
+  .card {
+    border-radius: min(var(--radius-large), 20%);
   }
 }
