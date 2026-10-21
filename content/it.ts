@@ -296,7 +296,7 @@ export const it = {
         { value: '1500 mq', caption: 'Aree scoperte per movimentazione e logistica' },
         { value: '400 mq', caption: 'Magazzino per lo stoccaggio' },
       ],
-      media: foto('vibrolux_azienda.jpg'),
+      spin: 'VIBROLUX',
     },
     quality: {
       id: 'qualita',

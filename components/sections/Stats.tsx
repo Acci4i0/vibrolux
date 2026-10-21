@@ -6,6 +6,7 @@ import { afterMount, reveal, revealStagger } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { Button } from '../Button';
 import { Media, type MediaData } from '../Media';
+import { TextCylinder } from '../TextCylinder';
 import s from './Stats.module.css';
 
 type Data = {
@@ -13,7 +14,9 @@ type Data = {
   text: string;
   cta: { label: string; href: string };
   items: { value: string; caption: string }[];
-  media: MediaData;
+  /** a photo in the square, or a word turning on a cylinder */
+  media?: MediaData;
+  spin?: string;
 };
 
 export function Stats({ data }: { data: Data }) {
@@ -56,7 +59,7 @@ export function Stats({ data }: { data: Data }) {
           </div>
         </div>
         <div className={s.media}>
-          <Media {...data.media} />
+          {data.spin ? <TextCylinder word={data.spin} /> : data.media && <Media {...data.media} />}
         </div>
       </div>
     </section>

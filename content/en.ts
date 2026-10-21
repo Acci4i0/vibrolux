@@ -294,7 +294,7 @@ export const en: Site = {
         { value: '1500 m²', caption: 'Open areas for handling and logistics' },
         { value: '400 m²', caption: 'Warehouse for storage' },
       ],
-      media: foto('vibrolux_azienda.jpg'),
+      spin: 'VIBROLUX',
     },
     quality: {
       id: 'qualita',
