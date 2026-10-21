@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import s from './TextCylinder.module.css';
 
-type Letter = { ch: string; angle: number; row: number };
+/** one vertical strip of a letter: its angle on the ring, its width and where the letter starts inside it (em) */
+type Letter = { ch: string; angle: number; row: number; w: number; shift: number };
 
 /**
- * A word wrapped twice around a cylinder in a single ring; the cylinder spins on its axis while the
- * axis tumbles (CSS 3D, the letters are real text in the display face). Sizes are in em of a font-size set in container
+ * A word wrapped once around a cylinder in a single ring; the cylinder spins on its axis while the
+ * axis tumbles (CSS 3D, the letters are real text in the display face, cut in strips so they follow the curve). Sizes are in em of a font-size set in container
  * units, so the cylinder scales with its box without measuring again. Reduced motion stops on the front view.
  */
 export function TextCylinder({ word, className }: { word: string; className?: string }) {
@@ -35,7 +36,17 @@ export function TextCylinder({ word, className }: { word: string; className?: st
         let x = offset * span;
         for (let k = 0; k < COPIES; k++) {
           chars.forEach((ch, i) => {
-            letters.push({ ch, row, angle: ((x + adv[i] / 2) / circ) * 360 });
+            // each letter is cut in strips, every strip at its own angle, so the large letters bend with the ring
+            for (let j = 0; j < STRIPS; j++) {
+              const c = (j + 0.5) / STRIPS;
+              letters.push({
+                ch,
+                row,
+                angle: ((x + adv[i] * c) / circ) * 360,
+                w: adv[i] / STRIPS + OVERLAP * 2,
+                shift: -(adv[i] * j) / STRIPS + OVERLAP,
+              });
+            }
             x += adv[i];
           });
           x += GAP;
@@ -66,12 +77,15 @@ export function TextCylinder({ word, className }: { word: string; className?: st
             {layout?.letters.map((l, i) => (
               <span
                 key={i}
-                className={s.ch}
+                className={s.strip}
                 style={{
+                  width: `${l.w}em`,
                   transform: `translate(-50%, -50%) rotateY(${l.angle}deg) translateZ(${layout.radius}em) translateY(${l.row * ROW_HEIGHT}em)`,
                 }}
               >
-                {l.ch}
+                <span className={s.ch} style={{ left: `${l.shift}em` }}>
+                  {l.ch}
+                </span>
               </span>
             ))}
           </div>
@@ -81,7 +95,9 @@ export function TextCylinder({ word, className }: { word: string; className?: st
   );
 }
 
-const COPIES = 2; // the word goes round twice
-const GAP = 0.9; // em between the copies
+const COPIES = 1; // the word goes round once, so the letters can be large
+const GAP = 1.1; // em closing the ring after the word
 const ROW_HEIGHT = 0.82; // em between rows
 const ROWS = [{ row: 0, offset: 0 }]; // a single ring
+const STRIPS = 5; // strips per letter
+const OVERLAP = 0.006; // em each strip reaches into its neighbours, so no seam shows

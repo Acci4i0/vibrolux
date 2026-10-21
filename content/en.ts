@@ -266,7 +266,7 @@ export const en: Site = {
       sub: 'from Sant’Ambrogio, Turin',
     },
     /** the large square, then the small one */
-    pair: [foto('cover_1.jpg'), foto('facciata.jpg')],
+    pair: [foto('cover_1.jpg'), 'logo' as const],
     team: {
       eyebrow: 'Team',
       paragraphs: ['Highly qualified people let us reach a primary goal: to be a highly specialised local business.'],

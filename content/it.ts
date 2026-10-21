@@ -268,7 +268,7 @@ export const it = {
       sub: 'da Sant’Ambrogio di Torino',
     },
     /** the large square, then the small one */
-    pair: [foto('cover_1.jpg'), foto('facciata.jpg')],
+    pair: [foto('cover_1.jpg'), 'logo' as const],
     team: {
       eyebrow: 'Team',
       paragraphs: ['Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata.'],
