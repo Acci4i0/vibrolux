@@ -15,16 +15,16 @@
   /* Placeholder media colour (swap for real assets later) */
   --color-placeholder: #000;
 
-  /* Fonts: Hubot Sans, a little wide, for headlines and figures (the cut zero is its signature); Mona Sans for text;
+  /* Fonts: Vibrolux Display, drawn from the logotype, for headlines and figures; Vibrolux Text, its quieter twin, for text;
      Martian Mono, a little narrow, for labels */
-  --font-display: var(--font-hubot), 'Helvetica', 'Arial', sans-serif;
-  --font-primary: var(--font-mona), 'Helvetica', 'Arial', sans-serif;
+  --font-display: var(--font-vbx-display), 'Helvetica', 'Arial', sans-serif;
+  --font-primary: var(--font-vbx-text), 'Helvetica', 'Arial', sans-serif;
   --font-secondary: var(--font-martian), 'Courier New', monospace;
-  --fv-display: 'wdth' 112.5;
+  --fv-display: normal;
   --fv-mono: 'wdth' 87.5;
-  --fw-display: 260;
-  --fw-light: 290;
-  --fw-regular: 440;
+  --fw-display: 700;
+  --fw-light: 300;
+  --fw-regular: 400;
   --fw-mono: 400;
 
   --size-caption: 1.2rem;

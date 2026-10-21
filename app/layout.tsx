@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Hubot_Sans, Martian_Mono, Mona_Sans } from 'next/font/google';
+import { Martian_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Loader } from '@/components/Loader';
 import { HeaderDesktop, HeaderMobile } from '@/components/Header';
 import { PageTransition } from '@/components/PageTransition';
@@ -7,9 +8,17 @@ import { Footer } from '@/components/Footer';
 import { BASE } from '@/content/site';
 import './globals.css';
 
-// Hubot Sans for headlines and figures, its twin Mona Sans for text (GitHub), Martian Mono for labels — all OFL, with the width axis
-const hubot = Hubot_Sans({ subsets: ['latin', 'latin-ext'], axes: ['wdth'], variable: '--font-hubot' });
-const mona = Mona_Sans({ subsets: ['latin', 'latin-ext'], axes: ['wdth'], variable: '--font-mona' });
+// Vibrolux Display (drawn from the logotype: wide, heavy, hairline slices) for headlines and figures,
+// Vibrolux Text (same geometry, normal width, no slices) for text; Martian Mono stays for labels
+const display = localFont({ src: './fonts/VibroluxDisplay-Bold.woff2', weight: '700', variable: '--font-vbx-display' });
+const text = localFont({
+  src: [
+    { path: './fonts/VibroluxText-Light.woff2', weight: '300' },
+    { path: './fonts/VibroluxText-Regular.woff2', weight: '400' },
+    { path: './fonts/VibroluxText-Bold.woff2', weight: '700' },
+  ],
+  variable: '--font-vbx-text',
+});
 const martian = Martian_Mono({ subsets: ['latin', 'latin-ext'], axes: ['wdth'], variable: '--font-martian' });
 
 export const metadata: Metadata = {
@@ -22,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="it" className={`${hubot.variable} ${mona.variable} ${martian.variable}`} suppressHydrationWarning>
+    <html lang="it" className={`${display.variable} ${text.variable} ${martian.variable}`} suppressHydrationWarning>
       <head>
         {/* Lets CSS hide [data-reveal] elements until GSAP takes over (no-JS stays visible); English pages (/en) get lang="en" */}
         <script
