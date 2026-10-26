@@ -307,7 +307,7 @@ export const it = {
       cta: { label: 'Richiedi un preventivo', href: to('/contatti') },
     },
     /** the page closes on Sant'Ambrogio, edge to edge above the footer (on phones cropped on the abbey) */
-    closing: { ...luogo('sacra-valle.jpg', 3000 / 1400, '71% 50%'), alt: 'La Sacra di San Michele sopra la Val di Susa' },
+    closing: { ...luogo('sacra-autunno.jpg', 2, '62% 50%'), alt: 'La Sacra di San Michele tra le nuvole, sopra la Val di Susa' },
   },
 
   /* ───────── Lavorazioni ───────── */
@@ -357,10 +357,6 @@ export const it = {
         { value: '3500 mq', caption: 'Superficie complessiva' },
         { value: '2000 mq', caption: 'Fabbricati: lavorazioni e uffici' },
       ],
-    },
-    place: {
-      alt: 'La Sacra di San Michele sul monte Pirchiriano, sopra Sant’Ambrogio e la valle',
-      maps: 'Apri in Maps',
     },
   },
 };

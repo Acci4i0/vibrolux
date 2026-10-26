@@ -6,13 +6,11 @@ import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { company, content, maps, place } from '@/content/site';
 import { useLang } from '@/lib/i18n';
-import { useMapsHref } from '@/lib/maps';
 import s from './Contact.module.css';
 
 /**
  * Address + mail list (one address per need) + contact rows, laid out like the text modules; then the plant as the
- * reference's factory card (aerial photo, its name, a map card that opens Google Maps, a stats card); then Sant'Ambrogio
- * in a photo, with the way to Maps in its corner.
+ * reference's factory card (aerial photo, its name, a map card that opens Google Maps, a stats card).
  */
 export function Contact() {
   const root = useRef<HTMLElement>(null);
@@ -22,16 +20,14 @@ export function Contact() {
     [c.keys.tel, company.tel, company.telHref],
     [c.keys.vat, company.vatNumber],
   ];
-  const mapsHref = useMapsHref(maps.google, maps.apple);
 
   useGSAP(
     (_, contextSafe) =>
       afterMount(() => {
-        const [eyebrow, content, factory, photo] = root.current!.querySelectorAll('[data-reveal]');
+        const [eyebrow, content, factory] = root.current!.querySelectorAll('[data-reveal]');
         reveal(eyebrow, { delay: ANIM.text.eyebrowDelay });
         reveal(content, { delay: ANIM.text.contentDelay });
         reveal(factory);
-        reveal(photo);
       }, contextSafe!),
     { scope: root },
   );
@@ -99,20 +95,6 @@ export function Contact() {
           </div>
         </div>
       </div>
-      <figure className={s.place} data-reveal="">
-        <div className={s.photo}>
-          <picture>
-            <source media="(max-width: 767px)" srcSet={place.srcSquare} />
-            <img src={place.src} alt={c.place.alt} loading="lazy" decoding="async" />
-          </picture>
-          <p className={`t-eyebrow ${s.coords}`}>{place.coords}</p>
-          <a className={s.go} href={mapsHref} target="_blank" rel="noreferrer" aria-label={c.place.maps}>
-            <svg viewBox="0 0 24 24" aria-hidden>
-              <path d="M7 17 17 7M8 7h9v9" />
-            </svg>
-          </a>
-        </div>
-      </figure>
     </section>
   );
 }

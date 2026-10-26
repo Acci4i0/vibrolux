@@ -305,7 +305,7 @@ export const en: Site = {
       cta: { label: 'Request a quote', href: to('/contatti') },
     },
     /** the page closes on Sant'Ambrogio, edge to edge above the footer (on phones cropped on the abbey) */
-    closing: { ...luogo('sacra-valle.jpg', 3000 / 1400, '71% 50%'), alt: 'The Sacra di San Michele above the Susa Valley' },
+    closing: { ...luogo('sacra-autunno.jpg', 2, '62% 50%'), alt: 'The Sacra di San Michele among the clouds, above the Susa Valley' },
   },
 
   /* ───────── Processes ───────── */
@@ -353,10 +353,6 @@ export const en: Site = {
         { value: '3500 m²', caption: 'Total area' },
         { value: '2000 m²', caption: 'Buildings: processing and offices' },
       ],
-    },
-    place: {
-      alt: 'The Sacra di San Michele on Mount Pirchiriano, above Sant’Ambrogio and the valley',
-      maps: 'Open in Maps',
     },
   },
 };

@@ -49,15 +49,11 @@ export const maps = {
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2816.7607632673407!2d7.377691215931506!3d45.09064427909836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4788462dac3fab3d%3A0xfaf018a173a6521a!2sVibrolux+Srl!5e0!3m2!1sit!2sit!4v1548257158260',
 };
 
-/** Contatti: Sant'Ambrogio from the air — the Sacra di San Michele above the valley */
 const S = withBase('/assets/sant-ambrogio/');
 /** a photo of Sant'Ambrogio from /assets/sant-ambrogio (see its CREDITS.md) */
 export const luogo = (file: string, aspect = 1, focus?: string): MediaData => ({ src: S + file, aspect, focus });
 export const place = {
-  src: S + 'sacra.jpg',
-  /** phones: a square crop on the Sacra */
-  srcSquare: S + 'sacra-quadrata.jpg',
-  /** Vibrolux on the map, written on the photo as on the reference's map cards */
+  /** Vibrolux on the map, written on the map card as on the reference's map cards */
   coords: '45.09064° N, 7.37769° E',
 };
 

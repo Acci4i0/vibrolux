@@ -34,7 +34,7 @@ app/page.tsx                   home
 app/azienda/                   company: profile, the premises, quality
 app/lavorazioni/               the manifesto card and the six processes as tiles
 app/lavorazioni/[slug]/        one page per process, with a plant carousel where there is one
-app/contatti/                  address, mail list, contact details, the plant card, Sant'Ambrogio in a photo
+app/contatti/                  address, mail list, contact details, the plant card
 app/privacy/, app/termini-e-condizioni/
                                privacy notice and terms of use
 app/en/                        the same pages in English, same slugs
@@ -93,8 +93,8 @@ The Azienda video is the one on vibrolux.it, embedded from YouTube (`azienda.vid
 The Contatti page has a card for the plant, built like the factory card on
 t1energy.com/technology: the aerial photo (`cover_1.jpg`), the town's name,
 a square map card — Google's embed of the Vibrolux Srl place, the whole card a
-link to Google Maps — and a card with the site's figures. Below it,
-Sant'Ambrogio from the air: the Sacra di San Michele, in
+link to Google Maps — and a card with the site's figures. The Azienda page
+closes on the Sacra di San Michele, edge to edge above the footer, from
 `public/assets/sant-ambrogio/` (see its
 [`CREDITS.md`](public/assets/sant-ambrogio/CREDITS.md)).
 
