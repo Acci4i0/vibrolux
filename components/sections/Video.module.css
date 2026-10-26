@@ -1,4 +1,4 @@
-/* reference: edge to edge, 16:9 (1440 × 810); on phones taller (390 × 506) */
+/* reference: edge to edge, 16:9 (1440 × 810). Phones keep 16:9 too: the plant's film has its labels burnt in, a taller crop would cut them */
 .video {
   margin-bottom: var(--gutter);
   position: relative;
@@ -14,10 +14,4 @@
 .media [data-fill] {
   height: auto;
   width: 100%;
-}
-
-@media (max-width: 767px) {
-  .media [data-fill] {
-    aspect-ratio: 390 / 506 !important;
-  }
 }

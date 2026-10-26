@@ -7,6 +7,7 @@ import { Hero } from './sections/Hero';
 import { Headline } from './sections/Headline';
 import { MediaPair } from './sections/MediaPair';
 import { Video } from './sections/Video';
+import { Band } from './sections/Band';
 import { TextModule } from './sections/TextModule';
 import { MediaCardGroup } from './sections/MediaCardGroup';
 import { Carousel } from './sections/Carousel';
@@ -58,6 +59,7 @@ export function AziendaView({ lang }: P) {
       <Carousel data={azienda.sede} />
       <Stats data={azienda.stats} />
       <TextModule data={azienda.quality} />
+      <Band media={azienda.closing} />
     </main>
   );
 }

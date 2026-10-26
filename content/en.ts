@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, luogo, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 import type { Site } from './it';
 
 /** English texts: same shape as it.ts, same slugs under /en. British spelling, decimal point. */
@@ -266,13 +266,13 @@ export const en: Site = {
       sub: 'from Sant’Ambrogio, Turin',
     },
     /** the large square, then the small one */
-    pair: [foto('cover_1.jpg'), 'logo' as const],
+    pair: [img(), img()], // black placeholders until the new photos
     team: {
       eyebrow: 'Team',
       paragraphs: ['Highly qualified people let us reach a primary goal: to be a highly specialised local business.'],
     },
-    /** the plant's film: the black placeholder until it arrives, then { type: 'video', src: …, aspect: 16 / 9 } */
-    video: { aspect: 16 / 9 },
+    /** the plant's film, the one on vibrolux.it (YouTube); for a file: { type: 'video', src: …, aspect: 16 / 9 } */
+    video: { type: 'youtube' as const, src: 'qE4NzY4v_tE', alt: 'Vibrolux, the plant', aspect: 16 / 9 },
     videoText: {
       paragraphs: ['Inside the Sant’Ambrogio plant: six processes under one roof, from the raw part to the final inspection.'],
     },
@@ -304,6 +304,8 @@ export const en: Site = {
       ],
       cta: { label: 'Request a quote', href: to('/contatti') },
     },
+    /** the page closes on Sant'Ambrogio, edge to edge above the footer (on phones cropped on the abbey) */
+    closing: { ...luogo('sacra-valle.jpg', 3000 / 1400, '71% 50%'), alt: 'The Sacra di San Michele above the Susa Valley' },
   },
 
   /* ───────── Processes ───────── */

@@ -1,4 +1,4 @@
-import { BROCHURE, company, foto, img, linker, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
+import { BROCHURE, company, foto, img, linker, luogo, maps, video, type FooterLink, type Lavorazione, type NavItem } from './shared';
 
 /** Italian texts (from vibrolux.it and vibrolux_brochure.pdf). en.ts mirrors this shape. */
 
@@ -268,13 +268,13 @@ export const it = {
       sub: 'da Sant’Ambrogio di Torino',
     },
     /** the large square, then the small one */
-    pair: [foto('cover_1.jpg'), 'logo' as const],
+    pair: [img(), img()], // black placeholders until the new photos
     team: {
       eyebrow: 'Team',
       paragraphs: ['Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata.'],
     },
-    /** the plant's film: the black placeholder until it arrives, then { type: 'video', src: …, aspect: 16 / 9 } */
-    video: { aspect: 16 / 9 },
+    /** the plant's film, the one on vibrolux.it (YouTube); for a file: { type: 'video', src: …, aspect: 16 / 9 } */
+    video: { type: 'youtube' as const, src: 'qE4NzY4v_tE', alt: 'Vibrolux, lo stabilimento', aspect: 16 / 9 },
     videoText: {
       paragraphs: ['Dentro lo stabilimento di Sant’Ambrogio: sei lavorazioni sotto lo stesso tetto, dal pezzo grezzo al controllo finale.'],
     },
@@ -306,6 +306,8 @@ export const it = {
       ],
       cta: { label: 'Richiedi un preventivo', href: to('/contatti') },
     },
+    /** the page closes on Sant'Ambrogio, edge to edge above the footer (on phones cropped on the abbey) */
+    closing: { ...luogo('sacra-valle.jpg', 3000 / 1400, '71% 50%'), alt: 'La Sacra di San Michele sopra la Val di Susa' },
   },
 
   /* ───────── Lavorazioni ───────── */

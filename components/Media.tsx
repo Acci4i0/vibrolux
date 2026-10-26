@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react';
 
 export type MediaData = {
-  /** Path in /public/assets. Leave empty to render the black placeholder. */
+  /** Path in /public/assets (for 'youtube': the video id). Leave empty to render the black placeholder. */
   src?: string;
-  type?: 'image' | 'video';
+  type?: 'image' | 'video' | 'youtube';
   alt?: string;
   /** Placeholder aspect ratio when there is no asset (w / h). */
   aspect?: number;
@@ -25,6 +25,25 @@ export function Media({ src, type = 'image', alt = '', aspect = 1, focus, classN
     return (
       <div className={className} style={box} data-placeholder>
         <div data-fill style={{ ...fill, aspectRatio: aspect, background: 'var(--color-placeholder)' }} />
+      </div>
+    );
+  }
+  if (type === 'youtube') {
+    // muted, looping, no controls, like a video file; the frame covers the box at 16:9 whatever its shape (privacy notice: youtube-nocookie)
+    const q = `autoplay=1&mute=1&loop=1&playlist=${src}&controls=0&disablekb=1&playsinline=1&rel=0&iv_load_policy=3`;
+    return (
+      <div className={className} style={box}>
+        <div data-fill style={{ ...fill, aspectRatio: aspect, background: 'var(--color-placeholder)', containerType: 'size', overflow: 'hidden', position: 'relative' }}>
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${src}?${q}`}
+            title={alt}
+            allow="autoplay; encrypted-media; picture-in-picture"
+            referrerPolicy="strict-origin-when-cross-origin"
+            loading="lazy"
+            tabIndex={-1}
+            style={{ border: 0, height: 'max(100cqh, 56.25cqw)', left: '50%', pointerEvents: 'none', position: 'absolute', top: '50%', transform: 'translate(-50%, -50%)', width: 'max(100cqw, 177.78cqh)' }}
+          />
+        </div>
       </div>
     );
   }

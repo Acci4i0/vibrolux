@@ -1,0 +1,15 @@
+.band {
+  position: relative;
+  width: 100%;
+}
+.media [data-fill] {
+  height: auto;
+  width: 100%;
+}
+
+/* phone: a taller crop on the subject, or the strip would be a few centimetres high */
+@media (max-width: 767px) {
+  .media [data-fill] {
+    aspect-ratio: 4 / 5 !important;
+  }
+}

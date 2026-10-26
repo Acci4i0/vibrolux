@@ -88,7 +88,7 @@ stand-ins until the new shoot — the home video and the Pexels macros on the
 process tiles, the home and the warehouse slide, references for the
 photographer — credited in [`CREDITS.md`](public/assets/preview/CREDITS.md).
 Until then the site is a private mockup: `robots` noindex in `app/layout.tsx`.
-The Azienda video is a black placeholder (`azienda.video` in the content).
+The Azienda video is the one on vibrolux.it, embedded from YouTube (`azienda.video` in the content).
 
 The Contatti page has a card for the plant, built like the factory card on
 t1energy.com/technology: the aerial photo (`cover_1.jpg`), the town's name,

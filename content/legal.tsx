@@ -7,7 +7,6 @@ import { company, content } from './site';
 type LegalDoc = { title: string; updated: string; intro: React.ReactNode; sections: LegalSection[] };
 
 const mail = <a href={`mailto:${company.email}`}>{company.email}</a>;
-const pec = <a href={`mailto:${company.pec}`}>{company.pec}</a>;
 const tel = <a href={company.telHref}>{company.tel}</a>;
 const ext = { target: '_blank', rel: 'noreferrer' };
 
@@ -15,7 +14,7 @@ const ext = { target: '_blank', rel: 'noreferrer' };
 
 const privacyIt: LegalDoc = {
   title: 'Privacy',
-  updated: '25 settembre 2026',
+  updated: '20 ottobre 2026',
   intro: (
     <p>
       Questa informativa riguarda il sito vibrolux.it ed è resa ai sensi dell’articolo 13 del Regolamento (UE) 2016/679, il
@@ -30,7 +29,7 @@ const privacyIt: LegalDoc = {
         <>
           <p>
             Il titolare del trattamento è <strong>{company.name}</strong>, {content.it.address.join(', ')}. C.F. e P.IVA{' '}
-            {company.vatNumber}. Telefono {tel}, posta elettronica {mail}, PEC {pec}.
+            {company.vatNumber}. Telefono {tel}, posta elettronica {mail}.
           </p>
           <p>Per qualsiasi richiesta sul trattamento dei tuoi dati puoi scrivere a uno di questi indirizzi.</p>
         </>
@@ -43,7 +42,7 @@ const privacyIt: LegalDoc = {
         <>
           <h3>Dati che ci mandi tu</h3>
           <p>
-            Il sito non ha moduli di contatto: telefono, e-mail e PEC sono collegamenti che aprono il tuo telefono o il tuo
+            Il sito non ha moduli di contatto: telefono ed e-mail sono collegamenti che aprono il tuo telefono o il tuo
             programma di posta. Se ci scrivi o ci chiami, per esempio per chiedere un preventivo o informazioni su una
             lavorazione, trattiamo i dati che scegli di comunicarci: nome, azienda, recapiti, contenuto del messaggio ed
             eventuali allegati, come disegni o specifiche dei particolari da trattare.
@@ -68,7 +67,14 @@ const privacyIt: LegalDoc = {
             <a href="https://policies.google.com/privacy" {...ext}>
               informativa
             </a>
-            . Le altre pagine del sito non contattano Google.
+            .
+          </p>
+          <h3>Il video nella pagina Azienda</h3>
+          <p>
+            La pagina Azienda mostra un video ospitato su YouTube, servizio di Google, incorporato in modalità privacy
+            avanzata (youtube-nocookie.com). Quando apri quella pagina il tuo browser carica il video dai server di Google,
+            che ricevono gli stessi dati e li trattano come titolare autonomo, secondo la stessa informativa. Le altre
+            pagine del sito non contattano Google.
           </p>
         </>
       ),
@@ -113,11 +119,11 @@ const privacyIt: LegalDoc = {
           </p>
           <ul>
             <li>il fornitore che ospita il sito e ne registra i log di accesso;</li>
-            <li>i fornitori dei servizi di posta elettronica e di posta certificata;</li>
+            <li>i fornitori dei servizi di posta elettronica;</li>
             <li>consulenti e fornitori che ci assistono su aspetti tecnici, legali, fiscali e amministrativi.</li>
           </ul>
           <p>
-            Google riceve i dati descritti sopra solo quando apri la pagina Contatti, come titolare autonomo. I dati possono
+            Google riceve i dati descritti sopra solo quando apri la pagina Contatti o la pagina Azienda, come titolare autonomo. I dati possono
             inoltre essere comunicati alle autorità quando la legge lo impone. Non vendiamo e non diffondiamo i dati a
             nessuno.
           </p>
@@ -177,7 +183,7 @@ const privacyIt: LegalDoc = {
             momento senza pregiudicare la liceità di quanto fatto prima.
           </p>
           <p>
-            Per esercitarli scrivi a {mail} o a {pec}: rispondiamo nel più breve tempo possibile e comunque entro un mese.
+            Per esercitarli scrivi a {mail}: rispondiamo nel più breve tempo possibile e comunque entro un mese.
           </p>
           <p>
             Se ritieni che il trattamento violi la normativa puoi proporre reclamo al{' '}
@@ -202,8 +208,8 @@ const privacyIt: LegalDoc = {
             chiesti a servizi esterni.
           </p>
           <p>
-            L’unico contenuto di terze parti è la mappa di Google nella pagina Contatti. Caricandola, il tuo browser
-            comunica il proprio indirizzo IP a Google, che può impiegare cookie o tecnologie simili secondo le proprie{' '}
+            Gli unici contenuti di terze parti sono la mappa di Google nella pagina Contatti e il video di YouTube nella
+            pagina Azienda. Caricandoli, il tuo browser comunica il proprio indirizzo IP a Google, che può impiegare cookie o tecnologie simili secondo le proprie{' '}
             <a href="https://policies.google.com/technologies/cookies" {...ext}>
               regole
             </a>
@@ -231,7 +237,7 @@ const privacyIt: LegalDoc = {
 
 const privacyEn: LegalDoc = {
   title: 'Privacy',
-  updated: '25 September 2026',
+  updated: '20 October 2026',
   intro: (
     <>
       <p>
@@ -249,7 +255,7 @@ const privacyEn: LegalDoc = {
         <>
           <p>
             The data controller is <strong>{company.name}</strong>, {content.en.address.join(', ')}. VAT and tax code{' '}
-            {company.vatNumber}. Telephone {tel}, email {mail}, certified email (PEC) {pec}.
+            {company.vatNumber}. Telephone {tel}, email {mail}.
           </p>
           <p>You can write to any of these addresses with any request about how your data is processed.</p>
         </>
@@ -262,7 +268,7 @@ const privacyEn: LegalDoc = {
         <>
           <h3>Data you send us</h3>
           <p>
-            The site has no contact forms: telephone, email and PEC are links that open your phone or your mail program. If
+            The site has no contact forms: telephone and email are links that open your phone or your mail program. If
             you write to us or call us, for example to ask for a quote or for information on a process, we process the data
             you choose to give us: name, company, contact details, the content of the message and any attachments, such as
             drawings or specifications of the parts to be treated.
@@ -287,7 +293,14 @@ const privacyEn: LegalDoc = {
             <a href="https://policies.google.com/privacy" {...ext}>
               privacy policy
             </a>
-            . The other pages of the site do not contact Google.
+            .
+          </p>
+          <h3>The video on the Company page</h3>
+          <p>
+            The Company page shows a video hosted on YouTube, a Google service, embedded in privacy-enhanced mode
+            (youtube-nocookie.com). When you open that page your browser loads the video from Google’s servers, which
+            receive the same data and process it as an independent controller, under the same privacy policy. The other
+            pages of the site do not contact Google.
           </p>
         </>
       ),
@@ -329,11 +342,11 @@ const privacyEn: LegalDoc = {
           </p>
           <ul>
             <li>the provider that hosts the site and records its access logs;</li>
-            <li>the providers of our email and certified email services;</li>
+            <li>the providers of our email services;</li>
             <li>consultants and providers who assist us on technical, legal, tax and administrative matters.</li>
           </ul>
           <p>
-            Google receives the data described above only when you open the Contact page, as an independent controller.
+            Google receives the data described above only when you open the Contact page or the Company page, as an independent controller.
             Data may also be disclosed to the authorities where the law requires it. We do not sell or disclose the data to
             anyone.
           </p>
@@ -388,7 +401,7 @@ const privacyEn: LegalDoc = {
             to 22 GDPR). Where processing is based on consent, you can withdraw it at any time without affecting the
             lawfulness of what was done before.
           </p>
-          <p>To exercise them write to {mail} or {pec}: we reply as soon as possible and in any case within one month.</p>
+          <p>To exercise them write to {mail}: we reply as soon as possible and in any case within one month.</p>
           <p>
             If you believe the processing breaks the law you can lodge a complaint with the{' '}
             <a href="https://www.garanteprivacy.it" {...ext}>
@@ -412,8 +425,8 @@ const privacyEn: LegalDoc = {
             services.
           </p>
           <p>
-            The only third-party content is the Google map on the Contact page. When it loads, your browser sends its IP
-            address to Google, which may use cookies or similar technologies under its own{' '}
+            The only third-party content is the Google map on the Contact page and the YouTube video on the Company page.
+            When they load, your browser sends its IP address to Google, which may use cookies or similar technologies under its own{' '}
             <a href="https://policies.google.com/technologies/cookies" {...ext}>
               rules
             </a>
@@ -443,7 +456,7 @@ const privacyEn: LegalDoc = {
 
 const termsIt: LegalDoc = {
   title: 'Termini e condizioni',
-  updated: '25 settembre 2026',
+  updated: '20 ottobre 2026',
   intro: <p>Le condizioni d’uso del sito vibrolux.it: chi lo gestisce, a cosa serve, come puoi usarne i contenuti.</p>,
   sections: [
     {
@@ -452,7 +465,7 @@ const termsIt: LegalDoc = {
       content: (
         <p>
           Il sito vibrolux.it (di seguito «il Sito») è gestito da <strong>{company.name}</strong>, {content.it.address.join(', ')}.
-          C.F. e P.IVA {company.vatNumber}. Posta elettronica {mail}, PEC {pec}.
+          C.F. e P.IVA {company.vatNumber}. Posta elettronica {mail}.
         </p>
       ),
     },
@@ -561,7 +574,7 @@ const termsIt: LegalDoc = {
 
 const termsEn: LegalDoc = {
   title: 'Terms and conditions',
-  updated: '25 September 2026',
+  updated: '20 October 2026',
   intro: (
     <>
       <p>The terms of use of the vibrolux.it website: who runs it, what it is for, how you may use its content.</p>
@@ -575,7 +588,7 @@ const termsEn: LegalDoc = {
       content: (
         <p>
           The vibrolux.it website (“the Site”) is run by <strong>{company.name}</strong>, {content.en.address.join(', ')}. VAT
-          and tax code {company.vatNumber}. Email {mail}, certified email (PEC) {pec}.
+          and tax code {company.vatNumber}. Email {mail}.
         </p>
       ),
     },

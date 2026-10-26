@@ -35,7 +35,6 @@ export const company = {
   email: 'info@vibrolux.it',
   /** DA VERIFICARE con Vibrolux: service@ e commerciale@ non sono confermati */
   emails: { info: 'info@vibrolux.it', service: 'service@vibrolux.it', commerciale: 'commerciale@vibrolux.it' },
-  pec: 'vibroluxsrl@pec.it',
   vatNumber: '08270030011',
   iso: 'ISO 9001:2015',
   brochure: BROCHURE,
@@ -52,6 +51,8 @@ export const maps = {
 
 /** Contatti: Sant'Ambrogio from the air — the Sacra di San Michele above the valley */
 const S = withBase('/assets/sant-ambrogio/');
+/** a photo of Sant'Ambrogio from /assets/sant-ambrogio (see its CREDITS.md) */
+export const luogo = (file: string, aspect = 1, focus?: string): MediaData => ({ src: S + file, aspect, focus });
 export const place = {
   src: S + 'sacra.jpg',
   /** phones: a square crop on the Sacra */
