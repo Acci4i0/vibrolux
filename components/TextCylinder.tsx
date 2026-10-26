@@ -5,18 +5,21 @@ import { CIRCLE, V } from './logoData';
 import s from './TextCylinder.module.css';
 
 /**
- * A word (and the logo mark after it) wrapped once round a ring that spins on its axis while the axis tumbles —
+ * A word (and the logo mark after it) wrapped round a ring, twice so the near side always holds the whole word, that
+ * spins on its axis while the axis tumbles —
  * the motion of the reference loop. Drawn on a canvas with its own 3D projection, so it looks the same in every
  * browser (CSS 3D gets flattened by WebKit, i.e. every browser on iPad and iPhone).
  *
  * The lettering is painted once on a long strip (the ring unrolled); every frame the strip is cut into narrow slices,
  * each slice is placed on the ring, turned with the ring, projected with perspective and drawn far to near. Slices
- * seen from behind come out mirrored, as on a transparent ring. Reduced motion: one still frame, the ring facing us.
+ * seen from behind come out mirrored, as on a transparent ring, and faint, so the word on the near side always reads.
+ * The camera stands well back: near and far letters keep almost the same size, a cylinder and not a funnel.
+ * Reduced motion: one still frame, the ring facing us.
  */
 
 const LOOP = 5.4; // s
-const FONT = 0.28; // letter size, fraction of the box (the old 28cqw)
-const PERSPECTIVE = 1.1; // camera distance, fraction of the box (the old 110cqw)
+const FONT = 0.3; // letter size, fraction of the box, for a word that goes round once (REPEAT divides it)
+const PERSPECTIVE = 4; // camera distance, fraction of the box: far enough that near letters are only ~10% larger than far ones
 const LINE = 1.2; // em: height of the band the lettering sits on
 const BASELINE = 0.955; // em from the top of the band (capitals 0.7 em tall above it)
 const MARK_H = 0.8; // em: a touch taller than the capitals, as a round shape needs
@@ -24,6 +27,9 @@ const MARK_W = (MARK_H * 66) / 50; // the mark's viewBox is 66 × 50
 const MARK_SPACE = 0.3; // em on each side of the mark
 const SLICE = 0.055; // em: width of a slice
 const LEAN = 18; // degrees: facing us, the ring is seen from a little above, so near and far sides make two rows
+const BACK = 0.16; // brightness of the letters on the far side, seen from behind
+const SHADES = 6; // the lettering painted at this many brightness steps, from BACK to white
+const REPEAT = 2; // how many times the word goes round the ring
 
 const rad = (d: number) => (d * Math.PI) / 180;
 
@@ -58,25 +64,28 @@ export function TextCylinder({ word, className }: { word: string; className?: st
     const family = css.getPropertyValue('--font-display').trim() || 'sans-serif';
     const ink = '#fff';
     const brand = css.getPropertyValue('--color-brand').trim() || '#21406e';
+    const ground = css.getPropertyValue('--color-black').trim() || '#0f0e12';
     const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let size = 0, dpr = 1, em = 0, circ = 0, band: HTMLCanvasElement | null = null, res = 1;
+    let shades: HTMLCanvasElement[] = [];
     let raf = 0, visible = false, start = performance.now(), pausedAt = performance.now();
     let cancelled = false;
 
-    /** the ring unrolled: the word, a space, the mark, a space — painted once */
+    /** the ring unrolled: the word, a space, the mark, a space (REPEAT times) — painted once, at every shade */
     const paint = () => {
       size = box.clientWidth;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       cv.width = Math.round(size * dpr);
       cv.height = Math.round(size * dpr);
-      em = size * FONT; // css px
+      em = (size * FONT) / REPEAT; // css px: a ring twice as long has half-size letters, so it stays inside the box
       res = em * dpr * 1.25; // band pixels per em: room for the near side, which comes closer
       const m = document.createElement('canvas').getContext('2d')!;
       m.font = `700 ${res}px ${family}`;
       const chars = [...word];
       const adv = chars.map((ch) => m.measureText(ch).width / res);
-      circ = adv.reduce((a, b) => a + b, 0) + MARK_SPACE * 2 + MARK_W;
+      const unit = adv.reduce((a, b) => a + b, 0) + MARK_SPACE * 2 + MARK_W;
+      circ = unit * REPEAT;
       band = document.createElement('canvas');
       band.width = Math.ceil(circ * res);
       band.height = Math.ceil(LINE * res);
@@ -84,21 +93,39 @@ export function TextCylinder({ word, className }: { word: string; className?: st
       b.font = `700 ${res}px ${family}`;
       b.fillStyle = ink;
       b.textBaseline = 'alphabetic';
-      let x = 0;
-      chars.forEach((ch, i) => {
-        b.fillText(ch, x * res, BASELINE * res);
-        x += adv[i];
+      for (let r = 0; r < REPEAT; r++) {
+        let x = r * unit;
+        chars.forEach((ch, i) => {
+          b.fillText(ch, x * res, BASELINE * res);
+          x += adv[i];
+        });
+        // the mark, centred on the capitals
+        const k = (MARK_H * res) / 50;
+        const top = (BASELINE - 0.35 - MARK_H / 2) * res;
+        b.save();
+        b.setTransform(k, 0, 0, k, (x + MARK_SPACE) * res, top);
+        b.fillStyle = brand;
+        b.fill(new Path2D(CIRCLE));
+        b.fillStyle = ink;
+        V.forEach((d) => b.fill(new Path2D(d)));
+        b.restore();
+      }
+      // the same strip darkened towards the background, opaque: overlapping slices of the far side stay even
+      // (with transparency their overlaps would show as stripes)
+      shades = Array.from({ length: SHADES }, (_, j) => {
+        const t = BACK + ((1 - BACK) * j) / (SHADES - 1);
+        if (j === SHADES - 1) return band!;
+        const c = document.createElement('canvas');
+        c.width = band!.width;
+        c.height = band!.height;
+        const g = c.getContext('2d')!;
+        g.drawImage(band!, 0, 0);
+        g.globalCompositeOperation = 'source-atop';
+        g.globalAlpha = 1 - t;
+        g.fillStyle = ground;
+        g.fillRect(0, 0, c.width, c.height);
+        return c;
       });
-      // the mark, centred on the capitals
-      const k = (MARK_H * res) / 50;
-      const top = (BASELINE - 0.35 - MARK_H / 2) * res;
-      b.save();
-      b.setTransform(k, 0, 0, k, (x + MARK_SPACE) * res, top);
-      b.fillStyle = brand;
-      b.fill(new Path2D(CIRCLE));
-      b.fillStyle = ink;
-      V.forEach((d) => b.fill(new Path2D(d)));
-      b.restore();
     };
 
     const draw = (u: number) => {
@@ -124,6 +151,12 @@ export function TextCylinder({ word, className }: { word: string; className?: st
       const slices: [number, number][] = [];
       for (let i = 0; i < n; i++) slices.push([i, at((i + 0.5) * w, 0)[2]]);
       slices.sort((a, b) => a[1] - b[1]); // far first
+      // how much a slice faces the camera: the z of its outward normal (sin a, 0, cos a) once turned with the ring
+      const facing = (i: number) => {
+        const a = (((i + 0.5) * w) / circ) * Math.PI * 2;
+        const t = Math.min(1, Math.max(0, (M[6] * Math.sin(a) + M[8] * Math.cos(a) + 0.25) / 0.5));
+        return Math.round(t * t * (3 - 2 * t) * (SHADES - 1));
+      };
 
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, cv.width, cv.height);
@@ -135,7 +168,7 @@ export function TextCylinder({ word, className }: { word: string; className?: st
         const sw = (x1 - x0) * res, sh = LINE * res;
         ctx.setTransform(((bx - ax) / sw) * dpr, ((by - ay) / sw) * dpr, ((cx_ - ax) / sh) * dpr, ((cy_ - ay) / sh) * dpr, ax * dpr, ay * dpr);
         const sx = Math.max(0, x0 * res);
-        ctx.drawImage(band, sx, 0, Math.min(sw, band.width - sx), band.height, sx - x0 * res, 0, Math.min(sw, band.width - sx), band.height);
+        ctx.drawImage(shades[facing(i)], sx, 0, Math.min(sw, band.width - sx), band.height, sx - x0 * res, 0, Math.min(sw, band.width - sx), band.height);
       }
     };
 
