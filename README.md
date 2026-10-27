@@ -84,7 +84,7 @@ Locally the variable is unset and the site runs from the root.
 
 The photos in `public/assets/vibrolux/` are Vibrolux's own, taken from
 vibrolux.it (resized and lightly cropped). `public/assets/preview/` keeps the
-stand-ins until the new shoot — the home video and the Pexels macros on the
+stand-ins until the new shoot — the hero videos (Home, Lavorazioni, Contatti) and the Pexels macros on the
 process tiles, the home and the warehouse slide, references for the
 photographer — credited in [`CREDITS.md`](public/assets/preview/CREDITS.md).
 Until then the site is a private mockup: `robots` noindex in `app/layout.tsx`.

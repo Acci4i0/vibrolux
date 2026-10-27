@@ -3,9 +3,14 @@
 Le foto di Vibrolux stanno in `public/assets/vibrolux/`: sono quelle del sito vibrolux.it, da ritoccare.
 Qui restano i file per cui non c'è ancora un originale: vanno sostituiti con il nuovo servizio fotografico.
 
-## Video — Mixkit (mixkit.co, Mixkit Stock Video Free License)
+## Video — Pexels (licenza Pexels: uso libero, attribuzione non richiesta)
 
-- hero-home.mp4 — "Light reflections on a metal surface" (mixkit #30741)
+Le aperture di Home, Lavorazioni e Contatti, nello stile dei video di t1energy.com: riferimento per il fotografo,
+da sostituire con le riprese di Vibrolux. 1920 × 1080, 15 s, senza audio.
+
+- home-lucidatura.mp4 — testa di lucidatura su un pezzo bagnato, in macro — https://www.pexels.com/video/7928970/
+- lavorazioni-sabbiatura.mp4 — operatore in tuta nella cabina di sabbiatura — https://www.pexels.com/video/6473939/
+- contatti-valle.mp4 — una valle alpina vista dal drone, i paesi sul fondo — https://www.pexels.com/video/32673036/
 
 ## Foto — Wikimedia Commons
 

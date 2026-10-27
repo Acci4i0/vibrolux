@@ -133,7 +133,7 @@ const nav: NavItem[] = [
 ];
 
 /** Four numbered blocks (1.x … 4.x), then the © line */
-const footer: { columns: { title: string; links: FooterLink[] }[]; copyright: string } = {
+const footer: { columns: { title: string; links: FooterLink[] }[]; copyright: string; credits: { label: string; name: string; href: string } } = {
   columns: [
     {
       title: 'Navigazione',
@@ -164,6 +164,8 @@ const footer: { columns: { title: string; links: FooterLink[] }[]; copyright: st
     },
   ],
   copyright: `All rights reserved, 2026 ${company.name}`,
+  /** shown in place of the © line on hover (on phones, on a tap), as on yuriroga.com */
+  credits: { label: 'Website by', name: 'Andrea Lando', href: 'https://and-re.com' },
 };
 
 const address = [...company.street, 'Italia'];
@@ -211,7 +213,7 @@ export const it = {
   /* ───────── Home ───────── */
   home: {
     hero: {
-      media: video('hero-home.mp4'),
+      media: video('home-lucidatura.mp4'),
       headline: 'Trattamenti superficiali dei metalli',
       cta: { label: 'Le lavorazioni', href: to('/lavorazioni') },
       corner: {
@@ -313,7 +315,7 @@ export const it = {
   /* ───────── Lavorazioni ───────── */
   lavorazioniPage: {
     hero: {
-      media: foto('mg_7804-1.jpg', 16 / 9),
+      media: video('lavorazioni-sabbiatura.mp4'),
       headline: 'Le nostre lavorazioni',
       cta: { label: 'Scarica la brochure', href: BROCHURE },
     },
@@ -333,7 +335,7 @@ export const it = {
   /* ───────── Contatti ───────── */
   contatti: {
     hero: {
-      media: foto('facciata.jpg', 16 / 9),
+      media: video('contatti-valle.mp4'),
       headline: 'Contatti',
       cta: { label: 'Scrivici', href: `mailto:${company.email}` },
     },

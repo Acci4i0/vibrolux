@@ -30,7 +30,8 @@
 }
 /* number in a fixed-width column: labels line up, and a label that wraps stays aligned to itself */
 .link,
-.copyright {
+.copyright,
+.credits {
   display: flex;
 }
 .link {
@@ -47,9 +48,39 @@
   width: 4em;
 }
 
-/* © on its own line, the same space above (blocks) and below (wordmark), as on the reference */
-.copyright {
+/* © on its own line, the same space above (blocks) and below (wordmark), as on the reference; the credits sit on the
+   same spot and swap in on hover or focus (a tap on phones) */
+.colophon {
+  display: grid;
   margin-top: var(--margin-5xl);
+  outline: none;
+  width: fit-content;
+}
+.copyright,
+.credits {
+  grid-area: 1 / 1;
+  transition: opacity var(--duration-default);
+}
+.credits {
+  opacity: 0;
+  pointer-events: none;
+}
+.colophon:hover .copyright,
+.colophon:focus-within .copyright {
+  opacity: 0;
+}
+.colophon:hover .credits,
+.colophon:focus-within .credits {
+  opacity: 1;
+  pointer-events: auto;
+}
+.credits a {
+  transition: opacity var(--duration-default);
+}
+@media (hover: hover) {
+  .credits a:hover {
+    opacity: 0.66;
+  }
 }
 
 .logo {
@@ -86,7 +117,7 @@
   /* a touch smaller and without tracking, so the longest labels ("Tribofinitura isotropica", the VAT number)
      stay on one line from 375px and the two columns keep the same rhythm */
   .nav,
-  .copyright {
+  .colophon {
     font-size: 1.1rem;
     letter-spacing: 0;
   }

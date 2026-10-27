@@ -92,10 +92,22 @@ export function Footer() {
             </ul>
           ))}
         </nav>
-        <p className={s.copyright}>
-          <span className={s.num}>©</span>
-          <span>{t.footer.copyright}</span>
-        </p>
+        {/* the © line; on hover, or on a tap on phones (it takes focus), the credits take its place, as on yuriroga.com */}
+        <div className={s.colophon} tabIndex={0}>
+          <p className={s.copyright}>
+            <span className={s.num}>©</span>
+            <span>{t.footer.copyright}</span>
+          </p>
+          <p className={s.credits}>
+            <span className={s.num} />
+            <span>
+              {t.footer.credits.label}{' '}
+              <a href={t.footer.credits.href} target="_blank" rel="noreferrer">
+                {t.footer.credits.name}
+              </a>
+            </span>
+          </p>
+        </div>
         {/* the wordmark closes the footer */}
         <div className={s.logo}>
           <Logo ref={logo} />
