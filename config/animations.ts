@@ -72,7 +72,7 @@ export const ANIM = {
   },
 
   stats: { contentDelay: 0.3, statsDelay: 0.1, statsStagger: 0.25 },
-  news: { contentDelay: 0.2, listDelay: 0.1, listStagger: 0.1 },
+  news: { listDelay: 0.1, listStagger: 0.1 },
   footer: { navDelay: 0.2, navStagger: 0.1 },
 
   /** the menu (pill / Menu button) fades out once the footer's top passes innerHeight × this, or the page bottom is reached */

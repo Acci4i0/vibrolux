@@ -253,7 +253,6 @@ export const en: Site = {
     },
     values: {
       eyebrow: 'Why Vibrolux',
-      text: 'Four facts you can check.',
       items: [
         {
           figure: 'Ra 0.01',

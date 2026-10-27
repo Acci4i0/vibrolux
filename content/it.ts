@@ -256,7 +256,6 @@ export const it = {
     /** facts that can be checked, each with the page that bears it out (components/sections/Proofs) */
     values: {
       eyebrow: 'Perché Vibrolux',
-      text: 'Quattro fatti che si possono verificare.',
       items: [
         {
           figure: 'Ra 0,01',

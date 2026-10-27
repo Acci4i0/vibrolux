@@ -6,23 +6,21 @@ import { afterMount, reveal, revealStagger } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import s from './Proofs.module.css';
 
-type Data = { eyebrow: string; text: string; items: { figure: string; text: string; link: { label: string; href: string } }[] };
+type Data = { eyebrow: string; items: { figure: string; text: string; link: { label: string; href: string } }[] };
 
 /**
- * «Perché Vibrolux»: facts that can be checked instead of adjectives. Four columns on a hairline, each with its number,
- * the figure, a line on it and the page that bears it out.
+ * «Perché Vibrolux»: facts that can be checked instead of adjectives. Four columns on a hairline, each with the figure,
+ * a line on it and the page that bears it out.
  */
 export function Proofs({ data }: { data: Data }) {
   const root = useRef<HTMLElement>(null);
   const eyebrow = useRef<HTMLDivElement>(null);
-  const content = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLUListElement>(null);
 
   useGSAP(
     (_, contextSafe) =>
       afterMount(() => {
         reveal(eyebrow.current);
-        reveal(content.current, { delay: ANIM.news.contentDelay });
         revealStagger(list.current, list.current!.children, { delay: ANIM.news.listDelay, stagger: ANIM.news.listStagger });
       }, contextSafe!),
     { scope: root },
@@ -34,14 +32,10 @@ export function Proofs({ data }: { data: Data }) {
         <div ref={eyebrow} className={s.eyebrow} data-reveal="">
           <h2 className="t-eyebrow">{data.eyebrow}</h2>
         </div>
-        <div ref={content} className={s.content} data-reveal="">
-          <p className="t-large">{data.text}</p>
-        </div>
       </div>
       <ul ref={list} className={s.list}>
-        {data.items.map((it, i) => (
+        {data.items.map((it) => (
           <li key={it.figure} className={s.item} data-reveal="">
-            <span className={`t-mono ${s.number}`}>{String(i + 1).padStart(2, '0')}</span>
             <p className={s.figure}>{it.figure}</p>
             <p className={s.text}>{it.text}</p>
             <a className={s.link} href={it.link.href}>

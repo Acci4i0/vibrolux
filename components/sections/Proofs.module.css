@@ -12,17 +12,13 @@
   max-width: var(--container-max-width);
   width: 100%;
 }
-.eyebrow,
-.content {
-  width: 50%;
-}
 
 /* four columns on a hairline, a thinner line between them */
 .list {
   border-top: 1px solid var(--color-grey3);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin: var(--margin-5xl) auto 0;
+  margin: var(--margin-4xl) auto 0;
   max-width: var(--container-max-width);
 }
 .item {
@@ -35,9 +31,6 @@
   border-left: 0;
   padding-left: 0;
 }
-.number {
-  color: var(--color-brand);
-}
 .figure {
   color: var(--color-black);
   font-family: var(--font-display);
@@ -45,7 +38,6 @@
   font-variation-settings: var(--fv-display);
   font-weight: var(--fw-display);
   line-height: 1.1;
-  margin-top: var(--margin-4xl);
 }
 .text {
   color: var(--color-grey1);
@@ -104,14 +96,6 @@
   .proofs {
     padding: var(--margin-6xl) var(--pwx);
   }
-  .inner {
-    flex-direction: column;
-    gap: var(--margin-3xl);
-  }
-  .eyebrow,
-  .content {
-    width: 100%;
-  }
   .list {
     grid-template-columns: 1fr;
     margin-top: var(--margin-4xl);
@@ -122,8 +106,5 @@
   }
   .item + .item {
     border-top: 1px solid var(--color-grey4);
-  }
-  .figure {
-    margin-top: var(--margin-xl);
   }
 }
