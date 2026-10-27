@@ -192,6 +192,8 @@ export const it = {
     otherProcesses: 'Altre lavorazioni',
     requestQuote: 'Richiedi un preventivo',
     downloadBrochure: 'Scarica la brochure',
+    next: 'Successiva',
+    prev: 'Precedente',
   },
   address,
   vat,
@@ -277,8 +279,25 @@ export const it = {
     },
     /** the plant's film, the one on vibrolux.it (YouTube); for a file: { type: 'video', src: …, aspect: 16 / 9 } */
     video: { type: 'youtube' as const, src: 'qE4NzY4v_tE', alt: 'Vibrolux, lo stabilimento', aspect: 16 / 9 },
-    videoText: {
-      paragraphs: ['Dentro lo stabilimento di Sant’Ambrogio: sei lavorazioni sotto lo stesso tetto, dal pezzo grezzo al controllo finale.'],
+    /** under the film, as the method on fase2: statements that turn with the arrows, the logo under each */
+    quotes: {
+      items: [
+        {
+          quote: 'Dentro lo stabilimento di Sant’Ambrogio: sei lavorazioni sotto lo stesso tetto, dal pezzo grezzo al controllo finale.',
+          title: 'Lo stabilimento',
+          sub: 'Sant’Ambrogio di Torino',
+        },
+        {
+          quote: 'Un reparto operativo altamente tecnologico, con vibratori, brillantatrici, sabbiatrici, mezzi di sollevamento e autocarri, per ogni fase della finitura dei metalli.',
+          title: 'Il reparto',
+          sub: 'Vibratori, brillantatrici, sabbiatrici',
+        },
+        {
+          quote: 'Un processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse, fino a Ra 0,01 o anche inferiori, e superfici molto lucide.',
+          title: 'Tribofinitura isotropica',
+          sub: 'Rugosità fino a Ra 0,01',
+        },
+      ],
     },
     sede: {
       id: 'sede',

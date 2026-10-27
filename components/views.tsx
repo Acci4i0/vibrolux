@@ -9,6 +9,7 @@ import { MediaPair } from './sections/MediaPair';
 import { Video } from './sections/Video';
 import { Band } from './sections/Band';
 import { TextModule } from './sections/TextModule';
+import { Quotes } from './sections/Quotes';
 import { MediaCardGroup } from './sections/MediaCardGroup';
 import { Carousel } from './sections/Carousel';
 import { MaterialsAccordion } from './sections/MaterialsAccordion';
@@ -55,7 +56,7 @@ export function AziendaView({ lang }: P) {
       <MediaPair media={azienda.pair} />
       <TextModule data={azienda.team} />
       <Video media={azienda.video} />
-      <TextModule data={azienda.videoText} />
+      <Quotes data={azienda.quotes} />
       <Carousel data={azienda.sede} />
       <Stats data={azienda.stats} />
       <TextModule data={azienda.quality} />

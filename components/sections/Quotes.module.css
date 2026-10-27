@@ -1,0 +1,141 @@
+.quotes {
+  padding: var(--margin-4xl) var(--margin-4xl);
+  position: relative;
+  width: 100%;
+}
+.inner {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  width: 100%;
+}
+/* all the quotes in one cell, as tall as the longest; only the active one shows */
+.stack {
+  display: grid;
+  width: 50%;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  grid-area: 1 / 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+/* the next quote comes in once the last one has gone (fase2: 0.6s out, then 0.6s in) */
+.active {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.6s ease 0.6s;
+}
+.quote::before {
+  content: '\201C';
+  margin-right: 0.3em;
+}
+.quote::after {
+  content: '\201D';
+  margin-left: 0.3em;
+}
+.quote::before,
+.quote::after {
+  color: var(--color-grey3);
+  font-size: 1.5em;
+  line-height: 0;
+  vertical-align: -0.15em;
+}
+/* the logo and what the quote is about on the left, the two arrows on the right, along the bottom */
+.row {
+  align-items: flex-end;
+  display: flex;
+  gap: var(--margin-xl);
+  justify-content: space-between;
+  margin-top: var(--margin-3xl);
+}
+/* flush left: stretched to a longer caption, the logo would sit in the middle of the column */
+.attribution {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-lg);
+}
+/* the logo in black: the V parted from the circle by a hairline of the page's white, the letters closed up */
+.logo {
+  color: var(--color-black);
+  height: 2.4rem;
+  width: auto;
+}
+.logo [data-circle] {
+  fill: var(--color-black);
+}
+.logo [data-v] {
+  paint-order: stroke;
+  stroke: var(--color-white);
+  stroke-linejoin: round;
+  stroke-width: 2.2px;
+}
+.logo [data-letter] {
+  stroke: currentColor;
+  stroke-linejoin: round;
+  stroke-width: 1px;
+}
+.title {
+  color: var(--color-black);
+  line-height: 1.5;
+}
+.sub {
+  color: var(--color-grey2);
+  display: block;
+}
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+}
+.button {
+  align-items: center;
+  background-color: var(--color-black);
+  border-radius: 1.2rem;
+  color: var(--color-white);
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+  transition: background-color var(--duration-default);
+  width: 4rem;
+}
+.button svg {
+  fill: none;
+  height: 1.4rem;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  width: 1.4rem;
+}
+.prev svg {
+  transform: rotate(180deg);
+}
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--color-grey1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .active {
+    transition: none;
+  }
+}
+
+@media (max-width: 1179.98px) {
+  .quotes {
+    padding-left: var(--margin-3xl);
+    padding-right: var(--margin-3xl);
+  }
+}
+@media (max-width: 767px) {
+  .quotes {
+    padding: var(--margin-6xl) var(--pwx);
+  }
+  .stack {
+    width: 100%;
+  }
+}
