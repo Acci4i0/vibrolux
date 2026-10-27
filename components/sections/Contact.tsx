@@ -10,9 +10,10 @@ import { Logo, logoTimeline } from '../Logo';
 import s from './Contact.module.css';
 
 /**
- * Two halves on the page: on the left the V of the logo, which builds with the scroll as the wordmark in the footer,
- * and at the foot the address and the VAT number, level with the last line of the list; on the right the three mail
- * addresses and the telephone, one a row on hairlines (what each is for, the address; the whole row is the link).
+ * Two halves on the page: on the left the eyebrow, under it the V of the logo, which builds with the scroll as the
+ * wordmark in the footer, and at the foot the address and the VAT number, level with the last line of the list; on the
+ * right the three mail addresses and the telephone, one a row on hairlines (what each is for, the address; the whole
+ * row is the link).
  * Then the plant as the reference's factory card (aerial photo, its name, a map card that opens Google Maps, a stats card).
  */
 export function Contact() {
@@ -36,8 +37,9 @@ export function Contact() {
           scrollTrigger: { trigger: mark.current, start: ANIM.logo.footerScrubStart, end: ANIM.logo.markScrubEnd, scrub: ANIM.logo.footerScrub },
         });
       return afterMount(() => {
-        const [details, factory] = root.current!.querySelectorAll('[data-reveal]');
+        const [eyebrow, details, factory] = root.current!.querySelectorAll('[data-reveal]');
         const list = root.current!.querySelector('[data-list]');
+        reveal(eyebrow, { delay: ANIM.text.eyebrowDelay });
         revealStagger(list, list!.children);
         reveal(details, { delay: ANIM.text.contentDelay });
         reveal(factory);
@@ -50,8 +52,13 @@ export function Contact() {
     <section ref={root} id="dove-siamo" className={s.contact}>
       <div className={s.inner}>
         <div className={s.side}>
-          <div className={s.mark}>
-            <Logo ref={mark} mark />
+          <div>
+            <h2 className="t-eyebrow" data-reveal="">
+              {c.eyebrow}
+            </h2>
+            <div className={s.mark}>
+              <Logo ref={mark} mark />
+            </div>
           </div>
           <dl className={s.details} data-reveal="">
             <div>

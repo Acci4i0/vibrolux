@@ -340,6 +340,7 @@ export const it = {
       cta: { label: 'Scrivici', href: `mailto:${company.email}` },
     },
     /** one row per address, what it is for written above it */
+    eyebrow: 'Scriveteci',
     emails: [
       { address: company.emails.info, use: 'Informazioni generali e preventivi' },
       { address: company.emails.service, use: 'Assistenza su lavorazioni e consegne' },

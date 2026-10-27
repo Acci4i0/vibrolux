@@ -16,6 +16,10 @@
   padding-right: var(--margin-xl);
   width: 50%;
 }
+/* under the eyebrow, which lines up with the first line of the list */
+.mark {
+  margin-top: var(--margin-2xl);
+}
 .mark svg {
   height: 12.8rem;
   width: auto;
