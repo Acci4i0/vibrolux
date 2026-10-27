@@ -6,9 +6,8 @@ import { CIRCLE, V, WORD, WORD_OFFSET, VIEWBOX, MARK_VIEWBOX } from './logoData'
 
 /**
  * Vibrolux logo (vector, from the brochure). Circle = brand navy, V + wordmark = currentColor.
- * Under the logo sits a hidden black copy of the V and the letters ([data-ink]): shown, on white pages, it draws the line
- * round the white logo and fills the hairline cuts between the parts of the letters, as the dark ground does on the
- * original. All the black is drawn first and all the white on top, so where parts overlap no line shows.
+ * The svg carries a silver gradient as --logo-silver: on white pages the header paints the V with it and the letters
+ * navy, the logo's own colours on white (as on vibrolux.it).
  * logoTimeline(svg) is the build animation (0→1): circle grows from a point, the V halves drop in,
  * letters rise out of a slot left → right. Header plays it after the loader, footer scrubs it on scroll.
  */
@@ -21,7 +20,7 @@ export function logoTimeline(svg: SVGSVGElement) {
     .from(q('[data-letter]'), { y: 44, duration: 0.3, stagger: byIndex(0.012), ease: 'power3.out' }, 0.35);
 }
 
-/** a white shape and its black copy share an index, so they move together */
+/** the staggers follow the order of the parts */
 function byIndex(step: number) {
   return (_: number, el: Element) => Number(el.getAttribute('data-i')) * step;
 }
@@ -30,6 +29,7 @@ type Props = { className?: string; mark?: boolean; ref?: React.Ref<SVGSVGElement
 
 export function Logo({ className, mark = false, ref }: Props) {
   const clip = useId();
+  const silver = useId();
   const word = () =>
     !mark && (
       <g transform={`translate(${WORD_OFFSET[0]} ${WORD_OFFSET[1]})`}>
@@ -42,17 +42,25 @@ export function Logo({ className, mark = false, ref }: Props) {
       </g>
     );
   return (
-    <svg ref={ref} className={className} viewBox={mark ? MARK_VIEWBOX : VIEWBOX} fill="currentColor" role="img" aria-label="Vibrolux">
+    <svg
+      ref={ref}
+      className={className}
+      viewBox={mark ? MARK_VIEWBOX : VIEWBOX}
+      fill="currentColor"
+      role="img"
+      aria-label="Vibrolux"
+      style={{ '--logo-silver': `url("#${silver}")` } as React.CSSProperties}
+    >
       <clipPath id={clip}>
         <rect x={-2} y={-10} width={272} height={48.5} />
       </clipPath>
+      <linearGradient id={silver} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#e6e8eb" />
+        <stop offset="0.45" stopColor="#aeb4bc" />
+        <stop offset="0.55" stopColor="#d2d6db" />
+        <stop offset="1" stopColor="#848b95" />
+      </linearGradient>
       <path data-circle d={CIRCLE} fill="var(--color-brand)" />
-      <g data-ink visibility="hidden">
-        {V.map((d, i) => (
-          <path key={i} data-v data-i={i} d={d} />
-        ))}
-        {word()}
-      </g>
       {V.map((d, i) => (
         <path key={i} data-v data-i={i} d={d} />
       ))}

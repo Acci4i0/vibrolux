@@ -6,11 +6,25 @@ Qui restano i file per cui non c'è ancora un originale: vanno sostituiti con il
 ## Video — Pexels (licenza Pexels: uso libero, attribuzione non richiesta)
 
 Le aperture di Home, Lavorazioni e Contatti, nello stile dei video di t1energy.com: riferimento per il fotografo,
-da sostituire con le riprese di Vibrolux. 1920 × 1080, 15 s, senza audio.
+da sostituire con le riprese di Vibrolux. 1920 × 1080, 25 fps, senza audio.
 
-- home-lucidatura.mp4 — testa di lucidatura su un pezzo bagnato, in macro — https://www.pexels.com/video/7928970/
-- lavorazioni-sabbiatura.mp4 — operatore in tuta nella cabina di sabbiatura — https://www.pexels.com/video/6473939/
-- contatti-valle.mp4 — una valle alpina vista dal drone, i paesi sul fondo — https://www.pexels.com/video/32673036/
+Home e Lavorazioni sono due montaggi come quello di T1: sei inquadrature da 2,4 s a tagli netti, 14,4 s in tutto.
+
+- home-fabbrica.mp4, nell'ordine:
+  - un reparto bianco e luminoso, la camera avanza — https://www.pexels.com/video/32386627/
+  - un robot giallo in una cella automatica — https://www.pexels.com/video/32386532/
+  - un albero d'acciaio al tornio, in macro — https://www.pexels.com/video/19791092/
+  - una linea di trasporto con le lastre, ripresa bassa — https://www.pexels.com/video/32386533/
+  - pezzi d'alluminio tagliati sotto il refrigerante — https://www.pexels.com/video/26569049/
+  - un robot bianco con la pinza blu — https://www.pexels.com/video/32386590/
+- lavorazioni-officina.mp4, nell'ordine:
+  - una punta che fora l'ottone, in macro — https://www.pexels.com/video/31801781/
+  - una fresa a controllo numerico con gli ugelli del refrigerante — https://www.pexels.com/video/9033891/
+  - un mandrino che gira con un anello d'acciaio — https://www.pexels.com/video/6017441/
+  - una fresa al lavoro, lo sfondo sfocato — https://www.pexels.com/video/18883365/
+  - scintille di una mola, ritagliate senza l'utensile e il suo marchio — https://www.pexels.com/video/6046368/
+  - barre d'acciaio lucide su una linea — https://www.pexels.com/video/30183302/
+- contatti-valle.mp4 — una valle alpina vista dal drone, i paesi sul fondo, 15 s — https://www.pexels.com/video/32673036/
 
 ## Foto — Wikimedia Commons
 

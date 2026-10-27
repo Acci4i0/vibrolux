@@ -213,7 +213,7 @@ export const it = {
   /* ───────── Home ───────── */
   home: {
     hero: {
-      media: video('home-lucidatura.mp4'),
+      media: video('home-fabbrica.mp4'),
       headline: 'Trattamenti superficiali dei metalli',
       cta: { label: 'Le lavorazioni', href: to('/lavorazioni') },
       corner: {
@@ -315,7 +315,7 @@ export const it = {
   /* ───────── Lavorazioni ───────── */
   lavorazioniPage: {
     hero: {
-      media: video('lavorazioni-sabbiatura.mp4'),
+      media: video('lavorazioni-officina.mp4'),
       headline: 'Le nostre lavorazioni',
       cta: { label: 'Scarica la brochure', href: BROCHURE },
     },
@@ -339,14 +339,15 @@ export const it = {
       headline: 'Contatti',
       cta: { label: 'Scrivici', href: `mailto:${company.email}` },
     },
-    eyebrow: 'Sede amministrativa e stabilimento',
-    /** mail list: one address per need, what it is for underneath */
+    eyebrow: 'Scriveteci',
+    lead: 'Un indirizzo per ogni richiesta.',
+    /** one card per address, what it is for written on it */
     emails: [
       { address: company.emails.info, use: 'Informazioni generali e preventivi' },
       { address: company.emails.service, use: 'Assistenza su lavorazioni e consegne' },
       { address: company.emails.commerciale, use: 'Offerte e rapporti commerciali' },
     ],
-    keys: { tel: 'Tel', vat: 'P.IVA' },
+    keys: { tel: 'Telefono', address: 'Sede amministrativa e stabilimento', vat: 'Partita IVA' },
     /** the plant, as the reference's factory card (t1energy.com/technology): photo, name, a map card and a stats card */
     factory: {
       media: foto('cover_1.jpg', 1.83),

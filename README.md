@@ -84,13 +84,15 @@ Locally the variable is unset and the site runs from the root.
 
 The photos in `public/assets/vibrolux/` are Vibrolux's own, taken from
 vibrolux.it (resized and lightly cropped). `public/assets/preview/` keeps the
-stand-ins until the new shoot — the hero videos (Home, Lavorazioni, Contatti) and the Pexels macros on the
-process tiles, the home and the warehouse slide, references for the
-photographer — credited in [`CREDITS.md`](public/assets/preview/CREDITS.md).
+stand-ins until the new shoot — the hero videos (Home and Lavorazioni are six-shot Pexels montages cut like T1's,
+Contatti a drone shot of an Alpine valley) and the Pexels macros on the process tiles, the home and the warehouse
+slide, references for the photographer — credited in [`CREDITS.md`](public/assets/preview/CREDITS.md).
 Until then the site is a private mockup: `robots` noindex in `app/layout.tsx`.
 The Azienda video is the one on vibrolux.it, embedded from YouTube (`azienda.video` in the content).
 
-The Contatti page has a card for the plant, built like the factory card on
+The Contatti page opens with one card per mail address (what it is for, the
+address; the whole card writes the mail), the telephone, the address and the VAT
+number in a row under them, then a card for the plant, built like the factory card on
 t1energy.com/technology: the aerial photo (`cover_1.jpg`), the town's name,
 a square map card — Google's embed of the Vibrolux Srl place, the whole card a
 link to Google Maps — and a card with the site's figures. The Azienda page

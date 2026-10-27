@@ -211,7 +211,7 @@ export const en: Site = {
   /* ───────── Home ───────── */
   home: {
     hero: {
-      media: video('home-lucidatura.mp4'),
+      media: video('home-fabbrica.mp4'),
       headline: 'Surface treatments for metals',
       cta: { label: 'Our processes', href: to('/lavorazioni') },
       corner: {
@@ -313,7 +313,7 @@ export const en: Site = {
   /* ───────── Processes ───────── */
   lavorazioniPage: {
     hero: {
-      media: video('lavorazioni-sabbiatura.mp4'),
+      media: video('lavorazioni-officina.mp4'),
       headline: 'Our processes',
       cta: { label: 'Download the brochure', href: BROCHURE },
     },
@@ -336,13 +336,14 @@ export const en: Site = {
       headline: 'Contact',
       cta: { label: 'Email us', href: `mailto:${company.email}` },
     },
-    eyebrow: 'Head office and plant',
+    eyebrow: 'Write to us',
+    lead: 'One address for every request.',
     emails: [
       { address: company.emails.info, use: 'General enquiries and quotes' },
       { address: company.emails.service, use: 'Support on processes and deliveries' },
       { address: company.emails.commerciale, use: 'Offers and commercial relations' },
     ],
-    keys: { tel: 'Tel', vat: 'VAT' },
+    keys: { tel: 'Telephone', address: 'Head office and plant', vat: 'VAT number' },
     /** the plant, as the reference's factory card (t1energy.com/technology): photo, name, a map card and a stats card */
     factory: {
       media: foto('cover_1.jpg', 1.83),
