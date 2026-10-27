@@ -282,21 +282,9 @@ export const it = {
     /** under the film, as the method on fase2: statements that turn with the arrows, the logo under each */
     quotes: {
       items: [
-        {
-          quote: 'Dentro lo stabilimento di Sant’Ambrogio: sei lavorazioni sotto lo stesso tetto, dal pezzo grezzo al controllo finale.',
-          title: 'Lo stabilimento',
-          sub: 'Sant’Ambrogio di Torino',
-        },
-        {
-          quote: 'Un reparto operativo altamente tecnologico, con vibratori, brillantatrici, sabbiatrici, mezzi di sollevamento e autocarri, per ogni fase della finitura dei metalli.',
-          title: 'Il reparto',
-          sub: 'Vibratori, brillantatrici, sabbiatrici',
-        },
-        {
-          quote: 'Un processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse, fino a Ra 0,01 o anche inferiori, e superfici molto lucide.',
-          title: 'Tribofinitura isotropica',
-          sub: 'Rugosità fino a Ra 0,01',
-        },
+        'Dentro lo stabilimento di Sant’Ambrogio: sei lavorazioni sotto lo stesso tetto, dal pezzo grezzo al controllo finale.',
+        'Un reparto operativo altamente tecnologico, con vibratori, brillantatrici, sabbiatrici, mezzi di sollevamento e autocarri, per ogni fase della finitura dei metalli.',
+        'Un processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse, fino a Ra 0,01 o anche inferiori, e superfici molto lucide.',
       ],
     },
     sede: {

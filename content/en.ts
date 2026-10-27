@@ -279,21 +279,9 @@ export const en: Site = {
     video: { type: 'youtube' as const, src: 'qE4NzY4v_tE', alt: 'Vibrolux, the plant', aspect: 16 / 9 },
     quotes: {
       items: [
-        {
-          quote: 'Inside the Sant’Ambrogio plant: six processes under one roof, from the raw part to the final inspection.',
-          title: 'The plant',
-          sub: 'Sant’Ambrogio di Torino',
-        },
-        {
-          quote: 'A highly technological operations department, with vibrators, burnishing machines, blasting machines, lifting equipment and trucks, for every stage of metal finishing.',
-          title: 'The shop floor',
-          sub: 'Vibrators, burnishing and blasting machines',
-        },
-        {
-          quote: 'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness, down to Ra 0.01 or lower, and highly polished surfaces.',
-          title: 'Isotropic superfinishing',
-          sub: 'Roughness down to Ra 0.01',
-        },
+        'Inside the Sant’Ambrogio plant: six processes under one roof, from the raw part to the final inspection.',
+        'A highly technological operations department, with vibrators, burnishing machines, blasting machines, lifting equipment and trucks, for every stage of metal finishing.',
+        'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness, down to Ra 0.01 or lower, and highly polished surfaces.',
       ],
     },
     sede: {

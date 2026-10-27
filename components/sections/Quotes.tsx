@@ -8,11 +8,11 @@ import { useLang } from '@/lib/i18n';
 import { Logo } from '../Logo';
 import s from './Quotes.module.css';
 
-type Data = { items: { quote: string; title: string; sub: string }[] };
+type Data = { items: string[] };
 
 /**
  * Statements in quotes, one at a time, as the method on fase2: the arrows turn them (the one going fades out, then the
- * next fades in), and under each the logo in black, small, with what it is about. In the right half, as the text modules.
+ * next fades in), and under each the logo in black, small. In the right half, as the text modules.
  */
 export function Quotes({ data }: { data: Data }) {
   const root = useRef<HTMLElement>(null);
@@ -40,18 +40,12 @@ export function Quotes({ data }: { data: Data }) {
       <div className={s.inner}>
         <div ref={stack} className={s.stack} data-reveal="" aria-live="polite">
           {data.items.map((q, i) => (
-            <article key={q.title} className={`${s.item} ${i === index ? s.active : ''}`} aria-hidden={i !== index} inert={i !== index}>
-              <p className={`t-large ${s.quote}`}>{q.quote}</p>
+            <article key={q} className={`${s.item} ${i === index ? s.active : ''}`} aria-hidden={i !== index} inert={i !== index}>
+              <p className={`t-large ${s.quote}`}>{q}</p>
               <div className={s.row}>
-                <div className={s.attribution}>
-                  <Logo className={s.logo} />
-                  <p className={s.title}>
-                    {q.title}
-                    <span className={s.sub}>{q.sub}</span>
-                  </p>
-                </div>
+                <Logo className={s.logo} />
                 <div className={s.controls}>
-                  {(['next', 'prev'] as const).map((dir) => (
+                  {(['prev', 'next'] as const).map((dir) => (
                     <button key={dir} type="button" className={`${s.button} ${s[dir]}`} data-dir={dir} onClick={(e) => go(dir, e)} aria-label={ui[dir]}>
                       <svg viewBox="0 0 14 14" aria-hidden>
                         <path d="M1 7h12M8 2l5 5-5 5" />
