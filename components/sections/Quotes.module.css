@@ -52,23 +52,15 @@
   justify-content: space-between;
   margin-top: var(--margin-3xl);
 }
-/* the logo in black: the V parted from the circle by a hairline of the page's white, the letters closed up */
+/* the V of the logo in its colours, as the header's logo on white pages: navy circle, silver V; as tall as the arrows */
 .logo {
-  color: var(--color-black);
-  height: 2.4rem;
+  flex: none;
+  height: 4rem;
   width: auto;
 }
-.logo [data-circle] {
-  fill: var(--color-black);
-}
 .logo [data-v] {
-  paint-order: stroke;
-  stroke: var(--color-white);
-  stroke-linejoin: round;
-  stroke-width: 2.2px;
-}
-.logo [data-letter] {
-  stroke: currentColor;
+  fill: var(--logo-silver);
+  stroke: var(--logo-silver);
   stroke-linejoin: round;
   stroke-width: 1px;
 }
@@ -78,7 +70,7 @@
 }
 .button {
   align-items: center;
-  background-color: var(--color-black);
+  background-color: var(--color-brand);
   border-radius: 1.2rem;
   color: var(--color-white);
   display: flex;
@@ -99,7 +91,7 @@
 }
 @media (hover: hover) {
   .button:hover {
-    background-color: var(--color-grey1);
+    background-color: var(--color-black);
   }
 }
 @media (prefers-reduced-motion: reduce) {
