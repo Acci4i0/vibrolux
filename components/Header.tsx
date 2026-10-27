@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { gsap, Flip, useGSAP, prefersReducedMotion } from '@/lib/gsap';
 import { ANIM } from '@/config/animations';
 import { Logo, logoTimeline } from './Logo';
+import { Icon } from './Icon';
 import { content, withBase } from '@/content/site';
 import { LANGS, langPath, pagePath, useLang, type Lang } from '@/lib/i18n';
 import s from './Header.module.css';
@@ -170,7 +171,10 @@ export function HeaderDesktop() {
             {t.nav.map((item) => (
               <div key={item.label} className={s.item} data-flip>
                 <a href={item.href} {...ext(item.external)}>
-                  <span className={item.external ? s.ext : ''}>{item.label}</span>
+                  <span className={item.external ? s.ext : ''}>
+                    {item.label}
+                    {item.external && <Icon name="arrow-out" className={s.extIcon} />}
+                  </span>
                 </a>
                 {item.children && (
                   <ul className={s.submenu} data-submenu>
@@ -188,7 +192,7 @@ export function HeaderDesktop() {
                 {t.navCtas.map((c) => (
                   <a key={c.label} href={c.href} className={`${s.subCta} ${s[c.tone]}`}>
                     <span>{c.label}</span>
-                    <span aria-hidden>→</span>
+                    <Icon name="arrow" className={s.ctaIcon} />
                   </a>
                 ))}
               </div>
@@ -270,13 +274,14 @@ export function HeaderMobile() {
               <li key={item.label} className={`${s.mItem} ${sub === i ? s.isOpen : ''}`} data-nav-li>
                 <div className={s.mLink}>
                   <a href={item.href} {...ext(item.external)}>
-                    <span className={item.external ? s.ext : ''}>{item.label}</span>
+                    <span className={item.external ? s.ext : ''}>
+                    {item.label}
+                    {item.external && <Icon name="arrow-out" className={s.extIcon} />}
+                  </span>
                   </a>
                   {item.children && (
                     <button type="button" className={s.mArrow} onClick={() => setSub(sub === i ? null : i)} aria-expanded={sub === i} aria-label={t.ui.open(item.label)}>
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M2 5l5 5 5-5" stroke="currentColor" strokeWidth="1.4" />
-                      </svg>
+                      <Icon name="chevron" />
                     </button>
                   )}
                 </div>
@@ -297,7 +302,7 @@ export function HeaderMobile() {
               <li key={c.label} className={s.mCtaItem} data-nav-li>
                 <a href={c.href} className={s.mCta}>
                   <span>{c.label}</span>
-                  <span aria-hidden>→</span>
+                  <Icon name="arrow" className={s.ctaIcon} />
                 </a>
               </li>
             ))}

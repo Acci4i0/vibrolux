@@ -5,6 +5,7 @@ import { gsap, useGSAP } from '@/lib/gsap';
 import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM, MOTION_OK } from '@/config/animations';
 import { Media, type MediaData } from '../Media';
+import { Icon } from '../Icon';
 import s from './MaterialsAccordion.module.css';
 
 type Item = { id?: string; title: string; text: string; media: MediaData; href?: string };
@@ -65,12 +66,8 @@ export function MaterialsAccordion({ data }: { data: { eyebrow: string; more: st
                 <button type="button" className={s.header} aria-expanded={active === i} onClick={() => setActive(active === i ? null : i)}>
                   <span className={s.title}>{it.title}</span>
                   <span className={s.toggle} aria-hidden>
-                    <svg className={s.plus} viewBox="0 0 24 24" fill="none">
-                      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.5" />
-                    </svg>
-                    <svg className={s.minus} viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14" stroke="currentColor" strokeWidth="1.5" />
-                    </svg>
+                    <Icon name="plus" className={s.plus} />
+                    <Icon name="minus" className={s.minus} />
                   </span>
                 </button>
                 <div className={s.panel}>
@@ -78,7 +75,7 @@ export function MaterialsAccordion({ data }: { data: { eyebrow: string; more: st
                     <p>{it.text}</p>
                     {it.href && (
                       <a href={it.href} className={s.more}>
-                        {data.more} <span aria-hidden>→</span>
+                        {data.more} <Icon name="arrow" className={s.moreIcon} />
                       </a>
                     )}
                   </div>

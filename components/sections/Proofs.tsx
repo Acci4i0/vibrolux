@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@/lib/gsap';
 import { afterMount, reveal, revealStagger } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
+import { Icon } from '../Icon';
 import s from './Proofs.module.css';
 
 type Data = { eyebrow: string; items: { figure: string; text: string; link: { label: string; href: string } }[] };
@@ -40,9 +41,7 @@ export function Proofs({ data }: { data: Data }) {
             <p className={s.text}>{it.text}</p>
             <a className={s.link} href={it.link.href}>
               {it.link.label}
-              <svg viewBox="0 0 14 14" aria-hidden>
-                <path d="M1 7h12M8 2l5 5-5 5" />
-              </svg>
+              <Icon name="arrow" />
             </a>
           </li>
         ))}

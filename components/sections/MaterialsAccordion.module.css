@@ -107,7 +107,7 @@
 .toggle {
   align-items: center;
   background-color: var(--color-white);
-  border-radius: 50%;
+  border-radius: var(--radius-button);
   color: var(--color-black);
   display: flex;
   flex: none;
@@ -123,10 +123,10 @@
 }
 .toggle svg {
   display: block;
-  height: 50%;
+  height: 40%;
   position: absolute;
   transition: all var(--duration-default) var(--ease-ui);
-  width: 50%;
+  width: 40%;
 }
 .minus {
   opacity: 0;
@@ -171,6 +171,10 @@
   gap: 0.6em;
   margin-top: var(--margin-lg);
   transition: opacity var(--duration-default);
+}
+.moreIcon {
+  height: 1em;
+  width: 1em;
 }
 @media (hover: hover) {
   .more:hover {

@@ -59,10 +59,7 @@
   transition: border-color var(--duration-default);
 }
 .link svg {
-  fill: none;
   height: 1.1rem;
-  stroke: currentColor;
-  stroke-width: 1.4;
   transition: transform var(--duration-long) var(--ease-ui);
   width: 1.1rem;
 }

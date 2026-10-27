@@ -7,6 +7,7 @@ import { ANIM } from '@/config/animations';
 import { company, content, maps, place } from '@/content/site';
 import { useLang } from '@/lib/i18n';
 import { Logo, logoTimeline } from '../Logo';
+import { Icon } from '../Icon';
 import s from './Contact.module.css';
 
 /**
@@ -85,9 +86,7 @@ export function Contact() {
                   <span className={`t-mono ${s.key}`}>{r.key}</span>
                   <span className={s.value}>{r.value}</span>
                 </span>
-                <svg className={s.arrow} viewBox="0 0 24 24" aria-hidden>
-                  <path d="M7 17 17 7M8 7h9v9" />
-                </svg>
+                <Icon name="arrow-out" className={s.arrow} />
               </a>
             </li>
           ))}
@@ -106,9 +105,7 @@ export function Contact() {
             <p className={`t-eyebrow ${s.pill} ${s.mapCoords}`}>{place.coords}</p>
             <p className={`t-mono ${s.pill} ${s.mapLink}`}>
               {c.factory.mapsLabel}
-              <svg viewBox="0 0 24 24" aria-hidden>
-                <path d="M7 17 17 7M8 7h9v9" />
-              </svg>
+              <Icon name="arrow-out" />
             </p>
           </a>
           <div className={`${s.module} ${s.stats}`}>

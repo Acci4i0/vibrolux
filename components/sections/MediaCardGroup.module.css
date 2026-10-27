@@ -13,7 +13,7 @@
 }
 .media {
   align-items: center;
-  border-radius: var(--card-radius, var(--radius-large));
+  border-radius: var(--radius-large);
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -44,7 +44,7 @@
   backdrop-filter: blur(5rem);
   -webkit-backdrop-filter: blur(5rem);
   background-color: var(--color-bg-blur-dark);
-  border-radius: 10rem;
+  border-radius: var(--radius-button);
   color: var(--color-white);
   display: inline-flex;
   font-size: var(--size-body);
@@ -62,7 +62,7 @@
 .icon {
   align-items: center;
   background-color: var(--color-bg-blur-light);
-  border-radius: 50%;
+  border-radius: calc(var(--radius-button) - 0.4rem); /* inside the pill's 0.4rem padding */
   display: flex;
   height: 3.428em;
   justify-content: center;

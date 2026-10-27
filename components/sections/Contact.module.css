@@ -77,12 +77,9 @@
   transition: transform var(--duration-long) var(--ease-ui);
 }
 .arrow {
-  fill: none;
   flex: none;
   height: 2.4rem;
   margin-bottom: 0.6rem;
-  stroke: currentColor;
-  stroke-width: 1.4;
   transition: transform var(--duration-long) var(--ease-ui);
   width: 2.4rem;
 }
@@ -96,7 +93,7 @@
 }
 /* ── The plant, as the reference's factory card (t1energy.com/technology, measured at 1440 × 900):
    aerial photo 1.83:1 with the 8rem radius, the name at the bottom left (padding 11.2rem), and on the right a
-   column of two 37.7rem squares — map and stats — in blurred glass, 7.2rem radius, a gutter apart. ── */
+   column of two 37.7rem squares — map and stats — in blurred glass, a gutter apart (all on the site's large radius). ── */
 .factory {
   --module: min(37.7rem, calc((100cqw / 1.83 - var(--gutter) * 3) / 2));
   aspect-ratio: 1.83 / 1;
@@ -146,7 +143,7 @@
   backdrop-filter: blur(2.5rem);
   -webkit-backdrop-filter: blur(2.5rem);
   background-color: var(--color-bg-blur-dark);
-  border-radius: 7.2rem;
+  border-radius: var(--radius-large);
   overflow: hidden;
   position: relative;
   width: var(--module);
@@ -174,7 +171,7 @@
   backdrop-filter: blur(5rem);
   -webkit-backdrop-filter: blur(5rem);
   background-color: var(--color-bg-blur-dark);
-  border-radius: 10rem;
+  border-radius: var(--radius-button);
   color: var(--color-white);
   display: flex;
   gap: 0.6em;
@@ -195,10 +192,7 @@
     color var(--duration-default);
 }
 .mapLink svg {
-  fill: none;
   height: 1.4rem;
-  stroke: currentColor;
-  stroke-width: 1.8;
   width: 1.4rem;
 }
 @media (hover: hover) {
@@ -258,7 +252,6 @@
   }
   .module {
     aspect-ratio: 1.87 / 1;
-    border-radius: 4rem;
     flex: 1 1 0;
     width: auto;
   }
@@ -326,7 +319,6 @@
     flex-direction: column;
   }
   .module {
-    border-radius: 3.2rem;
     flex: none;
     width: 100%;
   }

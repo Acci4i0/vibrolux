@@ -66,6 +66,13 @@ public/assets/                 the brochure, Vibrolux's photos, the stand-ins un
   greys (#2B2F36, #5E6570, #B9BEC6, and #EEF0F3, the only ground besides white),
   and Vibrolux navy **#21406E** (`--color-brand`), kept rare: the logo, numbers
   and active states.
+- **Icons:** [`components/Icon.tsx`](components/Icon.tsx), one drawing each on
+  the same 14 grid and the same 1.4px line: the arrow (turned for ← and ↗), plus,
+  minus, chevron. No arrows typed as text.
+- **Corners:** two radii, `--radius-large` (photos, cards, modules; 8rem, 4rem
+  below 1180px) and `--radius-button` (buttons, pills, controls; 1.6rem). Inner
+  corners follow the outer one minus the padding; small squares take the large
+  radius capped at 20%.
 - **Signature:** the logo itself, and nothing beside it: the header, the wordmark
   that builds in the footer, the V that builds on Contatti, the small black logo
   under the quotes on Azienda.

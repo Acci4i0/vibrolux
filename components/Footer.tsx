@@ -5,6 +5,7 @@ import { gsap, useGSAP, prefersReducedMotion } from '@/lib/gsap';
 import { afterMount, revealStagger } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { Logo, logoTimeline } from './Logo';
+import { Icon } from './Icon';
 import { content, type FooterLink } from '@/content/site';
 import { useLang } from '@/lib/i18n';
 import { useMapsHref } from '@/lib/maps';
@@ -34,7 +35,17 @@ function FooterAnchor({ link, num }: { link: FooterLink; num: string }) {
     setArmed(!armed);
   };
 
-  const label = <span aria-live={link.confirm ? 'polite' : undefined}>{armed ? `${link.confirm} ↗` : link.label}</span>;
+  const label = (
+    <span aria-live={link.confirm ? 'polite' : undefined}>
+      {armed ? (
+        <>
+          {link.confirm} <Icon name="arrow-out" className={s.out} />
+        </>
+      ) : (
+        link.label
+      )}
+    </span>
+  );
   if (!href)
     return (
       <span className={s.link}>

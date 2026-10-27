@@ -1,4 +1,5 @@
 import { Media, type MediaData } from '../Media';
+import { Icon } from '../Icon';
 import s from './MediaCardGroup.module.css';
 
 type Card = { label: string; href: string; media: MediaData };
@@ -13,9 +14,7 @@ export function MediaCard({ label, href, media, ...rest }: Card & Record<`data-$
           <span className={s.cta}>
             <span>{label}</span>
             <span className={s.icon} aria-hidden>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.4" />
-              </svg>
+              <Icon name="arrow" />
             </span>
           </span>
         </div>

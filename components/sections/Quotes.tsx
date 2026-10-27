@@ -6,6 +6,7 @@ import { afterMount, reveal } from '@/lib/reveal';
 import { content } from '@/content/site';
 import { useLang } from '@/lib/i18n';
 import { Logo } from '../Logo';
+import { Icon } from '../Icon';
 import s from './Quotes.module.css';
 
 type Data = { items: string[] };
@@ -46,10 +47,8 @@ export function Quotes({ data }: { data: Data }) {
                 <Logo className={s.logo} mark />
                 <div className={s.controls}>
                   {(['prev', 'next'] as const).map((dir) => (
-                    <button key={dir} type="button" className={`${s.button} ${s[dir]}`} data-dir={dir} onClick={(e) => go(dir, e)} aria-label={ui[dir]}>
-                      <svg viewBox="0 0 14 14" aria-hidden>
-                        <path d="M1 7h12M8 2l5 5-5 5" />
-                      </svg>
+                    <button key={dir} type="button" className={s.button} data-dir={dir} onClick={(e) => go(dir, e)} aria-label={ui[dir]}>
+                      <Icon name={dir === 'next' ? 'arrow' : 'arrow-left'} />
                     </button>
                   ))}
                 </div>

@@ -120,10 +120,9 @@
   display: flex;
   gap: 0.2em;
 }
-.ext::after {
-  content: '↗';
-  font-size: 0.9em;
-  transform: translateY(-5%);
+.extIcon {
+  height: 0.75em;
+  width: 0.75em;
 }
 
 .submenu {
@@ -209,6 +208,11 @@
 }
 .subCta:hover:active {
   transform: scale(0.985);
+}
+.ctaIcon {
+  flex: none;
+  height: 1em;
+  width: 1em;
 }
 .white {
   background-color: var(--color-white-off);
@@ -417,7 +421,7 @@
 .mCta {
   align-items: center;
   background-color: var(--color-grey3);
-  border-radius: 1.8rem;
+  border-radius: var(--radius-button);
   color: var(--color-grey1);
   display: flex;
   font-family: var(--font-secondary);
