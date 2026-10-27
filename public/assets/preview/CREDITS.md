@@ -38,5 +38,4 @@ Riferimenti per il fotografo, a colori come l'originale (ridimensionati a 2400 p
 - cuscinetto.jpg — Tribofinitura isotropica (tessera) — https://www.pexels.com/photo/19911427/
 - sfere-acciaio.jpg — Brillantatura (tessera) — https://www.pexels.com/photo/39205814/
 - anelli-pila.jpg — Home, card Lavorazioni — https://www.pexels.com/photo/12951626/
-- fresa.jpg — Home, «Servizi qualificati» — https://www.pexels.com/photo/8865189/
 - dadi.jpg — Azienda, Magazzino — https://www.pexels.com/photo/21050460/

@@ -3,8 +3,24 @@
   position: relative;
   width: 100%;
 }
+/* the signature behind the text, large and faint, cut by the right edge */
+.withRings {
+  overflow-x: clip;
+}
+.rings {
+  color: var(--color-brand);
+  height: 52rem;
+  opacity: 0.1;
+  pointer-events: none;
+  position: absolute;
+  right: -10rem;
+  top: 50%;
+  translate: 0 -50%;
+  width: 52rem;
+}
 .inner {
   align-items: flex-start;
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
@@ -50,5 +66,10 @@
   }
   .body {
     padding-right: 1em;
+  }
+  .rings {
+    height: 32rem;
+    right: -12rem;
+    width: 32rem;
   }
 }

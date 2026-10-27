@@ -214,7 +214,9 @@ export const en: Site = {
   home: {
     hero: {
       media: video('home-fabbrica.mp4'),
-      headline: 'Surface treatments for metals',
+      kicker: 'Surface treatments for metals',
+      headline: 'Finishing you can measure',
+      sub: 'Roughness down to Ra 0.01, in-house quality control, ISO 9001:2015 certification.',
       cta: { label: 'Our processes', href: to('/lavorazioni') },
       corner: {
         heading: 'Brochure',
@@ -251,12 +253,28 @@ export const en: Site = {
     },
     values: {
       eyebrow: 'Why Vibrolux',
-      text: 'Four principles behind every process.',
+      text: 'Four facts you can check.',
       items: [
-        { label: '01', title: 'Qualified services', href: to('/lavorazioni'), media: img('fresa.jpg') },
-        { label: '02', title: 'Quality standards', href: to('/azienda#qualita'), media: foto('mg_8343.jpg') },
-        { label: '03', title: 'Specialised team', href: to('/azienda'), media: foto('mg_8275.jpg') },
-        { label: '04', title: 'Results at the highest level', href: to('/lavorazioni'), media: foto('ricevuta-1.jpg') },
+        {
+          figure: 'Ra 0.01',
+          text: 'The roughness isotropic superfinishing can reach, with a non-aggressive process.',
+          link: { label: 'Isotropic superfinishing', href: to('/lavorazioni/tribofinitura-isotropica') },
+        },
+        {
+          figure: '6 processes',
+          text: 'From sandblasting to washing and oiling, all in one plant in Sant’Ambrogio.',
+          link: { label: 'The processes', href: to('/lavorazioni') },
+        },
+        {
+          figure: 'ISO 9001:2015',
+          text: 'A certified quality system and an inspection area with measuring and testing instruments.',
+          link: { label: 'Quality', href: to('/azienda#qualita') },
+        },
+        {
+          figure: '1300 × 1800 mm',
+          text: 'The largest parts the hanger blaster takes, delicate material included.',
+          link: { label: 'Sandblasting', href: to('/lavorazioni/sabbiatura') },
+        },
       ],
     },
   },

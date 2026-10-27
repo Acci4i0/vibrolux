@@ -14,8 +14,8 @@ and English.
 
 - [Next.js](https://nextjs.org) 15 (App Router) + React 19, TypeScript
 - [GSAP](https://gsap.com) with ScrollTrigger, ScrollToPlugin and Flip
-- CSS Modules; [Hubot Sans](https://fonts.google.com/specimen/Hubot+Sans) for headlines and figures,
-  [Mona Sans](https://fonts.google.com/specimen/Mona+Sans) for text and
+- CSS Modules; Vibrolux Display (drawn from the logotype) for headlines and figures,
+  Vibrolux Text for text, both in `app/fonts/`, and
   [Martian Mono](https://fonts.google.com/specimen/Martian+Mono) for labels, through `next/font`
 
 ## Running it
@@ -61,8 +61,18 @@ public/assets/                 the brochure, Vibrolux's photos, the stand-ins un
   [`content/shared.ts`](content/shared.ts). Pages and components only lay it out.
 - **Motion:** [`config/animations.ts`](config/animations.ts) — tune it there,
   not in the components.
-- **Brand colour:** Vibrolux navy **#21406E**, defined as `--color-brand` in
-  [`app/globals.css`](app/globals.css). The rest of the scale is neutral.
+- **Palette:** one for every page, in [`app/globals.css`](app/globals.css): white
+  ground, steel black (#0F0E12) for the footer and the dark cards, cool steel
+  greys (#2B2F36, #5E6570, #B9BEC6, and #EEF0F3, the only ground besides white),
+  and Vibrolux navy **#21406E** (`--color-brand`), kept rare: the logo, the rings,
+  numbers and active states.
+- **Signature:** [`components/Rings.tsx`](components/Rings.tsx), concentric rings
+  cut at 58° (the angle of the V's arms), one half slipped along the cut, that
+  move a little with the scroll. Lines only, so it never reads as a second mark.
+  It appears in three places and no others: beside the numbers of «Perché
+  Vibrolux», on the divider that opens a page's closing section
+  ([`Divider`](components/sections/Divider.tsx): Home, Azienda, each process),
+  and faint behind the Lavorazioni text.
 
 ## Languages
 

@@ -216,7 +216,9 @@ export const it = {
   home: {
     hero: {
       media: video('home-fabbrica.mp4'),
-      headline: 'Trattamenti superficiali dei metalli',
+      kicker: 'Trattamenti superficiali dei metalli',
+      headline: 'La finitura che si misura',
+      sub: 'Rugosità fino a Ra 0,01, controllo qualità interno, certificazione ISO 9001:2015.',
       cta: { label: 'Le lavorazioni', href: to('/lavorazioni') },
       corner: {
         heading: 'Brochure',
@@ -251,14 +253,31 @@ export const it = {
       ],
       cta: { label: 'Tutte le lavorazioni', href: to('/lavorazioni') },
     },
+    /** facts that can be checked, each with the page that bears it out (components/sections/Proofs) */
     values: {
       eyebrow: 'Perché Vibrolux',
-      text: 'Quattro principi che guidano ogni lavorazione.',
+      text: 'Quattro fatti che si possono verificare.',
       items: [
-        { label: '01', title: 'Servizi qualificati', href: to('/lavorazioni'), media: img('fresa.jpg') },
-        { label: '02', title: 'Standard di qualità', href: to('/azienda#qualita'), media: foto('mg_8343.jpg') },
-        { label: '03', title: 'Team specializzato', href: to('/azienda'), media: foto('mg_8275.jpg') },
-        { label: '04', title: 'Risultati al massimo livello', href: to('/lavorazioni'), media: foto('ricevuta-1.jpg') },
+        {
+          figure: 'Ra 0,01',
+          text: 'La rugosità raggiungibile con la tribofinitura isotropica, con un processo non aggressivo.',
+          link: { label: 'Tribofinitura isotropica', href: to('/lavorazioni/tribofinitura-isotropica') },
+        },
+        {
+          figure: '6 lavorazioni',
+          text: 'Dalla sabbiatura a lavaggi e oliature, tutte in un solo stabilimento a Sant’Ambrogio.',
+          link: { label: 'Le lavorazioni', href: to('/lavorazioni') },
+        },
+        {
+          figure: 'ISO 9001:2015',
+          text: 'Un sistema qualità certificato e un’area di controllo con strumenti di misura e verifica.',
+          link: { label: 'La qualità', href: to('/azienda#qualita') },
+        },
+        {
+          figure: '1300 × 1800 mm',
+          text: 'L’ingombro massimo nella sabbiatrice a grappolo, anche per materiale delicato.',
+          link: { label: 'Sabbiatura', href: to('/lavorazioni/sabbiatura') },
+        },
       ],
     },
   },

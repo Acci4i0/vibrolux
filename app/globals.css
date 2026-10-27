@@ -1,12 +1,15 @@
 /* ───────────── Tokens (see ANIMATION_SPEC.md §1) ───────────── */
 :root {
-  --color-black: #0f0e12;
-  --color-grey1: #322d2a;
-  --color-grey2: #625b58;
-  --color-grey3: #bfb8b5;
-  --color-grey4: #f0efe9;
+  /* The official palette, the same on every page: white ground, steel black for the footer and the dark cards, cool
+     steel greys that sit with the navy and the silver of the logo, and the navy itself, kept rare (the logo, the rings,
+     numbers and active states). The surface grey is the only ground besides white. */
+  --color-black: #0f0e12; /* steel black: text on white, footer, dark cards */
+  --color-grey1: #2b2f36; /* graphite: running text */
+  --color-grey2: #5e6570; /* steel grey: labels, captions */
+  --color-grey3: #b9bec6; /* light grey: hairlines, quote marks */
+  --color-grey4: #eef0f3; /* surface */
   --color-white: #fff;
-  --color-white-off: #f0efe9;
+  --color-white-off: #eef0f3;
   --color-brand: #21406e; /* Vibrolux navy, from the brochure artwork */
   --color-text: var(--color-grey1);
   --color-bg: var(--color-white);
@@ -185,12 +188,6 @@ main > [data-module='carousel'] + [data-module='media'] {
   main > [data-module='carousel'] + :is([data-module='carousel'], [data-module='media']) {
     margin-top: var(--margin-6xl);
   }
-}
-
-/* a page on black (Lavorazioni): around the hero and behind the cards, down to the footer */
-main[data-tone='dark'] {
-  background-color: var(--color-black);
-  color: var(--color-white);
 }
 
 /* anchor targets clear the fixed header (reference: .modules-wrapper > .module) */

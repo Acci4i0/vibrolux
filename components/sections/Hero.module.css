@@ -72,6 +72,18 @@
   max-width: 10em;
   text-wrap: balance;
 }
+.kicker {
+  margin-bottom: var(--margin-lg);
+  opacity: 0.8;
+}
+.sub {
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  margin-top: var(--margin-lg);
+  max-width: 30em;
+  opacity: 0.9;
+}
 .right {
   align-items: flex-start;
   display: flex;
@@ -138,6 +150,10 @@
 }
 
 @media (max-width: 767px) {
+  /* the text sits higher on a phone, over the light shots of the plant: a deeper shade under it */
+  .bg::after {
+    opacity: 0.8;
+  }
   .inner {
     padding: 0 var(--pwx);
   }
@@ -153,6 +169,10 @@
   }
   .noCorner {
     padding-bottom: var(--margin-3xl);
+  }
+  .sub {
+    font-size: var(--size-body);
+    margin-top: var(--margin-sm);
   }
   .headline {
     font-size: var(--size-heading-md);

@@ -1,0 +1,43 @@
+.divider {
+  align-items: center;
+  color: var(--color-brand);
+  display: flex;
+  gap: var(--margin-lg);
+  margin: var(--margin-4xl) auto 0;
+  max-width: calc(var(--container-max-width) + var(--margin-4xl) * 2);
+  padding: 0 var(--margin-4xl);
+  width: 100%;
+}
+/* the section it opens starts closer, as a text module does */
+.divider + section {
+  padding-top: var(--margin-4xl);
+}
+.rings {
+  flex: none;
+  height: 3.2rem;
+  width: 3.2rem;
+}
+.line {
+  background-color: var(--color-grey3);
+  flex: 1;
+  height: 1px;
+}
+
+@media (max-width: 1179.98px) {
+  .divider {
+    padding: 0 var(--margin-3xl);
+  }
+}
+@media (max-width: 767px) {
+  .divider {
+    margin-top: var(--margin-3xl);
+    padding: 0 var(--pwx);
+  }
+  .divider + section {
+    padding-top: var(--margin-3xl);
+  }
+  .rings {
+    height: 2.8rem;
+    width: 2.8rem;
+  }
+}

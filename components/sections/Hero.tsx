@@ -10,7 +10,11 @@ import s from './Hero.module.css';
 
 type Data = {
   media: MediaData;
+  /** a small line above the headline (Home: what Vibrolux does, the headline says how) */
+  kicker?: string;
   headline: string;
+  /** a line under it */
+  sub?: string;
   cta: { label: string; href: string };
   corner?: { heading: string; text: string; media: MediaData; href: string };
 };
@@ -18,7 +22,7 @@ type Data = {
 export function Hero({ data }: { data: Data }) {
   const root = useRef<HTMLElement>(null);
   const bg = useRef<HTMLDivElement>(null);
-  const headline = useRef<HTMLHeadingElement>(null);
+  const headline = useRef<HTMLDivElement>(null);
   const cta = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
   const corner = useRef<HTMLAnchorElement>(null);
 
@@ -53,9 +57,11 @@ export function Hero({ data }: { data: Data }) {
       <div className={s.inner}>
         <div className={`${s.content} ${data.corner ? '' : s.noCorner}`}>
           <div className={s.left}>
-            <h1 ref={headline} className={s.headline} data-reveal="">
-              {data.headline}
-            </h1>
+            <div ref={headline} data-reveal="">
+              {data.kicker && <p className={`t-mono ${s.kicker}`}>{data.kicker}</p>}
+              <h1 className={s.headline}>{data.headline}</h1>
+              {data.sub && <p className={s.sub}>{data.sub}</p>}
+            </div>
             <Button ref={cta} href={data.cta.href} label={data.cta.label} variant="blur" data-reveal="" />
           </div>
           {data.corner && (
