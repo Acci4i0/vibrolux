@@ -339,9 +339,7 @@ export const it = {
       headline: 'Contatti',
       cta: { label: 'Scrivici', href: `mailto:${company.email}` },
     },
-    eyebrow: 'Scriveteci',
-    lead: 'Un indirizzo per ogni richiesta.',
-    /** one card per address, what it is for written on it */
+    /** one row per address, what it is for written above it */
     emails: [
       { address: company.emails.info, use: 'Informazioni generali e preventivi' },
       { address: company.emails.service, use: 'Assistenza su lavorazioni e consegne' },

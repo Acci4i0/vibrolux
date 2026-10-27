@@ -13,11 +13,14 @@ import { CIRCLE, V, WORD, WORD_OFFSET, VIEWBOX, MARK_VIEWBOX } from './logoData'
  */
 export function logoTimeline(svg: SVGSVGElement) {
   const q = gsap.utils.selector(svg);
-  return gsap
+  const tl = gsap
     .timeline({ paused: true })
     .from(q('[data-circle]'), { scale: 0, transformOrigin: '50% 50%', duration: 0.35, ease: 'back.out(1.7)' }, 0)
-    .from(q('[data-v]'), { y: -40, autoAlpha: 0, duration: 0.3, stagger: byIndex(0.08), ease: 'power3.out' }, 0.15)
-    .from(q('[data-letter]'), { y: 44, duration: 0.3, stagger: byIndex(0.012), ease: 'power3.out' }, 0.35);
+    .from(q('[data-v]'), { y: -40, autoAlpha: 0, duration: 0.3, stagger: byIndex(0.08), ease: 'power3.out' }, 0.15);
+  // the mark alone (Contatti) has no letters
+  const letters = q('[data-letter]');
+  if (letters.length) tl.from(letters, { y: 44, duration: 0.3, stagger: byIndex(0.012), ease: 'power3.out' }, 0.35);
+  return tl;
 }
 
 /** the staggers follow the order of the parts */

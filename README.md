@@ -90,9 +90,10 @@ slide, references for the photographer — credited in [`CREDITS.md`](public/ass
 Until then the site is a private mockup: `robots` noindex in `app/layout.tsx`.
 The Azienda video is the one on vibrolux.it, embedded from YouTube (`azienda.video` in the content).
 
-The Contatti page opens with one card per mail address (what it is for, the
-address; the whole card writes the mail), the telephone, the address and the VAT
-number in a row under them, then a card for the plant, built like the factory card on
+The Contatti page opens on two halves: on the left the V of the logo, which
+builds with the scroll like the footer's wordmark, with the address and the VAT
+number at its foot; on the right the three mail addresses and the telephone, one
+a row on hairlines. Then a card for the plant, built like the factory card on
 t1energy.com/technology: the aerial photo (`cover_1.jpg`), the town's name,
 a square map card — Google's embed of the Vibrolux Srl place, the whole card a
 link to Google Maps — and a card with the site's figures. The Azienda page

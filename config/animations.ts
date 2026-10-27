@@ -33,6 +33,8 @@ export const ANIM = {
     footerScrubStart: 'top bottom', // on the logo itself (reference: nav 'bottom bottom-=110')
     /** seconds the footer build takes to catch up with the scroll (reference: scrub true = instant) */
     footerScrub: 1.5,
+    /** the V on Contatti builds as the footer's wordmark, done by the time it is this far up the screen */
+    markScrubEnd: 'top 40%',
   },
 
   hero: {

@@ -1,80 +1,91 @@
 'use client';
 
 import { useRef } from 'react';
-import { useGSAP } from '@/lib/gsap';
+import { gsap, useGSAP, prefersReducedMotion } from '@/lib/gsap';
 import { afterMount, reveal, revealStagger } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { company, content, maps, place } from '@/content/site';
 import { useLang } from '@/lib/i18n';
+import { Logo, logoTimeline } from '../Logo';
 import s from './Contact.module.css';
 
 /**
- * The three mail addresses as cards (what each is for, the address; the whole card writes the mail), the telephone,
- * the address and the VAT number in a row underneath; then the plant as the reference's factory card (aerial photo,
- * its name, a map card that opens Google Maps, a stats card).
+ * Two halves on the page: on the left the V of the logo, which builds with the scroll as the wordmark in the footer,
+ * and at the foot the address and the VAT number, level with the last line of the list; on the right the three mail
+ * addresses and the telephone, one a row on hairlines (what each is for, the address; the whole row is the link).
+ * Then the plant as the reference's factory card (aerial photo, its name, a map card that opens Google Maps, a stats card).
  */
 export function Contact() {
   const root = useRef<HTMLElement>(null);
+  const mark = useRef<SVGSVGElement>(null);
   const t = content[useLang()];
   const c = t.contatti;
+  const rows = [
+    ...c.emails.map((m) => ({ key: m.use, value: m.address, href: `mailto:${m.address}` })),
+    { key: c.keys.tel, value: company.tel, href: company.telHref },
+  ];
+  // name, street, then town and country on one line: three lines, so the block ends level with the list
+  const address = [company.name, company.street[0], `${company.street[1]}, ${t.address.at(-1)}`];
 
   useGSAP(
-    (_, contextSafe) =>
-      afterMount(() => {
-        const [head, details, factory] = root.current!.querySelectorAll('[data-reveal]');
-        reveal(head, { delay: ANIM.text.eyebrowDelay });
-        const cards = root.current!.querySelector('[data-cards]');
-        revealStagger(cards, cards!.children);
-        reveal(details);
+    (_, contextSafe) => {
+      if (!prefersReducedMotion())
+        gsap.to(logoTimeline(mark.current!), {
+          progress: 1,
+          ease: 'none',
+          scrollTrigger: { trigger: mark.current, start: ANIM.logo.footerScrubStart, end: ANIM.logo.markScrubEnd, scrub: ANIM.logo.footerScrub },
+        });
+      return afterMount(() => {
+        const [details, factory] = root.current!.querySelectorAll('[data-reveal]');
+        const list = root.current!.querySelector('[data-list]');
+        revealStagger(list, list!.children);
+        reveal(details, { delay: ANIM.text.contentDelay });
         reveal(factory);
-      }, contextSafe!),
+      }, contextSafe!);
+    },
     { scope: root },
   );
 
   return (
     <section ref={root} id="dove-siamo" className={s.contact}>
-      <div className={s.head} data-reveal="">
-        <h2 className={`t-eyebrow ${s.eyebrow}`}>{c.eyebrow}</h2>
-        <p className={s.lead}>{c.lead}</p>
+      <div className={s.inner}>
+        <div className={s.side}>
+          <div className={s.mark}>
+            <Logo ref={mark} mark />
+          </div>
+          <dl className={s.details} data-reveal="">
+            <div>
+              <dt className="t-mono">{c.keys.address}</dt>
+              <dd>
+                {address.map((l) => (
+                  <span key={l} className={s.line}>
+                    {l}
+                  </span>
+                ))}
+              </dd>
+            </div>
+            <div>
+              <dt className="t-mono">{c.keys.vat}</dt>
+              <dd>{company.vatNumber}</dd>
+            </div>
+          </dl>
+        </div>
+        <ul className={s.list} data-list="">
+          {rows.map((r) => (
+            <li key={r.value}>
+              <a className={s.row} href={r.href}>
+                <span>
+                  <span className={`t-mono ${s.key}`}>{r.key}</span>
+                  <span className={s.value}>{r.value}</span>
+                </span>
+                <svg className={s.arrow} viewBox="0 0 24 24" aria-hidden>
+                  <path d="M7 17 17 7M8 7h9v9" />
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className={s.cards} data-cards="">
-        {c.emails.map((m, i) => (
-          <li key={m.address}>
-            <a className={s.card} href={`mailto:${m.address}`}>
-              <span className={`t-mono ${s.index}`}>{String(i + 1).padStart(2, '0')}</span>
-              <svg className={s.arrow} viewBox="0 0 24 24" aria-hidden>
-                <path d="M7 17 17 7M8 7h9v9" />
-              </svg>
-              <span className={s.cardText}>
-                <span className={`t-mono ${s.use}`}>{m.use}</span>
-                <span className={s.address}>{m.address}</span>
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <dl className={s.details} data-reveal="">
-        <div>
-          <dt className="t-mono">{c.keys.tel}</dt>
-          <dd>
-            <a href={company.telHref}>{company.tel}</a>
-          </dd>
-        </div>
-        <div>
-          <dt className="t-mono">{c.keys.address}</dt>
-          <dd>
-            {[company.name, ...t.address].map((l) => (
-              <span key={l} className={s.line}>
-                {l}
-              </span>
-            ))}
-          </dd>
-        </div>
-        <div>
-          <dt className="t-mono">{c.keys.vat}</dt>
-          <dd>{company.vatNumber}</dd>
-        </div>
-      </dl>
       <div className={s.factory} data-reveal="">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className={s.factoryImg} src={c.factory.media.src} alt={c.factory.alt} loading="lazy" decoding="async" />

@@ -336,8 +336,6 @@ export const en: Site = {
       headline: 'Contact',
       cta: { label: 'Email us', href: `mailto:${company.email}` },
     },
-    eyebrow: 'Write to us',
-    lead: 'One address for every request.',
     emails: [
       { address: company.emails.info, use: 'General enquiries and quotes' },
       { address: company.emails.service, use: 'Support on processes and deliveries' },
