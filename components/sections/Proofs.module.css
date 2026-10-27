@@ -1,6 +1,6 @@
 .proofs {
   margin: var(--gutter) 0 0; /* last module: no bottom margin */
-  padding: var(--margin-6xl) var(--margin-4xl); /* the text modules' margins, so it lines up with the divider above */
+  padding: var(--margin-6xl) var(--margin-4xl); /* the text modules' margins */
   position: relative;
   width: 100%;
 }
@@ -36,14 +36,7 @@
   padding-left: 0;
 }
 .number {
-  align-items: center;
   color: var(--color-brand);
-  display: flex;
-  gap: var(--margin-sm);
-}
-.rings {
-  height: 2rem;
-  width: 2rem;
 }
 .figure {
   color: var(--color-black);

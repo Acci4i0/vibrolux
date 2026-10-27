@@ -72,8 +72,6 @@ export const ANIM = {
   },
 
   stats: { contentDelay: 0.3, statsDelay: 0.1, statsStagger: 0.25 },
-  /** the rings (components/Rings): with the scroll the cut half slips into place and the rings turn this many degrees */
-  rings: { turn: -24, start: 'top bottom', end: 'bottom 30%', scrub: 1 },
   news: { contentDelay: 0.2, listDelay: 0.1, listStagger: 0.1 },
   footer: { navDelay: 0.2, navStagger: 0.1 },
 

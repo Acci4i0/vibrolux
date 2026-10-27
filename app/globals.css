@@ -1,8 +1,8 @@
 /* ───────────── Tokens (see ANIMATION_SPEC.md §1) ───────────── */
 :root {
   /* The official palette, the same on every page: white ground, steel black for the footer and the dark cards, cool
-     steel greys that sit with the navy and the silver of the logo, and the navy itself, kept rare (the logo, the rings,
-     numbers and active states). The surface grey is the only ground besides white. */
+     steel greys that sit with the navy and the silver of the logo, and the navy itself, kept rare (the logo, numbers and
+     active states). The surface grey is the only ground besides white. */
   --color-black: #0f0e12; /* steel black: text on white, footer, dark cards */
   --color-grey1: #2b2f36; /* graphite: running text */
   --color-grey2: #5e6570; /* steel grey: labels, captions */

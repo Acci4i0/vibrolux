@@ -64,15 +64,11 @@ public/assets/                 the brochure, Vibrolux's photos, the stand-ins un
 - **Palette:** one for every page, in [`app/globals.css`](app/globals.css): white
   ground, steel black (#0F0E12) for the footer and the dark cards, cool steel
   greys (#2B2F36, #5E6570, #B9BEC6, and #EEF0F3, the only ground besides white),
-  and Vibrolux navy **#21406E** (`--color-brand`), kept rare: the logo, the rings,
-  numbers and active states.
-- **Signature:** [`components/Rings.tsx`](components/Rings.tsx), concentric rings
-  cut at 58° (the angle of the V's arms), one half slipped along the cut, that
-  move a little with the scroll. Lines only, so it never reads as a second mark.
-  It appears in three places and no others: beside the numbers of «Perché
-  Vibrolux», on the divider that opens a page's closing section
-  ([`Divider`](components/sections/Divider.tsx): Home, Azienda, each process),
-  and faint behind the Lavorazioni text.
+  and Vibrolux navy **#21406E** (`--color-brand`), kept rare: the logo, numbers
+  and active states.
+- **Signature:** the logo itself, and nothing beside it: the header, the wordmark
+  that builds in the footer, the V that builds on Contatti, the small black logo
+  under the quotes on Azienda.
 
 ## Languages
 

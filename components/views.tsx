@@ -14,7 +14,6 @@ import { MediaCardGroup } from './sections/MediaCardGroup';
 import { Carousel } from './sections/Carousel';
 import { MaterialsAccordion } from './sections/MaterialsAccordion';
 import { Proofs } from './sections/Proofs';
-import { Divider } from './sections/Divider';
 import { Stats } from './sections/Stats';
 import { LavorazioniGrid } from './sections/LavorazioniGrid';
 import { Contact } from './sections/Contact';
@@ -44,7 +43,6 @@ export function HomeView({ lang }: P) {
       <MaterialsAccordion
         data={{ eyebrow: t.ui.processes, more: t.ui.learnMore, items: t.lavorazioni.map((l) => ({ ...l, href: t.to(`/lavorazioni/${l.id}`) })) }}
       />
-      <Divider />
       <Proofs data={t.home.values} />
     </main>
   );
@@ -61,7 +59,6 @@ export function AziendaView({ lang }: P) {
       <Quotes data={azienda.quotes} />
       <Carousel data={azienda.sede} />
       <Stats data={azienda.stats} />
-      <Divider />
       <TextModule data={azienda.quality} />
       <Band media={azienda.closing} />
     </main>
@@ -74,7 +71,7 @@ export function LavorazioniView({ lang }: P) {
   return (
     <main>
       <Hero data={page.hero} />
-      <TextModule data={page.intro} rings />
+      <TextModule data={page.intro} />
       <LavorazioniGrid tiles={lavorazioneTiles(t)} />
     </main>
   );
@@ -98,7 +95,6 @@ export function LavorazioneView({ lang, slug }: P & { slug: string }) {
       <Hero data={{ media: l.hero, headline: l.title, cta: { label: t.ui.requestQuote, href: t.to('/contatti') } }} />
       <TextModule data={{ eyebrow: t.ui.process, paragraphs: l.intro, cta: { label: t.ui.downloadBrochure, href: t.lavorazioniPage.cards[0].href } }} />
       {l.impianti && <Carousel data={l.impianti} />}
-      <Divider />
       <LavorazioniGrid eyebrow={t.ui.otherProcesses} tiles={lavorazioneTiles(t, l.id)} />
       <MediaCardGroup cards={t.lavorazioniPage.cards} />
     </main>
