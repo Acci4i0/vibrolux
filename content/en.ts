@@ -66,7 +66,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Isotropic superfinishing',
     text: 'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness (Ra 0.01 or lower) and highly polished surfaces.',
     short: 'Highly polished surfaces, with roughness down to Ra 0.01.',
-    media: img('albero-camme.jpg', 1, 'A polished camshaft, close up'),
+    media: img('cuscinetto.jpg', 1, 'A polished steel ball bearing'),
     hero: foto('mg_8253.jpg', 16 / 9, 'Isotropic superfinishing plant'),
     intro: [
       'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness, down to Ra 0.01 or lower, and highly polished surfaces.',
@@ -240,8 +240,8 @@ export const en: Site = {
     beforeAfter: {
       eyebrow: 'Isotropic superfinishing',
       items: [
-        { label: 'Before', text: 'The part before treatment: burrs, oxides and machining roughness.', media: img('getto-grezzo.jpg', 4 / 5, 'A raw casting with a dull surface') },
-        { label: 'After', text: 'Roughness down to Ra 0.01 or lower and highly polished surfaces, with a non-aggressive process.', media: img('pezzi-lucidati.jpg', 4 / 5, 'Mirror-polished metal parts') },
+        { label: 'Before', text: 'The part before treatment: burrs, oxides and machining roughness.', media: foto('alberi-prima.jpg', 4 / 5, 'Metal shafts before superfinishing') },
+        { label: 'After', text: 'Roughness down to Ra 0.01 or lower and highly polished surfaces, with a non-aggressive process.', media: foto('alberi-dopo.jpg', 4 / 5, 'The same shafts after superfinishing, polished') },
       ],
     },
     lavorazioniIntro: {

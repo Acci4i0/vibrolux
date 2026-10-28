@@ -65,7 +65,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Tribofinitura isotropica',
     text: 'Processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse (Ra 0,01 o anche inferiori) e superfici molto lucide.',
     short: 'Superfici molto lucide, con rugosità fino a Ra 0,01.',
-    media: img('albero-camme.jpg', 1, 'Albero a camme lucido, in primo piano'),
+    media: img('cuscinetto.jpg', 1, 'Cuscinetto a sfere in acciaio lucido'),
     hero: foto('mg_8253.jpg', 16 / 9, 'Impianto di tribofinitura isotropica'),
     intro: [
       'Un processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse, fino a Ra 0,01 o anche inferiori, e superfici molto lucide.',
@@ -242,8 +242,8 @@ export const it = {
     beforeAfter: {
       eyebrow: 'Tribofinitura isotropica',
       items: [
-        { label: 'Prima', text: 'Il particolare prima del trattamento: bave, ossidi e rugosità della lavorazione.', media: img('getto-grezzo.jpg', 4 / 5, 'Getto di fusione grezzo, con la superficie opaca') },
-        { label: 'Dopo', text: 'Rugosità fino a Ra 0,01 o inferiori e superfici molto lucide, con un processo non aggressivo.', media: img('pezzi-lucidati.jpg', 4 / 5, 'Pezzi metallici lucidati a specchio') },
+        { label: 'Prima', text: 'Il particolare prima del trattamento: bave, ossidi e rugosità della lavorazione.', media: foto('alberi-prima.jpg', 4 / 5, 'Alberi metallici prima della tribofinitura') },
+        { label: 'Dopo', text: 'Rugosità fino a Ra 0,01 o inferiori e superfici molto lucide, con un processo non aggressivo.', media: foto('alberi-dopo.jpg', 4 / 5, 'Gli stessi alberi dopo la tribofinitura, lucidi') },
       ],
     },
     lavorazioniIntro: {
