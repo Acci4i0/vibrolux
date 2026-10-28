@@ -218,7 +218,7 @@ export const it = {
       media: video('home-fabbrica.mp4'),
       kicker: 'Trattamenti superficiali dei metalli',
       headline: 'La finitura che si misura',
-      sub: 'Rugosità fino a Ra 0,01, controllo qualità interno, certificazione ISO 9001:2015.',
+      sub: 'Rugosità fino a Ra 0,01, controllo qualità interno,\ncertificazione ISO 9001:2015.',
       cta: { label: 'Le lavorazioni', href: to('/lavorazioni') },
       corner: {
         heading: 'Brochure',

@@ -83,6 +83,7 @@
   margin-top: var(--margin-lg);
   max-width: 30em;
   opacity: 0.9;
+  white-space: pre-line; /* a \n in the copy is a chosen line break */
 }
 .right {
   align-items: flex-start;

@@ -216,7 +216,7 @@ export const en: Site = {
       media: video('home-fabbrica.mp4'),
       kicker: 'Surface treatments for metals',
       headline: 'Finishing you can measure',
-      sub: 'Roughness down to Ra 0.01, in-house quality control, ISO 9001:2015 certification.',
+      sub: 'Roughness down to Ra 0.01, in-house quality control,\nISO 9001:2015 certification.',
       cta: { label: 'Our processes', href: to('/lavorazioni') },
       corner: {
         heading: 'Brochure',
