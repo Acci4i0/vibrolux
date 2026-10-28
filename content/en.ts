@@ -12,7 +12,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Washing and oiling',
     text: 'Automatic line for degreasing, washing, drying and various types of oiling, dewatering included.',
     short: 'Degreasing, washing, drying and dewatering oil on an automatic line.',
-    media: img('gocce-metallo.jpg', 1, 'Water droplets on a metal surface'),
+    media: img('tubi-inox.jpg', 1, 'Clean stainless steel tubes in a bin'),
     hero: foto('mg_7742b.jpg', 16 / 9, 'The automatic washing and oiling line'),
     intro: [
       'An automatic line for degreasing, washing, drying and oiling metal parts.',
@@ -287,7 +287,7 @@ export const en: Site = {
       sub: 'from Sant’Ambrogio, Turin',
     },
     /** the large square, then the small one */
-    pair: [img('sabbiatore.jpg', 1, 'An operator in protective gear at work with a blaster'), img('micrometro.jpg', 1, 'A digital micrometer measuring the thickness of a steel section')], // stand-ins until the new photos
+    pair: [foto('cover_1.jpg', 1, 'The Vibrolux plant in Sant’Ambrogio, from above'), foto('vibrolux_azienda.jpg', 1, 'The front of the Vibrolux building, with the logo')], // the plant itself, as t1energy.com shows its plants here
     team: {
       eyebrow: 'Team',
       paragraphs: ['Highly qualified people let us reach a primary goal: to be a highly specialised local business.'],

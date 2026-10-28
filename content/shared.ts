@@ -22,7 +22,7 @@ export const BROCHURE = withBase('/assets/vibrolux-brochure.pdf');
 const P = withBase('/assets/preview/');
 const V = withBase('/assets/vibrolux/');
 /** where the subject sits in photos whose centre isn't the subject */
-const FOCUS: Record<string, string> = { 'facciata.jpg': '64% 50%', 'micrometro.jpg': '50% 15%' };
+const FOCUS: Record<string, string> = { 'facciata.jpg': '64% 50%' };
 /** stand-in from /assets/preview (stock / Commons, see CREDITS.md); `alt` says what the photo shows, in the page's language */
 export const img = (file?: string, aspect = 1, alt?: string): MediaData => ({ src: file && P + file, aspect, focus: file && FOCUS[file], alt });
 export const video = (file: string): MediaData => ({ type: 'video', src: P + file, aspect: 16 / 9 });

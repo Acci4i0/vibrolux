@@ -34,12 +34,10 @@ Home e Lavorazioni sono due montaggi come quello di T1: sei inquadrature da 2,4 
 
 Riferimenti per il fotografo, a colori come l'originale (ridimensionati a 2400 px).
 
-- gocce-metallo.jpg — Lavaggi e oliature (tessera) — https://www.pexels.com/photo/32597291/
+- tubi-inox.jpg — Lavaggi e oliature (tessera) — https://www.pexels.com/photo/12951634/
 - albero-camme.jpg — Tribofinitura isotropica (tessera) — https://www.pexels.com/photo/7565159/
 - bulloni.jpg — Brillantatura (tessera) — https://www.pexels.com/photo/30496227/
 - getto-grezzo.jpg — Home, Prima (non è lo stesso pezzo del Dopo) — https://www.pexels.com/photo/14522449/
 - pezzi-lucidati.jpg — Home, Dopo — https://www.pexels.com/photo/15608998/
-- sabbiatore.jpg — Azienda, il riquadro grande sotto il titolo — https://www.pexels.com/photo/28628031/
-- micrometro.jpg — Azienda, il riquadro piccolo sotto il titolo — https://www.pexels.com/photo/36003973/
 - anelli-pila.jpg — Home, card Lavorazioni — https://www.pexels.com/photo/12951626/
 - dadi.jpg — Azienda, Magazzino — https://www.pexels.com/photo/21050460/

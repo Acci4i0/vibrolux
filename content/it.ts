@@ -11,7 +11,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Lavaggi e oliature',
     text: 'Linea automatica per trattamenti di disoleatura, lavaggio, asciugatura e vari tipi di oliatura (dewatering).',
     short: 'Disoleatura, lavaggio, asciugatura e oliatura dewatering in linea automatica.',
-    media: img('gocce-metallo.jpg', 1, 'Gocce d’acqua su una superficie metallica'),
+    media: img('tubi-inox.jpg', 1, 'Tubi in acciaio inox puliti in un cassone'),
     hero: foto('mg_7742b.jpg', 16 / 9, 'La linea automatica di lavaggio e oliatura'),
     intro: [
       'Una linea automatica dedicata ai trattamenti di disoleatura, lavaggio, asciugatura e oliatura dei particolari metallici.',
@@ -290,7 +290,7 @@ export const it = {
       sub: 'da Sant’Ambrogio di Torino',
     },
     /** the large square, then the small one */
-    pair: [img('sabbiatore.jpg', 1, 'Operatore in tuta protettiva al lavoro con la sabbiatrice'), img('micrometro.jpg', 1, 'Micrometro digitale che misura lo spessore di un profilato')], // stand-ins until the new photos
+    pair: [foto('cover_1.jpg', 1, 'Lo stabilimento Vibrolux a Sant’Ambrogio, dall’alto'), foto('vibrolux_azienda.jpg', 1, 'La facciata della sede Vibrolux, con il logo')], // the plant itself, as t1energy.com shows its plants here
     team: {
       eyebrow: 'Team',
       paragraphs: ['Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata.'],
