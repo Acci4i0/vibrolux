@@ -11,8 +11,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Lavaggi e oliature',
     text: 'Linea automatica per trattamenti di disoleatura, lavaggio, asciugatura e vari tipi di oliatura (dewatering).',
     short: 'Disoleatura, lavaggio, asciugatura e oliatura dewatering in linea automatica.',
-    media: img('gocce-metallo.jpg'),
-    hero: foto('mg_7742b.jpg', 16 / 9),
+    media: img('gocce-metallo.jpg', 1, 'Gocce d’acqua su una superficie metallica'),
+    hero: foto('mg_7742b.jpg', 16 / 9, 'La linea automatica di lavaggio e oliatura'),
     intro: [
       'Una linea automatica dedicata ai trattamenti di disoleatura, lavaggio, asciugatura e oliatura dei particolari metallici.',
       'I pezzi vengono liberati da oli e residui delle lavorazioni precedenti e, dove richiesto, protetti con diversi tipi di oliatura, compresa l’oliatura dewatering, che allontana l’umidità residua dalle superfici.',
@@ -23,8 +23,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Sabbiatura',
     text: 'Procedimento intermedio del ciclo di lavorazione: asporta ossido, vernice o calcificazioni su leghe metalliche. Linea di sabbiatrici, sabbiatrici a tappeto e a grappolo, cabina per particolari di grandi dimensioni.',
     short: 'Asportazione di ossidi, vernici e calcificazioni su leghe metalliche.',
-    media: foto('mg_8531.jpg'),
-    hero: foto('mg_7661-1.jpg', 16 / 9),
+    media: foto('mg_8531.jpg', 1, 'Sabbiatrice a tappeto che scarica i pezzi trattati'),
+    hero: foto('mg_7661-1.jpg', 16 / 9, 'Il reparto sabbiatura'),
     intro: [
       'La sabbiatura è un procedimento intermedio del ciclo di lavorazione del prodotto: lo strato asportato può essere ossido, vernice o calcificazione, su leghe metalliche in genere.',
       'Il reparto dispone di una linea di sabbiatrici, di sabbiatrici a tappeto, di una sabbiatrice a grappolo per ingombri fino a 1300 × 1800 mm, anche per materiale delicato, e di una cabina per la sabbiatura manuale di particolari di grandi dimensioni.',
@@ -32,10 +32,10 @@ const lavorazioni: Lavorazione[] = [
     impianti: {
       eyebrow: 'Gli impianti',
       items: [
-        { label: 'Linea', text: 'Area attrezzata per le lavorazioni di sabbiatura.', media: foto('mg_7658.jpg', 4 / 5) },
-        { label: 'Tappeto', text: 'Sabbiatrici a tappeto per leghe metalliche in genere.', media: foto('2mg_8531.jpg', 4 / 5) },
-        { label: 'Grappolo', text: 'Sabbiatrice a grappolo per ingombri fino a 1300 × 1800 mm, anche per materiale delicato.', media: foto('mg_8507.jpg', 4 / 5) },
-        { label: 'Cabina', text: 'Impianto di sabbiatura manuale per particolari di grandi dimensioni.', media: foto('mg_8275.jpg', 4 / 5) },
+        { label: 'Linea', text: 'Area attrezzata per le lavorazioni di sabbiatura.', media: foto('mg_7658.jpg', 4 / 5, 'Sabbiatrice con la passerella di accesso nel reparto sabbiatura') },
+        { label: 'Tappeto', text: 'Sabbiatrici a tappeto per leghe metalliche in genere.', media: foto('2mg_8531.jpg', 4 / 5, 'Sabbiatrice a tappeto in funzione') },
+        { label: 'Grappolo', text: 'Sabbiatrice a grappolo per ingombri fino a 1300 × 1800 mm, anche per materiale delicato.', media: foto('mg_8507.jpg', 4 / 5, 'Sabbiatrice a grappolo con i pezzi appesi') },
+        { label: 'Cabina', text: 'Impianto di sabbiatura manuale per particolari di grandi dimensioni.', media: foto('mg_8275.jpg', 4 / 5, 'Operatore che sabbia cerchi in lega nella cabina di sabbiatura manuale') },
       ],
     },
   },
@@ -44,8 +44,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Vibrofinitura',
     text: 'Impianti di barilatura per asportare bave di stampaggio e di fusione: finitura superficiale di particolari in acciaio, ferro, alluminio, ottone. Asciugatura con granulato vegetale o aria calda.',
     short: 'Sbavatura e finitura di particolari in acciaio, ferro, alluminio e ottone.',
-    media: foto('mg_7891.jpg'),
-    hero: foto('mg_7760.jpg', 16 / 9),
+    media: foto('mg_7891.jpg', 1, 'Particolari metallici con inserti ceramici in un vibratore'),
+    hero: foto('mg_7760.jpg', 16 / 9, 'Fila di vibratori con le cappe di aspirazione'),
     intro: [
       'Un processo di trattamento fisico per la finitura superficiale di particolari di diverso materiale: acciaio, ferro, alluminio, ottone.',
       'Gli impianti di barilatura asportano le bave di stampaggio e di fusione; i vibratori lavorano con inserti ceramici o in auto burattatura, e i pezzi vengono asciugati con granulato vegetale o in centrifuga ad aria calda.',
@@ -53,10 +53,10 @@ const lavorazioni: Lavorazione[] = [
     impianti: {
       eyebrow: 'Gli impianti',
       items: [
-        { label: 'Barilatura', text: 'Linea per asportare bave di stampaggio e di fusione.', media: foto('mg_7804-1.jpg', 4 / 5) },
-        { label: 'Vibratore', text: 'Barilatura con inserti ceramici e auto burattatura.', media: foto('mg_7874.jpg', 4 / 5) },
-        { label: 'Asciugatore', text: 'Asciugatura dei pezzi tramite granulato vegetale.', media: foto('macchina-ritoccata.jpg', 4 / 5) },
-        { label: 'Centrifuga', text: 'Asciugatura dei pezzi tramite aria calda.', media: foto('mg_8071.jpg', 4 / 5) },
+        { label: 'Barilatura', text: 'Linea per asportare bave di stampaggio e di fusione.', media: foto('mg_7804-1.jpg', 4 / 5, 'La linea di barilatura') },
+        { label: 'Vibratore', text: 'Barilatura con inserti ceramici e auto burattatura.', media: foto('mg_7874.jpg', 4 / 5, 'Vibratore per la barilatura con inserti ceramici') },
+        { label: 'Asciugatore', text: 'Asciugatura dei pezzi tramite granulato vegetale.', media: foto('macchina-ritoccata.jpg', 4 / 5, 'Asciugatore a granulato vegetale con i pezzi appena lavorati') },
+        { label: 'Centrifuga', text: 'Asciugatura dei pezzi tramite aria calda.', media: foto('mg_8071.jpg', 4 / 5, 'Centrifughe ad aria calda con la gru di carico') },
       ],
     },
   },
@@ -65,8 +65,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Tribofinitura isotropica',
     text: 'Processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse (Ra 0,01 o anche inferiori) e superfici molto lucide.',
     short: 'Superfici molto lucide, con rugosità fino a Ra 0,01.',
-    media: img('cuscinetto.jpg'),
-    hero: foto('mg_8253.jpg', 16 / 9),
+    media: img('cuscinetto.jpg', 1, 'Cuscinetto a sfere in acciaio lucido'),
+    hero: foto('mg_8253.jpg', 16 / 9, 'Impianto di tribofinitura isotropica'),
     intro: [
       'Un processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse, fino a Ra 0,01 o anche inferiori, e superfici molto lucide.',
       'Il controllo qualità verifica il risultato sul singolo pezzo, confrontandolo prima e dopo il trattamento.',
@@ -74,9 +74,9 @@ const lavorazioni: Lavorazione[] = [
     impianti: {
       eyebrow: 'Dal pezzo al risultato',
       items: [
-        { label: 'Impianto', text: 'Impianto per tribofinitura isotropica.', media: foto('mg_8253.jpg', 4 / 5) },
-        { label: 'Controllo', text: 'Il controllo qualità sul singolo pezzo, prima e dopo il trattamento.', media: foto('mg_8343.jpg', 4 / 5) },
-        { label: 'Risultato', text: 'Superfici molto lucide, con rugosità fino a Ra 0,01 o inferiori.', media: foto('prima-dopo2222.jpg', 4 / 5) },
+        { label: 'Impianto', text: 'Impianto per tribofinitura isotropica.', media: foto('mg_8253.jpg', 4 / 5, 'Impianto di tribofinitura isotropica') },
+        { label: 'Controllo', text: 'Il controllo qualità sul singolo pezzo, prima e dopo il trattamento.', media: foto('mg_8343.jpg', 4 / 5, 'Misura di un pezzo sul piano di riscontro in granito') },
+        { label: 'Risultato', text: 'Superfici molto lucide, con rugosità fino a Ra 0,01 o inferiori.', media: foto('prima-dopo2222.jpg', 4 / 5, 'Alberi metallici prima e dopo la tribofinitura, a confronto') },
       ],
     },
   },
@@ -85,8 +85,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Lavaggio statico',
     text: 'Impianto di lavaggio dedicato ai particolari delicati.',
     short: 'Un impianto di lavaggio dedicato ai particolari delicati.',
-    media: foto('mg_7677-1.jpg'),
-    hero: foto('mg_7684.jpg', 16 / 9),
+    media: foto('mg_7677-1.jpg', 1, 'Cesta di particolari metallici per il lavaggio'),
+    hero: foto('mg_7684.jpg', 16 / 9, 'Impianto di lavaggio statico con il banco di carico'),
     intro: [
       'Un impianto di lavaggio dedicato ai particolari delicati, che vengono trattati senza essere movimentati.',
       'Si affianca alla linea automatica di lavaggi e oliature per i pezzi che richiedono più attenzione.',
@@ -97,8 +97,8 @@ const lavorazioni: Lavorazione[] = [
     title: 'Brillantatura',
     text: 'Impianto automatico per la lucidatura tramite microsfere e appositi additivi.',
     short: 'Lucidatura automatica con microsfere e additivi.',
-    media: img('sfere-acciaio.jpg'),
-    hero: foto('mg_8051.jpg', 16 / 9),
+    media: img('sfere-acciaio.jpg', 1, 'Sfere d’acciaio lucidate a specchio'),
+    hero: foto('mg_8051.jpg', 16 / 9, 'Impianto di brillantatura'),
     intro: [
       'Un impianto automatico per la lucidatura dei particolari tramite microsfere e appositi additivi.',
       'Il trattamento restituisce superfici brillanti e uniformi, a completamento delle altre lavorazioni di finitura.',
@@ -223,7 +223,7 @@ export const it = {
       corner: {
         heading: 'Brochure',
         text: 'Lavorazioni e impianti in un unico documento.',
-        media: foto('mg_8489.jpg'),
+        media: foto('mg_8489.jpg', 1, 'Particolari lucidati disposti su una griglia'),
         href: BROCHURE,
       },
     },
@@ -236,14 +236,14 @@ export const it = {
       cta: { label: 'L’azienda', href: to('/azienda') },
     },
     cards: [
-      { label: 'Lavorazioni', href: to('/lavorazioni'), media: img('anelli-pila.jpg') },
-      { label: 'Contatti', href: to('/contatti'), media: foto('vibrolux_azienda.jpg') },
+      { label: 'Lavorazioni', href: to('/lavorazioni'), media: img('anelli-pila.jpg', 1, 'Anelli metallici torniti alla rinfusa') },
+      { label: 'Contatti', href: to('/contatti'), media: foto('vibrolux_azienda.jpg', 1, 'La sede Vibrolux a Sant’Ambrogio') },
     ],
     beforeAfter: {
       eyebrow: 'Tribofinitura isotropica',
       items: [
-        { label: 'Prima', text: 'Il particolare prima del trattamento: bave, ossidi e rugosità della lavorazione.', media: foto('ingranaggio-prima.jpg', 4 / 5) },
-        { label: 'Dopo', text: 'Rugosità fino a Ra 0,01 o inferiori e superfici molto lucide, con un processo non aggressivo.', media: foto('ingranaggio-dopo.jpg', 4 / 5) },
+        { label: 'Prima', text: 'Il particolare prima del trattamento: bave, ossidi e rugosità della lavorazione.', media: foto('ingranaggio-prima.jpg', 4 / 5, 'Ingranaggio prima della tribofinitura, opaco e con le bave') },
+        { label: 'Dopo', text: 'Rugosità fino a Ra 0,01 o inferiori e superfici molto lucide, con un processo non aggressivo.', media: foto('ingranaggio-dopo.jpg', 4 / 5, 'Lo stesso ingranaggio dopo la tribofinitura, lucido') },
       ],
     },
     lavorazioniIntro: {
@@ -309,9 +309,9 @@ export const it = {
       id: 'sede',
       eyebrow: 'La sede',
       items: [
-        { label: 'Officina', text: 'L’officina è strutturata in diversi reparti di produzione, con aree per il materiale finito e per il carico e scarico dei mezzi.', media: foto('vibrolux_azienda2-1.jpg', 4 / 5) },
-        { label: 'Magazzino', text: 'Un magazzino di 400 mq completa la sede per lo stoccaggio.', media: img('dadi.jpg', 4 / 5) },
-        { label: 'Qualità', text: 'Un’area dedicata al controllo qualità, con strumenti di misura e verifica.', media: foto('mg_8343.jpg', 4 / 5) },
+        { label: 'Officina', text: 'L’officina è strutturata in diversi reparti di produzione, con aree per il materiale finito e per il carico e scarico dei mezzi.', media: foto('vibrolux_azienda2-1.jpg', 4 / 5, 'L’officina con la fila di barilatrici') },
+        { label: 'Magazzino', text: 'Un magazzino di 400 mq completa la sede per lo stoccaggio.', media: img('dadi.jpg', 4 / 5, 'Dadi in acciaio zincato alla rinfusa') },
+        { label: 'Qualità', text: 'Un’area dedicata al controllo qualità, con strumenti di misura e verifica.', media: foto('mg_8343.jpg', 4 / 5, 'Misura di un pezzo sul piano di riscontro in granito') },
       ],
     },
     stats: {
@@ -352,8 +352,8 @@ export const it = {
       ],
     },
     cards: [
-      { label: 'Scarica la brochure', href: BROCHURE, media: foto('mg_8489.jpg') },
-      { label: 'Richiedi un preventivo', href: to('/contatti'), media: foto('mg_8275.jpg') },
+      { label: 'Scarica la brochure', href: BROCHURE, media: foto('mg_8489.jpg', 1, 'Particolari lucidati disposti su una griglia') },
+      { label: 'Richiedi un preventivo', href: to('/contatti'), media: foto('mg_8275.jpg', 1, 'Operatore che sabbia cerchi in lega nella cabina di sabbiatura manuale') },
     ],
   },
 

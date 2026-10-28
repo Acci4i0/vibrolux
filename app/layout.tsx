@@ -5,7 +5,7 @@ import { Loader } from '@/components/Loader';
 import { HeaderDesktop, HeaderMobile } from '@/components/Header';
 import { PageTransition } from '@/components/PageTransition';
 import { Footer } from '@/components/Footer';
-import { BASE } from '@/content/site';
+import { BASE, ORIGIN } from '@/content/site';
 import './globals.css';
 
 // Vibrolux Display (drawn from the logotype: wide, heavy, hairline slices) for headlines and figures,
@@ -22,6 +22,7 @@ const text = localFont({
 const martian = Martian_Mono({ subsets: ['latin', 'latin-ext'], axes: ['wdth'], variable: '--font-martian' });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(ORIGIN),
   title: { default: 'Vibrolux • Trattamenti superficiali dei metalli', template: '%s • Vibrolux' },
   description:
     'Vibrolux Srl, Sant’Ambrogio (TO): sabbiatura, vibrofinitura, tribofinitura isotropica, brillantatura, lavaggi e oliature. Certificata ISO 9001:2015.',

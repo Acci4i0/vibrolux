@@ -73,6 +73,8 @@ jobs:
         env:
           # /vibrolux: next.config.ts turns it into basePath + static export
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # https://acci4i0.github.io (the own domain once set): absolute URLs for canonical, hreflang and structured data
+          PAGES_ORIGIN: ${{ steps.pages.outputs.origin }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

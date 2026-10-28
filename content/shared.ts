@@ -12,6 +12,8 @@ import type { Lang } from '@/lib/i18n';
 /** Site sub-path on GitHub Pages ('' locally): media and internal links carry it, next/link and router.push add it themselves. */
 export const BASE = process.env.BASE_PATH ?? '';
 export const withBase = (path: string) => BASE + path;
+/** Where the site is served (see next.config.ts): what turns paths into full URLs for search engines */
+export const ORIGIN = process.env.SITE_ORIGIN ?? 'http://localhost:3000';
 
 /** An internal link in a language: to('en')('/azienda') → '/vibrolux/en/azienda' */
 export const linker = (lang: Lang) => (path: string) => withBase(lang === 'it' ? path : path === '/' ? '/en' : `/en${path}`);
@@ -21,11 +23,11 @@ const P = withBase('/assets/preview/');
 const V = withBase('/assets/vibrolux/');
 /** where the subject sits in photos whose centre isn't the subject */
 const FOCUS: Record<string, string> = { 'facciata.jpg': '64% 50%' };
-/** stand-in from /assets/preview (stock / Commons, see CREDITS.md) */
-export const img = (file?: string, aspect = 1): MediaData => ({ src: file && P + file, aspect, focus: file && FOCUS[file] });
+/** stand-in from /assets/preview (stock / Commons, see CREDITS.md); `alt` says what the photo shows, in the page's language */
+export const img = (file?: string, aspect = 1, alt?: string): MediaData => ({ src: file && P + file, aspect, focus: file && FOCUS[file], alt });
 export const video = (file: string): MediaData => ({ type: 'video', src: P + file, aspect: 16 / 9 });
 /** Vibrolux's own photo from /assets/vibrolux (taken from vibrolux.it; to be retouched) */
-export const foto = (file: string, aspect = 1): MediaData => ({ src: V + file, aspect, focus: FOCUS[file] });
+export const foto = (file: string, aspect = 1, alt?: string): MediaData => ({ src: V + file, aspect, focus: FOCUS[file], alt });
 
 export const company = {
   name: 'Vibrolux Srl',
@@ -52,9 +54,11 @@ export const maps = {
 const S = withBase('/assets/sant-ambrogio/');
 /** a photo of Sant'Ambrogio from /assets/sant-ambrogio (see its CREDITS.md) */
 export const luogo = (file: string, aspect = 1, focus?: string): MediaData => ({ src: S + file, aspect, focus });
+const GEO = { lat: 45.09064, lng: 7.37769 };
 export const place = {
+  ...GEO,
   /** Vibrolux on the map, written on the map card as on the reference's map cards */
-  coords: '45.09064° N, 7.37769° E',
+  coords: `${GEO.lat}° N, ${GEO.lng}° E`,
 };
 
 type Slide = { label: string; text: string; media: MediaData };
