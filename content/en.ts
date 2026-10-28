@@ -66,7 +66,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Isotropic superfinishing',
     text: 'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness (Ra 0.01 or lower) and highly polished surfaces.',
     short: 'Highly polished surfaces, with roughness down to Ra 0.01.',
-    media: img('cuscinetto.jpg', 1, 'A polished steel ball bearing'),
+    media: img('albero-camme.jpg', 1, 'A polished camshaft, close up'),
     hero: foto('mg_8253.jpg', 16 / 9, 'Isotropic superfinishing plant'),
     intro: [
       'A process achieved through vibratory finishing, entirely non-aggressive, that delivers very low roughness, down to Ra 0.01 or lower, and highly polished surfaces.',
@@ -98,7 +98,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Burnishing',
     text: 'An automatic plant for polishing with micro-beads and dedicated additives.',
     short: 'Automatic polishing with micro-beads and additives.',
-    media: img('sfere-acciaio.jpg', 1, 'Mirror-polished steel spheres'),
+    media: img('bulloni.jpg', 1, 'Loose polished steel bolts'),
     hero: foto('mg_8051.jpg', 16 / 9, 'Burnishing plant'),
     intro: [
       'An automatic plant for polishing parts with micro-beads and dedicated additives.',
@@ -240,8 +240,8 @@ export const en: Site = {
     beforeAfter: {
       eyebrow: 'Isotropic superfinishing',
       items: [
-        { label: 'Before', text: 'The part before treatment: burrs, oxides and machining roughness.', media: foto('ingranaggio-prima.jpg', 4 / 5, 'A gear before superfinishing, dull and burred') },
-        { label: 'After', text: 'Roughness down to Ra 0.01 or lower and highly polished surfaces, with a non-aggressive process.', media: foto('ingranaggio-dopo.jpg', 4 / 5, 'The same gear after superfinishing, polished') },
+        { label: 'Before', text: 'The part before treatment: burrs, oxides and machining roughness.', media: img('getto-grezzo.jpg', 4 / 5, 'A raw casting with a dull surface') },
+        { label: 'After', text: 'Roughness down to Ra 0.01 or lower and highly polished surfaces, with a non-aggressive process.', media: img('pezzi-lucidati.jpg', 4 / 5, 'Mirror-polished metal parts') },
       ],
     },
     lavorazioniIntro: {
@@ -287,7 +287,7 @@ export const en: Site = {
       sub: 'from Sant’Ambrogio, Turin',
     },
     /** the large square, then the small one */
-    pair: [img(), img()], // black placeholders until the new photos
+    pair: [img('sabbiatore.jpg', 1, 'An operator in protective gear at work with a blaster'), img('micrometro.jpg', 1, 'A digital micrometer measuring the thickness of a steel section')], // stand-ins until the new photos
     team: {
       eyebrow: 'Team',
       paragraphs: ['Highly qualified people let us reach a primary goal: to be a highly specialised local business.'],
@@ -355,7 +355,7 @@ export const en: Site = {
   /* ───────── Contact ───────── */
   contatti: {
     hero: {
-      media: video('contatti-valle.mp4'),
+      media: video('contatti-sacra.mp4'),
       headline: 'Contact',
       cta: { label: 'Email us', href: `mailto:${company.email}` },
     },

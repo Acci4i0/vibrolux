@@ -65,7 +65,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Tribofinitura isotropica',
     text: 'Processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse (Ra 0,01 o anche inferiori) e superfici molto lucide.',
     short: 'Superfici molto lucide, con rugosità fino a Ra 0,01.',
-    media: img('cuscinetto.jpg', 1, 'Cuscinetto a sfere in acciaio lucido'),
+    media: img('albero-camme.jpg', 1, 'Albero a camme lucido, in primo piano'),
     hero: foto('mg_8253.jpg', 16 / 9, 'Impianto di tribofinitura isotropica'),
     intro: [
       'Un processo ottenuto tramite vibrofinitura, assolutamente non aggressivo, capace di garantire rugosità molto basse, fino a Ra 0,01 o anche inferiori, e superfici molto lucide.',
@@ -97,7 +97,7 @@ const lavorazioni: Lavorazione[] = [
     title: 'Brillantatura',
     text: 'Impianto automatico per la lucidatura tramite microsfere e appositi additivi.',
     short: 'Lucidatura automatica con microsfere e additivi.',
-    media: img('sfere-acciaio.jpg', 1, 'Sfere d’acciaio lucidate a specchio'),
+    media: img('bulloni.jpg', 1, 'Bulloni in acciaio lucidi alla rinfusa'),
     hero: foto('mg_8051.jpg', 16 / 9, 'Impianto di brillantatura'),
     intro: [
       'Un impianto automatico per la lucidatura dei particolari tramite microsfere e appositi additivi.',
@@ -242,8 +242,8 @@ export const it = {
     beforeAfter: {
       eyebrow: 'Tribofinitura isotropica',
       items: [
-        { label: 'Prima', text: 'Il particolare prima del trattamento: bave, ossidi e rugosità della lavorazione.', media: foto('ingranaggio-prima.jpg', 4 / 5, 'Ingranaggio prima della tribofinitura, opaco e con le bave') },
-        { label: 'Dopo', text: 'Rugosità fino a Ra 0,01 o inferiori e superfici molto lucide, con un processo non aggressivo.', media: foto('ingranaggio-dopo.jpg', 4 / 5, 'Lo stesso ingranaggio dopo la tribofinitura, lucido') },
+        { label: 'Prima', text: 'Il particolare prima del trattamento: bave, ossidi e rugosità della lavorazione.', media: img('getto-grezzo.jpg', 4 / 5, 'Getto di fusione grezzo, con la superficie opaca') },
+        { label: 'Dopo', text: 'Rugosità fino a Ra 0,01 o inferiori e superfici molto lucide, con un processo non aggressivo.', media: img('pezzi-lucidati.jpg', 4 / 5, 'Pezzi metallici lucidati a specchio') },
       ],
     },
     lavorazioniIntro: {
@@ -290,7 +290,7 @@ export const it = {
       sub: 'da Sant’Ambrogio di Torino',
     },
     /** the large square, then the small one */
-    pair: [img(), img()], // black placeholders until the new photos
+    pair: [img('sabbiatore.jpg', 1, 'Operatore in tuta protettiva al lavoro con la sabbiatrice'), img('micrometro.jpg', 1, 'Micrometro digitale che misura lo spessore di un profilato')], // stand-ins until the new photos
     team: {
       eyebrow: 'Team',
       paragraphs: ['Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata.'],
@@ -360,7 +360,7 @@ export const it = {
   /* ───────── Contatti ───────── */
   contatti: {
     hero: {
-      media: video('contatti-valle.mp4'),
+      media: video('contatti-sacra.mp4'),
       headline: 'Contatti',
       cta: { label: 'Scrivici', href: `mailto:${company.email}` },
     },
