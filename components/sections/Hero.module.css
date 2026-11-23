@@ -155,6 +155,11 @@
   .bg::after {
     opacity: 0.8;
   }
+  /* never shorter than the text plus the header: on a low screen (Safari's bars out) the opener grows a little
+     past the fold instead of sliding the headline up under the logo */
+  .hero:first-child .media [data-fill] {
+    min-height: max(calc(var(--vh) * 100), 60rem);
+  }
   .inner {
     padding: 0 var(--pwx);
   }

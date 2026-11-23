@@ -72,7 +72,6 @@ export function HomeView({ lang }: P) {
   const t = content[lang];
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(business(lang)) }} />
       <Hero data={t.home.hero} />
       <TextModule data={t.home.intro} />
       <MediaCardGroup cards={t.home.cards} />
@@ -82,6 +81,8 @@ export function HomeView({ lang }: P) {
         data={{ eyebrow: t.ui.processes, more: t.ui.learnMore, items: t.lavorazioni.map((l) => ({ ...l, href: t.to(`/lavorazioni/${l.id}`) })) }}
       />
       <Proofs data={t.home.values} />
+      {/* last, not first: the hero must stay main's first child (Hero.module.css: full height on phones) */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(business(lang)) }} />
     </main>
   );
 }
