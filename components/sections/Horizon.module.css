@@ -1,0 +1,64 @@
+/* white sky (the glow comes in), the dark holding one word, white sky again (the glow goes out); full width */
+.horizon {
+  position: relative;
+  width: 100%;
+}
+/* a layer as tall as the section; the canvas in it sticks to the screen, so it always covers the part on view */
+.stage {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+.canvas {
+  display: none;
+  height: calc(100 * var(--vh));
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+.horizon[data-gl='on'] .canvas {
+  display: block;
+}
+/* on a narrow phone a half-screen sky would make the glow a tall flame: no taller than 0.6 × the width */
+.sky {
+  height: min(50 * var(--vh), 60vw);
+}
+.body {
+  height: calc(130 * var(--vh));
+  position: relative;
+}
+/* without the shader: a straight black band with a still glow on either side */
+.horizon:not([data-gl='on']) .body {
+  background: var(--color-black);
+}
+.horizon:not([data-gl='on']) .sky:first-of-type {
+  background: radial-gradient(ellipse 60% 90% at 50% 100%, rgb(47 111 208 / 0.3), transparent 75%);
+}
+.horizon:not([data-gl='on']) .sky:last-of-type {
+  background: radial-gradient(ellipse 60% 90% at 50% 0%, rgb(47 111 208 / 0.3), transparent 75%);
+}
+/* the word stays in the middle of the screen while the dark passes */
+.hold {
+  align-items: center;
+  display: flex;
+  height: calc(100 * var(--vh));
+  justify-content: center;
+  padding: 0 var(--pwx);
+  position: sticky;
+  top: 0;
+}
+.title {
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: var(--size-heading-xl);
+  font-variation-settings: var(--fv-display);
+  font-weight: var(--fw-display);
+  line-height: 1;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .title {
+    font-size: var(--size-heading-lg);
+  }
+}

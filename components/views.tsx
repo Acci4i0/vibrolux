@@ -14,6 +14,7 @@ import { MediaCardGroup } from './sections/MediaCardGroup';
 import { Carousel } from './sections/Carousel';
 import { MaterialsAccordion } from './sections/MaterialsAccordion';
 import { EdgeCarousel } from './sections/EdgeCarousel';
+import { Horizon } from './sections/Horizon';
 import { Stats } from './sections/Stats';
 import { LavorazioniGrid } from './sections/LavorazioniGrid';
 import { Contact } from './sections/Contact';
@@ -77,6 +78,7 @@ export function HomeView({ lang }: P) {
       <MediaCardGroup cards={t.home.cards} />
       <Carousel data={t.home.beforeAfter} />
       <TextModule data={t.home.lavorazioniIntro} />
+      <Horizon data={t.home.chapter} />
       <MaterialsAccordion
         data={{ eyebrow: t.ui.processes, more: t.ui.learnMore, items: t.lavorazioni.map((l) => ({ ...l, href: t.to(`/lavorazioni/${l.id}`) })) }}
       />

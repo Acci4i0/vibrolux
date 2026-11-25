@@ -256,6 +256,8 @@ export const en: Site = {
       ],
       cta: { label: 'All processes', href: to('/lavorazioni') },
     },
+    /** the dark chapter after «Il reparto»: the word that opens the processes below (components/sections/Horizon) */
+    chapter: { title: 'Processes' },
     /** last module before the footer: the row of finished parts, each one opening its process */
     parts: {
       eyebrow: 'Finished parts',
