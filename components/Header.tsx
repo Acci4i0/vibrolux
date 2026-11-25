@@ -42,8 +42,7 @@ function useInFooter() {
   const [inFooter, setInFooter] = useState(false);
   useEffect(() => {
     const on = () => {
-      // the dark starts at the horizon's edge (Horizon.tsx), the footer right under it
-      const top = (document.querySelector('[data-footer-edge]') ?? document.querySelector('footer'))?.getBoundingClientRect().top ?? Infinity;
+      const top = document.querySelector('footer')?.getBoundingClientRect().top ?? Infinity;
       const bottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1;
       setInFooter(top < window.innerHeight * ANIM.headerFooterAt || (bottom && top < window.innerHeight));
     };

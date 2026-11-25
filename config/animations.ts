@@ -96,24 +96,6 @@ export const ANIM = {
     inertia: 0.93,
   },
 
-  /** every page ends on it: the footer rises as the dark side of a planet, its edge glowing blue, and flattens (components/Horizon) */
-  horizon: {
-    /** how far the glow reaches above the edge at the middle, × the white sky above the planet (CSS: 50vh) */
-    reach: 0.85,
-    /** the planet's radius when its edge comes into the screen, and when it reaches the top: × the screen width */
-    radiusStart: 0.75,
-    radiusEnd: 14,
-    /** how the curve flattens over the scroll (power: the bigger, the longer it stays round) */
-    flatten: 2,
-    /** seconds the drawing takes to catch up with the scroll */
-    scrub: 0.5,
-    /** with reduced motion the edge stays still, this far along its flattening (0 … 1) */
-    still: 0.45,
-    /** «Richiedi un preventivo» rises in once the dark reaches this point of the screen */
-    ctaStart: 'top 55%',
-    cta: { y: 40, duration: 0.9, ease: 'power4.out' },
-  },
-
   stats: { contentDelay: 0.3, statsDelay: 0.1, statsStagger: 0.25 },
   news: { listDelay: 0.1, listStagger: 0.1 },
   footer: { navDelay: 0.2, navStagger: 0.1 },
