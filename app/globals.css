@@ -173,10 +173,12 @@ body.is-page-leaving .page {
   opacity: 0;
   transition-delay: 0s;
 }
-body > footer {
+body > footer,
+body > [data-horizon] {
   transition: opacity 0.5s ease;
 }
-body.is-page-transitioning > footer {
+body.is-page-transitioning > footer,
+body.is-page-transitioning > [data-horizon] {
   opacity: 0;
 }
 

@@ -6,6 +6,7 @@ import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { Media, type MediaData } from '../Media';
 import { Icon } from '../Icon';
+import { brighter, fullscreenTriangle, glProgram, tokenRgb } from '@/lib/gl';
 import s from './EdgeCarousel.module.css';
 
 type Item = { media: MediaData; label: string; href: string };
@@ -52,7 +53,7 @@ export function EdgeCarousel({ data }: { data: Data }) {
     const st = stage.current!;
     const gl = cv.getContext('webgl2', { antialias: false, premultipliedAlpha: true, alpha: true });
     if (!gl) return;
-    const prog = program(gl);
+    const prog = glProgram(gl, FRAG);
     if (!prog) return;
     st.dataset.gl = 'on';
 
@@ -66,15 +67,10 @@ export function EdgeCarousel({ data }: { data: Data }) {
       grid: u('uGrid'), rimIn: u('uRimIn'), rimOut: u('uRimOut'),
     };
     gl.useProgram(prog);
-    // one triangle over the whole canvas
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-    gl.enableVertexAttribArray(0);
-    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    const buf = fullscreenTriangle(gl);
 
     // the rim: Vibrolux navy at the disc, turning to a brighter blue of the same hue toward the screen edge
-    const brand = rgb(getComputedStyle(document.documentElement).getPropertyValue('--color-brand')) ?? [0.13, 0.25, 0.43];
+    const brand = tokenRgb('--color-brand', [0.13, 0.25, 0.43]);
     gl.uniform3fv(U.rimIn, brand);
     gl.uniform3fv(U.rimOut, brighter(brand));
     gl.uniform1f(U.n, n);
@@ -311,10 +307,6 @@ export function EdgeCarousel({ data }: { data: Data }) {
 
 /* ───────── WebGL ───────── */
 
-const VERT = `#version 300 es
-layout(location = 0) in vec2 aPos;
-void main() { gl_Position = vec4(aPos, 0.0, 1.0); }`;
-
 const FRAG = `#version 300 es
 precision highp float;
 uniform vec2 uRes;      // canvas, device px
@@ -375,21 +367,6 @@ void main() {
   outColor = vec4(col, a1 + rim);
 }`;
 
-function program(gl: WebGL2RenderingContext) {
-  const sh = (type: number, src: string) => {
-    const x = gl.createShader(type)!;
-    gl.shaderSource(x, src);
-    gl.compileShader(x);
-    if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) console.warn(gl.getShaderInfoLog(x));
-    return x;
-  };
-  const p = gl.createProgram()!;
-  gl.attachShader(p, sh(gl.VERTEX_SHADER, VERT));
-  gl.attachShader(p, sh(gl.FRAGMENT_SHADER, FRAG));
-  gl.linkProgram(p);
-  return gl.getProgramParameter(p, gl.LINK_STATUS) ? p : null;
-}
-
 function load(src: string) {
   return new Promise<HTMLImageElement | null>((done) => {
     const im = new Image();
@@ -398,19 +375,4 @@ function load(src: string) {
     im.onerror = () => done(null);
     im.src = src;
   });
-}
-
-/** the same hue, more saturated and lighter: #21406e → about #2f6fd0 */
-function brighter([r, g, b]: number[]) {
-  const max = Math.max(r, g, b), min = Math.min(r, g, b), d = max - min;
-  const h = d === 0 ? 0 : max === r ? ((g - b) / d) % 6 : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
-  const S = 0.65, Lt = 0.5, c = (1 - Math.abs(2 * Lt - 1)) * S, x = c * (1 - Math.abs((h % 2) - 1)), m = Lt - c / 2;
-  const [R, G, B] = h < 1 ? [c, x, 0] : h < 2 ? [x, c, 0] : h < 3 ? [0, c, x] : h < 4 ? [0, x, c] : h < 5 ? [x, 0, c] : [c, 0, x];
-  return [R + m, G + m, B + m];
-}
-
-/** '#21406e' → [r, g, b] in 0…1 */
-function rgb(hex: string) {
-  const m = hex.trim().match(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
-  return m ? m.slice(1).map((h) => parseInt(h, 16) / 255) : null;
 }

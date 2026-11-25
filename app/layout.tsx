@@ -5,6 +5,7 @@ import { Loader } from '@/components/Loader';
 import { HeaderDesktop, HeaderMobile } from '@/components/Header';
 import { PageTransition } from '@/components/PageTransition';
 import { Footer } from '@/components/Footer';
+import { Horizon } from '@/components/Horizon';
 import { BASE, ORIGIN } from '@/content/site';
 import './globals.css';
 
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <HeaderDesktop />
         <HeaderMobile />
         <PageTransition>{children}</PageTransition>
+        <Horizon />
         <Footer />
       </body>
     </html>
