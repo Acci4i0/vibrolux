@@ -5,27 +5,31 @@ import { useGSAP } from '@/lib/gsap';
 import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { Button } from '../Button';
+import { TextCylinder } from '../TextCylinder';
 import s from './TextModule.module.css';
 
-type Data = { id?: string; eyebrow?: string; paragraphs: string[]; cta?: { label: string; href: string } };
+/** `spin`: a word turning on a cylinder in a black square, under the label (Azienda, «Qualità») */
+type Data = { id?: string; eyebrow?: string; paragraphs: string[]; cta?: { label: string; href: string }; spin?: string };
 
 export function TextModule({ data }: { data: Data }) {
   const root = useRef<HTMLElement>(null);
   const eyebrow = useRef<HTMLDivElement>(null);
   const content = useRef<HTMLDivElement>(null);
+  const media = useRef<HTMLDivElement>(null);
 
   useGSAP(
     (_, contextSafe) =>
       afterMount(() => {
         reveal(eyebrow.current, { delay: ANIM.text.eyebrowDelay });
         reveal(content.current, { delay: ANIM.text.contentDelay });
+        reveal(media.current, { delay: ANIM.text.contentDelay + 0.1 });
       }, contextSafe!),
     { scope: root },
   );
 
   return (
     <section ref={root} id={data.id} className={s.text}>
-      <div className={s.inner}>
+      <div className={`${s.inner} ${data.spin ? s.withMedia : ''}`}>
         <div ref={eyebrow} className={s.eyebrow} data-reveal="">
           {data.eyebrow && <h2 className="t-eyebrow">{data.eyebrow}</h2>}
         </div>
@@ -37,6 +41,11 @@ export function TextModule({ data }: { data: Data }) {
           </div>
           {data.cta && <Button href={data.cta.href} label={data.cta.label} variant="outline" />}
         </div>
+        {data.spin && (
+          <div ref={media} className={s.media} data-reveal="">
+            <TextCylinder word={data.spin} />
+          </div>
+        )}
       </div>
     </section>
   );

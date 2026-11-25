@@ -42,7 +42,7 @@ export function Stats({ data, tone }: { data: Data; tone?: 'dark' }) {
   );
 
   return (
-    <section ref={root} className={`${s.stats} ${tone === 'dark' ? s.dark : ''}`}>
+    <section ref={root} className={`${s.stats} ${tone === 'dark' ? s.dark : ''} ${data.shatter || data.spin || data.media ? '' : s.bare}`}>
       <div className={s.inner}>
         <div ref={eyebrow} className={s.eyebrow} data-reveal="">
           <h2 className="t-eyebrow">{data.eyebrow}</h2>
@@ -61,15 +61,11 @@ export function Stats({ data, tone }: { data: Data; tone?: 'dark' }) {
             ))}
           </div>
         </div>
-        <div className={s.media}>
-          {data.shatter ? (
-            <LogoShatter />
-          ) : data.spin ? (
-            <TextCylinder word={data.spin} />
-          ) : (
-            data.media && <Media {...data.media} />
-          )}
-        </div>
+        {(data.shatter || data.spin || data.media) && (
+          <div className={s.media}>
+            {data.shatter ? <LogoShatter /> : data.spin ? <TextCylinder word={data.spin} /> : <Media {...data.media!} />}
+          </div>
+        )}
       </div>
     </section>
   );

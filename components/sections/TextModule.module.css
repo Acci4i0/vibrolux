@@ -25,6 +25,29 @@
 .body p + p {
   margin-top: 1.2em;
 }
+/* with the turning square: a two-column grid, the label and the square on the left, the text on the right */
+.withMedia {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.withMedia .eyebrow,
+.withMedia .content {
+  width: auto;
+}
+.withMedia .eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+}
+.withMedia .content {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+.media {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: var(--margin-3xl);
+  width: 60%; /* 30% of the row, as the square was in «In numeri» */
+}
 
 @media (max-width: 1179.98px) {
   .text {
@@ -43,6 +66,14 @@
   .eyebrow,
   .content {
     width: 100%;
+  }
+  /* on a phone: the label, the text, then the square */
+  .withMedia {
+    display: flex;
+  }
+  .media {
+    margin-top: 0;
+    width: 40%;
   }
   /* no eyebrow: the text starts at the top */
   .eyebrow:empty {

@@ -320,7 +320,6 @@ export const it = {
         { value: '1500 mq', caption: 'Aree scoperte per movimentazione e logistica' },
         { value: '400 mq', caption: 'Magazzino per lo stoccaggio' },
       ],
-      spin: 'VIBROLUX',
     },
     quality: {
       id: 'qualita',
@@ -330,6 +329,8 @@ export const it = {
         'Un’area dedicata al controllo qualità segue il singolo pezzo prima e dopo il trattamento. Nella tribofinitura isotropica, per esempio, la rugosità scende fino a Ra 0,01 o anche meno, con superfici molto lucide e un processo non aggressivo.',
       ],
       cta: { label: 'Richiedi un preventivo', href: to('/contatti') },
+      /** the word turning on a cylinder, in the black square under the label (components/TextCylinder) */
+      spin: 'VIBROLUX',
     },
     /** the page closes on Sant'Ambrogio, edge to edge above the footer (on phones cropped on the abbey) */
     closing: { ...luogo('sacra-autunno.jpg', 2, '62% 50%'), alt: 'La Sacra di San Michele tra le nuvole, sopra la Val di Susa' },

@@ -62,15 +62,12 @@
   position: absolute;
   width: 30%;
 }
-/* on the horizon's dark: white text, grey captions, the cylinder's square in graphite so it doesn't sink into the black */
+/* on the horizon's dark: white text, grey captions */
 .dark {
   color: var(--color-white);
 }
 .dark .caption {
   color: var(--color-grey3);
-}
-.dark .media > div {
-  background: var(--color-grey1);
 }
 .media [data-fill] {
   aspect-ratio: 1;
@@ -119,6 +116,10 @@
   }
   .caption {
     max-width: 25em;
+  }
+  /* no square: the figures take the whole width */
+  .bare .list {
+    grid-column: 1 / -1;
   }
   .media {
     bottom: auto;

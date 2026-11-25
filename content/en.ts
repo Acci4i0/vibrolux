@@ -317,7 +317,6 @@ export const en: Site = {
         { value: '1500 m²', caption: 'Open areas for handling and logistics' },
         { value: '400 m²', caption: 'Warehouse for storage' },
       ],
-      spin: 'VIBROLUX',
     },
     quality: {
       id: 'qualita',
@@ -327,6 +326,8 @@ export const en: Site = {
         'A dedicated quality control area checks each single part before and after treatment. In isotropic superfinishing, for instance, roughness goes down to Ra 0.01 or even lower, with very bright surfaces and a non-aggressive process.',
       ],
       cta: { label: 'Request a quote', href: to('/contatti') },
+      /** the word turning on a cylinder, in the black square under the label (components/TextCylinder) */
+      spin: 'VIBROLUX',
     },
     /** the page closes on Sant'Ambrogio, edge to edge above the footer (on phones cropped on the abbey) */
     closing: { ...luogo('sacra-autunno.jpg', 2, '62% 50%'), alt: 'The Sacra di San Michele among the clouds, above the Susa Valley' },
