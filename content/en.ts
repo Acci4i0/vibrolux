@@ -231,8 +231,9 @@ export const en: Site = {
     intro: {
       eyebrow: 'Company',
       paragraphs: [
-        'Over the years Vibrolux has built ever more qualified expertise in metal finishing, establishing itself as a leader in the field.',
-        'Highly qualified people let us reach a primary goal: to be a highly specialised local business, able to deliver results at the highest level.',
+        'Over the years Vibrolux has built ever more qualified expertise in metal finishing: barrel finishing, burnishing, blasting, isotropic superfinishing, washing and dewatering oiling. A path that has made it a leader in the field.',
+        'It all happens in the plant in Sant’Ambrogio di Torino, on a total area of 3500 m²: six processes under one roof, from the raw part to the final inspection.',
+        'Highly qualified people let us reach a primary goal: to be a local business highly specialised in the field, able to deliver results at the highest level.',
       ],
       cta: { label: 'The company', href: to('/azienda') },
     },
@@ -250,15 +251,14 @@ export const en: Site = {
     lavorazioniIntro: {
       eyebrow: 'The department',
       paragraphs: [
-        'A highly technological operations department, with vibrators, burnishing machines, blasting machines, lifting equipment and trucks, for every stage of metal finishing.',
+        'A highly technological operations department, housing vibrators, burnishing machines, blasting machines, lifting equipment and trucks, for every stage of metal finishing.',
+        'The workshop is organised in several production departments: belt, hanger and booth blasters, barrel finishing and isotropic superfinishing plants, an automatic washing and oiling line and a plant dedicated to delicate parts. Alongside are the areas for finished parts ready for delivery and for loading and unloading the trucks.',
       ],
       cta: { label: 'All processes', href: to('/lavorazioni') },
     },
     /** last module before the footer: the row of finished parts, each one opening its process */
     parts: {
       eyebrow: 'Finished parts',
-      title: 'Every part',
-      sub: 'its own finish',
       items: [
         part(foto('ingranaggio-dopo.jpg', 1, 'A gear, bright after isotropic superfinishing'), 'tribofinitura-isotropica'),
         part(img('bulloni.jpg', 1, 'Bright steel bolts'), 'brillantatura'),
@@ -285,7 +285,10 @@ export const en: Site = {
     pair: [foto('cover_1.jpg', 1, 'The Vibrolux plant in Sant’Ambrogio, from above'), foto('vibrolux_azienda.jpg', 1, 'The front of the Vibrolux building, with the logo')], // the plant itself, as t1energy.com shows its plants here
     team: {
       eyebrow: 'Team',
-      paragraphs: ['Highly qualified people let us reach a primary goal: to be a highly specialised local business.'],
+      paragraphs: [
+        'Highly qualified people let us reach a primary goal: to be a local business highly specialised in the field, able to deliver results at the highest level.',
+        'Smoothly running production and organisational processes have, over time, consolidated the working relationships already in place with large groups and kept widening the client portfolio, steadily strengthening competitiveness and market position.',
+      ],
     },
     /** the plant's film, the one on vibrolux.it (YouTube); for a file: { type: 'video', src: …, aspect: 16 / 9 } */
     video: { type: 'youtube' as const, src: 'qE4NzY4v_tE', alt: 'Vibrolux, the plant', aspect: 16 / 9 },
@@ -320,7 +323,8 @@ export const en: Site = {
       id: 'qualita',
       eyebrow: 'Quality',
       paragraphs: [
-        'The company is ISO 9001:2015 certified and has the measuring and inspection instruments needed to meet the quality standards each client requires.',
+        'The company is ISO 9001:2015 certified (IMQ certificate no. 9190.VILU) and has the measuring and inspection instruments needed to meet the quality standards each client requires.',
+        'A dedicated quality control area checks each single part before and after treatment. In isotropic superfinishing, for instance, roughness goes down to Ra 0.01 or even lower, with very bright surfaces and a non-aggressive process.',
       ],
       cta: { label: 'Request a quote', href: to('/contatti') },
     },

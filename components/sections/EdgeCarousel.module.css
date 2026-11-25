@@ -1,4 +1,4 @@
-/* the title as the Azienda headline (second line in grey), the row edge to edge, the disc's name below on the right */
+/* the label, the row edge to edge, the disc's name below on the right */
 .edge {
   padding: var(--margin-4xl) 0 var(--margin-6xl);
   position: relative;
@@ -10,19 +10,6 @@
   max-width: calc(var(--container-max-width) + 2 * var(--margin-4xl));
   padding: 0 var(--margin-4xl);
   width: 100%;
-}
-.title {
-  font-family: var(--font-display);
-  font-size: var(--size-heading-lg);
-  font-variation-settings: var(--fv-display);
-  font-weight: var(--fw-display);
-  line-height: 1;
-  margin-top: var(--margin-xl);
-  text-wrap: balance;
-}
-.sub {
-  color: var(--color-grey3);
-  display: block;
 }
 
 /* the row: 1.6 discs tall (EdgeCarousel.tsx reads the diameter back from this height) */
@@ -130,9 +117,6 @@
   .list {
     padding-left: var(--pwx);
     padding-right: var(--pwx);
-  }
-  .title {
-    font-size: var(--size-heading-md);
   }
   .stage {
     --disc: 28vw;

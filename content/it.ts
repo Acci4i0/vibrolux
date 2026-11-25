@@ -233,8 +233,9 @@ export const it = {
     intro: {
       eyebrow: 'Azienda',
       paragraphs: [
-        'Vibrolux ha acquisito negli anni un’esperienza sempre più qualificata nella finitura dei metalli, affermandosi come azienda leader del settore.',
-        'Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata, in grado di ottenere risultati al massimo livello.',
+        'Vibrolux ha acquisito negli anni un’esperienza sempre più qualificata nella finitura dei metalli: barilatura, brillantatura, sabbiatura, tribofinitura isotropica, lavaggi e oliature dewatering. Un percorso che l’ha affermata come azienda leader del settore.',
+        'Tutto avviene nello stabilimento di Sant’Ambrogio di Torino, su una superficie complessiva di 3500 mq: sei lavorazioni sotto lo stesso tetto, dal pezzo grezzo al controllo finale.',
+        'Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata nel settore, in grado di ottenere risultati al massimo livello.',
       ],
       cta: { label: 'L’azienda', href: to('/azienda') },
     },
@@ -252,15 +253,14 @@ export const it = {
     lavorazioniIntro: {
       eyebrow: 'Il reparto',
       paragraphs: [
-        'Un reparto operativo altamente tecnologico, con vibratori, brillantatrici, sabbiatrici, mezzi di sollevamento e autocarri, per ogni fase della finitura dei metalli.',
+        'Un reparto operativo altamente tecnologico, in cui trovano spazio vibratori, brillantatrici, sabbiatrici, mezzi di sollevamento e autocarri, per ogni fase della finitura dei metalli.',
+        'L’officina è strutturata in diversi reparti di produzione: sabbiatrici a tappeto, a grappolo e in cabina, impianti di barilatura e di tribofinitura isotropica, una linea automatica di lavaggio e oliatura e un impianto dedicato ai particolari delicati. Accanto, le aree per il materiale finito pronto per la consegna e per il carico e scarico dei mezzi.',
       ],
       cta: { label: 'Tutte le lavorazioni', href: to('/lavorazioni') },
     },
     /** last module before the footer: the row of finished parts, each one opening its process */
     parts: {
       eyebrow: 'Pezzi finiti',
-      title: 'Ogni pezzo',
-      sub: 'la sua finitura',
       items: [
         part(foto('ingranaggio-dopo.jpg', 1, 'Ingranaggio lucido dopo la tribofinitura'), 'tribofinitura-isotropica'),
         part(img('bulloni.jpg', 1, 'Bulloni in acciaio lucidi'), 'brillantatura'),
@@ -287,7 +287,10 @@ export const it = {
     pair: [foto('cover_1.jpg', 1, 'Lo stabilimento Vibrolux a Sant’Ambrogio, dall’alto'), foto('vibrolux_azienda.jpg', 1, 'La facciata della sede Vibrolux, con il logo')], // the plant itself, as t1energy.com shows its plants here
     team: {
       eyebrow: 'Team',
-      paragraphs: ['Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata.'],
+      paragraphs: [
+        'Il personale altamente qualificato consente di raggiungere un obiettivo primario: essere una realtà del territorio fortemente specializzata nel settore, in grado di ottenere risultati al massimo livello.',
+        'Il buon funzionamento dei processi produttivi e organizzativi ha garantito nel tempo il consolidamento dei rapporti già avviati con grandi gruppi e ha permesso di ampliare sempre di più il portfolio clienti, con un costante rafforzamento della competitività e del posizionamento sul mercato.',
+      ],
     },
     /** the plant's film, the one on vibrolux.it (YouTube); for a file: { type: 'video', src: …, aspect: 16 / 9 } */
     video: { type: 'youtube' as const, src: 'qE4NzY4v_tE', alt: 'Vibrolux, lo stabilimento', aspect: 16 / 9 },
@@ -323,7 +326,8 @@ export const it = {
       id: 'qualita',
       eyebrow: 'Qualità',
       paragraphs: [
-        'L’azienda è certificata ISO 9001:2015 ed è dotata degli strumenti di misura e verifica necessari per raggiungere gli standard qualitativi richiesti da ciascun cliente.',
+        'L’azienda è certificata ISO 9001:2015 (certificato IMQ n. 9190.VILU) ed è dotata degli strumenti di misura e verifica necessari per raggiungere gli standard qualitativi richiesti da ciascun cliente.',
+        'Un’area dedicata al controllo qualità segue il singolo pezzo prima e dopo il trattamento. Nella tribofinitura isotropica, per esempio, la rugosità scende fino a Ra 0,01 o anche meno, con superfici molto lucide e un processo non aggressivo.',
       ],
       cta: { label: 'Richiedi un preventivo', href: to('/contatti') },
     },

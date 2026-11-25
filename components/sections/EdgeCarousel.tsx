@@ -9,7 +9,7 @@ import { Icon } from '../Icon';
 import s from './EdgeCarousel.module.css';
 
 type Item = { media: MediaData; label: string; href: string };
-type Data = { eyebrow: string; title: string; sub: string; items: Item[] };
+type Data = { eyebrow: string; items: Item[] };
 
 const C = ANIM.edgeCarousel;
 const MAX_DISCS = 16; // uScale[] in the shader
@@ -277,10 +277,6 @@ export function EdgeCarousel({ data }: { data: Data }) {
     <section ref={root} className={s.edge}>
       <div ref={head} className={s.head} data-reveal="">
         <h2 className="t-eyebrow">{data.eyebrow}</h2>
-        <p className={s.title}>
-          {data.title}
-          <span className={s.sub}>{data.sub}</span>
-        </p>
       </div>
       <div ref={stage} className={s.stage} data-reveal="">
         <canvas ref={canvas} className={s.canvas} aria-hidden="true" />
