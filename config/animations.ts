@@ -96,7 +96,7 @@ export const ANIM = {
     inertia: 0.93,
   },
 
-  /** the dark chapter between two white sections (components/sections/Horizon) */
+  /** the dark chapter around a section, between two white ones: Azienda, «In numeri» (components/sections/Horizon) */
   horizon: {
     /** how far the glow reaches off the edge in the middle, × the white sky around the dark (CSS: min(50vh, 60vw)) */
     reach: 0.85,
@@ -105,9 +105,6 @@ export const ANIM = {
     radiusEnd: 14,
     /** how the curve flattens on its way up (power: the bigger, the longer it stays round) */
     flatten: 2,
-    /** the word rises in once the dark has (nearly) filled the screen */
-    titleStart: 'top 15%',
-    title: { y: 60, duration: 1, ease: 'power4.out' },
   },
 
   stats: { contentDelay: 0.3, statsDelay: 0.1, statsStagger: 0.25 },

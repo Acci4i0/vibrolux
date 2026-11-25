@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { gsap, useGSAP, prefersReducedMotion } from '@/lib/gsap';
 import { ANIM } from '@/config/animations';
 import { brighter, fullscreenTriangle, glProgram, tokenRgb } from '@/lib/gl';
@@ -11,33 +11,20 @@ const C = ANIM.horizon;
 /**
  * A dark chapter between two white sections, after the reference's sunrise seen from orbit, in Vibrolux blue.
  * In: the dark rises from below as the edge of a planet, glowing white in the middle and blue toward the sides, its
- * curve flattening as it climbs. Then it fills the screen and holds one word. Out: the dark lifts away, its lower edge
+ * curve flattening as it climbs. Then it fills the screen and holds the section inside it, in white. Out: the dark lifts away, its lower edge
  * hanging from the top (the corners clear first) and straightening into a flat glow over the section that follows.
  * One fragment shader on a canvas that stays on screen while the section passes (sticky), drawn only when the
  * scroll moves it. Without WebGL2: a plain black band with a still glow above and below.
  */
-export function Horizon({ data }: { data: { title: string } }) {
+export function Horizon({ children }: { children: ReactNode }) {
   const root = useRef<HTMLElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const sky = useRef<HTMLDivElement>(null);
   const body = useRef<HTMLDivElement>(null);
-  const title = useRef<HTMLHeadingElement>(null);
 
   useGSAP(
     () => {
-      const reduced = prefersReducedMotion();
-      const stopGL = startGL(reduced);
-      const el = title.current!;
-      if (reduced) el.dataset.reveal = 'done';
-      else
-        gsap.from(el, {
-          ...C.title,
-          autoAlpha: 0,
-          immediateRender: true,
-          onStart: () => void (el.dataset.reveal = 'done'),
-          clearProps: 'transform,opacity,visibility',
-          scrollTrigger: { trigger: body.current, start: C.titleStart, once: true },
-        });
+      const stopGL = startGL(prefersReducedMotion());
       return () => stopGL?.();
     },
     { scope: root },
@@ -125,11 +112,7 @@ export function Horizon({ data }: { data: { title: string } }) {
       </div>
       <div ref={sky} className={s.sky} />
       <div ref={body} className={s.body}>
-        <div className={s.hold}>
-          <h2 ref={title} className={s.title} data-reveal="">
-            {data.title}
-          </h2>
-        </div>
+        {children}
       </div>
       <div className={s.sky} />
     </section>

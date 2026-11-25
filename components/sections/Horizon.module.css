@@ -1,4 +1,4 @@
-/* white sky (the glow comes in), the dark holding one word, white sky again (the glow goes out); full width */
+/* white sky (the glow comes in), the dark holding a section, white sky again (the glow goes out); full width */
 .horizon {
   position: relative;
   width: 100%;
@@ -23,8 +23,12 @@
 .sky {
   height: min(50 * var(--vh), 60vw);
 }
+/* the section inside, in white, at least a screen tall so the dark fills it once */
 .body {
-  height: calc(130 * var(--vh));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100 * var(--vh));
   position: relative;
 }
 /* without the shader: a straight black band with a still glow on either side */
@@ -36,29 +40,4 @@
 }
 .horizon:not([data-gl='on']) .sky:last-of-type {
   background: radial-gradient(ellipse 60% 90% at 50% 0%, rgb(47 111 208 / 0.3), transparent 75%);
-}
-/* the word stays in the middle of the screen while the dark passes */
-.hold {
-  align-items: center;
-  display: flex;
-  height: calc(100 * var(--vh));
-  justify-content: center;
-  padding: 0 var(--pwx);
-  position: sticky;
-  top: 0;
-}
-.title {
-  color: var(--color-white);
-  font-family: var(--font-display);
-  font-size: var(--size-heading-xl);
-  font-variation-settings: var(--fv-display);
-  font-weight: var(--fw-display);
-  line-height: 1;
-  text-align: center;
-}
-
-@media (max-width: 767px) {
-  .title {
-    font-size: var(--size-heading-lg);
-  }
 }

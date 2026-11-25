@@ -21,7 +21,8 @@ type Data = {
   shatter?: boolean;
 };
 
-export function Stats({ data }: { data: Data }) {
+/** `tone="dark"`: white on the dark of the horizon around it (Azienda) */
+export function Stats({ data, tone }: { data: Data; tone?: 'dark' }) {
   const root = useRef<HTMLElement>(null);
   const eyebrow = useRef<HTMLDivElement>(null);
   const content = useRef<HTMLDivElement>(null);
@@ -41,7 +42,7 @@ export function Stats({ data }: { data: Data }) {
   );
 
   return (
-    <section ref={root} className={s.stats}>
+    <section ref={root} className={`${s.stats} ${tone === 'dark' ? s.dark : ''}`}>
       <div className={s.inner}>
         <div ref={eyebrow} className={s.eyebrow} data-reveal="">
           <h2 className="t-eyebrow">{data.eyebrow}</h2>

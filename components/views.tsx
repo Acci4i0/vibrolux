@@ -78,7 +78,6 @@ export function HomeView({ lang }: P) {
       <MediaCardGroup cards={t.home.cards} />
       <Carousel data={t.home.beforeAfter} />
       <TextModule data={t.home.lavorazioniIntro} />
-      <Horizon data={t.home.chapter} />
       <MaterialsAccordion
         data={{ eyebrow: t.ui.processes, more: t.ui.learnMore, items: t.lavorazioni.map((l) => ({ ...l, href: t.to(`/lavorazioni/${l.id}`) })) }}
       />
@@ -99,7 +98,9 @@ export function AziendaView({ lang }: P) {
       <Video media={azienda.video} />
       <Quotes data={azienda.quotes} />
       <Carousel data={azienda.sede} />
-      <Stats data={azienda.stats} />
+      <Horizon>
+        <Stats data={azienda.stats} tone="dark" />
+      </Horizon>
       <TextModule data={azienda.quality} />
       <Band media={azienda.closing} />
     </main>
