@@ -1,4 +1,4 @@
-/* the title as the Azienda headline (second line in grey), the row edge to edge, the caption and the disc's name below */
+/* the title as the Azienda headline (second line in grey), the row edge to edge, the disc's name below on the right */
 .edge {
   padding: var(--margin-4xl) 0 var(--margin-6xl);
   position: relative;
@@ -89,19 +89,8 @@
 }
 
 .foot {
-  align-items: flex-end;
   display: flex;
-  gap: var(--margin-xl);
-  justify-content: space-between;
-}
-.caption {
-  color: var(--color-black);
-  font-size: var(--size-body);
-  line-height: 1.45;
-  max-width: 26em;
-}
-.caption span {
-  color: var(--color-grey2);
+  justify-content: flex-end;
 }
 /* the name of the disc under the pointer (or focused), with the way out */
 .label {
@@ -148,8 +137,8 @@
   .stage {
     --disc: 28vw;
   }
-  /* on a phone nothing hovers: the caption alone */
-  .label {
+  /* on a phone nothing hovers: no name under the row */
+  .foot {
     display: none;
   }
 }

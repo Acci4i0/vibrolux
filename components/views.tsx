@@ -13,7 +13,6 @@ import { Quotes } from './sections/Quotes';
 import { MediaCardGroup } from './sections/MediaCardGroup';
 import { Carousel } from './sections/Carousel';
 import { MaterialsAccordion } from './sections/MaterialsAccordion';
-import { Proofs } from './sections/Proofs';
 import { EdgeCarousel } from './sections/EdgeCarousel';
 import { Stats } from './sections/Stats';
 import { LavorazioniGrid } from './sections/LavorazioniGrid';
@@ -81,7 +80,6 @@ export function HomeView({ lang }: P) {
       <MaterialsAccordion
         data={{ eyebrow: t.ui.processes, more: t.ui.learnMore, items: t.lavorazioni.map((l) => ({ ...l, href: t.to(`/lavorazioni/${l.id}`) })) }}
       />
-      <Proofs data={t.home.values} />
       <EdgeCarousel data={t.home.parts} />
       {/* last, not first: the hero must stay main's first child (Hero.module.css: full height on phones) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(business(lang)) }} />

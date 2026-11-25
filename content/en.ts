@@ -254,37 +254,11 @@ export const en: Site = {
       ],
       cta: { label: 'All processes', href: to('/lavorazioni') },
     },
-    values: {
-      eyebrow: 'Why Vibrolux',
-      items: [
-        {
-          figure: 'Ra 0.01',
-          text: 'The roughness isotropic superfinishing can reach, with a non-aggressive process.',
-          link: { label: 'Isotropic superfinishing', href: to('/lavorazioni/tribofinitura-isotropica') },
-        },
-        {
-          figure: '6 processes',
-          text: 'From sandblasting to washing and oiling, all in one plant in Sant’Ambrogio.',
-          link: { label: 'The processes', href: to('/lavorazioni') },
-        },
-        {
-          figure: 'ISO 9001:2015',
-          text: 'A certified quality system and an inspection area with measuring and testing instruments.',
-          link: { label: 'Quality', href: to('/azienda#qualita') },
-        },
-        {
-          figure: '1300 × 1800 mm',
-          text: 'The largest parts the hanger blaster takes, delicate material included.',
-          link: { label: 'Sandblasting', href: to('/lavorazioni/sabbiatura') },
-        },
-      ],
-    },
     /** last module before the footer: the row of finished parts, each one opening its process */
     parts: {
       eyebrow: 'Finished parts',
       title: 'Every part',
       sub: 'its own finish',
-      caption: ['Six processes in one plant.', 'Pick a part and see how we treat it.'] as [string, string],
       items: [
         part(foto('ingranaggio-dopo.jpg', 1, 'A gear, bright after isotropic superfinishing'), 'tribofinitura-isotropica'),
         part(img('bulloni.jpg', 1, 'Bright steel bolts'), 'brillantatura'),

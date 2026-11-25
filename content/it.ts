@@ -256,38 +256,11 @@ export const it = {
       ],
       cta: { label: 'Tutte le lavorazioni', href: to('/lavorazioni') },
     },
-    /** facts that can be checked, each with the page that bears it out (components/sections/Proofs) */
-    values: {
-      eyebrow: 'Perché Vibrolux',
-      items: [
-        {
-          figure: 'Ra 0,01',
-          text: 'La rugosità raggiungibile con la tribofinitura isotropica, con un processo non aggressivo.',
-          link: { label: 'Tribofinitura isotropica', href: to('/lavorazioni/tribofinitura-isotropica') },
-        },
-        {
-          figure: '6 lavorazioni',
-          text: 'Dalla sabbiatura a lavaggi e oliature, tutte in un solo stabilimento a Sant’Ambrogio.',
-          link: { label: 'Le lavorazioni', href: to('/lavorazioni') },
-        },
-        {
-          figure: 'ISO 9001:2015',
-          text: 'Un sistema qualità certificato e un’area di controllo con strumenti di misura e verifica.',
-          link: { label: 'La qualità', href: to('/azienda#qualita') },
-        },
-        {
-          figure: '1300 × 1800 mm',
-          text: 'L’ingombro massimo nella sabbiatrice a grappolo, anche per materiale delicato.',
-          link: { label: 'Sabbiatura', href: to('/lavorazioni/sabbiatura') },
-        },
-      ],
-    },
     /** last module before the footer: the row of finished parts, each one opening its process */
     parts: {
       eyebrow: 'Pezzi finiti',
       title: 'Ogni pezzo',
       sub: 'la sua finitura',
-      caption: ['Sei lavorazioni in un solo stabilimento.', 'Scegli un pezzo e scopri come lo trattiamo.'] as [string, string],
       items: [
         part(foto('ingranaggio-dopo.jpg', 1, 'Ingranaggio lucido dopo la tribofinitura'), 'tribofinitura-isotropica'),
         part(img('bulloni.jpg', 1, 'Bulloni in acciaio lucidi'), 'brillantatura'),
