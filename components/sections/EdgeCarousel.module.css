@@ -1,0 +1,155 @@
+/* the title as the Azienda headline (second line in grey), the row edge to edge, the caption and the disc's name below */
+.edge {
+  padding: var(--margin-4xl) 0 var(--margin-6xl);
+  position: relative;
+  width: 100%;
+}
+.head,
+.foot {
+  margin: 0 auto;
+  max-width: calc(var(--container-max-width) + 2 * var(--margin-4xl));
+  padding: 0 var(--margin-4xl);
+  width: 100%;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: var(--size-heading-lg);
+  font-variation-settings: var(--fv-display);
+  font-weight: var(--fw-display);
+  line-height: 1;
+  margin-top: var(--margin-xl);
+  text-wrap: balance;
+}
+.sub {
+  color: var(--color-grey3);
+  display: block;
+}
+
+/* the row: 1.6 discs tall (EdgeCarousel.tsx reads the diameter back from this height) */
+.stage {
+  --disc: min(13vw, 24rem);
+  height: calc(var(--disc) * 1.6);
+  margin: var(--margin-4xl) 0;
+  position: relative;
+  width: 100%;
+}
+.canvas {
+  cursor: grab;
+  display: none;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  touch-action: pan-y; /* sideways drags move the row, the page still scrolls up and down */
+  width: 100%;
+}
+.stage[data-gl='on'] .canvas {
+  display: block;
+}
+.stage[data-hover='on'] .canvas {
+  cursor: pointer;
+}
+.stage[data-drag='on'] .canvas {
+  cursor: grabbing;
+}
+
+/* without WebGL2, or with reduced motion: the same discs in a row that scrolls sideways */
+.list {
+  align-items: center;
+  display: flex;
+  gap: calc(var(--disc) * 0.38);
+  height: 100%;
+  overflow-x: auto;
+  padding: 0 var(--margin-4xl);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.disc {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  flex: none;
+  overflow: hidden;
+  scroll-snap-align: center;
+  width: var(--disc);
+}
+.disc a,
+.disc a > div,
+.disc img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+/* with the canvas on, the links stay for focus and screen readers only */
+.stage[data-gl='on'] .list {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.foot {
+  align-items: flex-end;
+  display: flex;
+  gap: var(--margin-xl);
+  justify-content: space-between;
+}
+.caption {
+  color: var(--color-black);
+  font-size: var(--size-body);
+  line-height: 1.45;
+  max-width: 26em;
+}
+.caption span {
+  color: var(--color-grey2);
+}
+/* the name of the disc under the pointer (or focused), with the way out */
+.label {
+  align-items: center;
+  color: var(--color-black);
+  display: inline-flex;
+  font-family: var(--font-secondary);
+  font-size: var(--size-caption);
+  font-variation-settings: var(--fv-mono);
+  gap: 0.6em;
+  opacity: 0;
+  text-transform: uppercase;
+  transition: opacity var(--duration-default);
+}
+.label[data-on] {
+  opacity: 1;
+}
+.label svg {
+  height: 1.1rem;
+  width: 1.1rem;
+}
+
+@media (max-width: 1179.98px) {
+  .head,
+  .foot,
+  .list {
+    padding-left: var(--margin-3xl);
+    padding-right: var(--margin-3xl);
+  }
+}
+@media (max-width: 767px) {
+  .edge {
+    padding: var(--margin-3xl) 0 var(--margin-5xl);
+  }
+  .head,
+  .foot,
+  .list {
+    padding-left: var(--pwx);
+    padding-right: var(--pwx);
+  }
+  .title {
+    font-size: var(--size-heading-md);
+  }
+  .stage {
+    --disc: 28vw;
+  }
+  /* on a phone nothing hovers: the caption alone */
+  .label {
+    display: none;
+  }
+}

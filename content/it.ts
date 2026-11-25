@@ -170,6 +170,9 @@ const footer: { columns: { title: string; links: FooterLink[] }[]; copyright: st
 
 const address = [...company.street, 'Italia'];
 
+/** a disc of the home's last row: a finished part, and the process it comes from (components/sections/EdgeCarousel) */
+const part = (media: ReturnType<typeof img>, id: string) => ({ media, label: lavorazioni.find((l) => l.id === id)!.title, href: to(`/lavorazioni/${id}`) });
+
 export const it = {
   to,
   meta: {
@@ -277,6 +280,24 @@ export const it = {
           text: 'L’ingombro massimo nella sabbiatrice a grappolo, anche per materiale delicato.',
           link: { label: 'Sabbiatura', href: to('/lavorazioni/sabbiatura') },
         },
+      ],
+    },
+    /** last module before the footer: the row of finished parts, each one opening its process */
+    parts: {
+      eyebrow: 'Pezzi finiti',
+      title: 'Ogni pezzo',
+      sub: 'la sua finitura',
+      caption: ['Sei lavorazioni in un solo stabilimento.', 'Scegli un pezzo e scopri come lo trattiamo.'] as [string, string],
+      items: [
+        part(foto('ingranaggio-dopo.jpg', 1, 'Ingranaggio lucido dopo la tribofinitura'), 'tribofinitura-isotropica'),
+        part(img('bulloni.jpg', 1, 'Bulloni in acciaio lucidi'), 'brillantatura'),
+        part(img('cuscinetto.jpg', 1, 'Cuscinetto a sfere in acciaio lucido'), 'tribofinitura-isotropica'),
+        part(img('tubi-inox.jpg', 1, 'Tubi in acciaio inox puliti'), 'lavaggi-e-oliature'),
+        part(img('dadi.jpg', 1, 'Dadi metallici alla rinfusa'), 'vibrofinitura'),
+        part(foto('mg_7677-1.jpg', 1, 'Cesta di particolari metallici per il lavaggio'), 'lavaggio-statico'),
+        part(foto('alberi-dopo.jpg', 1, 'Alberi metallici lucidi dopo la tribofinitura'), 'tribofinitura-isotropica'),
+        part(img('anelli-pila.jpg', 1, 'Anelli metallici torniti'), 'vibrofinitura'),
+        part(foto('mg_8489.jpg', 1, 'Particolari lucidati disposti su una griglia'), 'brillantatura'),
       ],
     },
   },

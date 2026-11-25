@@ -71,6 +71,31 @@ export const ANIM = {
     },
   },
 
+  /** home, before the footer: the row of discs that smears into the screen edges (components/sections/EdgeCarousel) */
+  edgeCarousel: {
+    /** gap between discs, × the diameter */
+    gap: 0.38,
+    /** width of the band at each side where the row bends into a streak: × the screen width, at least × the diameter */
+    band: 0.17,
+    bandMinDiscs: 0.9,
+    /** share of the band the row skips: the bigger, the longer the streak (1/3 … 2/3) */
+    hidden: 0.5,
+    /** how much thinner the streak gets toward the edge (1 = no thinning) */
+    squeeze: 0.55,
+    /** how far the blue copy runs ahead of the streak at the edge, × the band */
+    rim: 0.22,
+    /** drift on its own, px per second (leftwards) */
+    drift: 36,
+    /** px the row moves per px of page scroll */
+    scroll: 0.5,
+    /** the disc under the pointer grows by this */
+    hoverScale: 1.1,
+    /** how quickly the row catches up with its target, per frame at 60 fps */
+    follow: 0.1,
+    /** drag momentum kept per frame at 60 fps after release */
+    inertia: 0.93,
+  },
+
   stats: { contentDelay: 0.3, statsDelay: 0.1, statsStagger: 0.25 },
   news: { listDelay: 0.1, listStagger: 0.1 },
   footer: { navDelay: 0.2, navStagger: 0.1 },

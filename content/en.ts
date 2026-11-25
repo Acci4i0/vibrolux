@@ -171,6 +171,9 @@ const footer: { columns: { title: string; links: FooterLink[] }[]; copyright: st
 
 const address = [...company.street, 'Italy'];
 
+/** a disc of the home's last row: a finished part, and the process it comes from (components/sections/EdgeCarousel) */
+const part = (media: ReturnType<typeof img>, id: string) => ({ media, label: lavorazioni.find((l) => l.id === id)!.title, href: to(`/lavorazioni/${id}`) });
+
 export const en: Site = {
   to,
   meta: {
@@ -274,6 +277,24 @@ export const en: Site = {
           text: 'The largest parts the hanger blaster takes, delicate material included.',
           link: { label: 'Sandblasting', href: to('/lavorazioni/sabbiatura') },
         },
+      ],
+    },
+    /** last module before the footer: the row of finished parts, each one opening its process */
+    parts: {
+      eyebrow: 'Finished parts',
+      title: 'Every part',
+      sub: 'its own finish',
+      caption: ['Six processes in one plant.', 'Pick a part and see how we treat it.'] as [string, string],
+      items: [
+        part(foto('ingranaggio-dopo.jpg', 1, 'A gear, bright after isotropic superfinishing'), 'tribofinitura-isotropica'),
+        part(img('bulloni.jpg', 1, 'Bright steel bolts'), 'brillantatura'),
+        part(img('cuscinetto.jpg', 1, 'A bright steel ball bearing'), 'tribofinitura-isotropica'),
+        part(img('tubi-inox.jpg', 1, 'Clean stainless steel tubes'), 'lavaggi-e-oliature'),
+        part(img('dadi.jpg', 1, 'Loose metal nuts'), 'vibrofinitura'),
+        part(foto('mg_7677-1.jpg', 1, 'A basket of metal parts for washing'), 'lavaggio-statico'),
+        part(foto('alberi-dopo.jpg', 1, 'Metal shafts, bright after isotropic superfinishing'), 'tribofinitura-isotropica'),
+        part(img('anelli-pila.jpg', 1, 'Turned metal rings'), 'vibrofinitura'),
+        part(foto('mg_8489.jpg', 1, 'Polished parts laid out on a grid'), 'brillantatura'),
       ],
     },
   },
