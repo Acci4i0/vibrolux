@@ -39,12 +39,3 @@ export function tokenRgb(name: string, fallback: number[]) {
     .match(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
   return m ? m.slice(1).map((h) => parseInt(h, 16) / 255) : fallback;
 }
-
-/** the same hue, more saturated and lighter: #21406e → about #2f6fd0 */
-export function brighter([r, g, b]: number[], S = 0.65, L = 0.5) {
-  const max = Math.max(r, g, b), min = Math.min(r, g, b), d = max - min;
-  const h = d === 0 ? 0 : max === r ? ((g - b) / d) % 6 : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
-  const c = (1 - Math.abs(2 * L - 1)) * S, x = c * (1 - Math.abs((h % 2) - 1)), m = L - c / 2;
-  const [R, G, B] = h < 1 ? [c, x, 0] : h < 2 ? [x, c, 0] : h < 3 ? [0, c, x] : h < 4 ? [0, x, c] : h < 5 ? [x, 0, c] : [c, 0, x];
-  return [R + m, G + m, B + m];
-}

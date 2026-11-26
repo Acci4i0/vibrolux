@@ -3,14 +3,14 @@
 import { useRef, type ReactNode } from 'react';
 import { gsap, useGSAP, prefersReducedMotion } from '@/lib/gsap';
 import { ANIM } from '@/config/animations';
-import { brighter, fullscreenTriangle, glProgram, tokenRgb } from '@/lib/gl';
+import { fullscreenTriangle, glProgram, tokenRgb } from '@/lib/gl';
 import s from './Horizon.module.css';
 
 const C = ANIM.horizon;
 
 /**
- * A dark chapter between two white sections, after the reference's sunrise seen from orbit, in Vibrolux blue.
- * In: the dark rises from below as the edge of a planet, glowing white in the middle and blue toward the sides, its
+ * A dark chapter between two white sections, after the reference's sunrise seen from orbit, redrawn as light on steel.
+ * In: the dark rises from below, its edge lit like a polished part, white in the middle and steel toward the sides, its
  * curve flattening as it climbs. Then it fills the screen and holds the section inside it, in white. Out: the dark lifts away, its lower edge
  * hanging from the top (the corners clear first) and straightening into a flat glow over the section that follows.
  * One fragment shader on a canvas that stays on screen while the section passes (sticky), drawn only when the
@@ -43,11 +43,12 @@ export function Horizon({ children }: { children: ReactNode }) {
     const u = (name: string) => gl.getUniformLocation(prog, name);
     const U = { res: u('uRes'), dpr: u('uDpr'), top: u('uTop'), bot: u('uBot'), rTop: u('uRTop'), rBot: u('uRBot'), reach: u('uReach') };
     // the dark is the site's steel black; the blues come from the Vibrolux navy
-    const brand = tokenRgb('--color-brand', [0.13, 0.25, 0.43]);
+    // light on steel: the palette's own greys, a touch of the Vibrolux navy at the far end; the dark is the footer's black
     gl.uniform3fv(u('uDark'), tokenRgb('--color-black', [0.06, 0.05, 0.07]));
-    gl.uniform3fv(u('uBrand'), brand);
-    gl.uniform3fv(u('uBright'), brighter(brand));
-    gl.uniform3fv(u('uIce'), brighter(brand, 0.8, 0.88));
+    gl.uniform3fv(u('uSurface'), tokenRgb('--color-grey4', [0.93, 0.94, 0.95]));
+    gl.uniform3fv(u('uSteel'), tokenRgb('--color-grey3', [0.73, 0.75, 0.78]));
+    gl.uniform3fv(u('uGraphite'), tokenRgb('--color-grey2', [0.37, 0.4, 0.44]));
+    gl.uniform3fv(u('uBrand'), tokenRgb('--color-brand', [0.13, 0.25, 0.43]));
 
     let dpr = 1;
     let last = '';
@@ -129,16 +130,17 @@ uniform float uRTop;  // radius of each edge's curve
 uniform float uRBot;
 uniform float uReach; // glow height off the edge, in the middle
 uniform vec3 uDark;
+uniform vec3 uSurface;
+uniform vec3 uSteel;
+uniform vec3 uGraphite;
 uniform vec3 uBrand;
-uniform vec3 uBright;
-uniform vec3 uIce;
 out vec4 outColor;
 
-// the glow from the edge outwards: white where the sun is, ice, a bright blue, toward the navy, then the page
+// the light off the edge: white where it is brightest, the surface grey, steel, then steel with a breath of navy
 vec3 ramp(float t) {
-  vec3 c = mix(vec3(1.0), uIce, smoothstep(0.0, 0.14, t));
-  c = mix(c, uBright, smoothstep(0.12, 0.45, t));
-  return mix(c, mix(uBright, uBrand, 0.5), smoothstep(0.42, 0.8, t));
+  vec3 c = mix(vec3(1.0), uSurface, smoothstep(0.0, 0.2, t));
+  c = mix(c, uSteel, smoothstep(0.15, 0.55, t));
+  return mix(c, mix(uSteel, uBrand, 0.35), smoothstep(0.5, 0.9, t));
 }
 
 void main() {
@@ -149,23 +151,23 @@ void main() {
   float dBot = length(p - vec2(0.5 * W, uBot - uRBot)) - uRBot;
   float d = max(dTop, dBot);               // > 0 on the page, < 0 in the dark
   float u = (p.x - 0.5 * W) / (0.5 * W);
-  float sun = exp(-u * u * 2.5);           // 1 in the middle, toward 0 at the sides
+  float sun = exp(-u * u * 1.2);           // brightest in the middle, a long even band toward the sides
 
-  // the glow reaches furthest and starts hottest in the middle; at the sides it is thinner and starts already blue
-  float t = max(d, 0.0) / (uReach * mix(0.3, 1.0, sun)) + (1.0 - sun) * 0.3;
-  float ga = (1.0 - smoothstep(0.3, 0.95, t)) * mix(0.6, 1.0, sun);
+  // a short band hugging the edge, a little taller and whiter in the middle
+  float t = max(d, 0.0) / (uReach * mix(0.55, 1.0, sun)) + (1.0 - sun) * 0.15;
+  float ga = (1.0 - smoothstep(0.25, 0.9, t)) * mix(0.7, 1.0, sun);
   vec3 sky = ramp(t) * ga;
 
-  // the dark, with a faint blue haze just inside the edge
-  float haze = exp(min(d, 0.0) / 40.0) * mix(0.1, 0.22, sun);
-  vec3 dark = mix(uDark, uBright, haze);
+  // the dark, with a faint graphite sheen just inside the edge
+  float haze = exp(min(d, 0.0) / 30.0) * mix(0.12, 0.25, sun);
+  vec3 dark = mix(uDark, uGraphite, haze);
   float cov = clamp(0.5 - d, 0.0, 1.0);
 
   vec3 col = sky * (1.0 - cov) + dark * cov;
   float a = ga * (1.0 - cov) + cov;
-  // a hairline rim: white where the sun is, blue toward the sides
-  float rim = exp(-abs(d) / 0.9) * mix(0.55, 1.0, sun);
-  col = mix(uBright, vec3(1.0), sun) * rim + col * (1.0 - rim);
+  // a crisp hairline: white in the middle, steel toward the sides, like the lit edge of a polished part
+  float rim = exp(-abs(d) / 0.7) * mix(0.75, 1.0, sun);
+  col = mix(uSteel, vec3(1.0), sun) * rim + col * (1.0 - rim);
   a = rim + a * (1.0 - rim);
   outColor = vec4(col, a);
 }`;

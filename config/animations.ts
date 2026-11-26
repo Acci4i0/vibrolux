@@ -98,11 +98,11 @@ export const ANIM = {
 
   /** the dark chapter around a section, between two white ones: Azienda, «In numeri» (components/sections/Horizon) */
   horizon: {
-    /** how far the glow reaches off the edge in the middle, × the white sky around the dark (CSS: min(50vh, 60vw)) */
-    reach: 0.85,
+    /** how far the light reaches off the edge in the middle, × the white sky around the dark (CSS: min(25vh, 40vw)) */
+    reach: 0.6,
     /** an edge's radius as it comes in at the bottom of the screen, and once it reaches the top: × the screen width */
-    radiusStart: 0.75,
-    radiusEnd: 14,
+    radiusStart: 1.6,
+    radiusEnd: 20,
     /** how the curve flattens on its way up (power: the bigger, the longer it stays round) */
     flatten: 2,
   },

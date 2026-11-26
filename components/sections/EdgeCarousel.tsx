@@ -6,7 +6,7 @@ import { afterMount, reveal } from '@/lib/reveal';
 import { ANIM } from '@/config/animations';
 import { Media, type MediaData } from '../Media';
 import { Icon } from '../Icon';
-import { brighter, fullscreenTriangle, glProgram, tokenRgb } from '@/lib/gl';
+import { fullscreenTriangle, glProgram, tokenRgb } from '@/lib/gl';
 import s from './EdgeCarousel.module.css';
 
 type Item = { media: MediaData; label: string; href: string };
@@ -17,7 +17,7 @@ const MAX_DISCS = 16; // uScale[] in the shader
 
 /**
  * A row of discs that drifts on its own, follows the page scroll and the drag, and is never cut at the screen edge:
- * near each side the row bends into a streak, with a blue rim at its outer end, and grows back out of one on the other
+ * near each side the row bends into a streak, with a navy-to-steel rim at its outer end, and grows back out of one on the other
  * side. One fragment shader draws it (WebGL2); the photos are packed in one texture. Without WebGL2, or with reduced
  * motion, the same discs are a plain row of links that scrolls sideways. The links stay in the page either way (focus,
  * screen readers, the page transition's click handling).
@@ -69,10 +69,10 @@ export function EdgeCarousel({ data }: { data: Data }) {
     gl.useProgram(prog);
     const buf = fullscreenTriangle(gl);
 
-    // the rim: Vibrolux navy at the disc, turning to a brighter blue of the same hue toward the screen edge
+    // the rim: Vibrolux navy at the disc, turning to steel grey toward the screen edge
     const brand = tokenRgb('--color-brand', [0.13, 0.25, 0.43]);
     gl.uniform3fv(U.rimIn, brand);
-    gl.uniform3fv(U.rimOut, brighter(brand));
+    gl.uniform3fv(U.rimOut, tokenRgb('--color-grey3', [0.73, 0.75, 0.78]));
     gl.uniform1f(U.n, n);
     gl.uniform2f(U.grid, cols, rows);
     gl.uniform1f(U.g0, C.hidden);

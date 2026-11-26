@@ -19,9 +19,9 @@
 .horizon[data-gl='on'] .canvas {
   display: block;
 }
-/* on a narrow phone a half-screen sky would make the glow a tall flame: no taller than 0.6 × the width */
+/* a quarter screen of white either side, for the light off the edge; on a phone no taller than 0.4 × the width */
 .sky {
-  height: min(50 * var(--vh), 60vw);
+  height: min(25 * var(--vh), 40vw);
 }
 /* the section inside, in white, at least a screen tall so the dark fills it once */
 .body {
@@ -36,8 +36,8 @@
   background: var(--color-black);
 }
 .horizon:not([data-gl='on']) .sky:first-of-type {
-  background: radial-gradient(ellipse 60% 90% at 50% 100%, rgb(47 111 208 / 0.3), transparent 75%);
+  background: radial-gradient(ellipse 60% 90% at 50% 100%, rgb(185 190 198 / 0.45), transparent 75%);
 }
 .horizon:not([data-gl='on']) .sky:last-of-type {
-  background: radial-gradient(ellipse 60% 90% at 50% 0%, rgb(47 111 208 / 0.3), transparent 75%);
+  background: radial-gradient(ellipse 60% 90% at 50% 0%, rgb(185 190 198 / 0.45), transparent 75%);
 }
